@@ -1,178 +1,840 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinaykumar Mishra — Senior Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:#E8ECF2;padding:20px;font-family:'Segoe UI',Arial,sans-serif}
-.page{background:#fff;max-width:720px;margin:0 auto;border-radius:4px;overflow:hidden;font-size:9px;box-shadow:0 2px 12px rgba(0,0,0,0.12)}
+  :root {
+    --bg: #0a0c10;
+    --surface: #111318;
+    --surface2: #181c24;
+    --border: #1e2330;
+    --border2: #252d3d;
+    --accent: #4f8ef7;
+    --accent2: #7eb8ff;
+    --accent-dim: rgba(79,142,247,0.12);
+    --accent-glow: rgba(79,142,247,0.06);
+    --text: #e8edf5;
+    --text2: #9aa5bc;
+    --text3: #5c6880;
+    --gold: #e8c97a;
+    --gold-dim: rgba(232,201,122,0.1);
+    --green: #4ade80;
+    --green-dim: rgba(74,222,128,0.1);
+    --radius: 8px;
+    --radius-lg: 14px;
+  }
 
-.hdr{background:#0B1C33;padding:20px 24px 16px}
-.hdr-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:10px}
-.name{font-size:22px;font-weight:700;color:#fff;letter-spacing:1.8px;text-transform:uppercase}
-.name-sub{font-size:9px;color:#5A84B8;margin-top:4px;letter-spacing:0.4px}
-.contacts{display:flex;flex-direction:column;gap:4px;align-items:flex-end}
-.ci{font-size:8px;color:#6A98C8;display:flex;align-items:center;gap:4px}
-.ci i{font-size:10px;color:#3D6A9E}
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-.accent{height:3px;background:#1E6FBF}
+  html { scroll-behavior: smooth; }
 
-.pills-row{background:#112240;padding:8px 24px;display:flex;flex-wrap:wrap;gap:5px}
-.pill{background:#1A3360;color:#7AAFD4;font-size:7.5px;padding:3px 9px;border-radius:12px;letter-spacing:0.2px;border:0.5px solid #254875}
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.6;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
 
-.body{padding:16px 24px}
+  /* ── NOISE TEXTURE OVERLAY ── */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
 
-.section{margin-bottom:14px}
-.sec-head{display:flex;align-items:center;gap:8px;margin-bottom:8px}
-.sec-line{flex:1;height:1px;background:#D8E4F2}
-.sec-title{font-size:8px;font-weight:700;color:#0B1C33;text-transform:uppercase;letter-spacing:1.2px;white-space:nowrap}
-.sec-dot{width:7px;height:7px;background:#1E6FBF;border-radius:1px;flex-shrink:0}
+  /* ── ANIMATED BG GRID ── */
+  body::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 60px 60px;
+    opacity: 0.3;
+    pointer-events: none;
+    z-index: 0;
+  }
 
-.summary{font-size:8.5px;color:#4A5568;line-height:1.65}
+  /* ── GLOW ORBS ── */
+  .orb {
+    position: fixed;
+    border-radius: 50%;
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 0;
+    animation: drift 20s ease-in-out infinite alternate;
+  }
+  .orb-1 { width: 500px; height: 500px; background: rgba(79,142,247,0.07); top: -150px; right: -100px; animation-delay: 0s; }
+  .orb-2 { width: 400px; height: 400px; background: rgba(232,201,122,0.04); bottom: 100px; left: -150px; animation-delay: -10s; }
 
-.job{margin-bottom:12px;padding-bottom:12px;border-bottom:0.5px solid #EEF2F8}
-.job:last-child{border-bottom:none;margin-bottom:0;padding-bottom:0}
-.job-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:2px}
-.jco{font-size:10px;font-weight:700;color:#0B1C33}
-.jdt{font-size:8px;font-weight:600;color:#3D6A9E;background:#EEF4FB;padding:1px 7px;border-radius:10px}
-.job-sub{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:4px}
-.jti{font-size:8.5px;color:#3D5A80;font-style:italic}
-.jlo{font-size:7.5px;color:#8A9BB0}
-.stk{font-size:7.5px;color:#1A4A80;background:#EDF3FC;padding:2px 8px;border-radius:2px;display:inline-block;margin-bottom:5px;border-left:2px solid #1E6FBF}
-.bul{display:flex;gap:6px;margin-bottom:3.5px;font-size:8.5px;color:#2D3748;line-height:1.5}
-.dot{width:4px;height:4px;background:#1E6FBF;border-radius:1px;margin-top:4px;flex-shrink:0}
-.lead-bul{display:flex;gap:6px;margin-bottom:3.5px;font-size:8.5px;color:#1A3557;line-height:1.5;background:#F0F5FF;padding:3px 6px 3px 4px;border-radius:2px}
-.lead-dot{width:4px;height:4px;background:#0B4FA8;border-radius:1px;margin-top:4px;flex-shrink:0}
+  @keyframes drift {
+    0% { transform: translate(0,0) scale(1); }
+    100% { transform: translate(40px, 30px) scale(1.05); }
+  }
 
-.edu-row{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.edu-card{background:#F7F9FC;border-radius:3px;padding:7px 10px;border-left:2px solid #1E6FBF}
-.edu-deg{font-size:8.5px;font-weight:700;color:#0B1C33}
-.edu-sch{font-size:8px;color:#4A5568;margin-top:1px}
-.edu-yr{font-size:7.5px;color:#8A9BB0;font-style:italic;margin-top:1px}
+  /* ── LAYOUT ── */
+  .container {
+    position: relative;
+    z-index: 1;
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
 
-.proj-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
-.proj-card{background:#F7F9FC;border-radius:3px;padding:7px 10px;border-top:2px solid #1E6FBF}
-.proj-name{font-size:8.5px;font-weight:700;color:#0B1C33;margin-bottom:2px}
-.proj-desc{font-size:8px;color:#4A5568;line-height:1.5}
+  /* ── HEADER ── */
+  header {
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border2);
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s ease both;
+  }
 
-.footer{background:#0B1C33;padding:6px 24px;text-align:center}
-.footer span{font-size:7.5px;color:#3D6A9E}
+  .header-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 32px;
+    flex-wrap: wrap;
+  }
+
+  .header-left { flex: 1; min-width: 260px; }
+
+  .availability {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--green);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+    background: var(--green-dim);
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid rgba(74,222,128,0.2);
+  }
+  .availability::before {
+    content: '';
+    width: 6px; height: 6px;
+    background: var(--green);
+    border-radius: 50%;
+    animation: pulse 2s ease infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.8); }
+  }
+
+  h1 {
+    font-family: 'DM Serif Display', serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    color: var(--text);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 10px;
+  }
+  h1 em {
+    font-style: italic;
+    color: var(--accent2);
+  }
+
+  .tagline {
+    font-size: 15px;
+    color: var(--text2);
+    font-weight: 300;
+    letter-spacing: 0.01em;
+    margin-bottom: 4px;
+  }
+
+  .meta-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 6px;
+    flex-wrap: wrap;
+  }
+  .meta-tag {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    letter-spacing: 0.04em;
+  }
+  .meta-sep { color: var(--border2); }
+
+  .header-right {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    align-items: flex-end;
+    padding-top: 8px;
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    text-decoration: none;
+    color: var(--text2);
+    font-size: 13px;
+    font-weight: 400;
+    transition: color 0.2s;
+  }
+  .contact-item:hover { color: var(--accent2); }
+  .contact-item svg { flex-shrink: 0; opacity: 0.6; }
+  .contact-item:hover svg { opacity: 1; }
+
+  /* ── SKILLS STRIP ── */
+  .skills-strip {
+    margin-bottom: 48px;
+    animation: fadeUp 0.6s 0.1s ease both;
+  }
+
+  .skills-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text3);
+    margin-bottom: 12px;
+  }
+
+  .pills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .pill {
+    font-family: 'DM Mono', monospace;
+    font-size: 11.5px;
+    color: var(--accent2);
+    background: var(--accent-dim);
+    border: 1px solid rgba(79,142,247,0.2);
+    padding: 5px 13px;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+    transition: background 0.2s, border-color 0.2s, transform 0.15s;
+    cursor: default;
+  }
+  .pill:hover {
+    background: rgba(79,142,247,0.2);
+    border-color: rgba(79,142,247,0.4);
+    transform: translateY(-1px);
+  }
+
+  /* ── SECTION ── */
+  section {
+    margin-bottom: 52px;
+    animation: fadeUp 0.6s ease both;
+  }
+  section:nth-child(2) { animation-delay: 0.15s; }
+  section:nth-child(3) { animation-delay: 0.2s; }
+  section:nth-child(4) { animation-delay: 0.25s; }
+  section:nth-child(5) { animation-delay: 0.3s; }
+
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 28px;
+  }
+
+  .sec-label {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent);
+  }
+
+  .sec-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border2) 0%, transparent 100%);
+  }
+
+  /* ── SUMMARY ── */
+  .summary-text {
+    font-size: 15px;
+    color: var(--text2);
+    line-height: 1.75;
+    font-weight: 300;
+    max-width: 720px;
+    border-left: 2px solid var(--accent);
+    padding-left: 20px;
+  }
+
+  /* ── JOB CARDS ── */
+  .job {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 24px 28px;
+    margin-bottom: 16px;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .job:hover {
+    border-color: var(--border2);
+    box-shadow: 0 8px 40px rgba(0,0,0,0.3), 0 0 0 1px rgba(79,142,247,0.06);
+  }
+
+  .job-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 4px;
+  }
+
+  .company {
+    font-size: 17px;
+    font-weight: 600;
+    color: var(--text);
+    letter-spacing: -0.01em;
+  }
+
+  .date-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--accent);
+    background: var(--accent-dim);
+    border: 1px solid rgba(79,142,247,0.2);
+    padding: 3px 10px;
+    border-radius: 4px;
+    white-space: nowrap;
+    letter-spacing: 0.03em;
+    flex-shrink: 0;
+  }
+  .date-badge.current {
+    color: var(--green);
+    background: var(--green-dim);
+    border-color: rgba(74,222,128,0.2);
+  }
+
+  .job-sub {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+    flex-wrap: wrap;
+  }
+
+  .title {
+    font-size: 13px;
+    font-style: italic;
+    color: var(--text2);
+    font-weight: 300;
+  }
+  .location {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+  .job-sub-sep { color: var(--border2); font-size: 10px; }
+
+  .tl-badge {
+    font-family: 'DM Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid rgba(232,201,122,0.25);
+    padding: 2px 9px;
+    border-radius: 4px;
+  }
+
+  .stack-bar {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    background: var(--surface2);
+    border: 1px solid var(--border);
+    padding: 5px 12px;
+    border-radius: 4px;
+    display: inline-block;
+    margin-bottom: 16px;
+    letter-spacing: 0.02em;
+  }
+
+  .bullets { list-style: none; }
+
+  .bul {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 8px;
+    font-size: 13.5px;
+    color: var(--text2);
+    line-height: 1.6;
+  }
+  .bul::before {
+    content: '';
+    width: 5px;
+    height: 5px;
+    background: var(--border2);
+    border-radius: 1px;
+    margin-top: 8px;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+  .job:hover .bul::before { background: var(--accent); }
+
+  .bul.highlight {
+    color: var(--text);
+    font-weight: 500;
+    background: var(--surface2);
+    border-radius: 6px;
+    padding: 7px 12px;
+    margin-left: -12px;
+    border-left: 2px solid var(--gold);
+  }
+  .bul.highlight::before {
+    background: var(--gold);
+    margin-top: 8px;
+    margin-left: 0;
+  }
+
+  /* ── PROJECTS ── */
+  .proj-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 14px;
+  }
+
+  .proj-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+  .proj-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, var(--accent), transparent);
+    opacity: 0;
+    transition: opacity 0.25s;
+  }
+  .proj-card:hover {
+    border-color: var(--border2);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(0,0,0,0.35);
+  }
+  .proj-card:hover::before { opacity: 1; }
+
+  .proj-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 6px;
+    letter-spacing: -0.01em;
+  }
+
+  .proj-stack {
+    font-family: 'DM Mono', monospace;
+    font-size: 10.5px;
+    color: var(--accent);
+    letter-spacing: 0.03em;
+    margin-bottom: 8px;
+    opacity: 0.8;
+  }
+
+  .proj-desc {
+    font-size: 12.5px;
+    color: var(--text2);
+    line-height: 1.6;
+    font-weight: 300;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 14px;
+  }
+
+  .edu-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 20px 22px;
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+    transition: border-color 0.25s;
+  }
+  .edu-card:hover { border-color: var(--border2); }
+
+  .edu-icon {
+    width: 36px; height: 36px;
+    background: var(--accent-dim);
+    border: 1px solid rgba(79,142,247,0.2);
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+    flex-shrink: 0;
+    font-size: 16px;
+  }
+
+  .edu-deg {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 3px;
+    letter-spacing: -0.01em;
+  }
+  .edu-school {
+    font-size: 12px;
+    color: var(--text2);
+    margin-bottom: 3px;
+  }
+  .edu-year {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+  }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding-top: 28px;
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    animation: fadeUp 0.6s 0.35s ease both;
+  }
+
+  .footer-name {
+    font-family: 'DM Serif Display', serif;
+    font-size: 14px;
+    color: var(--text3);
+  }
+  .footer-links {
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--text3);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .footer-links a:hover { color: var(--accent2); }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── SCROLLBAR ── */
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: var(--bg); }
+  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 640px) {
+    .container { padding: 28px 16px 60px; }
+    .header-right { align-items: flex-start; }
+    .job { padding: 18px 18px; }
+    .bul.highlight { margin-left: 0; }
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { background: #fff; color: #111; }
+    body::before, body::after, .orb { display: none; }
+    :root {
+      --bg: #fff; --surface: #f8f8f8; --surface2: #f0f0f0;
+      --border: #e0e0e0; --border2: #ccc;
+      --text: #111; --text2: #444; --text3: #888;
+      --accent: #1a5fc8; --accent2: #1a5fc8;
+      --accent-dim: rgba(26,95,200,0.08);
+    }
+    .pill { border: 1px solid #ccc; }
+    .container { padding: 0; max-width: 100%; }
+  }
 </style>
+</head>
+<body>
 
-<div class="page">
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
 
-  <div class="hdr">
-    <div class="hdr-top">
-      <div>
-        <div class="name">Vinaykumar Mishra</div>
-        <div class="name-sub">Senior Software Engineer &nbsp;·&nbsp; 8+ Years &nbsp;·&nbsp; Healthcare · FinTech · SaaS</div>
+<div class="container">
+
+  <!-- ── HEADER ── -->
+  <header>
+    <div class="header-inner">
+      <div class="header-left">
+        <div class="availability">Open to opportunities</div>
+        <h1>Vinaykumar<br><em>Mishra</em></h1>
+        <p class="tagline">Senior Software Engineer</p>
+        <div class="meta-row">
+          <span class="meta-tag">8+ Years</span>
+          <span class="meta-sep">·</span>
+          <span class="meta-tag">Laravel · Vue.js · Microservices</span>
+          <span class="meta-sep">·</span>
+          <span class="meta-tag">Mumbai, India</span>
+        </div>
       </div>
-      <div class="contacts">
-        <div class="ci"><i class="ti ti-mail" aria-hidden="true"></i> vinaykumarmishra71@gmail.com</div>
-        <div class="ci"><i class="ti ti-phone" aria-hidden="true"></i> 9172270728</div>
-        <div class="ci"><i class="ti ti-map-pin" aria-hidden="true"></i> Mumbai, India</div>
-        <div class="ci"><i class="ti ti-brand-linkedin" aria-hidden="true"></i> linkedin.com/in/vinaykumar-mishra</div>
+      <div class="header-right">
+        <a class="contact-item" href="mailto:vinaykumarmishra71@gmail.com">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          vinaykumarmishra71@gmail.com
+        </a>
+        <a class="contact-item" href="tel:9172270728">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          9172270728
+        </a>
+        <a class="contact-item" href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          linkedin.com/in/vinaykumar-mishra
+        </a>
+        <span class="contact-item" style="cursor:default">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          Mumbai, India
+        </span>
       </div>
+    </div>
+  </header>
+
+  <!-- ── SKILLS ── -->
+  <div class="skills-strip">
+    <div class="skills-label">Core Technologies</div>
+    <div class="pills">
+      <span class="pill">Laravel / PHP</span>
+      <span class="pill">Vue.js / Nuxt.js</span>
+      <span class="pill">Inertia.js</span>
+      <span class="pill">Python / FastAPI</span>
+      <span class="pill">JavaScript ES6+</span>
+      <span class="pill">Microservices</span>
+      <span class="pill">REST & SOAP APIs</span>
+      <span class="pill">MySQL / PostgreSQL</span>
+      <span class="pill">Redis / Memcached</span>
+      <span class="pill">Docker / AWS</span>
+      <span class="pill">JWT / OAuth 2.0</span>
+      <span class="pill">Multi-Tenant SaaS</span>
+      <span class="pill">CI/CD Pipelines</span>
+      <span class="pill">HIPAA Compliance</span>
+      <span class="pill">VAPT Security</span>
+      <span class="pill">Agile / Scrum</span>
     </div>
   </div>
 
-  <div class="accent"></div>
+  <!-- ── PROFILE ── -->
+  <section>
+    <div class="sec-header">
+      <span class="sec-label">Profile</span>
+      <div class="sec-line"></div>
+    </div>
+    <p class="summary-text">
+      Senior Software Engineer with 8+ years designing and shipping scalable systems across Healthcare, FinTech, and multi-tenant SaaS. Deep expertise in Laravel, Vue.js, and API-driven microservice architectures — with hands-on experience in caching, database optimization, Docker, and cloud deployments. Proven track record owning end-to-end technical delivery, leading code reviews, mentoring junior engineers, conducting internal knowledge sessions, and collaborating cross-functionally with product and QA. Experienced in hiring, sprint planning, and incident resolution — building secure, compliant systems while driving team growth and engineering standards.
+    </p>
+  </section>
 
-  <div class="pills-row">
-    <span class="pill">Laravel / PHP</span>
-    <span class="pill">Vue.js / Nuxt.js / Inertia.js</span>
-    <span class="pill">JavaScript ES6+</span>
-    <span class="pill">Python / FastAPI</span>
-    <span class="pill">Microservices</span>
-    <span class="pill">REST & SOAP APIs</span>
-    <span class="pill">MySQL / PostgreSQL</span>
-    <span class="pill">Redis / Memcached</span>
-    <span class="pill">Docker / AWS</span>
-    <span class="pill">JWT / OAuth 2.0</span>
-    <span class="pill">Multi-Tenant SaaS</span>
-    <span class="pill">CI/CD Pipelines</span>
-    <span class="pill">HIPAA Compliance</span>
-    <span class="pill">AI API Integration</span>
-    <span class="pill">VAPT Security</span>
-    <span class="pill">Agile / Scrum</span>
-  </div>
-
-  <div class="body">
-
-    <div class="section">
-      <div class="sec-head"><div class="sec-dot"></div><div class="sec-title">Professional Profile</div><div class="sec-line"></div></div>
-      <div class="summary">Detail-oriented Senior Software Engineer with 8+ years of experience designing, developing, and optimizing scalable web applications across Healthcare, FinTech, and multi-tenant SaaS platforms. Strong expertise in Laravel, Vue.js, and API-driven microservice architectures, with hands-on experience in caching strategies, database optimization, Docker, and cloud deployments. Proven ability to build secure, compliant systems, integrate complex third-party services, mentor teams, and own technical delivery end-to-end. Recognized for writing clean, maintainable code and consistently raising engineering standards.</div>
+  <!-- ── EXPERIENCE ── -->
+  <section>
+    <div class="sec-header">
+      <span class="sec-label">Experience</span>
+      <div class="sec-line"></div>
     </div>
 
-    <div class="section">
-      <div class="sec-head"><div class="sec-dot"></div><div class="sec-title">Professional Experience</div><div class="sec-line"></div></div>
-
-      <div class="job">
-        <div class="job-top"><span class="jco">WebMD</span><span class="jdt">Apr 2023 – Present</span></div>
-        <div class="job-sub"><span class="jti">Senior Software Engineer</span><span class="jlo">Airoli, Navi Mumbai</span></div>
-        <div><span class="stk">Laravel · Vue.js · Inertia.js · PHP · MySQL · Docker · JWT · Microservices</span></div>
-        <div class="lead-bul"><div class="lead-dot"></div>Took ownership of sprint planning and daily standups for the reporting team — coordinating task allocation, unblocking developers, and ensuring on-time delivery across multiple brand projects.</div>
-        <div class="lead-bul"><div class="lead-dot"></div>Mentored junior engineers on Laravel architecture and Vue.js component design; conducted code reviews that reduced PR rework and established stronger team coding standards.</div>
-        <div class="bul"><div class="dot"></div>Designed and delivered 5 client-facing reporting portals with dynamic campaign-based report generation, data validation, audit trails, and multi-tenant data segregation across clients.</div>
-        <div class="bul"><div class="dot"></div>Built the PTR System end-to-end — database schema through Vue.js frontend — as sole technical owner, secured via JWT and Sanctum.</div>
-        <div class="bul"><div class="dot"></div>Integrated AI-powered APIs to automate data classification across reporting pipelines; containerized services using Docker aligned with CI/CD deployment workflows.</div>
-        <div class="bul"><div class="dot"></div>Built custom ACL with field-level security, role-based permissions, and Axios route interceptors for efficient API handling.</div>
-        <div class="bul"><div class="dot"></div>Optimized frontend via code splitting, lazy loading, and Vuex/Pinia; enhanced dashboards with real-time filtering for large datasets.</div>
+    <!-- WebMD -->
+    <div class="job">
+      <div class="job-top">
+        <span class="company">WebMD</span>
+        <span class="date-badge current">Apr 2023 — Present</span>
       </div>
-
-      <div class="job">
-        <div class="job-top"><span class="jco">Vastu Housing Finance Corporation Pvt. Ltd.</span><span class="jdt">Oct 2019 – Mar 2023</span></div>
-        <div class="job-sub"><span class="jti">Senior PHP Developer</span><span class="jlo">Sewri, Mumbai</span></div>
-        <div><span class="stk">Laravel · PHP · MySQL · jQuery · JWT · MPDF · AJAX DataTables · BBPS · CIBIL · Razorpay</span></div>
-        <div class="lead-bul"><div class="lead-dot"></div>Led and mentored a team of 6 developers — facilitated technical discussions, implemented best practices, introduced Agile methodologies and microservices architecture to improve delivery efficiency and team productivity.</div>
-        <div class="lead-bul"><div class="lead-dot"></div>Conducted design assessments and code reviews across all projects; contributed to sprint alignment meetings to coordinate deadlines, designs, and feature enhancements.</div>
-        <div class="bul"><div class="dot"></div>Architected and built Pulse — an in-house LOS for Home Loans & Loan Against Property — managing the full lead-to-approval lifecycle from Android app intake to backend processing.</div>
-        <div class="bul"><div class="dot"></div>Developed a complete NBFC LOS for Vehicle Loans & LAP from scratch — multi-step loan processing, dynamic ACL, workflow automation, and API system.</div>
-        <div class="bul"><div class="dot"></div>Created APIs to transfer data from Pulse (LOS) to MIFIN (LMS); dynamically generated loan structure PDFs using MPDF; used AJAX DataTables for efficient loan application display.</div>
-        <div class="bul"><div class="dot"></div>Automated approval emails and MIS loan reports to Branch Managers and State Heads via cron jobs; developed salesperson commission calculation APIs.</div>
-        <div class="bul"><div class="dot"></div>Implemented JWT auth and security; conducted VAPT; built custom error-handling and logging system with automated email alerts for critical failures.</div>
-        <div class="bul"><div class="dot"></div>Integrated 10+ third-party services: Razorpay, Paytm, BBPS, KARZA, Aadhaar Masking, CIBIL & Highmark, Digio e-sign, Vehicle Valuation, SMS/Call APIs, Fraud & Crime Check APIs, and webhooks.</div>
+      <div class="job-sub">
+        <span class="title">Senior Software Engineer</span>
+        <span class="job-sub-sep">·</span>
+        <span class="tl-badge">Team Lead</span>
+        <span class="job-sub-sep">·</span>
+        <span class="location">Airoli, Navi Mumbai</span>
       </div>
-
-      <div class="job">
-        <div class="job-top"><span class="jco">Softlabs Groups</span><span class="jdt">Mar 2019 – Sep 2019</span></div>
-        <div class="job-sub"><span class="jti">Laravel Developer</span><span class="jlo">Lower Parel, Mumbai</span></div>
-        <div><span class="stk">Laravel · PHP · MySQL · Multi-tenancy · jQuery</span></div>
-        <div class="bul"><div class="dot"></div>Built a Stock Management SaaS using Laravel multi-tenancy — dynamically switched isolated databases per client login, supporting fully independent data environments.</div>
-        <div class="bul"><div class="dot"></div>Developed TravelX, a travel booking platform for flights, cars, and hotels within a single unified tour package workflow.</div>
-        <div class="bul"><div class="dot"></div>Built a Center Management System for multi-location yoga package room bookings; implemented dynamic DB connections, modular architecture, and RBAC.</div>
-      </div>
-
-      <div class="job">
-        <div class="job-top"><span class="jco">Neural IT</span><span class="jdt">Nov 2017 – Mar 2019</span></div>
-        <div class="job-sub"><span class="jti">Software Engineer</span><span class="jlo">Airoli, Mumbai</span></div>
-        <div><span class="stk">Core PHP · Drupal · MySQL · jQuery · REST APIs</span></div>
-        <div class="bul"><div class="dot"></div>Built EHRMS mobile app (Core PHP, deployed in Android WebView) and an EHRMS control panel for multi-org cloning and deployment across healthcare organizations.</div>
-        <div class="bul"><div class="dot"></div>Worked on 3 USA-based Accidental Claim Management projects integrating claim workflows and reporting systems.</div>
-        <div class="bul"><div class="dot"></div>Designed APIs and microservices for EHRMS; integrated data visualization for patient/leave metrics; leveraged Drupal modules for LMS integration.</div>
-        <div class="bul"><div class="dot"></div>Optimized complex MySQL data models; implemented RBAC and ACLs across multiple healthcare organizations.</div>
-      </div>
+      <div class="stack-bar">Laravel · Vue.js · Inertia.js · PHP · MySQL · Docker · JWT · Microservices</div>
+      <ul class="bullets">
+        <li class="bul highlight">Owned end-to-end delivery of multiple reporting portal projects — coordinated timelines, defined scope with product stakeholders, managed sprint planning, and ensured on-time delivery across cross-functional teams.</li>
+        <li class="bul highlight">Drove technical design discussions and proposed architectural decisions on data flow and API contracts — collaborated with product and QA teams to define requirements, acceptance criteria, and integration contracts adopted team-wide.</li>
+        <li class="bul highlight">Led structured code reviews across the team — established PR guidelines, enforced coding standards, and introduced review checklists that significantly cut rework cycles and improved merge quality.</li>
+        <li class="bul highlight">Mentored junior engineers through 1-on-1 sessions and pair programming on Laravel and Vue.js patterns; guided them from onboarding to independently owning feature modules.</li>
+        <li class="bul highlight">Conducted regular coding sessions and internal tech talks for junior developers — covering Vue.js reactivity, Laravel service patterns, API design, Redis caching, and queue optimization — building sustained team capability.</li>
+        <li class="bul highlight">Delivered structured presentations on core engineering concepts (component architecture, Vuex/Pinia state management, JWT auth flows, microservice communication) to align the team on shared practices.</li>
+        <li class="bul highlight">Participated in technical interviews for engineering candidates — evaluated Laravel, Vue.js, and system design proficiency, helping shape team hiring decisions.</li>
+        <li class="bul">Triaged and resolved production incidents — led RCA investigations on critical failures, introduced centralized logging and automated alerts across microservices to reduce future incident response time.</li>
+        <li class="bul">Served as go-to person for debugging complex cross-project issues, regularly unblocking other developers on deep backend and Vue.js problems.</li>
+        <li class="bul">Designed and delivered 2 client-facing reporting portals with dynamic campaign-based report generation, data validation, audit trails, and multi-tenant data segregation.</li>
+        <li class="bul">Built the PTR System end-to-end as sole technical owner — from schema design to Vue.js frontend — secured via JWT and Sanctum, delivered on schedule.</li>
+        <li class="bul">Built reusable Vue.js component library; optimized Laravel job queues and background workers, significantly reducing report generation time.</li>
+        <li class="bul">Dockerized local dev environment, standardizing setup across the team and eliminating environment inconsistency issues.</li>
+        <li class="bul">Built custom ACL with field-level security, RBAC, Axios route interceptors, and centralized logging across microservices.</li>
+        <li class="bul">Enhanced dashboards with real-time filtering; optimized frontend via code splitting, lazy loading, and Vuex/Pinia state management.</li>
+      </ul>
     </div>
 
-    <div class="section">
-      <div class="sec-head"><div class="sec-dot"></div><div class="sec-title">Independent Projects</div><div class="sec-line"></div></div>
-      <div class="proj-grid">
-        <div class="proj-card"><div class="proj-name">medDose</div><div class="proj-desc">SaaS Medicine Dose Reminder App with IoT pillbox integration delivering real-time consumption alerts to mobile and web.</div></div>
-        <div class="proj-card"><div class="proj-name">Bill Financing System</div><div class="proj-desc">Multi-step KYC via Digio APIs enabling lenders to finance bills with compliant identity verification workflows.</div></div>
-        <div class="proj-card"><div class="proj-name">TradeX</div><div class="proj-desc">Trading app with subscription management, fund request workflows, and configurable admin approval modules.</div></div>
-        <div class="proj-card"><div class="proj-name">ARKROOT</div><div class="proj-desc">Python-powered bank transaction classifier for automated credit/debit insights; Digio Face Match for fraud prevention.</div></div>
+    <!-- Vastu -->
+    <div class="job">
+      <div class="job-top">
+        <span class="company">Vastu Housing Finance Corporation</span>
+        <span class="date-badge">Oct 2019 — Mar 2023</span>
       </div>
+      <div class="job-sub">
+        <span class="title">Senior PHP Developer</span>
+        <span class="job-sub-sep">·</span>
+        <span class="location">Sewri, Mumbai</span>
+      </div>
+      <div class="stack-bar">Laravel · PHP · MySQL · jQuery · JWT · MPDF · AJAX DataTables · BBPS · CIBIL · Razorpay</div>
+      <ul class="bullets">
+        <li class="bul highlight">Led and mentored a team of 6 developers — introduced Agile/Scrum, microservices architecture, DRY coding principles, and API security standards; improved delivery efficiency, code quality, and team productivity across all projects.</li>
+        <li class="bul highlight">Collaborated directly with business, operations, and compliance teams to gather requirements and translate them into technical specs — ensuring systems met regulatory and operational needs from day one.</li>
+        <li class="bul highlight">Drove engineering modernization — migrated from monolithic to microservices, enforced API security best practices, and introduced deep Laravel service-layer patterns and DRY architecture that became team-wide standards.</li>
+        <li class="bul highlight">Conducted design assessments and code reviews; drove sprint planning to align deadlines, designs, and feature enhancements across all projects.</li>
+        <li class="bul">Architected and built Pulse — an in-house LOS for Home Loans & LAP — supporting 500+ pan-India users and processing ₹100 Cr+ in loans per month via BBPS; managed the full lead-to-approval lifecycle from Android app to backend.</li>
+        <li class="bul">Digitized paper-based PD (Personal Discussion) processes by building TelePD and Video PD workflows with Digio e-sign integration — enabling remote loan assessments and paperless document signing across branches, significantly reducing turnaround time.</li>
+        <li class="bul">Developed a complete NBFC LOS for Vehicle Loans & LAP from scratch — multi-step workflows, dynamic ACL, automation, and full API system.</li>
+        <li class="bul">Created Pulse→MIFIN data transfer APIs; dynamically generated loan PDFs via MPDF; used AJAX DataTables for efficient loan application display.</li>
+        <li class="bul">Automated MIS loan reports to Branch Managers via cron jobs; developed salesperson commission calculation APIs.</li>
+        <li class="bul">Conducted VAPT; implemented JWT auth; built custom error-handling and logging with automated email alerts for critical failures.</li>
+        <li class="bul">Integrated 10+ third-party services: Razorpay, Paytm, BBPS, KARZA, Aadhaar Masking, CIBIL & Highmark, Digio e-sign, Vehicle Valuation, Fraud Check APIs, and Webhooks.</li>
+      </ul>
     </div>
 
-    <div class="section">
-      <div class="sec-head"><div class="sec-dot"></div><div class="sec-title">Education</div><div class="sec-line"></div></div>
-      <div class="edu-row">
-        <div class="edu-card"><div class="edu-deg">M.Sc. Information Technology</div><div class="edu-sch">Vidyalankar School of Information Technology</div><div class="edu-yr">Mumbai · 2016 – 2018</div></div>
-        <div class="edu-card"><div class="edu-deg">B.Sc. Information Technology</div><div class="edu-sch">Guru Nanak Khalsa College of Arts, Science & Commerce</div><div class="edu-yr">Mumbai · 2013 – 2016</div></div>
+    <!-- Softlabs -->
+    <div class="job">
+      <div class="job-top">
+        <span class="company">Softlabs Groups</span>
+        <span class="date-badge">Mar 2019 — Sep 2019</span>
       </div>
+      <div class="job-sub">
+        <span class="title">Laravel Developer</span>
+        <span class="job-sub-sep">·</span>
+        <span class="location">Lower Parel, Mumbai</span>
+      </div>
+      <div class="stack-bar">Laravel · PHP · MySQL · Multi-tenancy · jQuery · JavaScript</div>
+      <ul class="bullets">
+        <li class="bul">Built a Stock Management SaaS with Laravel multi-tenancy — dynamically switched isolated databases per client, supporting fully independent multi-tenant environments.</li>
+        <li class="bul">Developed TravelX, a travel booking platform for flights, cars, and hotels within a single unified tour workflow.</li>
+        <li class="bul">Built a Center Management System for multi-location yoga room bookings; implemented dynamic DB connections, modular architecture, and RBAC.</li>
+      </ul>
     </div>
 
-  </div>
+    <!-- Neural IT -->
+    <div class="job">
+      <div class="job-top">
+        <span class="company">Neural IT</span>
+        <span class="date-badge">Nov 2017 — Mar 2019</span>
+      </div>
+      <div class="job-sub">
+        <span class="title">Software Engineer</span>
+        <span class="job-sub-sep">·</span>
+        <span class="location">Airoli, Mumbai</span>
+      </div>
+      <div class="stack-bar">Core PHP · Drupal · MySQL · jQuery · JavaScript · REST APIs</div>
+      <ul class="bullets">
+        <li class="bul">Built a fully functional EHRMS mobile app (Core PHP, Android WebView) and an EHRMS control panel for multi-org cloning across healthcare organizations.</li>
+        <li class="bul">Worked on 3 USA-based Accidental Claim Management projects integrating claim workflows, reporting, and insurance processing pipelines.</li>
+        <li class="bul">Designed APIs and microservices for EHRMS; integrated data visualization for patient metrics; leveraged Drupal for LMS integration.</li>
+        <li class="bul">Optimized complex MySQL data models; implemented RBAC and ACLs across multiple organizations.</li>
+      </ul>
+    </div>
+  </section>
 
-  <div class="footer">
-    <span>Vinaykumar Mishra &nbsp;·&nbsp; vinaykumarmishra71@gmail.com &nbsp;·&nbsp; 9172270728 &nbsp;·&nbsp; Mumbai, India</span>
-  </div>
+  <!-- ── PROJECTS ── -->
+  <section>
+    <div class="sec-header">
+      <span class="sec-label">Independent Projects</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-name">medDose</div>
+        <div class="proj-stack">Laravel · Vue.js · SaaS · REST APIs</div>
+        <div class="proj-desc">SaaS Medicine Dose Reminder with IoT smart pillbox integration — delivers real-time consumption alerts to mobile and web. Built multi-tenant architecture with patient-device pairing, alert scheduling engine, and caregiver notification system.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-name">Bill Financing System</div>
+        <div class="proj-stack">Laravel · Digio APIs · JWT · MySQL</div>
+        <div class="proj-desc">Multi-step KYC and identity verification platform enabling compliant lender-financed bill processing. Integrated Digio e-sign and face-match APIs, built dynamic workflow engine for lender approval routing and audit trail generation.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-name">TradeX</div>
+        <div class="proj-stack">Laravel · Razorpay · MySQL</div>
+        <div class="proj-desc">Trading platform with subscription tier management, fund request workflows, and configurable admin approval modules. Designed role-based access control and real-time fund status tracking with automated approval/rejection notifications.</div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-name">ARKROOT</div>
+        <div class="proj-stack">Nuxt.js · PHP · MySQL</div>
+        <div class="proj-desc">Modern website for ARK Root — a boutique advisory firm offering finance, legal, and compliance solutions for startups and growing businesses. Built a fast, SEO-optimised Nuxt.js frontend with a PHP backend.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── EDUCATION ── -->
+  <section>
+    <div class="sec-header">
+      <span class="sec-label">Education</span>
+      <div class="sec-line"></div>
+    </div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-deg">M.Sc. Information Technology</div>
+          <div class="edu-school">Vidyalankar School of Information Technology, Mumbai</div>
+          <div class="edu-year">2016 – 2018</div>
+        </div>
+      </div>
+      <div class="edu-card">
+        <div class="edu-icon">🎓</div>
+        <div>
+          <div class="edu-deg">B.Sc. Information Technology</div>
+          <div class="edu-school">Guru Nanak Khalsa College, Mumbai</div>
+          <div class="edu-year">2013 – 2016</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span class="footer-name">Vinaykumar Mishra</span>
+    <div class="footer-links">
+      <a href="mailto:vinaykumarmishra71@gmail.com">vinaykumarmishra71@gmail.com</a>
+      <a href="tel:9172270728">9172270728</a>
+      <a href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank">LinkedIn</a>
+      <span style="color:var(--text3);font-family:'DM Mono',monospace;font-size:11px">Mumbai, India</span>
+    </div>
+  </footer>
 
 </div>
+</body>
+</html>
