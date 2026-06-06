@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vinaykumar Mishra — Senior Software Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{
+  --bg:#07090f;--bg2:#0b0e18;--bg3:#0f1420;--bg4:#141b28;
+  --b1:#212c42;--b2:#2b3a56;--b3:#3a4d6e;--b4:#4a608a;
+  --ac:#5e9bff;--ac2:#a8caff;--ac3:#1d3a6e;--ac4:#0d2040;
+  --go:#e8b84b;--go2:rgba(232,184,75,0.1);--go3:rgba(232,184,75,0.25);
+  --gr:#34d399;--gr2:rgba(52,211,153,0.08);--gr3:rgba(52,211,153,0.22);
+  --pu:#a78bfa;--re:#f87171;
+  --t1:#f0f3fb;--t2:#aab8d4;--t3:#7286a8;--t4:#4a5a78;
+  --fh:'Syne',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;
+}
+body{background:var(--bg);color:var(--t1);font-family:var(--fb);line-height:1.7;overflow-x:hidden;font-size:15px}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--b3);border-radius:2px}
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");opacity:.4}
+body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(rgba(79,142,247,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,.025) 1px,transparent 1px);
+  background-size:60px 60px}
+
+/* ---- NAV ---- */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;
+  padding:18px 56px;background:rgba(7,9,15,.88);backdrop-filter:blur(28px);
+  border-bottom:1px solid rgba(79,142,247,.06);transition:padding .3s,background .3s}
+nav.scrolled{padding:11px 56px;background:rgba(7,9,15,.97)}
+.n-logo{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--t1);letter-spacing:-.02em}
+.n-logo span{color:var(--ac)}
+.n-links{display:flex;gap:28px}
+.n-links a{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--t3);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px}
+.n-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;
+  background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.n-links a:hover,.n-links a.active{color:var(--ac2)}
+.n-links a.active::after,.n-links a:hover::after{transform:scaleX(1)}
+.n-right{display:flex;align-items:center;gap:12px}
+.n-resume{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--t2);border:1px solid var(--b3);padding:8px 16px;border-radius:6px;
+  text-decoration:none;transition:border-color .2s,color .2s}
+.n-resume:hover{border-color:var(--ac);color:var(--ac2)}
+.n-hire{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
+  background:var(--ac);color:#fff;padding:8px 18px;border-radius:6px;font-weight:500;
+  text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s}
+.n-hire:hover{background:#6aa0ff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,142,247,.35)}
+
+/* ---- ORB ---- */
+.orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;animation:od 20s ease-in-out infinite alternate}
+@keyframes od{0%{transform:translate(0,0) scale(1)}100%{transform:translate(55px,40px) scale(1.1)}}
+
+/* ---- SECTIONS ---- */
+section{padding:96px 56px;position:relative;overflow:hidden}
+.si{max-width:1100px;margin:0 auto;position:relative;z-index:1}
+.ey{display:flex;align-items:center;gap:14px;margin-bottom:56px}
+.ey-n{font-family:var(--fm);font-size:10px;color:var(--ac);letter-spacing:.08em;min-width:24px}
+.ey-l{height:1px;width:36px;background:linear-gradient(90deg,var(--b2),transparent)}
+.ey-t{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--t3)}
+
+/* ---- REVEAL ---- */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+.rv.in{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-20px);transition:opacity .65s ease,transform .65s ease}
+.rv-l.in{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(20px);transition:opacity .65s ease,transform .65s ease}
+.rv-r.in{opacity:1;transform:none}
+
+/* ===== HERO ===== */
+#hero{min-height:100vh;display:flex;align-items:center;padding:100px 56px 60px}
+.h-bg{position:absolute;inset:0;
+  background-image:linear-gradient(rgba(79,142,247,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,.045) 1px,transparent 1px);
+  background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,black 30%,transparent 100%)}
+.orb-h1{width:800px;height:800px;background:rgba(79,142,247,.07);top:-300px;right:-250px}
+.orb-h2{width:500px;height:500px;background:rgba(167,139,250,.05);bottom:-100px;left:-180px;animation-delay:-10s}
+.orb-h3{width:220px;height:220px;background:rgba(52,211,153,.04);top:55%;left:38%;animation-delay:-6s}
+.h-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 200px;gap:60px;align-items:center}
+
+.h-avail{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10.5px;
+  color:var(--gr);letter-spacing:.12em;text-transform:uppercase;background:var(--gr2);
+  padding:6px 14px;border-radius:20px;border:1px solid var(--gr3);margin-bottom:20px;width:fit-content}
+.h-avail::before{content:'';width:7px;height:7px;background:var(--gr);border-radius:50%;animation:pg 2s ease infinite}
+@keyframes pg{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+
+.h-name{font-family:var(--fh);font-size:clamp(50px,7vw,86px);font-weight:800;line-height:.95;letter-spacing:-.035em;margin-bottom:18px}
+.h-name .l1{color:var(--t1);display:block}
+.h-name .l2{color:var(--ac2);display:block}
+
+.h-role{font-size:15.5px;color:var(--t2);font-weight:300;margin-bottom:6px}
+.h-role strong{color:var(--t1);font-weight:500}
+
+/* current company badge */
+.h-at{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10.5px;
+  color:var(--ac2);background:var(--ac4);border:1px solid var(--ac3);
+  padding:4px 12px;border-radius:5px;margin-bottom:20px;letter-spacing:.04em}
+.h-at::before{content:'';width:5px;height:5px;background:var(--ac);border-radius:50%;animation:pg 2s ease infinite;animation-delay:.5s}
+
+.h-loc{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.06em;
+  margin-bottom:32px;display:flex;align-items:center;gap:6px}
+.h-loc::before{content:'';width:4px;height:4px;background:var(--ac);border-radius:50%}
+
+.h-desc{font-size:14.5px;color:var(--t2);max-width:520px;line-height:1.82;font-weight:300;margin-bottom:36px}
+
+.h-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11px;
+  letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border-radius:7px;
+  text-decoration:none;font-weight:500;transition:all .2s}
+.btn-fill{background:var(--ac);color:#fff}
+.btn-fill:hover{background:#6aa0ff;transform:translateY(-2px);box-shadow:0 10px 32px rgba(79,142,247,.35)}
+.btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--b2)}
+.btn-ghost:hover{border-color:var(--ac);color:var(--ac2);transform:translateY(-2px)}
+
+/* tech strip in hero */
+.h-tech{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.h-tech-label{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-right:4px}
+.h-chip{font-family:var(--fm);font-size:10px;color:var(--t2);background:var(--bg3);
+  border:1px solid var(--b1);padding:3px 9px;border-radius:4px}
+
+/* hero stat cards */
+.h-stats{display:flex;flex-direction:column;gap:10px}
+.hst{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;padding:16px 20px;
+  text-align:center;transition:border-color .25s,transform .2s}
+.hst:hover{border-color:var(--b2);transform:translateX(-4px)}
+.hst-n{font-family:var(--fh);font-size:34px;font-weight:800;color:var(--t1);letter-spacing:-.03em;line-height:1;margin-bottom:4px}
+.hst-n sup{font-size:14px;color:var(--ac)}
+.hst-l{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+
+.scue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:1;
+  display:flex;flex-direction:column;align-items:center;gap:6px;
+  font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);
+  animation:sb 2.5s ease infinite}
+@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+
+/* ===== IMPACT STRIP ===== */
+
+/* ===== ABOUT ===== */
+#about{background:var(--bg)}
+.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
+.ab-h{font-family:var(--fh);font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.1;letter-spacing:-.025em;margin-bottom:22px}
+.ab-h em{font-style:normal;color:var(--ac2)}
+.ab-p{font-size:14.5px;color:var(--t2);line-height:1.88;font-weight:300;margin-bottom:14px}
+.ab-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
+.abt{font-family:var(--fm);font-size:10.5px;color:var(--ac2);background:rgba(79,142,247,.07);
+  border:1px solid rgba(79,142,247,.14);padding:4px 12px;border-radius:4px;letter-spacing:.03em;
+  transition:background .2s,border-color .2s}
+.abt:hover{background:rgba(79,142,247,.14);border-color:rgba(79,142,247,.3)}
+
+/* career timeline in about */
+.career-tl{display:flex;flex-direction:column;gap:0}
+.career-tl-title{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--t3);margin-bottom:16px}
+.ct-item{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--b1);
+  transition:background .2s;border-radius:6px;padding:12px 10px;margin:0 -10px}
+.ct-item:last-child{border-bottom:none}
+.ct-item:hover{background:var(--bg3)}
+.ct-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:3px;width:12px;flex-shrink:0}
+.ct-dot{width:8px;height:8px;border-radius:50%;border:2px solid var(--b2);background:var(--bg2);flex-shrink:0;transition:border-color .2s,background .2s}
+.ct-item:hover .ct-dot{border-color:var(--ac);background:var(--ac)}
+.ct-line{width:1px;flex:1;background:var(--b1);margin-top:4px}
+.ct-item:last-child .ct-line{display:none}
+.ct-body{flex:1}
+.ct-co{font-family:var(--fh);font-size:13.5px;font-weight:700;color:var(--t1);margin-bottom:2px}
+.ct-role{font-size:12px;color:var(--t2);font-style:italic;margin-bottom:3px}
+.ct-date{font-family:var(--fm);font-size:10px;color:var(--t3);letter-spacing:.04em}
+.ct-badge{font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--go);background:var(--go2);border:1px solid var(--go3);
+  padding:1px 7px;border-radius:3px;display:inline-block;margin-left:6px}
+
+/* specialties */
+.specs{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.spec{display:flex;gap:0;background:var(--bg2);border:1px solid var(--b1);border-radius:10px;overflow:hidden;
+  transition:border-color .2s,transform .2s}
+.spec:hover{border-color:var(--b2);transform:translateX(4px)}
+.spec-bar{width:3px;background:var(--ac);flex-shrink:0;opacity:.35;transition:opacity .2s}
+.spec:hover .spec-bar{opacity:1}
+.spec-body{padding:13px 16px}
+.spec-icon{font-size:16px;margin-bottom:5px}
+.spec-t{font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:3px}
+.spec-d{font-size:12px;color:var(--t2);font-weight:300;line-height:1.6}
+
+/* ===== WHAT I DO ===== */
+#whatido{background:var(--bg2)}
+.wid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.wid-card{background:var(--bg3);border:1px solid var(--b1);border-radius:14px;padding:28px 24px;
+  position:relative;overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s}
+.wid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s}
+.wid-card:nth-child(1)::before{background:linear-gradient(90deg,var(--ac),transparent)}
+.wid-card:nth-child(2)::before{background:linear-gradient(90deg,#a78bfa,transparent)}
+.wid-card:nth-child(3)::before{background:linear-gradient(90deg,var(--gr),transparent)}
+.wid-card:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 18px 52px rgba(0,0,0,.4)}
+.wid-card:hover::before{opacity:1}
+.wid-icon{width:48px;height:48px;border-radius:11px;display:grid;place-items:center;font-size:20px;margin-bottom:18px;border:1px solid var(--b1)}
+.wid-card:nth-child(1) .wid-icon{background:rgba(79,142,247,.1);border-color:rgba(79,142,247,.2)}
+.wid-card:nth-child(2) .wid-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.18)}
+.wid-card:nth-child(3) .wid-icon{background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.18)}
+.wid-t{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--t1);margin-bottom:9px;letter-spacing:-.01em}
+.wid-d{font-size:13px;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:18px}
+.wid-tags{display:flex;flex-wrap:wrap;gap:5px}
+.wid-tag{font-family:var(--fm);font-size:10px;color:var(--t2);background:var(--bg2);border:1px solid var(--b1);
+  padding:3px 8px;border-radius:3px;transition:color .2s,border-color .2s}
+.wid-card:hover .wid-tag{color:var(--t2);border-color:var(--b2)}
+
+/* ===== EXPERTISE BADGES ===== */
+#expertise{padding:0;background:var(--bg);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1)}
+.exp-strip{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0}
+.exp-badge{flex:1;min-width:160px;padding:24px 20px;border-right:1px solid var(--b1);
+  display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;transition:background .2s}
+.exp-badge:last-child{border-right:none}
+.exp-badge:hover{background:var(--bg2)}
+.exp-badge-icon{font-size:22px}
+.exp-badge-name{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1)}
+.exp-badge-sub{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.04em;text-align:center}
+
+/* ===== SKILLS ===== */
+#skills{background:var(--bg2)}
+.skl-wrap{background:var(--b1);border:1px solid var(--b1);border-radius:14px;overflow:hidden;
+  display:grid;grid-template-columns:200px 1fr}
+.sk-nav{background:var(--bg2);padding:8px;display:flex;flex-direction:column;gap:1px;border-right:1px solid var(--b1)}
+.skn{font-family:var(--fm);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
+  color:var(--t3);padding:10px 13px;border-radius:7px;cursor:pointer;transition:background .2s,color .2s;
+  display:flex;align-items:center;gap:9px}
+.skn-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
+.skn:hover{background:var(--bg3);color:var(--t2)}
+.skn.active{background:var(--ac3);color:var(--ac2)}
+.sk-panel{background:var(--bg2);padding:28px}
+.skt{display:none}.skt.active{display:block}
+.sk-h{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--t1);margin-bottom:7px;letter-spacing:-.015em}
+.sk-exp{display:inline-flex;align-items:center;gap:5px;font-family:var(--fm);font-size:9.5px;
+  color:var(--go);background:var(--go2);border:1px solid var(--go3);
+  padding:2px 9px;border-radius:4px;letter-spacing:.05em;margin-bottom:12px}
+.sk-d{font-size:13px;color:var(--t2);font-weight:300;margin-bottom:20px;line-height:1.72}
+.sk-tags{display:flex;flex-wrap:wrap;gap:7px}
+.sk-tag{font-family:var(--fm);font-size:11.5px;color:var(--ac2);background:rgba(79,142,247,.07);
+  border:1px solid rgba(79,142,247,.15);padding:5px 13px;border-radius:5px;
+  transition:background .2s,transform .15s}
+.sk-tag:hover{background:rgba(79,142,247,.15);transform:translateY(-1px)}
+
+/* ===== EXPERIENCE ===== */
+#experience{background:var(--bg3)}
+.tl{position:relative}
+.tl::before{content:'';position:absolute;top:8px;bottom:8px;left:19px;width:1px;
+  background:linear-gradient(180deg,var(--ac) 0%,var(--b2) 55%,transparent 100%)}
+.tl-row{display:grid;grid-template-columns:40px 1fr;gap:0 24px;margin-bottom:14px}
+.tl-dw{display:flex;flex-direction:column;align-items:center;padding-top:22px}
+.tl-d{width:9px;height:9px;border-radius:50%;background:var(--bg3);border:2px solid var(--b2);
+  flex-shrink:0;position:relative;z-index:1;transition:all .25s}
+.tl-row:hover .tl-d{background:var(--ac);border-color:var(--ac2);box-shadow:0 0 14px rgba(79,142,247,.5)}
+.tl-c{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
+.tl-c:hover{border-color:var(--b2);box-shadow:0 8px 40px rgba(0,0,0,.35)}
+.tl-c.cur-job{border-color:rgba(52,211,153,.15)}
+.tl-c.cur-job .tl-c-top-bar{height:2px;background:linear-gradient(90deg,var(--gr) 0%,transparent 55%)}
+.tl-c-top-bar{height:0}
+.tl-head{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
+.tl-co{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--t1);letter-spacing:-.015em;margin-bottom:4px}
+.tl-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.tl-role{font-size:12.5px;font-style:italic;color:var(--t2);font-weight:300}
+.tl-loc{font-family:var(--fm);font-size:10px;color:var(--t3)}
+.tl-sep{color:var(--b2);font-size:8px}
+.bd-lead{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--go);background:var(--go2);border:1px solid var(--go3);padding:2px 8px;border-radius:3px}
+.bd-date{font-family:var(--fm);font-size:10px;padding:3px 11px;border-radius:4px;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
+.bd-cur{color:var(--gr);background:var(--gr2);border:1px solid var(--gr3)}
+.bd-past{color:var(--ac);background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.16)}
+.tl-stack{font-family:var(--fm);font-size:10.5px;color:var(--t2);background:rgba(0,0,0,.18);
+  border-top:1px solid var(--b1);padding:8px 24px;margin-top:14px;letter-spacing:.02em}
+.tl-stack b{font-weight:600;color:var(--ac2);opacity:.85;margin-right:5px}
+.tl-bullets{padding:13px 24px 20px;list-style:none}
+.tl-li{display:flex;gap:10px;margin-bottom:6px;font-size:13px;color:var(--t2);line-height:1.65}
+.tl-li::before{content:'';width:3px;height:3px;background:var(--b2);border-radius:1px;margin-top:9px;flex-shrink:0;transition:background .2s}
+.tl-c:hover .tl-li::before{background:rgba(79,142,247,.45)}
+.tl-li.key{color:var(--t1);background:rgba(255,255,255,.025);
+  border-left:2px solid rgba(232,184,75,.3);border-radius:0 5px 5px 0;padding:5px 11px;margin-left:-11px}
+.tl-li.key::before{background:var(--go);opacity:.8;margin-top:9px}
+
+/* ===== PHILOSOPHY ===== */
+#philosophy{padding:72px 56px;background:var(--bg);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1)}
+.phi{max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.phi-q{font-family:var(--fh);font-size:clamp(20px,2.8vw,34px);font-weight:600;line-height:1.45;
+  letter-spacing:-.02em;color:var(--t1);margin-bottom:22px}
+.phi-q em{font-style:normal;color:var(--ac2)}
+.phi-attr{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase}
+.phi-deco{font-family:var(--fh);font-size:160px;font-weight:800;color:rgba(79,142,247,.03);
+  line-height:1;position:absolute;top:-40px;left:50%;transform:translateX(-50%);
+  pointer-events:none;user-select:none}
+
+/* ===== PROJECTS ===== */
+#projects{background:var(--bg2)}
+.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pj{background:var(--bg3);border:1px solid var(--b1);border-radius:14px;padding:26px 24px 22px;
+  display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
+  transition:border-color .25s,transform .2s,box-shadow .25s}
+.pj::after{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;
+  background:radial-gradient(circle at 100% 100%,rgba(79,142,247,.06),transparent 70%);opacity:0;transition:opacity .3s}
+.pj:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 20px 56px rgba(0,0,0,.45)}
+.pj:hover::after{opacity:1}
+.pj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.pj-num{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.1em}
+.pj-domain{font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
+.pj-domain.hc{color:#60a5fa;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2)}
+.pj-domain.ft{color:var(--go);background:var(--go2);border:1px solid var(--go3)}
+.pj-domain.tr{color:var(--pu);background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2)}
+.pj-domain.web{color:var(--gr);background:var(--gr2);border:1px solid var(--gr3)}
+.pj-arr{width:30px;height:30px;border-radius:6px;background:var(--bg2);border:1px solid var(--b2);
+  display:grid;place-items:center;color:var(--t3);flex-shrink:0;
+  transition:background .2s,color .2s,border-color .2s,transform .15s}
+.pj:hover .pj-arr{background:var(--ac);border-color:var(--ac);color:#fff;transform:rotate(45deg)}
+.pj-name{font-family:var(--fh);font-size:21px;font-weight:700;color:var(--t1);letter-spacing:-.02em;line-height:1.1}
+.pj-tags{display:flex;flex-wrap:wrap;gap:5px}
+.pj-tag{font-family:var(--fm);font-size:9.5px;color:var(--ac);background:rgba(79,142,247,.07);
+  border:1px solid rgba(79,142,247,.14);padding:3px 8px;border-radius:3px;letter-spacing:.04em}
+.pj-desc{font-size:13px;color:var(--t2);line-height:1.72;font-weight:300;flex:1}
+
+/* ===== EDUCATION ===== */
+#education{background:var(--bg)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.edu-c{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;padding:26px;
+  display:flex;gap:16px;align-items:flex-start;transition:border-color .25s,transform .2s}
+.edu-c:hover{border-color:var(--b2);transform:translateY(-3px)}
+.edu-ico{width:48px;height:48px;flex-shrink:0;background:rgba(79,142,247,.09);
+  border:1px solid rgba(79,142,247,.18);border-radius:11px;display:grid;place-items:center;font-size:21px}
+.edu-deg{font-family:var(--fh);font-size:15.5px;font-weight:700;color:var(--t1);margin-bottom:5px;letter-spacing:-.015em}
+.edu-sch{font-size:12.5px;color:var(--t2);margin-bottom:9px}
+.edu-yr{font-family:var(--fm);font-size:10px;color:var(--ac);background:rgba(79,142,247,.07);
+  border:1px solid rgba(79,142,247,.14);padding:2px 9px;border-radius:3px;display:inline-block}
+
+/* ===== CONTACT ===== */
+#contact{background:var(--bg2)}
+.co-orb{width:600px;height:600px;background:rgba(79,142,247,.05);top:50%;left:50%;transform:translate(-50%,-50%)}
+.co-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:start}
+.co-h{font-family:var(--fh);font-size:clamp(32px,4.5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:18px}
+.co-h em{font-style:normal;color:var(--ac2)}
+.co-sub{font-size:14.5px;color:var(--t2);font-weight:300;line-height:1.78;margin-bottom:28px}
+.co-note{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.05em;margin-top:16px;
+  display:flex;align-items:center;gap:8px}
+.co-note::before{content:'';width:18px;height:1px;background:var(--b2)}
+.co-links{display:flex;flex-direction:column;gap:10px}
+.co-link{display:flex;align-items:center;justify-content:space-between;
+  background:var(--bg3);border:1px solid var(--b1);border-radius:11px;
+  padding:14px 18px;text-decoration:none;transition:border-color .25s,transform .15s,box-shadow .2s}
+.co-link:hover{border-color:var(--ac);transform:translateX(-4px);box-shadow:3px 0 20px rgba(79,142,247,.1)}
+.co-link-l{display:flex;align-items:center;gap:12px}
+.co-link-ico{width:36px;height:36px;border-radius:8px;background:rgba(79,142,247,.09);
+  border:1px solid rgba(79,142,247,.16);display:grid;place-items:center;color:var(--ac2);flex-shrink:0}
+.co-link-lbl{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:2px}
+.co-link-val{font-size:13px;color:var(--t2)}
+.co-link:hover .co-link-val{color:var(--ac2)}
+.co-arr{color:var(--t3);transition:color .2s;font-size:16px}
+.co-link:hover .co-arr{color:var(--ac)}
+
+/* ===== FOOTER ===== */
+footer{background:var(--bg);border-top:1px solid var(--b1);padding:26px 56px;
+  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
+.f-brand{font-family:var(--fh);font-size:14px;color:var(--t3)}.f-brand span{color:var(--ac)}
+.f-links{display:flex;gap:20px;flex-wrap:wrap}
+.f-links a{font-family:var(--fm);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--t3);text-decoration:none;transition:color .2s}
+.f-links a:hover{color:var(--ac2)}
+.f-copy{font-family:var(--fm);font-size:9.5px;color:var(--t4);letter-spacing:.05em}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:960px){
+  nav{padding:14px 24px}.n-links{display:none}
+  section,#hero,#philosophy{padding:64px 24px}#expertise{padding:0}
+  .h-inner{grid-template-columns:1fr}.h-stats{flex-direction:row;flex-wrap:wrap}
+  .hst{flex:1;min-width:110px}.ab-grid{grid-template-columns:1fr;gap:36px}
+  .wid-grid{grid-template-columns:1fr}.exp-strip{flex-direction:column}
+  .exp-badge{border-right:none;border-bottom:1px solid var(--b1)}.exp-badge:last-child{border-bottom:none}
+  .skl-wrap{grid-template-columns:1fr}
+  .sk-nav{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--b1)}
+  .tl-row{grid-template-columns:30px 1fr;gap:0 16px}.tl::before{left:15px}
+  .proj-grid{grid-template-columns:1fr}.edu-grid{grid-template-columns:1fr}
+  .co-inner{grid-template-columns:1fr;gap:40px}footer{padding:20px 24px}
+}
+
+/* ---- LIGHT THEME ---- */
+body.light{
+  --bg:#f4f6fb;--bg2:#edf0f8;--bg3:#e4e9f5;--bg4:#dce3f0;
+  --b1:#c8d3e8;--b2:#b0bdd6;--b3:#8fa3c0;--b4:#6b85a8;
+  --ac:#1d52d6;--ac2:#1740b0;--ac3:rgba(29,82,214,0.12);--ac4:rgba(29,82,214,0.06);
+  --go:#b45309;--go2:rgba(180,83,9,0.08);--go3:rgba(180,83,9,0.22);
+  --gr:#059669;--gr2:rgba(5,150,105,0.08);--gr3:rgba(5,150,105,0.22);
+  --pu:#7c3aed;--re:#dc2626;
+  --t1:#0f172a;--t2:#3a485e;--t3:#566377;--t4:#5d6b82;
+}
+body.light::before{opacity:.15}
+body.light::after{background-image:linear-gradient(rgba(37,99,235,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.04) 1px,transparent 1px)}
+/* hide orbs in light — they look muddy */
+body.light .orb{opacity:.25}
+/* nav in light */
+body.light nav{background:rgba(244,246,251,.92);border-bottom:1px solid var(--b1)}
+body.light nav.scrolled{background:rgba(244,246,251,.98)}
+/* light theme card shadows */
+body.light .tl-c:hover{box-shadow:0 8px 32px rgba(15,23,42,.1)}
+body.light .wid-card:hover{box-shadow:0 16px 48px rgba(15,23,42,.12)}
+body.light .pj:hover{box-shadow:0 18px 48px rgba(15,23,42,.14)}
+/* light hero bg grid */
+body.light .h-bg{background-image:linear-gradient(rgba(37,99,235,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.06) 1px,transparent 1px)}
+
+/* ---- THEME TOGGLE BUTTON ---- */
+.theme-btn{
+  width:38px;height:22px;border-radius:11px;border:1.5px solid var(--b2);
+  background:var(--bg3);cursor:pointer;position:relative;
+  transition:background .35s,border-color .35s;flex-shrink:0;
+  display:flex;align-items:center;padding:2px 3px;
+}
+.theme-btn::after{
+  content:'';width:16px;height:16px;border-radius:50%;
+  background:var(--t3);position:absolute;left:2px;
+  transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .35s;
+}
+body.light .theme-btn{background:var(--ac3);border-color:var(--ac)}
+body.light .theme-btn::after{transform:translateX(16px);background:var(--ac)}
+.theme-icon-d,.theme-icon-l{font-size:13px;line-height:1;transition:opacity .25s;position:absolute}
+.theme-icon-d{right:4px;opacity:1}
+.theme-icon-l{left:4px;opacity:0}
+body.light .theme-icon-d{opacity:0}
+body.light .theme-icon-l{opacity:1}
+
+</style>
+</head>
+<body>
+
+<nav id="nav">
+  <div class="n-logo">VM<span>.</span></div>
+  <div class="n-links">
+    <a href="#about">About</a>
+    <a href="#whatido">What I Do</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="#contact">Contact</a>
+  </div>
+  <div class="n-right">
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
+      <span class="theme-icon-l">&#9728;&#65039;</span>
+      <span class="theme-icon-d">&#9790;</span>
+    </button>
+    <a class="n-resume" href="https://vinayak71.github.io/">Resume</a>
+    <a class="n-hire" href="mailto:vinaykumarmishra71@gmail.com">Hire Me &rarr;</a>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="h-bg"></div>
+  <div class="orb orb-h1"></div><div class="orb orb-h2"></div><div class="orb orb-h3"></div>
+  <div class="h-inner">
+    <div>
+      <div class="h-avail">Open to opportunities</div>
+      <h1 class="h-name">
+        <span class="l1">Vinaykumar</span>
+        <span class="l2">Mishra</span>
+      </h1>
+      <p class="h-role"><strong>Senior Software Engineer</strong> &nbsp;&middot;&nbsp; Team Lead &nbsp;&middot;&nbsp; 8+ Years</p>
+      <div class="h-at">Currently at WebMD &mdash; Navi Mumbai</div>
+      <p class="h-loc">Mumbai, India &nbsp;&middot;&nbsp; Open to Remote</p>
+      <p class="h-desc">I design and ship scalable backend systems, lead engineering teams, and build products that hold up under real-world pressure &mdash; across Healthcare, FinTech, and multi-tenant SaaS.</p>
+      <div class="h-btns">
+        <a class="btn btn-fill" href="#projects"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M13 6l6 6-6 6"/></svg>View My Work</a>
+        <a class="btn btn-ghost" href="#contact"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>Get in Touch</a>
+      </div>
+      <div class="h-tech">
+        <span class="h-tech-label">Core</span>
+        <span class="h-chip">Laravel</span><span class="h-chip">Vue.js</span>
+        <span class="h-chip">PHP</span><span class="h-chip">MySQL</span>
+        <span class="h-chip">Docker</span><span class="h-chip">AWS</span>
+        <span class="h-chip">Microservices</span>
+      </div>
+    </div>
+    <div class="h-stats">
+      <div class="hst"><div class="hst-n">8<sup>+</sup></div><div class="hst-l">Years Exp</div></div>
+      <div class="hst"><div class="hst-n">4</div><div class="hst-l">Companies</div></div>
+      <div class="hst"><div class="hst-n">6</div><div class="hst-l">Engineers Led</div></div>
+      <div class="hst"><div class="hst-n">10<sup>+</sup></div><div class="hst-l">Integrations</div></div>
+    </div>
+  </div>
+  <div class="scue">Scroll<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 13l7 7 7-7"/></svg></div>
+</section>
+
+<!-- ===== IMPACT STRIP ===== -->
+<!-- ===== EXPERTISE BADGES ===== -->
+<div id="expertise">
+  <div class="exp-strip rv">
+    <div class="exp-badge"><div class="exp-badge-icon">&#127973;</div><div class="exp-badge-name">Healthcare / EMR</div><div class="exp-badge-sub">HL7 &middot; FHIR &middot; ICD-10 &middot; HIPAA</div></div>
+    <div class="exp-badge"><div class="exp-badge-icon">&#127968;</div><div class="exp-badge-name">Loan Origination</div><div class="exp-badge-sub">LOS/LMS &middot; NBFC &middot; HFC &middot; LAP</div></div>
+    <div class="exp-badge"><div class="exp-badge-icon">&#128176;</div><div class="exp-badge-name">FinTech &amp; Payments</div><div class="exp-badge-sub">Razorpay &middot; BBPS &middot; CIBIL &middot; KYC</div></div>
+    <div class="exp-badge"><div class="exp-badge-icon">&#9729;&#65039;</div><div class="exp-badge-name">Multi-Tenant SaaS</div><div class="exp-badge-sub">Isolated DBs &middot; Tenant Isolation</div></div>
+    <div class="exp-badge"><div class="exp-badge-icon">&#128272;</div><div class="exp-badge-name">Security &amp; Compliance</div><div class="exp-badge-sub">VAPT &middot; JWT/OAuth &middot; RBAC</div></div>
+    <div class="exp-badge"><div class="exp-badge-icon">&#128736;&#65039;</div><div class="exp-badge-name">System Architecture</div><div class="exp-badge-sub">Microservices &middot; DDD &middot; Event-Driven</div></div>
+  </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section id="about">
+  <div class="si">
+    <div class="ey"><span class="ey-n">01</span><div class="ey-l"></div><span class="ey-t">About Me</span></div>
+    <div class="ab-grid">
+      <div class="rv-l">
+        <h2 class="ab-h">Engineering that <em>scales</em> &mdash;<br>and teams that <em>grow</em></h2>
+        <p class="ab-p">Senior Software Engineer with 8+ years designing, developing, and optimizing scalable, high-performance systems across Healthcare, FinTech, and multi-tenant SaaS. Deep expertise in Laravel, Vue.js, and API-driven microservice architectures &mdash; with hands-on experience in caching strategies, database optimization, Docker, and cloud deployments on AWS.</p>
+        <p class="ab-p">I&rsquo;ve built HIPAA-compliant platforms, architected loan origination systems processing &#8377;100 Cr+ monthly, led teams of 6 engineers, and driven engineering modernization from monolithic to microservices. I care about the long game: maintainable code, strong team culture, and systems that don&rsquo;t fall apart at 2am.</p>
+        <p class="ab-p">Based in Mumbai. Currently Senior Software Engineer &amp; Team Lead at WebMD. Open to senior engineering and leadership roles.</p>
+        <div class="ab-tags">
+          <span class="abt">Healthcare / EMR</span><span class="abt">FinTech</span>
+          <span class="abt">Loan Origination</span><span class="abt">Multi-Tenant SaaS</span>
+          <span class="abt">KYC &amp; Compliance</span><span class="abt">Payment Systems</span>
+          <span class="abt">HIPAA</span><span class="abt">HL7 / FHIR</span>
+        </div>
+      </div>
+      <div class="rv-r">
+        <!-- Career journey -->
+        <div class="career-tl-title">Career Journey</div>
+        <div class="career-tl">
+          <div class="ct-item">
+            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-body">
+              <div class="ct-co">WebMD <span class="ct-badge">Current</span></div>
+              <div class="ct-role">Senior Software Engineer &middot; Team Lead</div>
+              <div class="ct-date">Apr 2023 &mdash; Present &nbsp;&middot;&nbsp; Navi Mumbai</div>
+            </div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-body">
+              <div class="ct-co">Vastu Housing Finance</div>
+              <div class="ct-role">Senior PHP Developer &middot; Led team of 6</div>
+              <div class="ct-date">Oct 2019 &mdash; Mar 2023 &nbsp;&middot;&nbsp; Mumbai</div>
+            </div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-body">
+              <div class="ct-co">Softlabs Groups</div>
+              <div class="ct-role">Laravel Developer</div>
+              <div class="ct-date">Mar 2019 &mdash; Sep 2019 &nbsp;&middot;&nbsp; Mumbai</div>
+            </div>
+          </div>
+          <div class="ct-item">
+            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-body">
+              <div class="ct-co">Neural IT</div>
+              <div class="ct-role">Software Engineer</div>
+              <div class="ct-date">Nov 2017 &mdash; Mar 2019 &nbsp;&middot;&nbsp; Mumbai</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Specialties -->
+        <div class="specs" style="margin-top:24px">
+          <div class="spec"><div class="spec-bar"></div><div class="spec-body"><div class="spec-icon">&#127959;&#65039;</div><div class="spec-t">System Architecture</div><div class="spec-d">Microservices, multi-tenant SaaS, event-driven systems, API gateways, high availability, and fault tolerance.</div></div></div>
+          <div class="spec"><div class="spec-bar"></div><div class="spec-body"><div class="spec-icon">&#128101;</div><div class="spec-t">Technical Leadership</div><div class="spec-d">Team lead for 6 engineers. Code reviews, sprint planning, 1-on-1 mentoring, internal tech talks, and hiring.</div></div></div>
+          <div class="spec"><div class="spec-bar"></div><div class="spec-body"><div class="spec-icon">&#128274;</div><div class="spec-t">Security &amp; Compliance</div><div class="spec-d">HIPAA-compliant systems, VAPT, JWT/OAuth 2.0, data encryption at rest &amp; in transit, RBAC.</div></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== WHAT I DO ===== -->
+<section id="whatido">
+  <div class="si">
+    <div class="ey"><span class="ey-n">02</span><div class="ey-l"></div><span class="ey-t">What I Do</span></div>
+    <div class="wid-grid rv">
+      <div class="wid-card">
+        <div class="wid-icon">&#9881;&#65039;</div>
+        <div class="wid-t">Backend Engineering</div>
+        <div class="wid-d">I build the systems underneath &mdash; scalable APIs, microservice architectures, queue-based async processing, and data pipelines. I&rsquo;ve built LOS platforms processing &#8377;100 Cr+ monthly, SaaS products, and healthcare data systems from scratch. I own architecture decisions end-to-end.</div>
+        <div class="wid-tags"><span class="wid-tag">Laravel</span><span class="wid-tag">PHP</span><span class="wid-tag">Python</span><span class="wid-tag">FastAPI</span><span class="wid-tag">Microservices</span><span class="wid-tag">REST &amp; SOAP</span><span class="wid-tag">Queue Systems</span><span class="wid-tag">Background Workers</span></div>
+      </div>
+      <div class="wid-card">
+        <div class="wid-icon">&#127912;</div>
+        <div class="wid-t">Frontend Engineering</div>
+        <div class="wid-d">I build reactive, component-driven UIs that connect cleanly to backend systems. Reporting dashboards with real-time filtering, multi-tenant portals, custom ACL systems, and reusable component libraries &mdash; Vue.js as my primary tool across Inertia.js and Nuxt.js.</div>
+        <div class="wid-tags"><span class="wid-tag">Vue.js</span><span class="wid-tag">Nuxt.js</span><span class="wid-tag">Inertia.js</span><span class="wid-tag">Vuex / Pinia</span><span class="wid-tag">JavaScript ES6+</span><span class="wid-tag">Axios</span><span class="wid-tag">Code Splitting</span></div>
+      </div>
+      <div class="wid-card">
+        <div class="wid-icon">&#128081;</div>
+        <div class="wid-t">Team &amp; Delivery</div>
+        <div class="wid-d">I&rsquo;ve led teams of 6, owned end-to-end delivery across cross-functional teams, established PR review processes that cut rework cycles, conducted internal tech talks, and mentored engineers from onboarding to independently owning feature modules.</div>
+        <div class="wid-tags"><span class="wid-tag">Team Lead</span><span class="wid-tag">Agile / Scrum</span><span class="wid-tag">Code Reviews</span><span class="wid-tag">Sprint Planning</span><span class="wid-tag">Mentoring</span><span class="wid-tag">Hiring</span><span class="wid-tag">RCA &amp; Incidents</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== SKILLS ===== -->
+<section id="skills">
+  <div class="si">
+    <div class="ey"><span class="ey-n">03</span><div class="ey-l"></div><span class="ey-t">Skills &amp; Technologies</span></div>
+    <div class="skl-wrap rv">
+      <div class="sk-nav" id="sk-nav">
+        <div class="skn active" data-tab="backend"><span class="skn-dot"></span>Backend</div>
+        <div class="skn" data-tab="frontend"><span class="skn-dot"></span>Frontend</div>
+        <div class="skn" data-tab="database"><span class="skn-dot"></span>Database</div>
+        <div class="skn" data-tab="cloud"><span class="skn-dot"></span>Cloud &amp; DevOps</div>
+        <div class="skn" data-tab="security"><span class="skn-dot"></span>Security</div>
+        <div class="skn" data-tab="arch"><span class="skn-dot"></span>Architecture</div>
+        <div class="skn" data-tab="api"><span class="skn-dot"></span>API &amp; Integrations</div>
+        <div class="skn" data-tab="lead"><span class="skn-dot"></span>Leadership</div>
+        <div class="skn" data-tab="domain"><span class="skn-dot"></span>Domain</div>
+      </div>
+      <div class="sk-panel">
+        <div class="skt active" id="tab-backend">
+          <div class="sk-h">Backend Engineering</div>
+          <div class="sk-exp">6+ years production &middot; Primary stack</div>
+          <div class="sk-d">My core stack for 6+ years. I&rsquo;ve built production Laravel applications from lean SaaS products to enterprise-grade LOS platforms processing &#8377;100 Cr+ monthly. I understand Laravel deeply &mdash; service layers, job queues, event broadcasting, and the patterns that make large codebases maintainable. Python/FastAPI for services where performance matters.</div>
+          <div class="sk-tags"><span class="sk-tag">Laravel</span><span class="sk-tag">PHP</span><span class="sk-tag">Python</span><span class="sk-tag">FastAPI</span><span class="sk-tag">Core PHP</span><span class="sk-tag">Microservices</span><span class="sk-tag">Event-Driven Architecture</span><span class="sk-tag">Background Workers</span><span class="sk-tag">Queue Systems</span><span class="sk-tag">Service-Oriented Architecture</span></div>
+        </div>
+        <div class="skt" id="tab-frontend">
+          <div class="sk-h">Frontend Engineering</div>
+          <div class="sk-exp">Vue.js specialist &middot; 2+ years</div>
+          <div class="sk-d">Vue.js is my frontend home. I&rsquo;ve built full Vuex-managed reporting dashboards, Inertia.js monoliths where Laravel and Vue share state seamlessly, and full Nuxt.js SPAs. I&rsquo;ve built reusable component libraries, custom ACL systems, and real-time UIs. I understand the frontend/backend contract deeply because I own both sides.</div>
+          <div class="sk-tags"><span class="sk-tag">Vue.js</span><span class="sk-tag">Nuxt.js</span><span class="sk-tag">Inertia.js</span><span class="sk-tag">JavaScript ES6+</span><span class="sk-tag">Vuex</span><span class="sk-tag">Pinia</span><span class="sk-tag">Axios</span><span class="sk-tag">HTML5</span><span class="sk-tag">CSS3</span><span class="sk-tag">Code Splitting &amp; Lazy Loading</span></div>
+        </div>
+        <div class="skt" id="tab-database">
+          <div class="sk-h">Database &amp; Caching</div>
+          <div class="sk-exp">MySQL primary &middot; Redis caching</div>
+          <div class="sk-d">MySQL is my primary database across every role. I&rsquo;ve optimized complex queries, designed multi-tenant DB schemas with full isolation, built reporting pipelines on large datasets, and layered Redis/Memcached caching to reduce latency at scale. I understand when to cache, what to cache, and how to invalidate safely.</div>
+          <div class="sk-tags"><span class="sk-tag">MySQL</span><span class="sk-tag">PostgreSQL</span><span class="sk-tag">SQLite</span><span class="sk-tag">Redis</span><span class="sk-tag">Memcached</span><span class="sk-tag">Query Optimization</span><span class="sk-tag">DB Sharding</span><span class="sk-tag">Distributed Caching</span><span class="sk-tag">Cache Invalidation</span><span class="sk-tag">Schema Design</span></div>
+        </div>
+        <div class="skt" id="tab-cloud">
+          <div class="sk-h">Cloud &amp; DevOps</div>
+          <div class="sk-exp">Docker &middot; AWS S3/RDS &middot; CI/CD</div>
+          <div class="sk-d">I Dockerized the local dev environment at WebMD, eliminating environment inconsistencies team-wide. I&rsquo;ve worked with AWS S3 for file storage and RDS for managed databases. I set up logging, monitoring, and alerting proactively &mdash; not after incidents. CI/CD pipelines via GitLab with branch-based workflows.</div>
+          <div class="sk-tags"><span class="sk-tag">Docker</span><span class="sk-tag">AWS S3</span><span class="sk-tag">AWS RDS</span><span class="sk-tag">CI/CD Pipelines</span><span class="sk-tag">GitLab</span><span class="sk-tag">Bitbucket</span><span class="sk-tag">Git Flow</span><span class="sk-tag">Logging &amp; Monitoring</span><span class="sk-tag">Error Tracking</span><span class="sk-tag">Deployment Automation</span></div>
+        </div>
+        <div class="skt" id="tab-security">
+          <div class="sk-h">Security &amp; Compliance</div>
+          <div class="sk-exp">HIPAA &middot; VAPT &middot; Healthcare grade</div>
+          <div class="sk-d">I&rsquo;ve built HIPAA-compliant healthcare platforms at Neural IT and WebMD, conducted VAPT at Vastu, and implemented full JWT/OAuth 2.0 authentication flows with Sanctum. Security is a first-class concern from schema design to API contract &mdash; not an afterthought. RBAC and field-level access control are things I&rsquo;ve built custom, not just configured.</div>
+          <div class="sk-tags"><span class="sk-tag">JWT</span><span class="sk-tag">OAuth 2.0</span><span class="sk-tag">Laravel Sanctum</span><span class="sk-tag">RBAC</span><span class="sk-tag">HIPAA Compliance</span><span class="sk-tag">VAPT</span><span class="sk-tag">Data Encryption</span><span class="sk-tag">At Rest &amp; In Transit</span><span class="sk-tag">Threat Modeling</span><span class="sk-tag">Field-Level Security</span></div>
+        </div>
+        <div class="skt" id="tab-arch">
+          <div class="sk-h">Architecture</div>
+          <div class="sk-exp">Microservices &middot; Multi-tenant &middot; DDD</div>
+          <div class="sk-d">I drove the monolith-to-microservices migration at Vastu &mdash; not a rewrite, a deliberate decomposition with clear service boundaries and API contracts. I&rsquo;ve designed multi-tenant SaaS with full database isolation per tenant, applied DDD patterns to loan and healthcare domains, and built API gateway patterns across reporting microservices at WebMD.</div>
+          <div class="sk-tags"><span class="sk-tag">Multi-Tenant SaaS</span><span class="sk-tag">Domain-Driven Design</span><span class="sk-tag">API Gateway Patterns</span><span class="sk-tag">Async Processing</span><span class="sk-tag">High Availability</span><span class="sk-tag">Fault Tolerance</span><span class="sk-tag">Load Balancing</span><span class="sk-tag">Rate Limiting</span><span class="sk-tag">Service Decomposition</span></div>
+        </div>
+        <div class="skt" id="tab-api">
+          <div class="sk-h">API Design &amp; Integrations</div>
+          <div class="sk-exp">10+ integrations &middot; Contract-first</div>
+          <div class="sk-d">I&rsquo;ve integrated 10+ third-party services at Vastu alone: payment gateways, credit bureaus, e-sign providers, fraud check APIs, and healthcare data standards. Every integration I build is wrapped with proper error handling, logging, and retry logic. I design APIs contract-first so frontend and backend can develop in parallel.</div>
+          <div class="sk-tags"><span class="sk-tag">Contract-First Design</span><span class="sk-tag">API Versioning</span><span class="sk-tag">RESTful &amp; SOAP</span><span class="sk-tag">Webhooks</span><span class="sk-tag">Postman</span><span class="sk-tag">Razorpay</span><span class="sk-tag">BBPS</span><span class="sk-tag">CIBIL &amp; Highmark</span><span class="sk-tag">Digio e-sign</span><span class="sk-tag">KARZA</span><span class="sk-tag">Aadhaar Masking</span><span class="sk-tag">HL7 / FHIR</span></div>
+        </div>
+        <div class="skt" id="tab-lead">
+          <div class="sk-h">Leadership &amp; Delivery</div>
+          <div class="sk-exp">Team lead &middot; 2 companies &middot; 6 engineers</div>
+          <div class="sk-d">I&rsquo;ve led teams at both Vastu (6 engineers) and WebMD. I run structured code reviews with checklists that cut rework, established PR guidelines that became team standards, conducted weekly tech talks that built real capability, and mentored engineers from onboarding to owning feature modules independently. I also run technical hiring interviews.</div>
+          <div class="sk-tags"><span class="sk-tag">Team Lead (6 Engineers)</span><span class="sk-tag">Mentor</span><span class="sk-tag">Agile / Scrum</span><span class="sk-tag">Code Reviews</span><span class="sk-tag">PR Guidelines</span><span class="sk-tag">Sprint Planning</span><span class="sk-tag">Technical Interviews</span><span class="sk-tag">Hiring</span><span class="sk-tag">RCA &amp; Incident Response</span></div>
+        </div>
+        <div class="skt" id="tab-domain">
+          <div class="sk-h">Domain Expertise</div>
+          <div class="sk-exp">Healthcare &middot; FinTech &middot; Regulated industries</div>
+          <div class="sk-d">I&rsquo;ve worked across regulated industries that most engineers avoid: HIPAA-grade healthcare data (HL7, FHIR, ICD-10) at Neural IT and WebMD; loan origination systems (LOS/LMS) for HFC and NBFC at Vastu; KYC verification and fraud prevention flows; and payment processing at scale. I understand compliance requirements, not just technical requirements.</div>
+          <div class="sk-tags"><span class="sk-tag">Healthcare</span><span class="sk-tag">EMR / EHR</span><span class="sk-tag">HIPAA</span><span class="sk-tag">FinTech</span><span class="sk-tag">Loan Origination (LOS/LMS)</span><span class="sk-tag">NBFC / HFC</span><span class="sk-tag">KYC &amp; Compliance</span><span class="sk-tag">Payment Gateways</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section id="experience">
+  <div class="si">
+    <div class="ey"><span class="ey-n">04</span><div class="ey-l"></div><span class="ey-t">Experience</span></div>
+    <div class="tl">
+
+      <div class="tl-row rv">
+        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-c cur-job">
+          <div class="tl-c-top-bar"></div>
+          <div class="tl-head">
+            <div>
+              <div class="tl-co">WebMD</div>
+              <div class="tl-meta">
+                <span class="tl-role">Senior Software Engineer</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-loc">Airoli, Navi Mumbai</span>
+              </div>
+            </div>
+            <span class="bd-date bd-cur">Apr 2023 &mdash; Present</span>
+          </div>
+          <div class="tl-stack"><b>Stack</b>Laravel &middot; Vue.js &middot; Inertia.js &middot; PHP &middot; MySQL &middot; Docker &middot; JWT &middot; Vuex/Pinia &middot; Microservices</div>
+          <ul class="tl-bullets">
+            <li class="tl-li key">Owned end-to-end delivery of multiple reporting portal projects &mdash; coordinated timelines, defined scope with product stakeholders, managed sprint planning, and ensured on-time delivery across cross-functional teams.</li>
+            <li class="tl-li key">Drove technical design discussions and architectural decisions on data flow and API contracts &mdash; collaborated with product and QA to define requirements, acceptance criteria, and integration contracts adopted team-wide.</li>
+            <li class="tl-li key">Led structured code reviews &mdash; established PR guidelines, enforced coding standards, and introduced review checklists that significantly cut rework cycles and improved merge quality.</li>
+            <li class="tl-li key">Mentored junior engineers through 1-on-1 sessions and pair programming on Laravel and Vue.js patterns; guided them from onboarding to independently owning feature modules.</li>
+            <li class="tl-li key">Conducted regular internal tech talks covering Vue.js reactivity, Laravel service patterns, Redis caching, and queue optimization &mdash; building sustained team capability.</li>
+            <li class="tl-li key">Participated in technical interviews &mdash; evaluated Laravel, Vue.js, and system design proficiency, helping shape hiring decisions.</li>
+            <li class="tl-li">Triaged and resolved production incidents &mdash; led RCA investigations, introduced centralized logging and automated alerts across microservices to reduce future incident response time.</li>
+            <li class="tl-li">Designed and delivered 2 client-facing reporting portals with dynamic campaign-based report generation, data validation, audit trails, and multi-tenant data segregation.</li>
+            <li class="tl-li">Built the PTR System end-to-end as sole technical owner &mdash; from schema design to Vue.js frontend &mdash; secured via JWT and Sanctum, delivered on schedule.</li>
+            <li class="tl-li">Built reusable Vue.js component library; optimized Laravel job queues and background workers, significantly reducing report generation time.</li>
+            <li class="tl-li">Dockerized local dev environment, standardizing setup across the team and eliminating environment inconsistency issues.</li>
+            <li class="tl-li">Built custom ACL with field-level security, RBAC, Axios route interceptors, and centralized logging across microservices.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row rv">
+        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-c">
+          <div class="tl-c-top-bar"></div>
+          <div class="tl-head">
+            <div>
+              <div class="tl-co">Vastu Housing Finance Corporation Pvt. Ltd.</div>
+              <div class="tl-meta">
+                <span class="tl-role">Senior PHP Developer</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-loc">Sewri, Mumbai</span>
+              </div>
+            </div>
+            <span class="bd-date bd-past">Oct 2019 &mdash; Mar 2023</span>
+          </div>
+          <div class="tl-stack"><b>Stack</b>Laravel &middot; PHP &middot; MySQL &middot; jQuery &middot; JWT &middot; MPDF &middot; AJAX DataTables &middot; BBPS &middot; CIBIL &middot; Razorpay</div>
+          <ul class="tl-bullets">
+            <li class="tl-li key">Led and mentored a team of 6 developers &mdash; introduced Agile/Scrum, microservices architecture, DRY coding principles, and API security standards; improved delivery efficiency, code quality, and team productivity across all projects.</li>
+            <li class="tl-li key">Architected and built Pulse &mdash; an in-house LOS for Home Loans &amp; LAP &mdash; supporting 500+ pan-India users and processing &#8377;100 Cr+ in loans per month via BBPS; managed the full lead-to-approval lifecycle from Android app to backend.</li>
+            <li class="tl-li key">Drove engineering modernization &mdash; migrated from monolithic to microservices, enforced API security best practices, and introduced Laravel service-layer patterns and DRY architecture that became team-wide standards.</li>
+            <li class="tl-li">Collaborated directly with business, operations, and compliance teams to translate requirements into technical specs &mdash; ensuring systems met regulatory and operational needs from day one.</li>
+            <li class="tl-li">Digitized paper-based PD processes by building TelePD and Video PD workflows with Digio e-sign integration &mdash; enabling remote loan assessments and paperless document signing across branches.</li>
+            <li class="tl-li">Developed a complete NBFC LOS for Vehicle Loans &amp; LAP from scratch &mdash; multi-step workflows, dynamic ACL, automation, and full API system.</li>
+            <li class="tl-li">Created Pulse&rarr;MIFIN data transfer APIs; dynamically generated loan PDFs via MPDF; automated MIS reports to Branch Managers via cron jobs.</li>
+            <li class="tl-li">Conducted VAPT; implemented JWT auth; built custom error-handling and logging with automated email alerts for critical failures.</li>
+            <li class="tl-li">Integrated 10+ third-party services: Razorpay, Paytm, BBPS, KARZA, Aadhaar Masking, CIBIL &amp; Highmark, Digio e-sign, Vehicle Valuation, and Fraud Check APIs.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row rv">
+        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-c">
+          <div class="tl-c-top-bar"></div>
+          <div class="tl-head">
+            <div>
+              <div class="tl-co">Softlabs Groups</div>
+              <div class="tl-meta">
+                <span class="tl-role">Laravel Developer</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-loc">Lower Parel, Mumbai</span>
+              </div>
+            </div>
+            <span class="bd-date bd-past">Mar 2019 &mdash; Sep 2019</span>
+          </div>
+          <div class="tl-stack"><b>Stack</b>Laravel &middot; PHP &middot; MySQL &middot; Multi-tenancy &middot; jQuery &middot; JavaScript &middot; SaaS</div>
+          <ul class="tl-bullets">
+            <li class="tl-li">Built a Stock Management SaaS with Laravel multi-tenancy &mdash; dynamically switched isolated databases per client, supporting fully independent multi-tenant environments.</li>
+            <li class="tl-li">Developed TravelX, a travel booking platform for flights, cars, and hotels within a single unified tour workflow.</li>
+            <li class="tl-li">Built a Center Management System for multi-location yoga room bookings; implemented dynamic DB connections, modular architecture, and RBAC.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="tl-row rv">
+        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-c">
+          <div class="tl-c-top-bar"></div>
+          <div class="tl-head">
+            <div>
+              <div class="tl-co">Neural IT</div>
+              <div class="tl-meta">
+                <span class="tl-role">Software Engineer</span>
+                <span class="tl-sep">&middot;</span>
+                <span class="tl-loc">Airoli, Mumbai</span>
+              </div>
+            </div>
+            <span class="bd-date bd-past">Nov 2017 &mdash; Mar 2019</span>
+          </div>
+          <div class="tl-stack"><b>Stack</b>Core PHP &middot; Drupal &middot; MySQL &middot; jQuery &middot; JavaScript &middot; REST APIs</div>
+          <ul class="tl-bullets">
+            <li class="tl-li">Built a fully functional EHRMS mobile app (Core PHP, Android WebView) and an EHRMS control panel for multi-org cloning across healthcare organizations.</li>
+            <li class="tl-li">Worked on 3 USA-based Accidental Claim Management projects integrating claim workflows, reporting, and insurance processing pipelines.</li>
+            <li class="tl-li">Designed APIs and microservices for EHRMS; integrated data visualization for patient metrics; leveraged Drupal for LMS integration.</li>
+            <li class="tl-li">Optimized complex MySQL data models; implemented RBAC and ACLs across multiple healthcare organizations.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ===== PHILOSOPHY ===== -->
+<section id="philosophy">
+  <div class="phi rv">
+    <div class="phi-deco">&ldquo;</div>
+    <p class="phi-q">Good engineering isn&rsquo;t just about writing <em>clean code</em> &mdash; it&rsquo;s about building systems your team can own, debug at 2am, and hand off without fear.</p>
+    <p class="phi-attr">&mdash; Vinaykumar Mishra &nbsp;&middot;&nbsp; Senior Software Engineer &nbsp;&middot;&nbsp; Mumbai</p>
+  </div>
+</section>
+
+<!-- ===== PROJECTS ===== -->
+<section id="projects">
+  <div class="si">
+    <div class="ey"><span class="ey-n">05</span><div class="ey-l"></div><span class="ey-t">Independent Projects</span></div>
+    <div class="proj-grid rv">
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="pj-num">01 / 04</span>
+            <span class="pj-domain hc">Healthcare / IoT</span>
+          </div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">medDose</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">SaaS</span><span class="pj-tag">REST APIs</span><span class="pj-tag">IoT</span></div>
+        <div class="pj-desc">SaaS Medicine Dose Reminder with IoT smart pillbox integration &mdash; delivers real-time consumption alerts to mobile and web. Built multi-tenant architecture with patient-device pairing, alert scheduling engine, and caregiver notification system.</div>
+      </div>
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="pj-num">02 / 04</span>
+            <span class="pj-domain ft">FinTech / KYC</span>
+          </div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Bill Financing System</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Digio APIs</span><span class="pj-tag">Payment APIs</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Multi-step KYC and identity verification platform enabling compliant lender-financed bill processing. Integrated Digio e-sign and face-match APIs; built dynamic workflow engine for lender approval routing and audit trail generation.</div>
+      </div>
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="pj-num">03 / 04</span>
+            <span class="pj-domain tr">Trading / Finance</span>
+          </div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">TradeX</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Razorpay</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Trading platform with subscription tier management, fund request workflows, and configurable admin approval modules. Role-based access control with real-time fund status tracking and automated approval/rejection notifications.</div>
+      </div>
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px">
+            <span class="pj-num">04 / 04</span>
+            <span class="pj-domain web">Web / SEO</span>
+          </div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">ARKROOT</div>
+        <div class="pj-tags"><span class="pj-tag">Nuxt.js</span><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Modern website for ARK Root &mdash; a boutique advisory firm offering finance, legal, and compliance solutions for startups. Built a fast, SEO-optimised Nuxt.js frontend with a PHP backend.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== EDUCATION ===== -->
+<section id="education">
+  <div class="si">
+    <div class="ey"><span class="ey-n">06</span><div class="ey-l"></div><span class="ey-t">Education</span></div>
+    <div class="edu-grid rv">
+      <div class="edu-c">
+        <div class="edu-ico">&#127891;</div>
+        <div>
+          <div class="edu-deg">M.Sc. Information Technology</div>
+          <div class="edu-sch">Vidyalankar School of Information Technology, Mumbai</div>
+          <span class="edu-yr">2016 &ndash; 2018</span>
+        </div>
+      </div>
+      <div class="edu-c">
+        <div class="edu-ico">&#127891;</div>
+        <div>
+          <div class="edu-deg">B.Sc. Information Technology</div>
+          <div class="edu-sch">Guru Nanak Khalsa College, Mumbai</div>
+          <span class="edu-yr">2013 &ndash; 2016</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="orb co-orb"></div>
+  <div class="si">
+    <div class="ey"><span class="ey-n">07</span><div class="ey-l"></div><span class="ey-t">Get In Touch</span></div>
+    <div class="co-inner rv">
+      <div>
+        <h2 class="co-h">Let&rsquo;s build something <em>great</em> together</h2>
+        <p class="co-sub">Open to senior engineering roles, team lead positions, and interesting backend/fullstack challenges in Healthcare, FinTech, or SaaS. Based in Mumbai &mdash; open to remote.</p>
+        <a class="btn btn-fill" href="mailto:vinaykumarmishra71@gmail.com">
+          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+          Send a Message
+        </a>
+        <p class="co-note">Usually responds within 24 hours</p>
+      </div>
+      <div class="co-links">
+        <a class="co-link" href="mailto:vinaykumarmishra71@gmail.com">
+          <div class="co-link-l">
+            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
+            <div><div class="co-link-lbl">Email</div><div class="co-link-val">vinaykumarmishra71@gmail.com</div></div>
+          </div>
+          <span class="co-arr">&rarr;</span>
+        </a>
+        <a class="co-link" href="tel:9172270728">
+          <div class="co-link-l">
+            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+            <div><div class="co-link-lbl">Phone</div><div class="co-link-val">9172270728</div></div>
+          </div>
+          <span class="co-arr">&rarr;</span>
+        </a>
+        <a class="co-link" href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">
+          <div class="co-link-l">
+            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
+            <div><div class="co-link-lbl">LinkedIn</div><div class="co-link-val">linkedin.com/in/vinaykumar-mishra</div></div>
+          </div>
+          <span class="co-arr">&rarr;</span>
+        </a>
+        <div class="co-link" style="cursor:default">
+          <div class="co-link-l">
+            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+            <div><div class="co-link-lbl">Location</div><div class="co-link-val">Mumbai, India &middot; Open to Remote</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="f-brand">Vinaykumar <span>Mishra</span></div>
+  <div class="f-links">
+    <a href="#about">About</a>
+    <a href="#skills">Skills</a>
+    <a href="#experience">Experience</a>
+    <a href="#projects">Projects</a>
+    <a href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank">LinkedIn</a>
+    <a href="mailto:vinaykumarmishra71@gmail.com">Email</a>
+  </div>
+  <div class="f-copy">&copy; 2025 Vinaykumar Mishra &middot; Mumbai, India</div>
+</footer>
+
+<script>
+// ── Scroll reveal (3 directions) ─────────────────────────────
+const ro = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach((el, i) => {
+  el.style.transitionDelay = (i % 5) * 0.07 + 's';
+  ro.observe(el);
+});
+
+// ── Nav: active section highlighting + shrink ──────────────
+const nav = document.getElementById('nav');
+const sections = document.querySelectorAll('section[id]');
+const navLinks = document.querySelectorAll('.n-links a');
+
+const secObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (e.isIntersecting) {
+      navLinks.forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+      });
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+sections.forEach(s => secObs.observe(s));
+
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+// ── Skills tab panel ──────────────────────────────────────────
+document.querySelectorAll('.skn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('.skn').forEach(b => b.classList.remove('active'));
+    document.querySelectorAll('.skt').forEach(p => p.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+  });
+});
+
+
+// ── Theme toggle ──────────────────────────────────────────────
+const themeBtn = document.getElementById('themeBtn');
+const body = document.body;
+// Restore saved preference
+if (localStorage.getItem('theme') === 'light') body.classList.add('light');
+themeBtn.addEventListener('click', () => {
+  body.classList.toggle('light');
+  localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
+});
+</script>
+</body>
+</html>
