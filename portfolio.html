@@ -13,9 +13,11 @@ html{scroll-behavior:smooth}
 :root{
   --bg:#07090f;--bg2:#0b0e18;--bg3:#0f1420;--bg4:#141b28;
   --b1:#212c42;--b2:#2b3a56;--b3:#3a4d6e;--b4:#4a608a;
-  --ac:#5e9bff;--ac2:#a8caff;--ac3:#1d3a6e;--ac4:#0d2040;
+  --ac:#5e9bff;--ac2:#a8caff;--ac3:#1d3a6e;--ac4:#0d2040;--ach:#6aa0ff;
+  /* accent / domain RGB triplets — redefined per theme so every tint adapts */
+  --ac-rgb:79,142,247;--gr-rgb:52,211,153;--pu-rgb:167,139,250;--hc:#60a5fa;--hc-rgb:96,165,250;
   --go:#e8b84b;--go2:rgba(232,184,75,0.1);--go3:rgba(232,184,75,0.25);
-  --gr:#34d399;--gr2:rgba(52,211,153,0.08);--gr3:rgba(52,211,153,0.22);
+  --gr:#34d399;--gr2:rgba(var(--gr-rgb),0.08);--gr3:rgba(var(--gr-rgb),0.22);
   --pu:#a78bfa;--re:#f87171;
   --t1:#f0f3fb;--t2:#aab8d4;--t3:#7286a8;--t4:#4a5a78;
   --fh:'Syne',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;
@@ -25,13 +27,13 @@ body{background:var(--bg);color:var(--t1);font-family:var(--fb);line-height:1.7;
 body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");opacity:.4}
 body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(79,142,247,.025) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,.025) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(var(--ac-rgb),.025) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--ac-rgb),.025) 1px,transparent 1px);
   background-size:60px 60px}
 
 /* ---- NAV ---- */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;
   padding:18px 56px;background:rgba(7,9,15,.88);backdrop-filter:blur(28px);
-  border-bottom:1px solid rgba(79,142,247,.06);transition:padding .3s,background .3s}
+  border-bottom:1px solid rgba(var(--ac-rgb),.06);transition:padding .3s,background .3s}
 nav.scrolled{padding:11px 56px;background:rgba(7,9,15,.97)}
 .n-logo{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--t1);letter-spacing:-.02em}
 .n-logo span{color:var(--ac)}
@@ -50,7 +52,7 @@ nav.scrolled{padding:11px 56px;background:rgba(7,9,15,.97)}
 .n-hire{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
   background:var(--ac);color:#fff;padding:8px 18px;border-radius:6px;font-weight:500;
   text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s}
-.n-hire:hover{background:#6aa0ff;transform:translateY(-1px);box-shadow:0 6px 24px rgba(79,142,247,.35)}
+.n-hire:hover{background:var(--ach);transform:translateY(-1px);box-shadow:0 6px 24px rgba(var(--ac-rgb),.35)}
 
 /* ---- ORB ---- */
 .orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;animation:od 20s ease-in-out infinite alternate}
@@ -75,11 +77,11 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 /* ===== HERO ===== */
 #hero{min-height:100vh;display:flex;align-items:center;padding:100px 56px 60px}
 .h-bg{position:absolute;inset:0;
-  background-image:linear-gradient(rgba(79,142,247,.045) 1px,transparent 1px),linear-gradient(90deg,rgba(79,142,247,.045) 1px,transparent 1px);
+  background-image:linear-gradient(rgba(var(--ac-rgb),.045) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--ac-rgb),.045) 1px,transparent 1px);
   background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,black 30%,transparent 100%)}
-.orb-h1{width:800px;height:800px;background:rgba(79,142,247,.07);top:-300px;right:-250px}
-.orb-h2{width:500px;height:500px;background:rgba(167,139,250,.05);bottom:-100px;left:-180px;animation-delay:-10s}
-.orb-h3{width:220px;height:220px;background:rgba(52,211,153,.04);top:55%;left:38%;animation-delay:-6s}
+.orb-h1{width:800px;height:800px;background:rgba(var(--ac-rgb),.07);top:-300px;right:-250px}
+.orb-h2{width:500px;height:500px;background:rgba(var(--pu-rgb),.05);bottom:-100px;left:-180px;animation-delay:-10s}
+.orb-h3{width:220px;height:220px;background:rgba(var(--gr-rgb),.04);top:55%;left:38%;animation-delay:-6s}
 .h-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%;
   display:grid;grid-template-columns:1fr 200px;gap:60px;align-items:center}
 
@@ -113,7 +115,7 @@ section{padding:96px 56px;position:relative;overflow:hidden}
   letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border-radius:7px;
   text-decoration:none;font-weight:500;transition:all .2s}
 .btn-fill{background:var(--ac);color:#fff}
-.btn-fill:hover{background:#6aa0ff;transform:translateY(-2px);box-shadow:0 10px 32px rgba(79,142,247,.35)}
+.btn-fill:hover{background:var(--ach);transform:translateY(-2px);box-shadow:0 10px 32px rgba(var(--ac-rgb),.35)}
 .btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--b2)}
 .btn-ghost:hover{border-color:var(--ac);color:var(--ac2);transform:translateY(-2px)}
 
@@ -147,10 +149,10 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .ab-h em{font-style:normal;color:var(--ac2)}
 .ab-p{font-size:14.5px;color:var(--t2);line-height:1.88;font-weight:300;margin-bottom:14px}
 .ab-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
-.abt{font-family:var(--fm);font-size:10.5px;color:var(--ac2);background:rgba(79,142,247,.07);
-  border:1px solid rgba(79,142,247,.14);padding:4px 12px;border-radius:4px;letter-spacing:.03em;
+.abt{font-family:var(--fm);font-size:10.5px;color:var(--ac2);background:rgba(var(--ac-rgb),.07);
+  border:1px solid rgba(var(--ac-rgb),.14);padding:4px 12px;border-radius:4px;letter-spacing:.03em;
   transition:background .2s,border-color .2s}
-.abt:hover{background:rgba(79,142,247,.14);border-color:rgba(79,142,247,.3)}
+.abt:hover{background:rgba(var(--ac-rgb),.14);border-color:rgba(var(--ac-rgb),.3)}
 
 /* career timeline in about */
 .career-tl{display:flex;flex-direction:column;gap:0}
@@ -197,9 +199,9 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .wid-card:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 18px 52px rgba(0,0,0,.4)}
 .wid-card:hover::before{opacity:1}
 .wid-icon{width:48px;height:48px;border-radius:11px;display:grid;place-items:center;font-size:20px;margin-bottom:18px;border:1px solid var(--b1)}
-.wid-card:nth-child(1) .wid-icon{background:rgba(79,142,247,.1);border-color:rgba(79,142,247,.2)}
-.wid-card:nth-child(2) .wid-icon{background:rgba(167,139,250,.08);border-color:rgba(167,139,250,.18)}
-.wid-card:nth-child(3) .wid-icon{background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.18)}
+.wid-card:nth-child(1) .wid-icon{background:rgba(var(--ac-rgb),.1);border-color:rgba(var(--ac-rgb),.2)}
+.wid-card:nth-child(2) .wid-icon{background:rgba(var(--pu-rgb),.08);border-color:rgba(var(--pu-rgb),.18)}
+.wid-card:nth-child(3) .wid-icon{background:rgba(var(--gr-rgb),.08);border-color:rgba(var(--gr-rgb),.18)}
 .wid-t{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--t1);margin-bottom:9px;letter-spacing:-.01em}
 .wid-d{font-size:13px;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:18px}
 .wid-tags{display:flex;flex-wrap:wrap;gap:5px}
@@ -237,10 +239,10 @@ section{padding:96px 56px;position:relative;overflow:hidden}
   padding:2px 9px;border-radius:4px;letter-spacing:.05em;margin-bottom:12px}
 .sk-d{font-size:13px;color:var(--t2);font-weight:300;margin-bottom:20px;line-height:1.72}
 .sk-tags{display:flex;flex-wrap:wrap;gap:7px}
-.sk-tag{font-family:var(--fm);font-size:11.5px;color:var(--ac2);background:rgba(79,142,247,.07);
-  border:1px solid rgba(79,142,247,.15);padding:5px 13px;border-radius:5px;
+.sk-tag{font-family:var(--fm);font-size:11.5px;color:var(--ac2);background:rgba(var(--ac-rgb),.07);
+  border:1px solid rgba(var(--ac-rgb),.15);padding:5px 13px;border-radius:5px;
   transition:background .2s,transform .15s}
-.sk-tag:hover{background:rgba(79,142,247,.15);transform:translateY(-1px)}
+.sk-tag:hover{background:rgba(var(--ac-rgb),.15);transform:translateY(-1px)}
 
 /* ===== EXPERIENCE ===== */
 #experience{background:var(--bg3)}
@@ -251,10 +253,10 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .tl-dw{display:flex;flex-direction:column;align-items:center;padding-top:22px}
 .tl-d{width:9px;height:9px;border-radius:50%;background:var(--bg3);border:2px solid var(--b2);
   flex-shrink:0;position:relative;z-index:1;transition:all .25s}
-.tl-row:hover .tl-d{background:var(--ac);border-color:var(--ac2);box-shadow:0 0 14px rgba(79,142,247,.5)}
+.tl-row:hover .tl-d{background:var(--ac);border-color:var(--ac2);box-shadow:0 0 14px rgba(var(--ac-rgb),.5)}
 .tl-c{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
 .tl-c:hover{border-color:var(--b2);box-shadow:0 8px 40px rgba(0,0,0,.35)}
-.tl-c.cur-job{border-color:rgba(52,211,153,.15)}
+.tl-c.cur-job{border-color:rgba(var(--gr-rgb),.15)}
 .tl-c.cur-job .tl-c-top-bar{height:2px;background:linear-gradient(90deg,var(--gr) 0%,transparent 55%)}
 .tl-c-top-bar{height:0}
 .tl-head{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
@@ -267,14 +269,14 @@ section{padding:96px 56px;position:relative;overflow:hidden}
   color:var(--go);background:var(--go2);border:1px solid var(--go3);padding:2px 8px;border-radius:3px}
 .bd-date{font-family:var(--fm);font-size:10px;padding:3px 11px;border-radius:4px;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
 .bd-cur{color:var(--gr);background:var(--gr2);border:1px solid var(--gr3)}
-.bd-past{color:var(--ac);background:rgba(79,142,247,.07);border:1px solid rgba(79,142,247,.16)}
+.bd-past{color:var(--ac);background:rgba(var(--ac-rgb),.07);border:1px solid rgba(var(--ac-rgb),.16)}
 .tl-stack{font-family:var(--fm);font-size:10.5px;color:var(--t2);background:rgba(0,0,0,.18);
   border-top:1px solid var(--b1);padding:8px 24px;margin-top:14px;letter-spacing:.02em}
 .tl-stack b{font-weight:600;color:var(--ac2);opacity:.85;margin-right:5px}
 .tl-bullets{padding:13px 24px 20px;list-style:none}
 .tl-li{display:flex;gap:10px;margin-bottom:6px;font-size:13px;color:var(--t2);line-height:1.65}
 .tl-li::before{content:'';width:3px;height:3px;background:var(--b2);border-radius:1px;margin-top:9px;flex-shrink:0;transition:background .2s}
-.tl-c:hover .tl-li::before{background:rgba(79,142,247,.45)}
+.tl-c:hover .tl-li::before{background:rgba(var(--ac-rgb),.45)}
 .tl-li.key{color:var(--t1);background:rgba(255,255,255,.025);
   border-left:2px solid rgba(232,184,75,.3);border-radius:0 5px 5px 0;padding:5px 11px;margin-left:-11px}
 .tl-li.key::before{background:var(--go);opacity:.8;margin-top:9px}
@@ -286,26 +288,43 @@ section{padding:96px 56px;position:relative;overflow:hidden}
   letter-spacing:-.02em;color:var(--t1);margin-bottom:22px}
 .phi-q em{font-style:normal;color:var(--ac2)}
 .phi-attr{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase}
-.phi-deco{font-family:var(--fh);font-size:160px;font-weight:800;color:rgba(79,142,247,.03);
+.phi-deco{font-family:var(--fh);font-size:160px;font-weight:800;color:rgba(var(--ac-rgb),.03);
   line-height:1;position:absolute;top:-40px;left:50%;transform:translateX(-50%);
   pointer-events:none;user-select:none}
 
 /* ===== PROJECTS ===== */
 #projects{background:var(--bg2)}
 .proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.pj-group{grid-column:1/-1;padding:10px 0 6px;border-bottom:1px solid var(--b1);margin-top:18px}
+.pj-group:first-child{margin-top:0}
+.pj-group-name{font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);display:flex;align-items:center;gap:10px}
+.pj-group-name::after{content:'';flex:1;height:1px;background:var(--b1)}
+.pj-group-co{color:var(--t2);font-size:10.5px;font-weight:600}
+.pj-group-period{color:var(--t4)}
+.pj-group.hide,.pj.hide{display:none}
+/* projects intro + filter bar */
+.pj-intro{font-size:14px;color:var(--t2);font-weight:300;max-width:640px;line-height:1.8;margin:-34px 0 24px}
+.pj-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.pjf{font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--t3);background:var(--bg3);border:1px solid var(--b1);padding:7px 15px;border-radius:7px;
+  cursor:pointer;transition:color .2s,border-color .2s,background .2s;display:flex;align-items:center;gap:7px}
+.pjf:hover{color:var(--t2);border-color:var(--b2)}
+.pjf.active{color:var(--ac2);background:var(--ac3);border-color:var(--ac)}
+.pjf-c{font-size:9px;color:var(--t4);background:var(--bg2);border-radius:10px;padding:1px 7px;transition:color .2s,background .2s}
+.pjf.active .pjf-c{color:var(--ac2);background:rgba(var(--ac-rgb),.14)}
 .pj{background:var(--bg3);border:1px solid var(--b1);border-radius:14px;padding:26px 24px 22px;
   display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
   transition:border-color .25s,transform .2s,box-shadow .25s}
 .pj::after{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;
-  background:radial-gradient(circle at 100% 100%,rgba(79,142,247,.06),transparent 70%);opacity:0;transition:opacity .3s}
+  background:radial-gradient(circle at 100% 100%,rgba(var(--ac-rgb),.06),transparent 70%);opacity:0;transition:opacity .3s}
 .pj:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 20px 56px rgba(0,0,0,.45)}
 .pj:hover::after{opacity:1}
 .pj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
 .pj-num{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.1em}
 .pj-domain{font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
-.pj-domain.hc{color:#60a5fa;background:rgba(96,165,250,.08);border:1px solid rgba(96,165,250,.2)}
+.pj-domain.hc{color:var(--hc);background:rgba(var(--hc-rgb),.08);border:1px solid rgba(var(--hc-rgb),.2)}
 .pj-domain.ft{color:var(--go);background:var(--go2);border:1px solid var(--go3)}
-.pj-domain.tr{color:var(--pu);background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2)}
+.pj-domain.tr{color:var(--pu);background:rgba(var(--pu-rgb),.08);border:1px solid rgba(var(--pu-rgb),.2)}
 .pj-domain.web{color:var(--gr);background:var(--gr2);border:1px solid var(--gr3)}
 .pj-arr{width:30px;height:30px;border-radius:6px;background:var(--bg2);border:1px solid var(--b2);
   display:grid;place-items:center;color:var(--t3);flex-shrink:0;
@@ -313,8 +332,8 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .pj:hover .pj-arr{background:var(--ac);border-color:var(--ac);color:#fff;transform:rotate(45deg)}
 .pj-name{font-family:var(--fh);font-size:21px;font-weight:700;color:var(--t1);letter-spacing:-.02em;line-height:1.1}
 .pj-tags{display:flex;flex-wrap:wrap;gap:5px}
-.pj-tag{font-family:var(--fm);font-size:9.5px;color:var(--ac);background:rgba(79,142,247,.07);
-  border:1px solid rgba(79,142,247,.14);padding:3px 8px;border-radius:3px;letter-spacing:.04em}
+.pj-tag{font-family:var(--fm);font-size:9.5px;color:var(--ac);background:rgba(var(--ac-rgb),.07);
+  border:1px solid rgba(var(--ac-rgb),.14);padding:3px 8px;border-radius:3px;letter-spacing:.04em}
 .pj-desc{font-size:13px;color:var(--t2);line-height:1.72;font-weight:300;flex:1}
 
 /* ===== EDUCATION ===== */
@@ -323,16 +342,16 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .edu-c{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;padding:26px;
   display:flex;gap:16px;align-items:flex-start;transition:border-color .25s,transform .2s}
 .edu-c:hover{border-color:var(--b2);transform:translateY(-3px)}
-.edu-ico{width:48px;height:48px;flex-shrink:0;background:rgba(79,142,247,.09);
-  border:1px solid rgba(79,142,247,.18);border-radius:11px;display:grid;place-items:center;font-size:21px}
+.edu-ico{width:48px;height:48px;flex-shrink:0;background:rgba(var(--ac-rgb),.09);
+  border:1px solid rgba(var(--ac-rgb),.18);border-radius:11px;display:grid;place-items:center;font-size:21px}
 .edu-deg{font-family:var(--fh);font-size:15.5px;font-weight:700;color:var(--t1);margin-bottom:5px;letter-spacing:-.015em}
 .edu-sch{font-size:12.5px;color:var(--t2);margin-bottom:9px}
-.edu-yr{font-family:var(--fm);font-size:10px;color:var(--ac);background:rgba(79,142,247,.07);
-  border:1px solid rgba(79,142,247,.14);padding:2px 9px;border-radius:3px;display:inline-block}
+.edu-yr{font-family:var(--fm);font-size:10px;color:var(--ac);background:rgba(var(--ac-rgb),.07);
+  border:1px solid rgba(var(--ac-rgb),.14);padding:2px 9px;border-radius:3px;display:inline-block}
 
 /* ===== CONTACT ===== */
 #contact{background:var(--bg2)}
-.co-orb{width:600px;height:600px;background:rgba(79,142,247,.05);top:50%;left:50%;transform:translate(-50%,-50%)}
+.co-orb{width:600px;height:600px;background:rgba(var(--ac-rgb),.05);top:50%;left:50%;transform:translate(-50%,-50%)}
 .co-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:start}
 .co-h{font-family:var(--fh);font-size:clamp(32px,4.5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:18px}
 .co-h em{font-style:normal;color:var(--ac2)}
@@ -344,10 +363,10 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .co-link{display:flex;align-items:center;justify-content:space-between;
   background:var(--bg3);border:1px solid var(--b1);border-radius:11px;
   padding:14px 18px;text-decoration:none;transition:border-color .25s,transform .15s,box-shadow .2s}
-.co-link:hover{border-color:var(--ac);transform:translateX(-4px);box-shadow:3px 0 20px rgba(79,142,247,.1)}
+.co-link:hover{border-color:var(--ac);transform:translateX(-4px);box-shadow:3px 0 20px rgba(var(--ac-rgb),.1)}
 .co-link-l{display:flex;align-items:center;gap:12px}
-.co-link-ico{width:36px;height:36px;border-radius:8px;background:rgba(79,142,247,.09);
-  border:1px solid rgba(79,142,247,.16);display:grid;place-items:center;color:var(--ac2);flex-shrink:0}
+.co-link-ico{width:36px;height:36px;border-radius:8px;background:rgba(var(--ac-rgb),.09);
+  border:1px solid rgba(var(--ac-rgb),.16);display:grid;place-items:center;color:var(--ac2);flex-shrink:0}
 .co-link-lbl{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:2px}
 .co-link-val{font-size:13px;color:var(--t2)}
 .co-link:hover .co-link-val{color:var(--ac2)}
@@ -383,7 +402,8 @@ footer{background:var(--bg);border-top:1px solid var(--b1);padding:26px 56px;
 body.light{
   --bg:#f4f6fb;--bg2:#edf0f8;--bg3:#e4e9f5;--bg4:#dce3f0;
   --b1:#c8d3e8;--b2:#b0bdd6;--b3:#8fa3c0;--b4:#6b85a8;
-  --ac:#1d52d6;--ac2:#1740b0;--ac3:rgba(29,82,214,0.12);--ac4:rgba(29,82,214,0.06);
+  --ac:#1d52d6;--ac2:#1740b0;--ac3:rgba(29,82,214,0.12);--ac4:rgba(29,82,214,0.06);--ach:#1740b0;
+  --ac-rgb:29,82,214;--gr-rgb:5,150,105;--pu-rgb:124,58,237;--hc:#1d52d6;--hc-rgb:29,82,214;
   --go:#b45309;--go2:rgba(180,83,9,0.08);--go3:rgba(180,83,9,0.22);
   --gr:#059669;--gr2:rgba(5,150,105,0.08);--gr3:rgba(5,150,105,0.22);
   --pu:#7c3aed;--re:#dc2626;
@@ -458,7 +478,7 @@ body.light .theme-icon-l{opacity:1}
         <span class="l1">Vinaykumar</span>
         <span class="l2">Mishra</span>
       </h1>
-      <p class="h-role"><strong>Senior Software Engineer</strong> &nbsp;&middot;&nbsp; Team Lead &nbsp;&middot;&nbsp; 8+ Years</p>
+      <p class="h-role"><strong>Senior Software Engineer</strong> &nbsp;&middot;&nbsp; 8+ Years</p>
       <div class="h-at">Currently at WebMD &mdash; Navi Mumbai</div>
       <p class="h-loc">Mumbai, India &nbsp;&middot;&nbsp; Open to Remote</p>
       <p class="h-desc">I design and ship scalable backend systems, lead engineering teams, and build products that hold up under real-world pressure &mdash; across Healthcare, FinTech, and multi-tenant SaaS.</p>
@@ -506,7 +526,7 @@ body.light .theme-icon-l{opacity:1}
         <h2 class="ab-h">Engineering that <em>scales</em> &mdash;<br>and teams that <em>grow</em></h2>
         <p class="ab-p">Senior Software Engineer with 8+ years designing, developing, and optimizing scalable, high-performance systems across Healthcare, FinTech, and multi-tenant SaaS. Deep expertise in Laravel, Vue.js, and API-driven microservice architectures &mdash; with hands-on experience in caching strategies, database optimization, Docker, and cloud deployments on AWS.</p>
         <p class="ab-p">I&rsquo;ve built HIPAA-compliant platforms, architected loan origination systems processing &#8377;100 Cr+ monthly, led teams of 6 engineers, and driven engineering modernization from monolithic to microservices. I care about the long game: maintainable code, strong team culture, and systems that don&rsquo;t fall apart at 2am.</p>
-        <p class="ab-p">Based in Mumbai. Currently Senior Software Engineer &amp; Team Lead at WebMD. Open to senior engineering and leadership roles.</p>
+        <p class="ab-p">Based in Mumbai. Currently Senior Software Engineer at WebMD. Open to senior engineering and leadership roles.</p>
         <div class="ab-tags">
           <span class="abt">Healthcare / EMR</span><span class="abt">FinTech</span>
           <span class="abt">Loan Origination</span><span class="abt">Multi-Tenant SaaS</span>
@@ -522,7 +542,7 @@ body.light .theme-icon-l{opacity:1}
             <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
             <div class="ct-body">
               <div class="ct-co">WebMD <span class="ct-badge">Current</span></div>
-              <div class="ct-role">Senior Software Engineer &middot; Team Lead</div>
+              <div class="ct-role">Senior Software Engineer</div>
               <div class="ct-date">Apr 2023 &mdash; Present &nbsp;&middot;&nbsp; Navi Mumbai</div>
             </div>
           </div>
@@ -800,56 +820,266 @@ body.light .theme-icon-l{opacity:1}
 <!-- ===== PROJECTS ===== -->
 <section id="projects">
   <div class="si">
-    <div class="ey"><span class="ey-n">05</span><div class="ey-l"></div><span class="ey-t">Independent Projects</span></div>
+    <div class="ey"><span class="ey-n">05</span><div class="ey-l"></div><span class="ey-t">Selected Work</span></div>
+    <p class="pj-intro rv">A selection of <strong style="color:var(--t1);font-weight:500">23 production systems</strong> I&rsquo;ve designed and built end-to-end across four companies &mdash; spanning healthcare, FinTech, loan origination, and multi-tenant SaaS. Filter by domain below.</p>
+    <div class="pj-filter rv" id="pjFilter">
+      <button class="pjf active" data-cat="all">All <span class="pjf-c">23</span></button>
+      <button class="pjf" data-cat="hc">Healthcare <span class="pjf-c">10</span></button>
+      <button class="pjf" data-cat="ft">FinTech &amp; Trading <span class="pjf-c">4</span></button>
+      <button class="pjf" data-cat="web">Web &amp; SaaS <span class="pjf-c">9</span></button>
+    </div>
     <div class="proj-grid rv">
+
+      <!-- ── Neural IT ── -->
+      <div class="pj-group">
+        <div class="pj-group-name"><span class="pj-group-co">Neural IT</span><span class="pj-group-period">Nov 2017 – Mar 2019</span></div>
+      </div>
+
       <div class="pj">
         <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="pj-num">01 / 04</span>
-            <span class="pj-domain hc">Healthcare / IoT</span>
-          </div>
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">01 / 23</span><span class="pj-domain web">Web / CMS</span></div>
           <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
         </div>
-        <div class="pj-name">medDose</div>
-        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">SaaS</span><span class="pj-tag">REST APIs</span><span class="pj-tag">IoT</span></div>
-        <div class="pj-desc">SaaS Medicine Dose Reminder with IoT smart pillbox integration &mdash; delivers real-time consumption alerts to mobile and web. Built multi-tenant architecture with patient-device pairing, alert scheduling engine, and caregiver notification system.</div>
+        <div class="pj-name">Neural IT Website</div>
+        <div class="pj-tags"><span class="pj-tag">Drupal CMS</span><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span><span class="pj-tag">Custom Modules</span></div>
+        <div class="pj-desc">Corporate website for Neural IT built on Drupal CMS. Architected custom content types, Drupal modules, and theming layers to deliver a fully manageable, SEO-optimised corporate presence — enabling non-technical staff to control all content without developer intervention.</div>
       </div>
+
       <div class="pj">
         <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="pj-num">02 / 04</span>
-            <span class="pj-domain ft">FinTech / KYC</span>
-          </div>
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">02 / 23</span><span class="pj-domain hc">Healthcare / HRMS</span></div>
           <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
         </div>
-        <div class="pj-name">Bill Financing System</div>
-        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Digio APIs</span><span class="pj-tag">Payment APIs</span><span class="pj-tag">MySQL</span></div>
-        <div class="pj-desc">Multi-step KYC and identity verification platform enabling compliant lender-financed bill processing. Integrated Digio e-sign and face-match APIs; built dynamic workflow engine for lender approval routing and audit trail generation.</div>
+        <div class="pj-name">EHRMS Mobile Application</div>
+        <div class="pj-tags"><span class="pj-tag">Drupal</span><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Android WebView</span></div>
+        <div class="pj-desc">Electronic Human Resource Management System delivered as a mobile-first web application wrapped in Android WebView. Built multi-organisation support with isolated data environments, RBAC across departments, and custom Drupal modules handling attendance, leave, and payroll workflows for healthcare organisations.</div>
       </div>
+
       <div class="pj">
         <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="pj-num">03 / 04</span>
-            <span class="pj-domain tr">Trading / Finance</span>
-          </div>
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">03 / 23</span><span class="pj-domain hc">Healthcare / Admin</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">EHRMS Master Control Panel</div>
+        <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Multi-org</span></div>
+        <div class="pj-desc">Centralised provisioning and configuration panel for the entire EHRMS ecosystem. Enabled one-click deployment of new client environments with isolated databases — organisations could be onboarded, module-configured, and launched without any developer intervention, dramatically reducing setup time per client.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">04 / 23</span><span class="pj-domain web">Survey / Field</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">RSB Surveyor Mobile App</div>
+        <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Dynamic Forms</span></div>
+        <div class="pj-desc">Field survey application for product-based data collection designed for on-the-ground agents. Supported category-driven question flows with dynamic branching logic, input validation, and real-time submission to the central control panel — built to handle inconsistent connectivity in field conditions.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">05 / 23</span><span class="pj-domain web">Admin Panel</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">RSB Master Control Panel</div>
+        <div class="pj-tags"><span class="pj-tag">PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Reporting</span></div>
+        <div class="pj-desc">Web-based admin console for configuring the RSB Surveyor ecosystem. Managed survey categories, question banks, product configurations, and agent assignments from a single interface. Built dynamic form builders and analytical dashboards to monitor survey completion rates and responses across regions.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">06 / 23</span><span class="pj-domain hc">Healthcare / Insurance</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Accidental Case Management (×3)</div>
+        <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">USA Clients</span></div>
+        <div class="pj-desc">Three USA-based accidental case management platforms handling end-to-end insurance claim workflows for US clients. Built claim intake, adjuster assignment, multi-party document management, status tracking, and insurance processing pipelines — each tailored to distinct client workflows and compliance requirements.</div>
+      </div>
+
+      <!-- ── Softlabs Groups ── -->
+      <div class="pj-group">
+        <div class="pj-group-name"><span class="pj-group-co">Softlabs Groups</span><span class="pj-group-period">Mar 2019 – Sep 2019</span></div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">07 / 23</span><span class="pj-domain web">Travel / Booking</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">TravelX</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Booking Engine</span></div>
+        <div class="pj-desc">End-to-end holiday package booking platform unifying flight tickets, hotel reservations, and car bookings into a single seamless tour workflow. Designed the package builder engine, multi-step booking confirmation flow, payment integration, and an operator-facing admin module for managing inventory and customer bookings.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">08 / 23</span><span class="pj-domain web">SaaS / Multi-tenant</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Hasibusasa</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Multi-tenancy</span><span class="pj-tag">MySQL</span><span class="pj-tag">SaaS</span></div>
+        <div class="pj-desc">Multi-tenant SaaS platform built with Laravel featuring full database isolation per client — each tenant operates on a dedicated MySQL database. Architected the dynamic database switching layer, tenant provisioning system, and a shared-core module structure enabling independent per-client customisation without codebase fragmentation.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">09 / 23</span><span class="pj-domain web">Booking / Wellness</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Center Management System</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">RBAC</span></div>
+        <div class="pj-desc">Comprehensive package booking system for Vipassana Pagoda covering meditation courses, room reservations, and full stay accommodation management. Built dynamic availability calendars, package configuration engine, guest lifecycle management, and automated booking confirmation workflows with multi-location support.</div>
+      </div>
+
+      <!-- ── Vastu Housing Finance ── -->
+      <div class="pj-group">
+        <div class="pj-group-name"><span class="pj-group-co">Vastu Housing Finance Corporation</span><span class="pj-group-period">Oct 2019 – Mar 2023</span></div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">10 / 23</span><span class="pj-domain ft">FinTech / LOS</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">NBFC Loan Origination System</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Microservices</span><span class="pj-tag">FinTech APIs</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Full-lifecycle LOS for Vehicle Loans and Loan Against Property (LAP) built from scratch for an NBFC. Designed multi-step loan workflows from lead capture to disbursement, integrated 10+ FinTech APIs (KYC, CIBIL, fraud checks, Razorpay), and built microservice-based processing pipelines — solely responsible for architecture, delivery, and ongoing operations.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">11 / 23</span><span class="pj-domain ft">FinTech / HFC</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Pulse — HFC Home Loan LOS</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">BBPS</span><span class="pj-tag">CIBIL</span><span class="pj-tag">Digio e-sign</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Enterprise-grade Loan Origination System for Home Loans and LAP, serving 500+ pan-India users and processing &#8377;100 Cr+ monthly via BBPS. Architected the full lead-to-approval lifecycle, multi-step KYC, Aadhaar masking, CIBIL/Highmark bureau integration, Digio e-sign for remote paperless signing, and automated MIS reporting to Branch Managers.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">12 / 23</span><span class="pj-domain web">Corporate / Web</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Vastu Housing Finance Website</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">MySQL</span><span class="pj-tag">jQuery</span><span class="pj-tag">SEO</span></div>
+        <div class="pj-desc">Corporate website for Vastu Housing Finance built on a Laravel backend with a clean, SEO-optimised frontend. Implemented a CMS-backed content management system for branch locators, product pages, and EMI calculators — enabling the marketing team to independently manage all customer-facing content.</div>
+      </div>
+
+      <!-- ── WebMD ── -->
+      <div class="pj-group">
+        <div class="pj-group-name"><span class="pj-group-co">WebMD</span><span class="pj-group-period">Apr 2023 – Present</span></div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">13 / 23</span><span class="pj-domain hc">Pharma / Reporting</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Pharma Reports System</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">DataTables</span></div>
+        <div class="pj-desc">Internal report generation platform enabling pharma clients to query, filter, and view prescription and campaign performance data. Built dynamic report builders with parameterised queries, scheduled report delivery to stakeholders, and optimised background workers to handle large dataset generation without blocking the main application.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">14 / 23</span><span class="pj-domain hc">Pharma / Fulfillment</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">PTR System</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Vue.js</span><span class="pj-tag">MySQL</span><span class="pj-tag">JWT &amp; Sanctum</span></div>
+        <div class="pj-desc">Medicine order and refill processing system connecting pharmacy workflows to backend fulfillment pipelines. Built end-to-end as sole technical owner — from database schema to Vue.js frontend — secured with JWT and Laravel Sanctum. Handled order intake, multi-state processing workflows, and real-time pharmacy-side confirmation tracking.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">15 / 23</span><span class="pj-domain hc">Pharma / Survey</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">RxSurveyor</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">MySQL</span><span class="pj-tag">jQuery</span><span class="pj-tag">Analytics</span></div>
+        <div class="pj-desc">Survey creation and distribution platform for pharma companies to collect drug usage feedback and HCP insights. Designed dynamic question builders, audience targeting, campaign-based survey scheduling, and real-time response analytics dashboards — enabling pharma brands to run structured research programmes at scale across their customer base.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">16 / 23</span><span class="pj-domain hc">Pharma / Wallet</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">RxProximity</div>
+        <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">Apple Wallet</span><span class="pj-tag">Google Pay</span><span class="pj-tag">Modular Architecture</span></div>
+        <div class="pj-desc">Proximity-based drug discount coupon platform generating standards-compliant digital wallet passes for both Apple Wallet (iOS) and Google Pay (Android). Built on modular Core PHP — integrated with pharmacy redemption APIs and brand campaign management, enabling pharma brands to issue and track drug discount coupons redeemable directly at the pharmacy counter.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">17 / 23</span><span class="pj-domain hc">Pharma / Portal</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Client-Facing Report Portal</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Vue.js</span><span class="pj-tag">Inertia.js</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Multi-tenant reporting portal giving pharma clients direct access to their campaign and prescription analytics. Built with Laravel, Vue.js, and Inertia.js — features dynamic campaign-based report generation, interactive charts, data validation, audit trails, secure file downloads, and strict multi-tenant data segregation with custom RBAC per client organisation.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">18 / 23</span><span class="pj-domain web">Developer Tools</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">API Documentation Portal</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">MySQL</span><span class="pj-tag">jQuery</span></div>
+        <div class="pj-desc">Internal developer-facing API documentation site serving as the single source of truth for all platform integrations. Structured endpoint references, request/response schemas, authentication guides, and versioned changelogs — enabling frontend and third-party integration teams to develop against stable, well-documented contracts without constant back-and-forth.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">19 / 23</span><span class="pj-domain hc">Pharma / Compliance</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Engaged RX</div>
+        <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Versioning</span></div>
+        <div class="pj-desc">Web application for managing terms, disclaimers, and brand pages for pharma brands. Provided brand managers a structured CMS to maintain compliance-driven content across drug campaigns — with content versioning, structured approval workflows, and per-brand configuration ensuring each pharma client's legal and regulatory copy remained accurate and audit-ready.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">20 / 23</span><span class="pj-domain tr">Trading / Finance</span></div>
           <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
         </div>
         <div class="pj-name">TradeX</div>
-        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Razorpay</span><span class="pj-tag">MySQL</span></div>
-        <div class="pj-desc">Trading platform with subscription tier management, fund request workflows, and configurable admin approval modules. Role-based access control with real-time fund status tracking and automated approval/rejection notifications.</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Razorpay</span><span class="pj-tag">MySQL</span><span class="pj-tag">RBAC</span></div>
+        <div class="pj-desc">Trading platform for managing trader accounts, subscription tiers, and fund request workflows. Designed configurable approval modules with role-based access control, real-time fund status tracking, and automated approval/rejection notifications — giving admins full visibility and control over trader activity and capital allocation.</div>
       </div>
+
       <div class="pj">
         <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px">
-            <span class="pj-num">04 / 04</span>
-            <span class="pj-domain web">Web / SEO</span>
-          </div>
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">21 / 23</span><span class="pj-domain hc">Healthcare / IoT</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">medDose</div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">SaaS</span><span class="pj-tag">IoT</span><span class="pj-tag">Multi-tenancy</span></div>
+        <div class="pj-desc">Multi-tenant SaaS medicine dose reminder platform with IoT smart pillbox integration. Built full tenant isolation in Laravel — syncs pill counts from IoT devices in real time, triggers configurable dose reminders, and fires caregiver alerts when thresholds are crossed. Designed the patient-device pairing system, alert scheduling engine, and per-tenant notification configuration.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">22 / 23</span><span class="pj-domain ft">FinTech / P2P</span></div>
+          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
+        </div>
+        <div class="pj-name">Bill Financing System</div>
+        <div class="pj-tags"><span class="pj-tag">CodeIgniter</span><span class="pj-tag">PHP</span><span class="pj-tag">FinTech APIs</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Peer-to-peer bill financing platform enabling users to fund another user's bill and earn interest on it. Built on PHP CodeIgniter with FinTech API integrations for KYC, identity verification, and payment processing — designed dynamic lender-borrower matching workflows, automated interest calculation engine, and a compliance-driven audit trail for every transaction.</div>
+      </div>
+
+      <div class="pj">
+        <div class="pj-top">
+          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">23 / 23</span><span class="pj-domain web">Web / SEO</span></div>
           <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
         </div>
         <div class="pj-name">ARKROOT</div>
-        <div class="pj-tags"><span class="pj-tag">Nuxt.js</span><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span></div>
-        <div class="pj-desc">Modern website for ARK Root &mdash; a boutique advisory firm offering finance, legal, and compliance solutions for startups. Built a fast, SEO-optimised Nuxt.js frontend with a PHP backend.</div>
+        <div class="pj-tags"><span class="pj-tag">Nuxt.js</span><span class="pj-tag">Vue.js</span><span class="pj-tag">PHP</span><span class="pj-tag">SEO</span></div>
+        <div class="pj-desc">Corporate website for ARK Root — a boutique CA, finance, and legal compliance advisory firm for startups. Built as a performance-first Nuxt.js SPA with a PHP backend, structured service pages, and client inquiry workflows. SEO-optimised from the ground up to drive organic search visibility for a firm whose growth depends entirely on credibility and discoverability.</div>
       </div>
+
     </div>
   </div>
 </section>
@@ -980,6 +1210,40 @@ document.querySelectorAll('.skn').forEach(btn => {
   });
 });
 
+
+// ── Projects: domain filter ───────────────────────────────────
+(() => {
+  const grid = document.querySelector('.proj-grid');
+  if (!grid) return;
+  const cards = [...grid.querySelectorAll('.pj')];
+  // derive each card's category from its .pj-domain class (tr folds into ft)
+  cards.forEach(c => {
+    const d = c.querySelector('.pj-domain');
+    let cat = 'web';
+    if (d) { if (d.classList.contains('hc')) cat='hc'; else if (d.classList.contains('ft')||d.classList.contains('tr')) cat='ft'; else if (d.classList.contains('web')) cat='web'; }
+    c.dataset.cat = cat;
+  });
+  const groups = [...grid.querySelectorAll('.pj-group')];
+  const apply = cat => {
+    cards.forEach(c => c.classList.toggle('hide', cat !== 'all' && c.dataset.cat !== cat));
+    // hide a group header if every card until the next group is hidden
+    groups.forEach((g, i) => {
+      let el = g.nextElementSibling, anyVisible = false;
+      while (el && !el.classList.contains('pj-group')) {
+        if (el.classList.contains('pj') && !el.classList.contains('hide')) { anyVisible = true; break; }
+        el = el.nextElementSibling;
+      }
+      g.classList.toggle('hide', !anyVisible);
+    });
+  };
+  document.querySelectorAll('#pjFilter .pjf').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#pjFilter .pjf').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      apply(btn.dataset.cat);
+    });
+  });
+})();
 
 // ── Theme toggle ──────────────────────────────────────────────
 const themeBtn = document.getElementById('themeBtn');
