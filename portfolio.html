@@ -66,13 +66,16 @@ section{padding:96px 56px;position:relative;overflow:hidden}
 .ey-l{height:1px;width:36px;background:linear-gradient(90deg,var(--b2),transparent)}
 .ey-t{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--t3)}
 
-/* ---- REVEAL ---- */
-.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
-.rv.in{opacity:1;transform:none}
-.rv-l{opacity:0;transform:translateX(-20px);transition:opacity .65s ease,transform .65s ease}
-.rv-l.in{opacity:1;transform:none}
-.rv-r{opacity:0;transform:translateX(20px);transition:opacity .65s ease,transform .65s ease}
-.rv-r.in{opacity:1;transform:none}
+/* ---- REVEAL (3D fold / swing in) ---- */
+.rv{opacity:0;transform:perspective(1200px) translateY(30px) rotateX(11deg);transform-origin:50% 0;
+  transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:perspective(1200px) translateY(0) rotateX(0)}
+.rv-l{opacity:0;transform:perspective(1200px) translateX(-26px) rotateY(-12deg);transform-origin:left center;
+  transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.rv-l.in{opacity:1;transform:perspective(1200px) translateX(0) rotateY(0)}
+.rv-r{opacity:0;transform:perspective(1200px) translateX(26px) rotateY(12deg);transform-origin:right center;
+  transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
+.rv-r.in{opacity:1;transform:perspective(1200px) translateX(0) rotateY(0)}
 
 /* ===== HERO ===== */
 #hero{min-height:100vh;display:flex;align-items:center;padding:100px 56px 60px}
@@ -398,6 +401,71 @@ footer{background:var(--bg);border-top:1px solid var(--b1);padding:26px 56px;
   .co-inner{grid-template-columns:1fr;gap:40px}footer{padding:20px 24px}
 }
 
+/* ============================================================
+   ===== 3D LAYER : tilt cards, depth hero, glare =============
+   ============================================================ */
+/* perspective on the parents whose children tilt */
+.wid-grid,.proj-grid,.edu-grid,.co-links,.specs{perspective:1500px}
+.tl{perspective:1700px}
+
+/* tilt cards — inline transform set per-frame by JS overrides these */
+.tilt{transform-style:preserve-3d;will-change:transform;
+  transition:transform .5s cubic-bezier(.22,.61,.36,1),border-color .25s,box-shadow .3s}
+.tilt.tilting{transition:transform .09s linear,border-color .25s,box-shadow .3s}
+
+/* moving sheen that follows the cursor across a tilted card */
+.tilt-glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;
+  opacity:0;transition:opacity .3s;mix-blend-mode:overlay;
+  background:radial-gradient(220px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.22),transparent 60%)}
+.tilt.tilting .tilt-glare{opacity:1}
+body.light .tilt-glare{mix-blend-mode:multiply;
+  background:radial-gradient(220px circle at var(--gx,50%) var(--gy,50%),rgba(29,82,214,.1),transparent 60%)}
+
+/* ---- HERO : depth-layered 3D plane that rotates with the mouse ---- */
+#hero{perspective:1300px}
+.h-inner{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
+.h-inner.h-tilting{transition:transform .12s linear}
+.h-inner>div{transform-style:preserve-3d}
+/* each block lifted to a different depth so it parallaxes as the plane turns */
+.h-avail{transform:translateZ(34px)}
+.h-name{transform:translateZ(56px)}
+.h-desc{transform:translateZ(22px)}
+.h-btns{transform:translateZ(40px)}
+.h-tech{transform:translateZ(14px)}
+.h-stats{transform:translateZ(50px);transform-style:preserve-3d}
+
+/* respect reduced-motion: flatten everything */
+@media(prefers-reduced-motion:reduce){
+  .rv,.rv-l,.rv-r{transform:none!important}
+  .h-inner,.h-inner>div,.h-stats{transform:none!important}
+  .tilt{transform:none!important}.tilt-glare{display:none}
+}
+@media(max-width:960px){
+  .h-inner>div,.h-avail,.h-name,.h-desc,.h-btns,.h-tech,.h-stats{transform:none}
+}
+
+/* ============================================================
+   ===== AURORA SUBSTRATE : self-contained WebGL fog bg =======
+   ============================================================ */
+/* fixed full-viewport canvas BEHIND everything (body::before/after are z:0,
+   sections z:auto/1). Must be a direct child of body — created in JS. */
+#bgfx{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block}
+
+/* Let the aurora bleed through the WHOLE page: sections become translucent over
+   the fog while their inner cards keep opaque backgrounds, so body text on cards
+   stays fully crisp. color-mix degrades gracefully — if unsupported, the original
+   opaque section bg simply stays (fog then shows in the hero only). */
+#about,#philosophy,#education,#expertise,footer{background-color:color-mix(in srgb,var(--bg) 91%,transparent)}
+#whatido,#skills,#projects,#contact{background-color:color-mix(in srgb,var(--bg2) 90%,transparent)}
+#experience{background-color:color-mix(in srgb,var(--bg3) 90%,transparent)}
+
+/* scroll-progress bar — a quiet "engineered" signal, also feeds the shader scroll */
+#sprog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;
+  z-index:300;background:linear-gradient(90deg,var(--ac),var(--ac2));pointer-events:none;
+  box-shadow:0 0 12px rgba(var(--ac-rgb),.6);transition:transform .08s linear}
+/* hero stat counters: tabular figures so the count-up never reflows the card */
+.hst-n{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
+
 /* ---- LIGHT THEME ---- */
 body.light{
   --bg:#f4f6fb;--bg2:#edf0f8;--bg3:#e4e9f5;--bg4:#dce3f0;
@@ -442,6 +510,39 @@ body.light .theme-btn::after{transform:translateX(16px);background:var(--ac)}
 .theme-icon-l{left:4px;opacity:0}
 body.light .theme-icon-d{opacity:0}
 body.light .theme-icon-l{opacity:1}
+
+/* ============================================================
+   ===== TYPOGRAPHY READABILITY PASS ==========================
+   Raises the sub-11px floor and unifies the scale so every label
+   is comfortably readable in both themes. Only ever increases
+   sizes; never shrinks. Placed last so it wins on source order.
+   ============================================================ */
+:root{
+  --fs-micro:11px;    /* smallest mono meta labels (eyebrows, dates, counts) */
+  --fs-label:11.5px;  /* uppercase mono UI labels (nav, badges, filters)     */
+  --fs-tag:12px;      /* all skill / tech / project chips — unified          */
+  --fs-body-sm:14px;  /* secondary body copy (card descriptions, bullets)    */
+  --fs-body:15px;     /* primary body copy                                   */
+}
+/* base reading size up a notch */
+body{font-size:16px}
+
+/* — smallest mono meta labels: lift the 9–10.5px floor to a readable 11px — */
+.ey-n,.ey-t,.h-tech-label,.hst-l,.scue,.career-tl-title,.ct-date,.ct-badge,
+.sk-exp,.bd-lead,.pj-group-name,.pjf-c,.pj-num,.pj-domain,.edu-yr,
+.co-link-lbl,.f-links a,.f-copy{font-size:var(--fs-micro)}
+
+/* — uppercase mono UI labels: 11.5px, consistent — */
+.n-links a,.n-resume,.n-hire,.h-avail,.h-at,.h-loc,.skn,.bd-date,.tl-stack,
+.phi-attr,.co-note,.exp-badge-sub,.pjf{font-size:var(--fs-label)}
+
+/* — every chip/tag the same size — */
+.h-chip,.abt,.wid-tag,.sk-tag,.pj-tag{font-size:var(--fs-tag)}
+
+/* — body copy: comfortable reading — */
+.spec-d,.ct-role,.edu-sch{font-size:13.5px}
+.sk-d,.wid-d,.pj-desc,.tl-li,.ab-p{font-size:var(--fs-body-sm)}
+.h-desc,.co-sub,.pj-intro,.co-link-val{font-size:var(--fs-body)}
 
 </style>
 </head>
@@ -1176,11 +1277,20 @@ const ro = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
   });
-}, { threshold: 0.07, rootMargin: '0px 0px -36px 0px' });
+}, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach((el, i) => {
   el.style.transitionDelay = (i % 5) * 0.07 + 's';
   ro.observe(el);
 });
+// Safety net: any reveal element that is already on/above the fold (or that the
+// observer somehow misses — large 3D-transformed containers can) gets revealed.
+const revealVisible = () => {
+  document.querySelectorAll('.rv:not(.in),.rv-l:not(.in),.rv-r:not(.in)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('in');
+  });
+};
+window.addEventListener('load', revealVisible);
+window.addEventListener('scroll', revealVisible, { passive: true });
 
 // ── Nav: active section highlighting + shrink ──────────────
 const nav = document.getElementById('nav');
@@ -1248,12 +1358,302 @@ document.querySelectorAll('.skn').forEach(btn => {
 // ── Theme toggle ──────────────────────────────────────────────
 const themeBtn = document.getElementById('themeBtn');
 const body = document.body;
-// Restore saved preference
-if (localStorage.getItem('theme') === 'light') body.classList.add('light');
+// DARK is the default: the page always opens dark. The toggle still works for
+// the session (and persists the key for live cross-tab sync) but never forces
+// light on load.
 themeBtn.addEventListener('click', () => {
   body.classList.toggle('light');
   localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
 });
+
+// ── 3D layer (tilt cards + depth-parallax hero) ───────────────
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const noHover = window.matchMedia('(hover: none), (max-width: 960px)').matches;
+  if (reduce || noHover) return;
+
+  // 3D tilt on every card-like element
+  const MAX = 8; // max tilt in degrees
+  document.querySelectorAll('.pj, .wid-card, .hst, .edu-c, .tl-c, .co-link, .spec').forEach(card => {
+    card.classList.add('tilt');
+    const glare = document.createElement('span');
+    glare.className = 'tilt-glare';
+    card.appendChild(glare);
+    let raf = null, rect = null;
+    const onMove = e => {
+      if (!rect) rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        const rx = (0.5 - py) * MAX * 2;
+        const ry = (px - 0.5) * MAX * 2;
+        card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(14px)`;
+        glare.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+        glare.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+        raf = null;
+      });
+    };
+    card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); card.classList.add('tilting'); });
+    card.addEventListener('mousemove', onMove);
+    card.addEventListener('mouseleave', () => {
+      if (raf) { cancelAnimationFrame(raf); raf = null; }
+      rect = null;
+      card.classList.remove('tilting');
+      card.style.transform = '';
+    });
+  });
+
+  // Hero: rotate the whole depth-layered plane toward the cursor
+  const hero = document.getElementById('hero');
+  const inner = hero && hero.querySelector('.h-inner');
+  if (inner) {
+    let raf = null;
+    hero.addEventListener('mousemove', e => {
+      const x = e.clientX / window.innerWidth - 0.5;
+      const y = e.clientY / window.innerHeight - 0.5;
+      if (raf) return;
+      raf = requestAnimationFrame(() => {
+        inner.classList.add('h-tilting');
+        inner.style.transform = `rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 9).toFixed(2)}deg)`;
+        raf = null;
+      });
+    });
+    hero.addEventListener('mouseleave', () => {
+      inner.classList.remove('h-tilting');
+      inner.style.transform = '';
+    });
+  }
+})();
+
+// ── Scroll-progress bar ───────────────────────────────────────
+(() => {
+  const bar = document.createElement('div');
+  bar.id = 'sprog';
+  document.body.appendChild(bar);
+  const upd = () => {
+    const h = document.documentElement.scrollHeight - window.innerHeight;
+    const p = h > 0 ? window.scrollY / h : 0;
+    bar.style.transform = 'scaleX(' + Math.max(0, Math.min(p, 1)).toFixed(4) + ')';
+  };
+  window.addEventListener('scroll', upd, { passive: true });
+  window.addEventListener('resize', upd);
+  upd();
+})();
+
+// ── Animated hero stat counters (powers-on moment) ────────────
+(() => {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (reduce) return; // leave the final numbers in place, no motion
+  const ease = t => 1 - Math.pow(2, -10 * t);
+  document.querySelectorAll('.hst-n').forEach(el => {
+    const tn = [...el.childNodes].find(n => n.nodeType === 3 && n.textContent.trim() !== '');
+    if (!tn) return;
+    const target = parseInt(tn.textContent, 10);
+    if (isNaN(target)) return;
+    let started = false;
+    const io = new IntersectionObserver(es => {
+      es.forEach(e => {
+        if (e.isIntersecting && !started) {
+          started = true; io.disconnect();
+          const dur = 1400; let s0 = 0;
+          const step = ts => {
+            if (!s0) s0 = ts;
+            const p = Math.min((ts - s0) / dur, 1);
+            tn.textContent = Math.round(ease(p) * target);
+            if (p < 1) requestAnimationFrame(step); else tn.textContent = target;
+          };
+          requestAnimationFrame(step);
+        }
+      });
+    }, { threshold: 0.4 });
+    io.observe(el);
+  });
+})();
+
+// ── Aurora Substrate: self-contained WebGL1 fog background ────
+// Domain-warped fBm fog shaded into aurora curtains, themed live from the
+// page's CSS tokens. Strictly additive: any failure removes the canvas and the
+// existing CSS scene/orbs/grid remain a complete fallback.
+(() => {
+  const reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const touchMQ = window.matchMedia('(hover: none), (max-width: 960px)');
+  if (touchMQ.matches) return; // mobile/touch: CSS fallback carries the hero
+
+  const VERT = 'attribute vec2 aPos;void main(){gl_Position=vec4(aPos,0.0,1.0);}';
+  const FRAG = [
+    '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+    'precision highp float;',
+    '#else',
+    'precision mediump float;',
+    '#endif',
+    'uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform float uScroll;',
+    'uniform vec3 uColA;uniform vec3 uColB;uniform vec3 uColC;uniform vec3 uBg;',
+    'uniform float uDark;uniform float uIntensity;',
+    'float hash(vec2 p){p=fract(p*vec2(123.34,345.45));p+=dot(p,p+34.345);return fract(p.x*p.y);}',
+    'float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);',
+    'float a=hash(i),b=hash(i+vec2(1.0,0.0)),c=hash(i+vec2(0.0,1.0)),d=hash(i+vec2(1.0,1.0));',
+    'return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
+    'float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.0+vec2(11.3,7.1);a*=0.5;}return v;}',
+    'void main(){',
+    ' vec2 uv=gl_FragCoord.xy/uRes;float aspect=uRes.x/uRes.y;',
+    ' vec2 p=uv-0.5;p.x*=aspect;',
+    ' float t=uTime*0.06;vec2 mo=uMouse;mo.x*=aspect;',
+    ' vec2 q=p;q.y+=uScroll*0.30;q+=mo*0.10;',
+    ' vec2 warp=vec2(fbm(q*1.4+vec2(0.0,t)),fbm(q*1.4+vec2(5.2,3.3-t*0.8)));',
+    ' vec2 sp=q*1.25+0.85*warp;',
+    ' float acc=0.0;',
+    ' for(int i=0;i<5;i++){float fi=float(i);',
+    '   vec2 o=sp+vec2(fi*0.10,-fi*0.07)+warp*(fi*0.06);',
+    '   float d=fbm(o*(1.0+fi*0.12)+t*0.6);',
+    '   d=smoothstep(0.44,0.86,d);',
+    '   acc+=d*(1.0-acc)*(0.6-fi*0.07);}',
+    ' acc=pow(clamp(acc,0.0,1.0),1.45);',
+    ' float md=length(p-mo*0.5);acc+=exp(-md*md*3.6)*0.14;',
+    ' vec3 col=mix(uColA,uColB,smoothstep(0.0,0.6,acc));',
+    ' col=mix(col,uColC,smoothstep(0.45,1.0,acc)*clamp(uScroll*1.4,0.0,1.0));',
+    ' float vig=1.0-dot(p,p)*0.42;',
+    ' float prot=smoothstep(0.0,0.62,length((uv-0.5)*vec2(aspect*0.7,1.15)));',
+    ' float intensity=acc*uIntensity*max(vig,0.0)*mix(0.38,1.0,prot);',
+    ' vec3 darkC=uBg+col*intensity*0.8;',
+    ' vec3 tint=mix(col,vec3(1.0),0.35);',
+    ' vec3 lightC=mix(uBg,mix(uBg,tint,0.42),clamp(intensity*0.85,0.0,1.0));',
+    ' vec3 outc=mix(lightC,darkC,clamp(uDark,0.0,1.0));',
+    ' gl_FragColor=vec4(clamp(outc,0.0,1.0),1.0);',
+    '}'
+  ].join('\n');
+
+  let canvas = null, gl = null, prog = null, buf = null, raf = 0;
+  let running = false, dead = false;
+  const U = {};
+  const mouse = [0, 0], mouseT = [0, 0];
+  let scroll = 0, scrollT = 0, clock = 0, last = 0;
+  // EMA frame-time perf guard
+  let ema = 0.016, slowFrames = 0;
+  let renderScale = Math.min(window.devicePixelRatio || 1, 1.5);
+  renderScale *= ((window.innerWidth * window.innerHeight) > 1600000 || (window.devicePixelRatio || 1) > 2) ? 0.6 : 0.75;
+
+  const fallbackColors = { A: [.31, .56, .97], B: [.65, .55, .98], C: [.20, .83, .60], bg: [.027, .035, .059], dark: 1 };
+  let col = clone(fallbackColors), colT = clone(fallbackColors);
+  function clone(c) { return { A: c.A.slice(), B: c.B.slice(), C: c.C.slice(), bg: c.bg.slice(), dark: c.dark }; }
+  function parseRGB(s) { const m = (s || '').trim().split(',').map(parseFloat); return (m.length >= 3 && m.every(x => !isNaN(x))) ? [m[0] / 255, m[1] / 255, m[2] / 255] : null; }
+  function parseHex(h) { const m = /#?([0-9a-f]{6})/i.exec((h || '').trim()); if (!m) return null; const n = parseInt(m[1], 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
+  function readColors() {
+    const cs = getComputedStyle(document.body);
+    return {
+      A: parseRGB(cs.getPropertyValue('--ac-rgb')) || fallbackColors.A,
+      B: parseRGB(cs.getPropertyValue('--pu-rgb')) || fallbackColors.B,
+      C: parseRGB(cs.getPropertyValue('--gr-rgb')) || fallbackColors.C,
+      bg: parseHex(cs.getPropertyValue('--bg')) || fallbackColors.bg,
+      dark: document.body.classList.contains('light') ? 0 : 1
+    };
+  }
+
+  function compile(type, src) {
+    const sh = gl.createShader(type);
+    gl.shaderSource(sh, src); gl.compileShader(sh);
+    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) { gl.deleteShader(sh); return null; }
+    return sh;
+  }
+  function size() {
+    if (!canvas) return;
+    const w = Math.max(1, Math.floor(window.innerWidth * renderScale));
+    const h = Math.max(1, Math.floor(window.innerHeight * renderScale));
+    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+    gl.viewport(0, 0, w, h);
+    if (U.uRes) gl.uniform2f(U.uRes, w, h);
+  }
+  function destroy() {
+    dead = true; running = false;
+    if (raf) cancelAnimationFrame(raf), raf = 0;
+    if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
+    canvas = gl = prog = null;
+  }
+
+  function init() {
+    try {
+      canvas = document.getElementById('bgfx');
+      if (!canvas) { canvas = document.createElement('canvas'); canvas.id = 'bgfx'; canvas.setAttribute('aria-hidden', 'true'); canvas.setAttribute('role', 'presentation'); document.body.prepend(canvas); }
+      const opts = { antialias: false, alpha: false, depth: false, stencil: false, powerPreference: 'low-power', failIfMajorPerformanceCaveat: false };
+      gl = canvas.getContext('webgl', opts) || canvas.getContext('experimental-webgl', opts);
+      if (!gl) { destroy(); return false; }
+      const vs = compile(gl.VERTEX_SHADER, VERT), fs = compile(gl.FRAGMENT_SHADER, FRAG);
+      if (!vs || !fs) { destroy(); return false; }
+      prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { destroy(); return false; }
+      gl.useProgram(prog);
+      buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+      const loc = gl.getAttribLocation(prog, 'aPos');
+      gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+      ['uRes', 'uTime', 'uMouse', 'uScroll', 'uColA', 'uColB', 'uColC', 'uBg', 'uDark', 'uIntensity'].forEach(n => U[n] = gl.getUniformLocation(prog, n));
+      col = readColors(); colT = clone(col);
+      size();
+      canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }, false);
+      canvas.addEventListener('webglcontextrestored', () => { if (!dead) { init(); } }, false);
+      return true;
+    } catch (err) { destroy(); return false; }
+  }
+
+  function drawOnce() {
+    gl.uniform1f(U.uTime, clock); gl.uniform2f(U.uMouse, mouse[0], mouse[1]); gl.uniform1f(U.uScroll, scroll);
+    gl.uniform3fv(U.uColA, col.A); gl.uniform3fv(U.uColB, col.B); gl.uniform3fv(U.uColC, col.C);
+    gl.uniform3fv(U.uBg, col.bg); gl.uniform1f(U.uDark, col.dark); gl.uniform1f(U.uIntensity, 1.0);
+    gl.drawArrays(gl.TRIANGLES, 0, 3);
+  }
+
+  function frame(ts) {
+    if (!running || dead) return;
+    if (!last) last = ts;
+    let dt = (ts - last) / 1000; last = ts; if (dt > 0.05) dt = 0.05;
+    clock += dt;
+    // perf guard: if sustained slow, drop render resolution
+    ema = ema * 0.9 + dt * 0.1;
+    if (ema > 0.024) { if (++slowFrames > 30 && renderScale > 0.42) { renderScale *= 0.82; slowFrames = 0; size(); } } else slowFrames = 0;
+    // ease state + theme tween
+    mouse[0] += (mouseT[0] - mouse[0]) * 0.045; mouse[1] += (mouseT[1] - mouse[1]) * 0.045;
+    scroll += (scrollT - scroll) * 0.06;
+    const k = 0.10;
+    ['A', 'B', 'C', 'bg'].forEach(key => { for (let i = 0; i < 3; i++) col[key][i] += (colT[key][i] - col[key][i]) * k; });
+    col.dark += (colT.dark - col.dark) * k;
+    drawOnce();
+    raf = requestAnimationFrame(frame);
+  }
+  function start() { if (!running && !dead && gl) { running = true; last = 0; raf = requestAnimationFrame(frame); } }
+  function stop() { running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }
+
+  // ---- boot ----
+  const reduced = reduceMQ.matches;
+  if (!init()) return; // fell back to CSS scene
+
+  // scroll target (cached scalar; no layout reads in the loop)
+  const onScroll = () => { const h = document.documentElement.scrollHeight - window.innerHeight; scrollT = h > 0 ? Math.min(window.scrollY / h, 1) : 0; };
+  // resize (debounced)
+  let rt = 0; const onResize = () => { clearTimeout(rt); rt = setTimeout(() => { if (!dead && gl) size(); }, 120); };
+
+  if (reduced) {
+    // one static, pleasant frame — no loop, no pointer/scroll motion
+    clock = 7.0; drawOnce();
+    new MutationObserver(() => { col = readColors(); colT = clone(col); drawOnce(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    window.addEventListener('resize', () => { if (!dead && gl) { size(); drawOnce(); } });
+  } else {
+    window.addEventListener('mousemove', e => {
+      mouseT[0] = (e.clientX / window.innerWidth) * 2 - 1;
+      mouseT[1] = (1 - e.clientY / window.innerHeight) * 2 - 1;
+    }, { passive: true });
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onResize);
+    onScroll();
+    // theme toggle → retarget colors (tween happens in the loop)
+    new MutationObserver(() => { colT = readColors(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
+    // live re-evaluate if the user flips OS reduced-motion / switches to touch
+    const reEval = () => { if (touchMQ.matches || reduceMQ.matches) { destroy(); } };
+    (reduceMQ.addEventListener ? reduceMQ.addEventListener('change', reEval) : reduceMQ.addListener && reduceMQ.addListener(reEval));
+    (touchMQ.addEventListener ? touchMQ.addEventListener('change', reEval) : touchMQ.addListener && touchMQ.addListener(reEval));
+    start();
+  }
+})();
 </script>
 </body>
 </html>
