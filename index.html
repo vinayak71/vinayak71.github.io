@@ -605,7 +605,7 @@
   /* ── PRINT ── */
   @media print {
     body { background: #fff; color: #111; }
-    body::before, body::after, .orb, .theme-btn, .portfolio-btn { display: none; }
+    body::before, body::after, .orb, .theme-btn, .portfolio-btn, #bgfx, #sprog { display: none; }
     :root {
       --bg:#fff; --surface:#f9f9f9; --surface2:#f2f2f2; --surface3:#eee;
       --border:#e0e0e0; --border2:#ccc; --border3:#bbb;
@@ -617,6 +617,36 @@
     .container { padding: 0; max-width: 100%; }
     .job { break-inside: avoid; }
   }
+
+  /* ============================================================
+     ===== AURORA SUBSTRATE + TYPOGRAPHY (ported from portfolio) =
+     ============================================================ */
+  /* fixed full-viewport WebGL fog canvas behind everything (created in JS) */
+  #bgfx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
+
+  /* scroll-progress bar */
+  #sprog {
+    position: fixed; top: 0; left: 0; height: 2px; width: 100%;
+    transform: scaleX(0); transform-origin: 0 50%; z-index: 60;
+    background: linear-gradient(90deg, var(--accent), var(--accent2));
+    pointer-events: none; box-shadow: 0 0 12px rgba(var(--accent-rgb),0.6);
+    transition: transform 0.08s linear;
+  }
+
+  /* — TYPOGRAPHY READABILITY PASS: lift the sub-11px floor and unify the scale.
+       Only ever increases sizes; placed last so it wins on source order. — */
+  body { font-size: 15.5px; }
+  /* smallest mono meta labels → 11px */
+  .location, .job-sub-sep, .tl-badge, .stack-bar span, .edu-year { font-size: 11px; }
+  /* uppercase mono UI labels → 11.5px, consistent */
+  .availability, .meta-tag, .skill-label, .sec-label, .date-badge,
+  .stack-bar, .proj-stack, .footer-links a, .portfolio-btn { font-size: 11.5px; }
+  /* secondary body copy → comfortable reading */
+  .contact-item, .skill-value, .title, .proj-desc, .edu-school { font-size: 13.5px; }
+  .bul, .bul.highlight { font-size: 14px; }
+  /* card titles + primary copy */
+  .proj-name, .edu-deg { font-size: 14.5px; }
+  .tagline, .summary-text { font-size: 15px; }
 </style>
 </head>
 <body>
@@ -918,20 +948,179 @@
 </div>
 
 <script>
-  // Theme toggle — shares the 'theme' key with the portfolio so the choice
-  // carries across both pages on the same origin.
+  // ── Theme toggle — DARK is the default: the page always opens dark. The
+  //    toggle still works (and broadcasts live to an open portfolio tab); it
+  //    just no longer forces light on load. ──
   (function () {
     var body = document.body;
     var btn = document.getElementById('themeBtn');
-    if (localStorage.getItem('theme') === 'light') body.classList.add('light');
     btn.addEventListener('click', function () {
       body.classList.toggle('light');
       localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
     });
-    // keep in sync if the other tab/page changes it
     window.addEventListener('storage', function (e) {
       if (e.key === 'theme') body.classList.toggle('light', e.newValue === 'light');
     });
+  })();
+
+  // ── Scroll-progress bar ──
+  (function () {
+    var bar = document.createElement('div'); bar.id = 'sprog';
+    document.body.appendChild(bar);
+    function upd() {
+      var h = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = 'scaleX(' + Math.max(0, Math.min(h > 0 ? window.scrollY / h : 0, 1)).toFixed(4) + ')';
+    }
+    window.addEventListener('scroll', upd, { passive: true });
+    window.addEventListener('resize', upd); upd();
+  })();
+
+  // ── Aurora Substrate: self-contained WebGL1 fog background ──
+  // Same engine as the portfolio, themed live from this file's --accent-rgb /
+  // --green-rgb / --gold-rgb / --bg tokens. Strictly additive: any failure
+  // removes the canvas and the existing orbs/noise remain a complete fallback.
+  (function () {
+    var reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var touchMQ = window.matchMedia('(hover: none), (max-width: 680px)');
+    if (touchMQ.matches) return;
+
+    var VERT = 'attribute vec2 aPos;void main(){gl_Position=vec4(aPos,0.0,1.0);}';
+    var FRAG = [
+      '#ifdef GL_FRAGMENT_PRECISION_HIGH',
+      'precision highp float;',
+      '#else',
+      'precision mediump float;',
+      '#endif',
+      'uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform float uScroll;',
+      'uniform vec3 uColA;uniform vec3 uColB;uniform vec3 uColC;uniform vec3 uBg;',
+      'uniform float uDark;uniform float uIntensity;',
+      'float hash(vec2 p){p=fract(p*vec2(123.34,345.45));p+=dot(p,p+34.345);return fract(p.x*p.y);}',
+      'float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);',
+      'float a=hash(i),b=hash(i+vec2(1.0,0.0)),c=hash(i+vec2(0.0,1.0)),d=hash(i+vec2(1.0,1.0));',
+      'return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
+      'float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.0+vec2(11.3,7.1);a*=0.5;}return v;}',
+      'void main(){',
+      ' vec2 uv=gl_FragCoord.xy/uRes;float aspect=uRes.x/uRes.y;',
+      ' vec2 p=uv-0.5;p.x*=aspect;',
+      ' float t=uTime*0.06;vec2 mo=uMouse;mo.x*=aspect;',
+      ' vec2 q=p;q.y+=uScroll*0.30;q+=mo*0.10;',
+      ' vec2 warp=vec2(fbm(q*1.4+vec2(0.0,t)),fbm(q*1.4+vec2(5.2,3.3-t*0.8)));',
+      ' vec2 sp=q*1.25+0.85*warp;',
+      ' float acc=0.0;',
+      ' for(int i=0;i<5;i++){float fi=float(i);',
+      '   vec2 o=sp+vec2(fi*0.10,-fi*0.07)+warp*(fi*0.06);',
+      '   float d=fbm(o*(1.0+fi*0.12)+t*0.6);',
+      '   d=smoothstep(0.44,0.86,d);',
+      '   acc+=d*(1.0-acc)*(0.6-fi*0.07);}',
+      ' acc=pow(clamp(acc,0.0,1.0),1.45);',
+      ' float md=length(p-mo*0.5);acc+=exp(-md*md*3.6)*0.14;',
+      ' vec3 col=mix(uColA,uColB,smoothstep(0.0,0.6,acc));',
+      ' col=mix(col,uColC,smoothstep(0.45,1.0,acc)*clamp(uScroll*1.4,0.0,1.0));',
+      ' float vig=1.0-dot(p,p)*0.42;',
+      ' float prot=smoothstep(0.0,0.62,length((uv-0.5)*vec2(aspect*0.7,1.15)));',
+      ' float intensity=acc*uIntensity*max(vig,0.0)*mix(0.38,1.0,prot);',
+      ' vec3 darkC=uBg+col*intensity*0.72;',
+      ' vec3 tint=mix(col,vec3(1.0),0.35);',
+      ' vec3 lightC=mix(uBg,mix(uBg,tint,0.42),clamp(intensity*0.85,0.0,1.0));',
+      ' vec3 outc=mix(lightC,darkC,clamp(uDark,0.0,1.0));',
+      ' gl_FragColor=vec4(clamp(outc,0.0,1.0),1.0);',
+      '}'
+    ].join('\n');
+
+    var canvas = null, gl = null, prog = null, raf = 0, running = false, dead = false;
+    var U = {};
+    var mouse = [0, 0], mouseT = [0, 0];
+    var scroll = 0, scrollT = 0, clock = 0, last = 0, ema = 0.016, slowFrames = 0;
+    var renderScale = Math.min(window.devicePixelRatio || 1, 1.5);
+    renderScale *= ((window.innerWidth * window.innerHeight) > 1600000 || (window.devicePixelRatio || 1) > 2) ? 0.6 : 0.75;
+
+    // Match the portfolio's indigo→violet→teal identity. Accent + teal are read
+    // live from this file's tokens; violet is theme-branched (no --pu token here).
+    var fb = { A: [.31, .56, .97], B: [.65, .55, .98], C: [.29, .87, .50], bg: [.031, .043, .071], dark: 1 };
+    function clone(c) { return { A: c.A.slice(), B: c.B.slice(), C: c.C.slice(), bg: c.bg.slice(), dark: c.dark }; }
+    var col = clone(fb), colT = clone(fb);
+    function parseRGB(s) { var m = (s || '').trim().split(',').map(parseFloat); return (m.length >= 3 && m.every(function (x) { return !isNaN(x); })) ? [m[0] / 255, m[1] / 255, m[2] / 255] : null; }
+    function parseHex(h) { var m = /#?([0-9a-f]{6})/i.exec((h || '').trim()); if (!m) return null; var n = parseInt(m[1], 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
+    function readColors() {
+      var cs = getComputedStyle(document.body);
+      var dark = !document.body.classList.contains('light');
+      return {
+        A: parseRGB(cs.getPropertyValue('--accent-rgb')) || fb.A,
+        B: dark ? [0.65, 0.55, 0.98] : [0.49, 0.23, 0.93],
+        C: parseRGB(cs.getPropertyValue('--green-rgb')) || fb.C,
+        bg: parseHex(cs.getPropertyValue('--bg')) || fb.bg,
+        dark: dark ? 1 : 0
+      };
+    }
+    function compile(type, src) { var sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) { gl.deleteShader(sh); return null; } return sh; }
+    function size() {
+      if (!canvas) return;
+      var w = Math.max(1, Math.floor(window.innerWidth * renderScale)), h = Math.max(1, Math.floor(window.innerHeight * renderScale));
+      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
+      gl.viewport(0, 0, w, h); if (U.uRes) gl.uniform2f(U.uRes, w, h);
+    }
+    function destroy() { dead = true; running = false; if (raf) cancelAnimationFrame(raf), raf = 0; if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas); canvas = gl = prog = null; }
+    function init() {
+      try {
+        canvas = document.getElementById('bgfx');
+        if (!canvas) { canvas = document.createElement('canvas'); canvas.id = 'bgfx'; canvas.setAttribute('aria-hidden', 'true'); canvas.setAttribute('role', 'presentation'); document.body.insertBefore(canvas, document.body.firstChild); }
+        var opts = { antialias: false, alpha: false, depth: false, stencil: false, powerPreference: 'low-power' };
+        gl = canvas.getContext('webgl', opts) || canvas.getContext('experimental-webgl', opts);
+        if (!gl) { destroy(); return false; }
+        var vs = compile(gl.VERTEX_SHADER, VERT), fs = compile(gl.FRAGMENT_SHADER, FRAG);
+        if (!vs || !fs) { destroy(); return false; }
+        prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
+        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { destroy(); return false; }
+        gl.useProgram(prog);
+        var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
+        var loc = gl.getAttribLocation(prog, 'aPos'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
+        ['uRes', 'uTime', 'uMouse', 'uScroll', 'uColA', 'uColB', 'uColC', 'uBg', 'uDark', 'uIntensity'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
+        col = readColors(); colT = clone(col); size();
+        canvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }, false);
+        canvas.addEventListener('webglcontextrestored', function () { if (!dead) init(); }, false);
+        return true;
+      } catch (err) { destroy(); return false; }
+    }
+    function drawOnce() {
+      gl.uniform1f(U.uTime, clock); gl.uniform2f(U.uMouse, mouse[0], mouse[1]); gl.uniform1f(U.uScroll, scroll);
+      gl.uniform3fv(U.uColA, col.A); gl.uniform3fv(U.uColB, col.B); gl.uniform3fv(U.uColC, col.C);
+      gl.uniform3fv(U.uBg, col.bg); gl.uniform1f(U.uDark, col.dark); gl.uniform1f(U.uIntensity, 1.0);
+      gl.drawArrays(gl.TRIANGLES, 0, 3);
+    }
+    function frame(ts) {
+      if (!running || dead) return;
+      if (!last) last = ts;
+      var dt = (ts - last) / 1000; last = ts; if (dt > 0.05) dt = 0.05; clock += dt;
+      ema = ema * 0.9 + dt * 0.1;
+      if (ema > 0.024) { if (++slowFrames > 30 && renderScale > 0.42) { renderScale *= 0.82; slowFrames = 0; size(); } } else slowFrames = 0;
+      mouse[0] += (mouseT[0] - mouse[0]) * 0.045; mouse[1] += (mouseT[1] - mouse[1]) * 0.045;
+      scroll += (scrollT - scroll) * 0.06;
+      var k = 0.10;
+      ['A', 'B', 'C', 'bg'].forEach(function (key) { for (var i = 0; i < 3; i++) col[key][i] += (colT[key][i] - col[key][i]) * k; });
+      col.dark += (colT.dark - col.dark) * k;
+      drawOnce(); raf = requestAnimationFrame(frame);
+    }
+    function startLoop() { if (!running && !dead && gl) { running = true; last = 0; raf = requestAnimationFrame(frame); } }
+    function stopLoop() { running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }
+
+    if (!init()) return;
+    var reduced = reduceMQ.matches;
+    if (reduced) {
+      clock = 7.0; drawOnce();
+      new MutationObserver(function () { col = readColors(); colT = clone(col); drawOnce(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      window.addEventListener('resize', function () { if (!dead && gl) { size(); drawOnce(); } });
+    } else {
+      window.addEventListener('mousemove', function (e) { mouseT[0] = (e.clientX / window.innerWidth) * 2 - 1; mouseT[1] = (1 - e.clientY / window.innerHeight) * 2 - 1; }, { passive: true });
+      window.addEventListener('scroll', function () { var h = document.documentElement.scrollHeight - window.innerHeight; scrollT = h > 0 ? Math.min(window.scrollY / h, 1) : 0; }, { passive: true });
+      var rt = 0; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!dead && gl) size(); }, 120); });
+      new MutationObserver(function () { colT = readColors(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
+      document.addEventListener('visibilitychange', function () { if (document.hidden) stopLoop(); else startLoop(); });
+      var reEval = function () { if (touchMQ.matches || reduceMQ.matches) destroy(); };
+      (reduceMQ.addEventListener ? reduceMQ.addEventListener('change', reEval) : reduceMQ.addListener && reduceMQ.addListener(reEval));
+      (touchMQ.addEventListener ? touchMQ.addEventListener('change', reEval) : touchMQ.addListener && touchMQ.addListener(reEval));
+      startLoop();
+    }
   })();
 </script>
 </body>
