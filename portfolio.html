@@ -3,631 +3,744 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinaykumar Mishra — Senior Software Engineer</title>
+<title>Vinaykumar Mishra — Senior Software Engineer · Expedition Log</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Special+Elite&family=Karla:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-:root{
-  --bg:#07090f;--bg2:#0b0e18;--bg3:#0f1420;--bg4:#141b28;
-  --b1:#212c42;--b2:#2b3a56;--b3:#3a4d6e;--b4:#4a608a;
-  --ac:#5e9bff;--ac2:#a8caff;--ac3:#1d3a6e;--ac4:#0d2040;--ach:#6aa0ff;
-  /* accent / domain RGB triplets — redefined per theme so every tint adapts */
-  --ac-rgb:79,142,247;--gr-rgb:52,211,153;--pu-rgb:167,139,250;--hc:#60a5fa;--hc-rgb:96,165,250;
-  --go:#e8b84b;--go2:rgba(232,184,75,0.1);--go3:rgba(232,184,75,0.25);
-  --gr:#34d399;--gr2:rgba(var(--gr-rgb),0.08);--gr3:rgba(var(--gr-rgb),0.22);
-  --pu:#a78bfa;--re:#f87171;
-  --t1:#f0f3fb;--t2:#aab8d4;--t3:#7286a8;--t4:#4a5a78;
-  --fh:'Syne',sans-serif;--fb:'Inter',sans-serif;--fm:'JetBrains Mono',monospace;
-}
-body{background:var(--bg);color:var(--t1);font-family:var(--fb);line-height:1.7;overflow-x:hidden;font-size:15px}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--bg)}::-webkit-scrollbar-thumb{background:var(--b3);border-radius:2px}
-body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");opacity:.4}
-body::after{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;
-  background-image:linear-gradient(rgba(var(--ac-rgb),.025) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--ac-rgb),.025) 1px,transparent 1px);
-  background-size:60px 60px}
 
-/* ---- NAV ---- */
-nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;justify-content:space-between;align-items:center;
-  padding:18px 56px;background:rgba(7,9,15,.88);backdrop-filter:blur(28px);
-  border-bottom:1px solid rgba(var(--ac-rgb),.06);transition:padding .3s,background .3s}
-nav.scrolled{padding:11px 56px;background:rgba(7,9,15,.97)}
-.n-logo{font-family:var(--fh);font-size:17px;font-weight:800;color:var(--t1);letter-spacing:-.02em}
-.n-logo span{color:var(--ac)}
-.n-links{display:flex;gap:28px}
-.n-links a{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--t3);text-decoration:none;transition:color .2s;position:relative;padding-bottom:2px}
-.n-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:1px;
-  background:var(--ac);transform:scaleX(0);transform-origin:left;transition:transform .25s}
-.n-links a:hover,.n-links a.active{color:var(--ac2)}
+/* ================= SAFARI TOKENS ================= */
+:root{
+  /* daytime savanna */
+  --paper:#F2E8CF;        /* sun-bleached field paper   */
+  --paper2:#EADFC0;       /* deeper parchment           */
+  --card:#F7F0DC;         /* journal card               */
+  --ink:#2B2415;          /* expedition ink             */
+  --ink2:#5C5138;         /* faded ink                  */
+  --ink3:#8A7C5C;         /* pencil note                */
+  --jungle:#1E4632;       /* deep canopy green          */
+  --leaf:#4E7A3A;         /* leaf green                 */
+  --leaf2:#7A9B4E;        /* sunlit leaf                */
+  --amber:#C97B1B;        /* safari sunset amber        */
+  --amber2:#E09A3E;
+  --clay:#9C5230;         /* ranger clay red            */
+  --wood:#6B4A2B;         /* signpost wood              */
+  --wood2:#57391F;
+  --khaki:#C9B784;
+  --skyA:#FBD9A0;         /* hero sky top               */
+  --skyB:#F4E4B8;         /* hero sky bottom            */
+  --sun:#F2A93B;
+  --scene1:#B8A96E;       /* far hills                  */
+  --scene2:#5F7C3E;       /* mid bush                   */
+  --scene3:#243B23;       /* foreground silhouettes     */
+  --line:rgba(43,36,21,.28);
+  --jungle-fg:#F2E8CF;    /* text/icon color to place ON TOP of a --jungle background */
+  --fd:'Alfa Slab One',serif;
+  --ft:'Special Elite',monospace;
+  --fb:'Karla',sans-serif;
+  --shadow:4px 5px 0 rgba(43,36,21,.16);
+}
+body.night{
+  /* jungle after dark */
+  --paper:#0F1F16;
+  --paper2:#0B1810;
+  --card:#15291D;
+  --ink:#EFE6C8;
+  --ink2:#C4B78F;
+  --ink3:#8E8562;
+  --jungle:#B7D6A0;
+  --leaf:#7FB35C;
+  --leaf2:#9CC76F;
+  --amber:#E8A54B;
+  --amber2:#F2BE6E;
+  --clay:#D98E5A;
+  --wood:#3A5B3E;
+  --wood2:#2C4930;
+  --khaki:#4E6647;
+  --skyA:#0A1B2E;
+  --skyB:#122A22;
+  --sun:#EFE3B8;
+  --scene1:#1C3527;
+  --scene2:#142A1D;
+  --scene3:#060F0A;
+  --line:rgba(239,230,200,.25);
+  --jungle-fg:#0B1810;    /* jungle bg turns light at night — pair it with dark text/icons */
+  --shadow:4px 5px 0 rgba(0,0,0,.4);
+}
+::selection{background:var(--amber);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--paper2)}
+::-webkit-scrollbar-thumb{background:var(--wood);border-radius:3px}
+
+body{
+  background:var(--paper);color:var(--ink);font-family:var(--fb);
+  font-size:16px;line-height:1.7;overflow-x:hidden;
+  transition:background .5s ease,color .5s ease;
+}
+/* paper grain */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E")}
+
+em{font-style:normal;color:var(--amber);position:relative}
+strong{color:var(--ink)}
+
+/* ================= REVEAL ================= */
+.rv{opacity:0;transform:translateY(26px) rotate(.4deg);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:translateY(0) rotate(0)}
+.rv-l{opacity:0;transform:translateX(-24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv-l.in{opacity:1;transform:translateX(0)}
+.rv-r{opacity:0;transform:translateX(24px);transition:opacity .7s ease,transform .7s cubic-bezier(.22,.61,.36,1)}
+.rv-r.in{opacity:1;transform:translateX(0)}
+@media (prefers-reduced-motion: reduce){
+  .rv,.rv-l,.rv-r{opacity:1!important;transform:none!important;transition:none!important}
+  *{animation-duration:.001s!important;animation-iteration-count:1!important}
+}
+
+/* ================= NAV ================= */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;
+  padding:14px 44px;background:color-mix(in srgb,var(--paper) 88%,transparent);
+  backdrop-filter:blur(14px);border-bottom:3px solid var(--jungle);transition:padding .3s,background .4s}
+nav.scrolled{padding:9px 44px}
+.n-logo{display:flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink)}
+.n-badge{width:38px;height:38px;border-radius:50%;background:var(--jungle);color:var(--paper);
+  display:flex;align-items:center;justify-content:center;font-family:var(--fd);font-size:13px;
+  border:2px dashed var(--paper);box-shadow:0 0 0 3px var(--jungle);letter-spacing:.02em}
+body.night .n-badge{color:var(--paper2);background:var(--jungle)}
+.n-word{font-family:var(--ft);font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink2);line-height:1.3}
+.n-word b{display:block;color:var(--ink);font-size:13px}
+.n-links{display:flex;gap:22px}
+.n-links a{font-family:var(--ft);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--ink2);text-decoration:none;position:relative;padding-bottom:3px;transition:color .2s}
+.n-links a::after{content:'';position:absolute;bottom:0;left:0;width:100%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--amber) 0 5px,transparent 5px 9px);
+  transform:scaleX(0);transform-origin:left;transition:transform .25s}
+.n-links a:hover,.n-links a.active{color:var(--ink)}
 .n-links a.active::after,.n-links a:hover::after{transform:scaleX(1)}
 .n-right{display:flex;align-items:center;gap:12px}
-.n-resume{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--t2);border:1px solid var(--b3);padding:8px 16px;border-radius:6px;
-  text-decoration:none;transition:border-color .2s,color .2s}
-.n-resume:hover{border-color:var(--ac);color:var(--ac2)}
-.n-hire{font-family:var(--fm);font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  background:var(--ac);color:#fff;padding:8px 18px;border-radius:6px;font-weight:500;
-  text-decoration:none;transition:background .2s,transform .15s,box-shadow .2s}
-.n-hire:hover{background:var(--ach);transform:translateY(-1px);box-shadow:0 6px 24px rgba(var(--ac-rgb),.35)}
+.n-resume{font-family:var(--ft);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--ink);border:2px solid var(--ink);padding:7px 14px;border-radius:3px;
+  text-decoration:none;transition:all .2s;background:transparent}
+.n-resume:hover{background:var(--ink);color:var(--paper)}
+.n-hire{font-family:var(--ft);font-size:12px;letter-spacing:.08em;text-transform:uppercase;
+  background:var(--amber);color:#fff;padding:8px 16px;border-radius:3px;border:2px solid var(--ink);
+  text-decoration:none;box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s}
+.n-hire:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.n-hire:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
 
-/* ---- ORB ---- */
-.orb{position:absolute;border-radius:50%;filter:blur(140px);pointer-events:none;animation:od 20s ease-in-out infinite alternate}
-@keyframes od{0%{transform:translate(0,0) scale(1)}100%{transform:translate(55px,40px) scale(1.1)}}
+/* mobile hamburger — hidden on desktop */
+.n-burger{display:none;flex-direction:column;justify-content:center;gap:5px;width:38px;height:34px;
+  border:2px solid var(--ink);border-radius:4px;background:var(--card);cursor:pointer;padding:0 7px;flex-shrink:0}
+.n-burger span{display:block;height:2px;width:100%;background:var(--ink);border-radius:2px;transition:transform .25s,opacity .2s}
+.n-burger[aria-expanded="true"] span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+.n-burger[aria-expanded="true"] span:nth-child(2){opacity:0}
+.n-burger[aria-expanded="true"] span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
 
-/* ---- SECTIONS ---- */
-section{padding:96px 56px;position:relative;overflow:hidden}
-.si{max-width:1100px;margin:0 auto;position:relative;z-index:1}
-.ey{display:flex;align-items:center;gap:14px;margin-bottom:56px}
-.ey-n{font-family:var(--fm);font-size:10px;color:var(--ac);letter-spacing:.08em;min-width:24px}
-.ey-l{height:1px;width:36px;background:linear-gradient(90deg,var(--b2),transparent)}
-.ey-t{font-family:var(--fm);font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--t3)}
+/* mobile nav panel */
+.mob-menu{position:fixed;top:0;left:0;right:0;z-index:250;background:var(--paper);
+  border-bottom:3px solid var(--jungle);box-shadow:0 14px 30px rgba(0,0,0,.18);
+  display:flex;flex-direction:column;padding:78px 26px 22px;gap:4px;
+  transform:translateY(-100%);opacity:0;pointer-events:none;transition:transform .3s ease,opacity .25s ease}
+.mob-menu.open{transform:translateY(0);opacity:1;pointer-events:auto}
+.mob-menu a{font-family:var(--ft);font-size:15px;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--ink);text-decoration:none;padding:14px 6px;border-bottom:1px dashed var(--line)}
+.mob-menu a:last-child{border-bottom:none}
+.mob-menu .mob-resume{margin-top:6px;background:var(--wood);color:#F5EBD3;text-align:center;
+  border-radius:4px;border:2px solid var(--ink);padding:12px}
+@media (max-width:860px){
+  .n-burger{display:flex}
+}
 
-/* ---- REVEAL (3D fold / swing in) ---- */
-.rv{opacity:0;transform:perspective(1200px) translateY(30px) rotateX(11deg);transform-origin:50% 0;
-  transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
-.rv.in{opacity:1;transform:perspective(1200px) translateY(0) rotateX(0)}
-.rv-l{opacity:0;transform:perspective(1200px) translateX(-26px) rotateY(-12deg);transform-origin:left center;
-  transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
-.rv-l.in{opacity:1;transform:perspective(1200px) translateX(0) rotateY(0)}
-.rv-r{opacity:0;transform:perspective(1200px) translateX(26px) rotateY(12deg);transform-origin:right center;
-  transition:opacity .7s ease,transform .8s cubic-bezier(.22,.61,.36,1)}
-.rv-r.in{opacity:1;transform:perspective(1200px) translateX(0) rotateY(0)}
+/* day/night toggle */
+.sky-btn{position:relative;width:56px;height:28px;border-radius:20px;cursor:pointer;
+  border:2px solid var(--ink);background:linear-gradient(90deg,#FBD9A0,#F2A93B);overflow:hidden;
+  transition:background .4s;flex-shrink:0}
+body.night .sky-btn{background:linear-gradient(90deg,#0A1B2E,#122A22)}
+.sky-btn .orbball{position:absolute;top:2px;left:3px;width:20px;height:20px;border-radius:50%;
+  background:#F2A93B;box-shadow:0 0 8px rgba(242,169,59,.9),inset -2px -2px 0 rgba(0,0,0,.12);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),background .4s,box-shadow .4s}
+body.night .sky-btn .orbball{transform:translateX(26px);background:#EFE3B8;box-shadow:0 0 10px rgba(239,227,184,.8),inset -4px 2px 0 rgba(20,42,34,.55)}
+.sky-btn:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--amber);outline-offset:2px}
 
-/* ===== HERO ===== */
-#hero{min-height:100vh;display:flex;align-items:center;padding:100px 56px 60px}
-.h-bg{position:absolute;inset:0;
-  background-image:linear-gradient(rgba(var(--ac-rgb),.045) 1px,transparent 1px),linear-gradient(90deg,rgba(var(--ac-rgb),.045) 1px,transparent 1px);
-  background-size:64px 64px;mask-image:radial-gradient(ellipse 70% 70% at 50% 40%,black 30%,transparent 100%)}
-.orb-h1{width:800px;height:800px;background:rgba(var(--ac-rgb),.07);top:-300px;right:-250px}
-.orb-h2{width:500px;height:500px;background:rgba(var(--pu-rgb),.05);bottom:-100px;left:-180px;animation-delay:-10s}
-.orb-h3{width:220px;height:220px;background:rgba(var(--gr-rgb),.04);top:55%;left:38%;animation-delay:-6s}
-.h-inner{position:relative;z-index:1;max-width:1100px;margin:0 auto;width:100%;
-  display:grid;grid-template-columns:1fr 200px;gap:60px;align-items:center}
+/* ================= SECTION CHROME ================= */
+section{padding:96px 44px;position:relative}
+.si{max-width:1120px;margin:0 auto;position:relative;z-index:2}
+/* camp stamp eyebrow */
+.stamp{display:inline-flex;flex-direction:column;gap:2px;padding:10px 18px 8px;margin-bottom:48px;
+  border:2px dashed var(--clay);border-radius:4px;transform:rotate(-1.6deg);
+  color:var(--clay);background:color-mix(in srgb,var(--clay) 6%,transparent)}
+.stamp .st-top{font-family:var(--ft);font-size:12px;letter-spacing:.28em;text-transform:uppercase}
+.stamp .st-main{font-family:var(--ft);font-size:17px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
+body.night .stamp .st-main{color:var(--ink)}
 
-.h-avail{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10.5px;
-  color:var(--gr);letter-spacing:.12em;text-transform:uppercase;background:var(--gr2);
-  padding:6px 14px;border-radius:20px;border:1px solid var(--gr3);margin-bottom:20px;width:fit-content}
-.h-avail::before{content:'';width:7px;height:7px;background:var(--gr);border-radius:50%;animation:pg 2s ease infinite}
-@keyframes pg{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.35;transform:scale(.6)}}
+/* paw-print trail divider */
+.trail{height:34px;margin:0 auto;max-width:760px;opacity:.55;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='34' viewBox='0 0 96 34'%3E%3Cg fill='%236B4A2B'%3E%3Cg transform='translate(10,18) rotate(78)'%3E%3Cellipse cx='0' cy='3' rx='4.4' ry='3.6'/%3E%3Ccircle cx='-4.6' cy='-2.6' r='1.7'/%3E%3Ccircle cx='-1.6' cy='-4.4' r='1.7'/%3E%3Ccircle cx='1.8' cy='-4.4' r='1.7'/%3E%3Ccircle cx='4.7' cy='-2.6' r='1.7'/%3E%3C/g%3E%3Cg transform='translate(58,10) rotate(102)'%3E%3Cellipse cx='0' cy='3' rx='4.4' ry='3.6'/%3E%3Ccircle cx='-4.6' cy='-2.6' r='1.7'/%3E%3Ccircle cx='-1.6' cy='-4.4' r='1.7'/%3E%3Ccircle cx='1.8' cy='-4.4' r='1.7'/%3E%3Ccircle cx='4.7' cy='-2.6' r='1.7'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-position:center}
+body.night .trail{filter:invert(.85) sepia(.3);opacity:.35}
 
-.h-name{font-family:var(--fh);font-size:clamp(50px,7vw,86px);font-weight:800;line-height:.95;letter-spacing:-.035em;margin-bottom:18px}
-.h-name .l1{color:var(--t1);display:block}
-.h-name .l2{color:var(--ac2);display:block}
+/* ================= HERO ================= */
+#hero{min-height:100vh;display:flex;align-items:center;padding:130px 44px 0;overflow:hidden;
+  background:linear-gradient(180deg,var(--skyA) 0%,var(--skyB) 62%,var(--paper) 100%);
+  transition:background .6s ease}
+.sunwrap{position:absolute;top:11%;right:13%;z-index:0;pointer-events:none}
+.sun{width:120px;height:120px;border-radius:50%;background:var(--sun);position:relative;
+  box-shadow:0 0 70px 24px color-mix(in srgb,var(--sun) 45%,transparent);
+  animation:sunfloat 9s ease-in-out infinite alternate;transition:background .5s}
+.sun::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--skyA);
+  transform:translate(38px,-16px) scale(0);transition:transform .55s cubic-bezier(.34,1.2,.64,1)}
+body.night .sun::after{transform:translate(30px,-14px) scale(.92)}
+@keyframes sunfloat{from{transform:translateY(0)}to{transform:translateY(14px)}}
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .8s;
+  background-image:radial-gradient(1.4px 1.4px at 12% 18%,#fff 60%,transparent),radial-gradient(1.2px 1.2px at 32% 8%,#fff 60%,transparent),
+  radial-gradient(1.6px 1.6px at 54% 22%,#fff 60%,transparent),radial-gradient(1.1px 1.1px at 72% 12%,#fff 60%,transparent),
+  radial-gradient(1.3px 1.3px at 88% 26%,#fff 60%,transparent),radial-gradient(1.2px 1.2px at 44% 34%,#fff 60%,transparent),
+  radial-gradient(1.5px 1.5px at 6% 40%,#fff 60%,transparent),radial-gradient(1.1px 1.1px at 64% 42%,#fff 60%,transparent)}
+body.night .stars{opacity:.8}
+.firefly{position:absolute;width:5px;height:5px;border-radius:50%;background:#E9F5A3;
+  box-shadow:0 0 8px 3px rgba(233,245,163,.7);opacity:0;pointer-events:none;z-index:3}
+body.night .firefly{animation:fly 8s ease-in-out infinite}
+@keyframes fly{0%{opacity:0;transform:translate(0,0)}12%{opacity:.95}45%{opacity:.25;transform:translate(34px,-40px)}
+  70%{opacity:.9;transform:translate(-16px,-70px)}100%{opacity:0;transform:translate(20px,-105px)}}
 
-.h-role{font-size:15.5px;color:var(--t2);font-weight:300;margin-bottom:6px}
-.h-role strong{color:var(--t1);font-weight:500}
+/* jungle scene at hero base */
+.scene{position:absolute;left:0;right:0;bottom:-4px;z-index:1;pointer-events:none;line-height:0}
+.scene svg{width:100%;height:auto;display:block}
+.s1{fill:var(--scene1)}.s2{fill:var(--scene2)}.s3{fill:var(--scene3)}
+.scene .birds{stroke:var(--scene3);stroke-width:2.4;fill:none;stroke-linecap:round}
+/* hanging vines */
+.vines{position:absolute;top:0;z-index:2;pointer-events:none}
+.vines svg{display:block}
+.vines .v{fill:var(--jungle)}
+.vines-l{left:-8px;animation:sway 7s ease-in-out infinite alternate;transform-origin:top center}
+.vines-r{right:-8px;animation:sway 8s ease-in-out infinite alternate-reverse;transform-origin:top center}
+@keyframes sway{from{transform:rotate(-1.2deg)}to{transform:rotate(1.4deg)}}
 
-/* current company badge */
-.h-at{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:10.5px;
-  color:var(--ac2);background:var(--ac4);border:1px solid var(--ac3);
-  padding:4px 12px;border-radius:5px;margin-bottom:20px;letter-spacing:.04em}
-.h-at::before{content:'';width:5px;height:5px;background:var(--ac);border-radius:50%;animation:pg 2s ease infinite;animation-delay:.5s}
+.h-inner{position:relative;z-index:4;max-width:1120px;margin:0 auto;width:100%;
+  display:grid;grid-template-columns:1fr 230px;gap:56px;align-items:center;padding-bottom:200px}
 
-.h-loc{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.06em;
-  margin-bottom:32px;display:flex;align-items:center;gap:6px}
-.h-loc::before{content:'';width:4px;height:4px;background:var(--ac);border-radius:50%}
+.h-avail{display:inline-flex;align-items:center;gap:9px;font-family:var(--ft);font-size:12.5px;
+  letter-spacing:.18em;text-transform:uppercase;color:var(--jungle);
+  border:2px dashed var(--jungle);padding:7px 16px;border-radius:3px;margin-bottom:22px;
+  transform:rotate(-1.2deg);background:color-mix(in srgb,var(--leaf) 10%,transparent)}
+.h-avail .cmp{width:14px;height:14px;border:2px solid var(--jungle);border-radius:50%;position:relative;flex-shrink:0}
+.h-avail .cmp::after{content:'';position:absolute;top:1px;left:4px;width:2px;height:6px;background:var(--clay);
+  transform-origin:bottom center;animation:needle 3.5s ease-in-out infinite}
+@keyframes needle{0%,100%{transform:rotate(-30deg)}50%{transform:rotate(200deg)}}
 
-.h-desc{font-size:14.5px;color:var(--t2);max-width:520px;line-height:1.82;font-weight:300;margin-bottom:36px}
+.h-kicker{font-family:var(--ft);font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:var(--ink3);margin-bottom:10px}
+.h-name{font-family:var(--fd);font-weight:400;font-size:clamp(46px,7.4vw,92px);line-height:.98;
+  letter-spacing:.005em;margin-bottom:20px;color:var(--ink);text-transform:uppercase}
+.h-name .l2{color:var(--jungle);display:block;text-shadow:4px 4px 0 color-mix(in srgb,var(--amber) 55%,transparent)}
+.h-role{font-size:17px;color:var(--ink2);margin-bottom:8px}
+.h-role strong{font-weight:700}
+.h-at{display:inline-flex;align-items:center;gap:8px;font-family:var(--ft);font-size:12.5px;
+  color:var(--paper);background:var(--jungle);padding:6px 14px;border-radius:3px;margin-bottom:14px;
+  letter-spacing:.06em;box-shadow:var(--shadow)}
+body.night .h-at{color:var(--paper2)}
+.h-at::before{content:'';width:7px;height:7px;background:var(--amber2);border-radius:50%;animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.h-loc{font-family:var(--ft);font-size:12.5px;color:var(--ink3);letter-spacing:.1em;margin-bottom:26px;display:block}
+.h-desc{font-size:16.5px;color:var(--ink2);max-width:540px;line-height:1.8;margin-bottom:34px}
+.h-btns{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:30px}
 
-.h-btns{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px}
-.btn{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:11px;
-  letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border-radius:7px;
-  text-decoration:none;font-weight:500;transition:all .2s}
-.btn-fill{background:var(--ac);color:#fff}
-.btn-fill:hover{background:var(--ach);transform:translateY(-2px);box-shadow:0 10px 32px rgba(var(--ac-rgb),.35)}
-.btn-ghost{background:transparent;color:var(--t2);border:1px solid var(--b2)}
-.btn-ghost:hover{border-color:var(--ac);color:var(--ac2);transform:translateY(-2px)}
+/* wooden sign buttons */
+.btn{display:inline-flex;align-items:center;gap:9px;font-family:var(--ft);font-size:13.5px;
+  letter-spacing:.1em;text-transform:uppercase;padding:13px 24px;border-radius:4px;
+  text-decoration:none;border:2px solid var(--ink);position:relative;transition:transform .15s,box-shadow .15s}
+.btn::before,.btn::after{content:'';position:absolute;top:6px;width:5px;height:5px;border-radius:50%;
+  background:rgba(0,0,0,.35);box-shadow:inset 1px 1px 1px rgba(255,255,255,.4)}
+.btn::before{left:7px}.btn::after{right:7px}
+.btn-fill{background:var(--wood);color:#F5EBD3;box-shadow:4px 4px 0 var(--ink)}
+.btn-fill:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 var(--ink)}
+.btn-fill:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn-ghost{background:var(--card);color:var(--ink);box-shadow:4px 4px 0 color-mix(in srgb,var(--ink) 45%,transparent)}
+.btn-ghost:hover{transform:translate(-1px,-1px);box-shadow:5px 5px 0 color-mix(in srgb,var(--ink) 45%,transparent)}
 
-/* tech strip in hero */
 .h-tech{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.h-tech-label{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase;margin-right:4px}
-.h-chip{font-family:var(--fm);font-size:10px;color:var(--t2);background:var(--bg3);
-  border:1px solid var(--b1);padding:3px 9px;border-radius:4px}
+.h-tech-label{font-family:var(--ft);font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3);margin-right:4px}
+.chip{font-family:var(--ft);font-size:12.5px;padding:4px 12px;border:1.5px solid var(--line);
+  border-radius:20px;color:var(--ink2);background:var(--card);letter-spacing:.03em}
 
-/* hero stat cards */
-.h-stats{display:flex;flex-direction:column;gap:10px}
-.hst{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;padding:16px 20px;
-  text-align:center;transition:border-color .25s,transform .2s}
-.hst:hover{border-color:var(--b2);transform:translateX(-4px)}
-.hst-n{font-family:var(--fh);font-size:34px;font-weight:800;color:var(--t1);letter-spacing:-.03em;line-height:1;margin-bottom:4px}
-.hst-n sup{font-size:14px;color:var(--ac)}
-.hst-l{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3)}
+/* stat signposts */
+.h-stats{display:flex;flex-direction:column;gap:0;align-items:center;position:relative}
+.h-stats::before{content:'';position:absolute;top:8px;bottom:8px;width:10px;background:var(--wood2);
+  border:2px solid var(--ink);border-radius:3px;z-index:0}
+.hst{position:relative;z-index:1;background:var(--wood);border:2px solid var(--ink);color:#F5EBD3;
+  padding:10px 18px;border-radius:4px;text-align:center;min-width:190px;margin:9px 0;
+  box-shadow:3px 3px 0 rgba(43,36,21,.35)}
+.hst:nth-child(odd){transform:rotate(-2deg)}
+.hst:nth-child(even){transform:rotate(1.6deg)}
+.hst::before{content:'';position:absolute;left:-6px;top:50%;margin-top:-6px;width:0;height:0;
+  border-top:6px solid transparent;border-bottom:6px solid transparent;border-right:6px solid var(--ink)}
+.hst-n{font-family:var(--fd);font-size:27px;line-height:1.1;color:#FBD9A0}
+.hst-n sup{font-size:14px;color:var(--amber2)}
+.hst-l{font-family:var(--ft);font-size:11px;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.scue{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:5;
+  font-family:var(--ft);font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--paper);
+  display:flex;flex-direction:column;align-items:center;gap:4px;animation:bob 2.2s ease-in-out infinite;opacity:.9}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
 
-.scue{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);z-index:1;
-  display:flex;flex-direction:column;align-items:center;gap:6px;
-  font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--t4);
-  animation:sb 2.5s ease infinite}
-@keyframes sb{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(8px)}}
+/* ================= TRAIL MARKER STRIP ================= */
+#expertise{padding:34px 0;background:var(--jungle);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink);overflow:hidden;position:relative}
+.exp-track{display:flex;gap:0;width:max-content;animation:march 42s linear infinite}
+#expertise:hover .exp-track{animation-play-state:paused}
+@keyframes march{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.exp-badge{display:flex;align-items:center;gap:14px;padding:0 34px;border-right:2px dashed color-mix(in srgb,var(--paper) 30%,transparent)}
+.exp-ico{font-size:24px;flex-shrink:0;filter:sepia(.3)}
+.exp-name{font-family:var(--ft);font-size:14px;letter-spacing:.1em;text-transform:uppercase;color:var(--jungle-fg);white-space:nowrap}
+.exp-sub{font-family:var(--ft);font-size:11px;letter-spacing:.06em;color:color-mix(in srgb,var(--jungle-fg) 68%,transparent);white-space:nowrap}
 
-/* ===== IMPACT STRIP ===== */
+/* ================= ABOUT ================= */
+#about{background:var(--paper)}
+.ab-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:64px;align-items:start}
+.ab-h{font-family:var(--fd);font-weight:400;font-size:clamp(30px,3.6vw,44px);line-height:1.14;margin-bottom:26px;text-transform:uppercase;letter-spacing:.005em}
+.ab-p{font-size:15.5px;color:var(--ink2);margin-bottom:18px;line-height:1.85}
+.ab-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:26px}
+.abt{font-family:var(--ft);font-size:12px;padding:5px 13px;border:1.5px dashed var(--wood);border-radius:3px;color:var(--wood);letter-spacing:.04em;transform:rotate(-.6deg)}
+.abt:nth-child(even){transform:rotate(.8deg)}
+body.night .abt{color:var(--khaki);border-color:var(--khaki)}
 
-/* ===== ABOUT ===== */
-#about{background:var(--bg)}
-.ab-grid{display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:start}
-.ab-h{font-family:var(--fh);font-size:clamp(28px,3.5vw,46px);font-weight:700;line-height:1.1;letter-spacing:-.025em;margin-bottom:22px}
-.ab-h em{font-style:normal;color:var(--ac2)}
-.ab-p{font-size:14.5px;color:var(--t2);line-height:1.88;font-weight:300;margin-bottom:14px}
-.ab-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:24px}
-.abt{font-family:var(--fm);font-size:10.5px;color:var(--ac2);background:rgba(var(--ac-rgb),.07);
-  border:1px solid rgba(var(--ac-rgb),.14);padding:4px 12px;border-radius:4px;letter-spacing:.03em;
-  transition:background .2s,border-color .2s}
-.abt:hover{background:rgba(var(--ac-rgb),.14);border-color:rgba(var(--ac-rgb),.3)}
-
-/* career timeline in about */
-.career-tl{display:flex;flex-direction:column;gap:0}
-.career-tl-title{font-family:var(--fm);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--t3);margin-bottom:16px}
-.ct-item{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid var(--b1);
-  transition:background .2s;border-radius:6px;padding:12px 10px;margin:0 -10px}
-.ct-item:last-child{border-bottom:none}
-.ct-item:hover{background:var(--bg3)}
-.ct-dot-col{display:flex;flex-direction:column;align-items:center;padding-top:3px;width:12px;flex-shrink:0}
-.ct-dot{width:8px;height:8px;border-radius:50%;border:2px solid var(--b2);background:var(--bg2);flex-shrink:0;transition:border-color .2s,background .2s}
-.ct-item:hover .ct-dot{border-color:var(--ac);background:var(--ac)}
-.ct-line{width:1px;flex:1;background:var(--b1);margin-top:4px}
+/* expedition route */
+.route{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:26px 26px 20px;
+  box-shadow:var(--shadow);position:relative}
+.route::before{content:'N ↑';position:absolute;top:12px;right:16px;font-family:var(--ft);font-size:12px;
+  letter-spacing:.2em;color:var(--ink3);border:1.5px solid var(--line);border-radius:50%;padding:9px 7px}
+.route-t{font-family:var(--ft);font-size:13px;letter-spacing:.26em;text-transform:uppercase;color:var(--clay);margin-bottom:20px}
+.ct-item{display:flex;gap:16px}
+.ct-dotcol{display:flex;flex-direction:column;align-items:center;width:22px;flex-shrink:0}
+.ct-flag{width:18px;height:18px;flex-shrink:0;position:relative}
+.ct-flag::before{content:'';position:absolute;left:8px;top:0;width:2px;height:18px;background:var(--ink)}
+.ct-flag::after{content:'';position:absolute;left:10px;top:1px;width:0;height:0;
+  border-top:5px solid transparent;border-bottom:5px solid transparent;border-left:9px solid var(--amber)}
+.ct-item:first-child .ct-flag::after{border-left-color:var(--clay)}
+.ct-line{width:0;flex:1;margin:3px 0;border-left:2px dashed var(--wood);min-height:26px}
 .ct-item:last-child .ct-line{display:none}
-.ct-body{flex:1}
-.ct-co{font-family:var(--fh);font-size:13.5px;font-weight:700;color:var(--t1);margin-bottom:2px}
-.ct-role{font-size:12px;color:var(--t2);font-style:italic;margin-bottom:3px}
-.ct-date{font-family:var(--fm);font-size:10px;color:var(--t3);letter-spacing:.04em}
-.ct-badge{font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--go);background:var(--go2);border:1px solid var(--go3);
-  padding:1px 7px;border-radius:3px;display:inline-block;margin-left:6px}
+.ct-body{padding-bottom:20px}
+.ct-camp{font-family:var(--ft);font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3)}
+.ct-co{font-weight:700;font-size:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.ct-badge{font-family:var(--ft);font-size:10.5px;background:var(--leaf);color:#fff;padding:2px 9px;border-radius:3px;letter-spacing:.1em;text-transform:uppercase}
+.ct-role{font-size:13.5px;color:var(--ink2)}
+.ct-date{font-family:var(--ft);font-size:11.5px;color:var(--ink3);letter-spacing:.05em}
 
-/* specialties */
-.specs{display:flex;flex-direction:column;gap:8px;margin-top:24px}
-.spec{display:flex;gap:0;background:var(--bg2);border:1px solid var(--b1);border-radius:10px;overflow:hidden;
-  transition:border-color .2s,transform .2s}
-.spec:hover{border-color:var(--b2);transform:translateX(4px)}
-.spec-bar{width:3px;background:var(--ac);flex-shrink:0;opacity:.35;transition:opacity .2s}
-.spec:hover .spec-bar{opacity:1}
-.spec-body{padding:13px 16px}
-.spec-icon{font-size:16px;margin-bottom:5px}
-.spec-t{font-family:var(--fh);font-size:13.5px;font-weight:600;color:var(--t1);margin-bottom:3px}
-.spec-d{font-size:12px;color:var(--t2);font-weight:300;line-height:1.6}
+.specs{margin-top:26px;display:flex;flex-direction:column;gap:14px}
+.spec{display:flex;gap:14px;background:var(--card);border:2px solid var(--ink);border-radius:6px;
+  padding:16px 18px;box-shadow:var(--shadow)}
+.spec-ico{font-size:22px;flex-shrink:0;filter:sepia(.25)}
+.spec-t{font-weight:700;font-size:15px;margin-bottom:3px}
+.spec-d{font-size:13.5px;color:var(--ink2);line-height:1.65}
 
-/* ===== WHAT I DO ===== */
-#whatido{background:var(--bg2)}
-.wid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.wid-card{background:var(--bg3);border:1px solid var(--b1);border-radius:14px;padding:28px 24px;
-  position:relative;overflow:hidden;transition:border-color .25s,transform .2s,box-shadow .25s}
-.wid-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;opacity:0;transition:opacity .3s}
-.wid-card:nth-child(1)::before{background:linear-gradient(90deg,var(--ac),transparent)}
-.wid-card:nth-child(2)::before{background:linear-gradient(90deg,#a78bfa,transparent)}
-.wid-card:nth-child(3)::before{background:linear-gradient(90deg,var(--gr),transparent)}
-.wid-card:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 18px 52px rgba(0,0,0,.4)}
-.wid-card:hover::before{opacity:1}
-.wid-icon{width:48px;height:48px;border-radius:11px;display:grid;place-items:center;font-size:20px;margin-bottom:18px;border:1px solid var(--b1)}
-.wid-card:nth-child(1) .wid-icon{background:rgba(var(--ac-rgb),.1);border-color:rgba(var(--ac-rgb),.2)}
-.wid-card:nth-child(2) .wid-icon{background:rgba(var(--pu-rgb),.08);border-color:rgba(var(--pu-rgb),.18)}
-.wid-card:nth-child(3) .wid-icon{background:rgba(var(--gr-rgb),.08);border-color:rgba(var(--gr-rgb),.18)}
-.wid-t{font-family:var(--fh);font-size:18px;font-weight:700;color:var(--t1);margin-bottom:9px;letter-spacing:-.01em}
-.wid-d{font-size:13px;color:var(--t2);line-height:1.75;font-weight:300;margin-bottom:18px}
-.wid-tags{display:flex;flex-wrap:wrap;gap:5px}
-.wid-tag{font-family:var(--fm);font-size:10px;color:var(--t2);background:var(--bg2);border:1px solid var(--b1);
-  padding:3px 8px;border-radius:3px;transition:color .2s,border-color .2s}
-.wid-card:hover .wid-tag{color:var(--t2);border-color:var(--b2)}
+/* ================= WHAT I DO ================= */
+#whatido{background:var(--paper2)}
+.wid-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+.wid-card{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:26px 24px;
+  box-shadow:var(--shadow);position:relative;transition:transform .25s,box-shadow .25s}
+.wid-card:nth-child(1){transform:rotate(-.7deg)}
+.wid-card:nth-child(3){transform:rotate(.7deg)}
+.wid-card:hover{transform:translateY(-6px) rotate(0);box-shadow:6px 9px 0 rgba(43,36,21,.2)}
+body.night .wid-card:hover{box-shadow:6px 9px 0 rgba(0,0,0,.5)}
+.wid-card::before{content:'';position:absolute;top:-11px;left:50%;transform:translateX(-50%) rotate(-2deg);
+  width:74px;height:20px;background:color-mix(in srgb,var(--khaki) 70%,transparent);border:1px solid var(--line);opacity:.85}
+.wid-ico{font-size:30px;margin-bottom:12px;filter:sepia(.25)}
+.wid-t{font-family:var(--fd);font-weight:400;font-size:19px;margin-bottom:10px;letter-spacing:.01em}
+.wid-d{font-size:14px;color:var(--ink2);line-height:1.75;margin-bottom:16px}
+.wid-tags{display:flex;flex-wrap:wrap;gap:6px}
+.wid-tag{font-family:var(--ft);font-size:11.5px;padding:3px 10px;background:color-mix(in srgb,var(--leaf) 13%,transparent);
+  border:1px solid color-mix(in srgb,var(--leaf) 45%,transparent);border-radius:3px;color:var(--jungle)}
 
-/* ===== EXPERTISE BADGES ===== */
-#expertise{padding:0;background:var(--bg);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1)}
-.exp-strip{max-width:1100px;margin:0 auto;display:flex;flex-wrap:wrap;gap:0}
-.exp-badge{flex:1;min-width:160px;padding:24px 20px;border-right:1px solid var(--b1);
-  display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;transition:background .2s}
-.exp-badge:last-child{border-right:none}
-.exp-badge:hover{background:var(--bg2)}
-.exp-badge-icon{font-size:22px}
-.exp-badge-name{font-family:var(--fh);font-size:13px;font-weight:700;color:var(--t1)}
-.exp-badge-sub{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.04em;text-align:center}
+/* ================= SKILLS (gear tags) ================= */
+#skills{background:var(--paper)}
+.skl-wrap{display:grid;grid-template-columns:250px 1fr;gap:30px;align-items:start}
+.sk-nav{display:flex;flex-direction:column;gap:9px;position:sticky;top:96px}
+.skn{font-family:var(--ft);font-size:13px;letter-spacing:.07em;text-transform:uppercase;color:var(--ink2);
+  padding:10px 16px 10px 30px;border:2px solid var(--line);border-radius:4px 22px 22px 4px;cursor:pointer;
+  background:var(--card);position:relative;transition:all .2s;text-align:left}
+.skn::before{content:'';position:absolute;left:11px;top:50%;transform:translateY(-50%);
+  width:8px;height:8px;border-radius:50%;background:var(--paper2);border:1.5px solid var(--ink3)}
+.skn:hover{border-color:var(--wood);color:var(--ink);transform:translateX(4px)}
+.skn.active{background:var(--jungle);color:var(--jungle-fg);border-color:var(--ink);box-shadow:3px 3px 0 var(--ink);transform:translateX(6px)}
+.skn.active::before{background:var(--amber2);border-color:var(--jungle-fg)}
+.sk-panel{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:32px 34px;
+  box-shadow:var(--shadow);min-height:340px;position:relative}
+.sk-panel::before{content:'FIELD KIT · INSPECTED';position:absolute;top:14px;right:16px;
+  font-family:var(--ft);font-size:10px;letter-spacing:.2em;color:var(--clay);
+  border:1.5px solid var(--clay);padding:3px 8px;border-radius:3px;transform:rotate(3deg);opacity:.75}
+.skt{display:none;animation:fadein .35s ease}
+.skt.active{display:block}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.sk-h{font-family:var(--fd);font-weight:400;font-size:24px;margin-bottom:6px;letter-spacing:.01em}
+.sk-exp{font-family:var(--ft);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--clay);margin-bottom:16px}
+.sk-d{font-size:14.5px;color:var(--ink2);line-height:1.8;margin-bottom:20px}
+.sk-tags{display:flex;flex-wrap:wrap;gap:8px}
+.sk-tag{font-family:var(--ft);font-size:12px;padding:5px 13px;background:var(--paper);
+  border:1.5px solid var(--line);border-radius:3px;color:var(--ink2);position:relative;padding-left:22px}
+.sk-tag::before{content:'';position:absolute;left:9px;top:50%;transform:translateY(-50%);
+  width:5px;height:5px;border-radius:50%;border:1.5px solid var(--wood)}
 
-/* ===== SKILLS ===== */
-#skills{background:var(--bg2)}
-.skl-wrap{background:var(--b1);border:1px solid var(--b1);border-radius:14px;overflow:hidden;
-  display:grid;grid-template-columns:200px 1fr}
-.sk-nav{background:var(--bg2);padding:8px;display:flex;flex-direction:column;gap:1px;border-right:1px solid var(--b1)}
-.skn{font-family:var(--fm);font-size:10.5px;letter-spacing:.07em;text-transform:uppercase;
-  color:var(--t3);padding:10px 13px;border-radius:7px;cursor:pointer;transition:background .2s,color .2s;
-  display:flex;align-items:center;gap:9px}
-.skn-dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:.4;flex-shrink:0}
-.skn:hover{background:var(--bg3);color:var(--t2)}
-.skn.active{background:var(--ac3);color:var(--ac2)}
-.sk-panel{background:var(--bg2);padding:28px}
-.skt{display:none}.skt.active{display:block}
-.sk-h{font-family:var(--fh);font-size:20px;font-weight:700;color:var(--t1);margin-bottom:7px;letter-spacing:-.015em}
-.sk-exp{display:inline-flex;align-items:center;gap:5px;font-family:var(--fm);font-size:9.5px;
-  color:var(--go);background:var(--go2);border:1px solid var(--go3);
-  padding:2px 9px;border-radius:4px;letter-spacing:.05em;margin-bottom:12px}
-.sk-d{font-size:13px;color:var(--t2);font-weight:300;margin-bottom:20px;line-height:1.72}
-.sk-tags{display:flex;flex-wrap:wrap;gap:7px}
-.sk-tag{font-family:var(--fm);font-size:11.5px;color:var(--ac2);background:rgba(var(--ac-rgb),.07);
-  border:1px solid rgba(var(--ac-rgb),.15);padding:5px 13px;border-radius:5px;
-  transition:background .2s,transform .15s}
-.sk-tag:hover{background:rgba(var(--ac-rgb),.15);transform:translateY(-1px)}
+/* ================= EXPERIENCE (camp logs) ================= */
+#experience{background:var(--paper2)}
+.tl{position:relative;padding-left:44px}
+.tl::before{content:'';position:absolute;left:14px;top:8px;bottom:8px;width:0;border-left:3px dashed var(--wood)}
+.tl-row{position:relative;margin-bottom:36px}
+.tl-tent{position:absolute;left:-44px;top:2px;width:30px;height:26px}
+.tl-tent svg{width:100%;height:100%;display:block}
+.tl-tent .tt{fill:var(--wood);stroke:var(--ink);stroke-width:1.5}
+.tl-tent .td{fill:var(--paper)}
+.tl-c{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:26px 28px;box-shadow:var(--shadow);position:relative}
+.tl-c.cur-job{border-color:var(--jungle);box-shadow:5px 6px 0 color-mix(in srgb,var(--jungle) 45%,transparent)}
+.tl-c.cur-job::before{content:'⛺ ACTIVE CAMP';position:absolute;top:-13px;left:22px;font-family:var(--ft);
+  font-size:11px;letter-spacing:.16em;background:var(--jungle);color:var(--jungle-fg);padding:3px 12px;border-radius:3px;border:2px solid var(--ink)}
+.tl-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.tl-camp{font-family:var(--ft);font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--ink3);margin-bottom:2px}
+.tl-co{font-family:var(--fd);font-weight:400;font-size:21px;letter-spacing:.01em}
+.tl-meta{font-size:13.5px;color:var(--ink2);margin-top:2px}
+.bd-date{font-family:var(--ft);font-size:12px;letter-spacing:.08em;padding:5px 12px;border-radius:3px;border:1.5px solid var(--line);color:var(--ink2);white-space:nowrap}
+.bd-cur{background:var(--leaf);color:#fff;border-color:var(--ink)}
+.tl-stack{font-family:var(--ft);font-size:12px;color:var(--ink3);letter-spacing:.04em;margin-bottom:16px;
+  padding:8px 12px;background:var(--paper);border-left:3px solid var(--amber);border-radius:0 3px 3px 0}
+.tl-stack b{color:var(--clay);margin-right:8px;letter-spacing:.16em;text-transform:uppercase}
+.tl-bullets{list-style:none}
+.tl-li{font-size:14px;color:var(--ink2);line-height:1.75;padding:5px 0 5px 26px;position:relative}
+.tl-li::before{content:'';position:absolute;left:2px;top:13px;width:12px;height:12px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cg fill='%236B4A2B'%3E%3Cellipse cx='10' cy='12.5' rx='4.6' ry='3.8'/%3E%3Ccircle cx='5' cy='7.5' r='1.8'/%3E%3Ccircle cx='8.3' cy='5.6' r='1.8'/%3E%3Ccircle cx='11.9' cy='5.6' r='1.8'/%3E%3Ccircle cx='15' cy='7.5' r='1.8'/%3E%3C/g%3E%3C/svg%3E") no-repeat center/contain;opacity:.8}
+body.night .tl-li::before{filter:invert(.8) sepia(.4)}
+.tl-li.key{color:var(--ink)}
+.tl-li.key::before{opacity:1}
 
-/* ===== EXPERIENCE ===== */
-#experience{background:var(--bg3)}
-.tl{position:relative}
-.tl::before{content:'';position:absolute;top:8px;bottom:8px;left:19px;width:1px;
-  background:linear-gradient(180deg,var(--ac) 0%,var(--b2) 55%,transparent 100%)}
-.tl-row{display:grid;grid-template-columns:40px 1fr;gap:0 24px;margin-bottom:14px}
-.tl-dw{display:flex;flex-direction:column;align-items:center;padding-top:22px}
-.tl-d{width:9px;height:9px;border-radius:50%;background:var(--bg3);border:2px solid var(--b2);
-  flex-shrink:0;position:relative;z-index:1;transition:all .25s}
-.tl-row:hover .tl-d{background:var(--ac);border-color:var(--ac2);box-shadow:0 0 14px rgba(var(--ac-rgb),.5)}
-.tl-c{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;overflow:hidden;transition:border-color .25s,box-shadow .25s}
-.tl-c:hover{border-color:var(--b2);box-shadow:0 8px 40px rgba(0,0,0,.35)}
-.tl-c.cur-job{border-color:rgba(var(--gr-rgb),.15)}
-.tl-c.cur-job .tl-c-top-bar{height:2px;background:linear-gradient(90deg,var(--gr) 0%,transparent 55%)}
-.tl-c-top-bar{height:0}
-.tl-head{padding:20px 24px 0;display:flex;justify-content:space-between;align-items:flex-start;gap:12px;flex-wrap:wrap}
-.tl-co{font-family:var(--fh);font-size:17px;font-weight:700;color:var(--t1);letter-spacing:-.015em;margin-bottom:4px}
-.tl-meta{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
-.tl-role{font-size:12.5px;font-style:italic;color:var(--t2);font-weight:300}
-.tl-loc{font-family:var(--fm);font-size:10px;color:var(--t3)}
-.tl-sep{color:var(--b2);font-size:8px}
-.bd-lead{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--go);background:var(--go2);border:1px solid var(--go3);padding:2px 8px;border-radius:3px}
-.bd-date{font-family:var(--fm);font-size:10px;padding:3px 11px;border-radius:4px;white-space:nowrap;flex-shrink:0;align-self:flex-start;margin-top:2px}
-.bd-cur{color:var(--gr);background:var(--gr2);border:1px solid var(--gr3)}
-.bd-past{color:var(--ac);background:rgba(var(--ac-rgb),.07);border:1px solid rgba(var(--ac-rgb),.16)}
-.tl-stack{font-family:var(--fm);font-size:10.5px;color:var(--t2);background:rgba(0,0,0,.18);
-  border-top:1px solid var(--b1);padding:8px 24px;margin-top:14px;letter-spacing:.02em}
-.tl-stack b{font-weight:600;color:var(--ac2);opacity:.85;margin-right:5px}
-.tl-bullets{padding:13px 24px 20px;list-style:none}
-.tl-li{display:flex;gap:10px;margin-bottom:6px;font-size:13px;color:var(--t2);line-height:1.65}
-.tl-li::before{content:'';width:3px;height:3px;background:var(--b2);border-radius:1px;margin-top:9px;flex-shrink:0;transition:background .2s}
-.tl-c:hover .tl-li::before{background:rgba(var(--ac-rgb),.45)}
-.tl-li.key{color:var(--t1);background:rgba(255,255,255,.025);
-  border-left:2px solid rgba(232,184,75,.3);border-radius:0 5px 5px 0;padding:5px 11px;margin-left:-11px}
-.tl-li.key::before{background:var(--go);opacity:.8;margin-top:9px}
+/* ================= PHILOSOPHY (carved plank) ================= */
+#philosophy{background:var(--paper2);padding-top:20px}
+.phi{max-width:860px;margin:0 auto;background:var(--wood);border:3px solid var(--ink);border-radius:10px;
+  padding:52px 56px;text-align:center;position:relative;box-shadow:7px 8px 0 rgba(43,36,21,.3);
+  transform:rotate(-.5deg);color:#F5EBD3}
+body.night .phi{box-shadow:7px 8px 0 rgba(0,0,0,.5)}
+.phi::before,.phi::after{content:'';position:absolute;top:14px;width:9px;height:9px;border-radius:50%;
+  background:rgba(0,0,0,.4);box-shadow:inset 1px 1px 1px rgba(255,255,255,.35)}
+.phi::before{left:16px}.phi::after{right:16px}
+.phi-rope-l,.phi-rope-r{position:absolute;top:-46px;width:3px;height:48px;background:repeating-linear-gradient(180deg,var(--wood2) 0 5px,var(--khaki) 5px 8px)}
+.phi-rope-l{left:60px;transform:rotate(6deg)}
+.phi-rope-r{right:60px;transform:rotate(-6deg)}
+.phi-q{font-family:var(--fd);font-weight:400;font-size:clamp(19px,2.5vw,27px);line-height:1.5;letter-spacing:.01em;margin-bottom:18px}
+.phi-q em{color:var(--amber2)}
+.phi-attr{font-family:var(--ft);font-size:12.5px;letter-spacing:.18em;text-transform:uppercase;color:#D8C79B}
 
-/* ===== PHILOSOPHY ===== */
-#philosophy{padding:72px 56px;background:var(--bg);border-top:1px solid var(--b1);border-bottom:1px solid var(--b1)}
-.phi{max-width:820px;margin:0 auto;text-align:center;position:relative;z-index:1}
-.phi-q{font-family:var(--fh);font-size:clamp(20px,2.8vw,34px);font-weight:600;line-height:1.45;
-  letter-spacing:-.02em;color:var(--t1);margin-bottom:22px}
-.phi-q em{font-style:normal;color:var(--ac2)}
-.phi-attr{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.1em;text-transform:uppercase}
-.phi-deco{font-family:var(--fh);font-size:160px;font-weight:800;color:rgba(var(--ac-rgb),.03);
-  line-height:1;position:absolute;top:-40px;left:50%;transform:translateX(-50%);
-  pointer-events:none;user-select:none}
+/* ================= PROJECTS (field sightings) ================= */
+#projects{background:var(--paper)}
+.pj-intro{font-size:16px;color:var(--ink2);max-width:680px;margin-bottom:26px;line-height:1.8}
+.pj-filter{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:40px}
+.pjf{font-family:var(--ft);font-size:12.5px;letter-spacing:.1em;text-transform:uppercase;
+  padding:9px 18px;border:2px solid var(--ink);border-radius:4px;background:var(--card);color:var(--ink2);
+  cursor:pointer;transition:all .18s;box-shadow:3px 3px 0 color-mix(in srgb,var(--ink) 30%,transparent)}
+.pjf:hover{transform:translate(-1px,-1px)}
+.pjf.active{background:var(--amber);color:#fff;box-shadow:3px 3px 0 var(--ink)}
+.pjf-c{display:inline-block;margin-left:6px;font-size:11px;background:rgba(0,0,0,.18);padding:1px 7px;border-radius:10px}
+.pj-group{grid-column:1/-1;display:flex;align-items:center;gap:16px;margin-top:20px}
+.pj-group:first-of-type{margin-top:0}
+.pj-group.hide{display:none}
+.pj-group-co{font-family:var(--ft);font-size:14px;letter-spacing:.22em;text-transform:uppercase;color:var(--jungle);white-space:nowrap}
+.pj-group-period{font-family:var(--ft);font-size:11.5px;color:var(--ink3);white-space:nowrap;letter-spacing:.08em}
+.pj-group::before{content:'📍';font-size:15px}
+.pj-group::after{content:'';flex:1;height:0;border-top:2px dashed var(--line)}
+.proj-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.pj{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:22px 22px 24px;
+  box-shadow:var(--shadow);position:relative;transition:transform .22s,box-shadow .22s;display:flex;flex-direction:column}
+.pj:hover{transform:translateY(-6px) rotate(-.4deg);box-shadow:6px 10px 0 rgba(43,36,21,.18)}
+body.night .pj:hover{box-shadow:6px 10px 0 rgba(0,0,0,.5)}
+.pj.hide{display:none}
+.pj-top{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:12px}
+.pj-num{font-family:var(--ft);font-size:11px;letter-spacing:.14em;color:var(--ink3);text-transform:uppercase}
+.pj-domain{font-family:var(--ft);font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+  padding:3px 9px;border-radius:3px;border:1.5px solid;white-space:nowrap}
+.pj-domain.hc{color:var(--clay);border-color:var(--clay);background:color-mix(in srgb,var(--clay) 9%,transparent)}
+.pj-domain.ft,.pj-domain.tr{color:var(--amber);border-color:var(--amber);background:color-mix(in srgb,var(--amber) 10%,transparent)}
+.pj-domain.web{color:var(--leaf);border-color:var(--leaf);background:color-mix(in srgb,var(--leaf) 10%,transparent)}
+.pj-name{font-family:var(--fd);font-weight:400;font-size:18px;line-height:1.25;margin-bottom:10px;letter-spacing:.01em}
+.pj-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.pj-tag{font-family:var(--ft);font-size:11px;padding:2px 9px;background:var(--paper);border:1px solid var(--line);border-radius:3px;color:var(--ink2)}
+.pj-desc{font-size:13.5px;color:var(--ink2);line-height:1.72}
 
-/* ===== PROJECTS ===== */
-#projects{background:var(--bg2)}
-.proj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
-.pj-group{grid-column:1/-1;padding:10px 0 6px;border-bottom:1px solid var(--b1);margin-top:18px}
-.pj-group:first-child{margin-top:0}
-.pj-group-name{font-family:var(--fm);font-size:9.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--t3);display:flex;align-items:center;gap:10px}
-.pj-group-name::after{content:'';flex:1;height:1px;background:var(--b1)}
-.pj-group-co{color:var(--t2);font-size:10.5px;font-weight:600}
-.pj-group-period{color:var(--t4)}
-.pj-group.hide,.pj.hide{display:none}
-/* projects intro + filter bar */
-.pj-intro{font-size:14px;color:var(--t2);font-weight:300;max-width:640px;line-height:1.8;margin:-34px 0 24px}
-.pj-filter{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
-.pjf{font-family:var(--fm);font-size:10px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--t3);background:var(--bg3);border:1px solid var(--b1);padding:7px 15px;border-radius:7px;
-  cursor:pointer;transition:color .2s,border-color .2s,background .2s;display:flex;align-items:center;gap:7px}
-.pjf:hover{color:var(--t2);border-color:var(--b2)}
-.pjf.active{color:var(--ac2);background:var(--ac3);border-color:var(--ac)}
-.pjf-c{font-size:9px;color:var(--t4);background:var(--bg2);border-radius:10px;padding:1px 7px;transition:color .2s,background .2s}
-.pjf.active .pjf-c{color:var(--ac2);background:rgba(var(--ac-rgb),.14)}
-.pj{background:var(--bg3);border:1px solid var(--b1);border-radius:14px;padding:26px 24px 22px;
-  display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;
-  transition:border-color .25s,transform .2s,box-shadow .25s}
-.pj::after{content:'';position:absolute;bottom:0;right:0;width:120px;height:120px;
-  background:radial-gradient(circle at 100% 100%,rgba(var(--ac-rgb),.06),transparent 70%);opacity:0;transition:opacity .3s}
-.pj:hover{border-color:var(--b2);transform:translateY(-4px);box-shadow:0 20px 56px rgba(0,0,0,.45)}
-.pj:hover::after{opacity:1}
-.pj-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
-.pj-num{font-family:var(--fm);font-size:9.5px;color:var(--t3);letter-spacing:.1em}
-.pj-domain{font-family:var(--fm);font-size:9px;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:3px}
-.pj-domain.hc{color:var(--hc);background:rgba(var(--hc-rgb),.08);border:1px solid rgba(var(--hc-rgb),.2)}
-.pj-domain.ft{color:var(--go);background:var(--go2);border:1px solid var(--go3)}
-.pj-domain.tr{color:var(--pu);background:rgba(var(--pu-rgb),.08);border:1px solid rgba(var(--pu-rgb),.2)}
-.pj-domain.web{color:var(--gr);background:var(--gr2);border:1px solid var(--gr3)}
-.pj-arr{width:30px;height:30px;border-radius:6px;background:var(--bg2);border:1px solid var(--b2);
-  display:grid;place-items:center;color:var(--t3);flex-shrink:0;
-  transition:background .2s,color .2s,border-color .2s,transform .15s}
-.pj:hover .pj-arr{background:var(--ac);border-color:var(--ac);color:#fff;transform:rotate(45deg)}
-.pj-name{font-family:var(--fh);font-size:21px;font-weight:700;color:var(--t1);letter-spacing:-.02em;line-height:1.1}
-.pj-tags{display:flex;flex-wrap:wrap;gap:5px}
-.pj-tag{font-family:var(--fm);font-size:9.5px;color:var(--ac);background:rgba(var(--ac-rgb),.07);
-  border:1px solid rgba(var(--ac-rgb),.14);padding:3px 8px;border-radius:3px;letter-spacing:.04em}
-.pj-desc{font-size:13px;color:var(--t2);line-height:1.72;font-weight:300;flex:1}
+/* ================= EDUCATION ================= */
+#education{background:var(--paper2)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:860px}
+.edu-c{display:flex;gap:18px;background:var(--card);border:2px solid var(--ink);border-radius:6px;
+  padding:24px 26px;box-shadow:var(--shadow);align-items:flex-start}
+.edu-ico{font-size:28px;filter:sepia(.25)}
+.edu-deg{font-weight:700;font-size:16px;margin-bottom:3px}
+.edu-sch{font-size:13.5px;color:var(--ink2);margin-bottom:8px}
+.edu-yr{font-family:var(--ft);font-size:11.5px;letter-spacing:.12em;color:var(--clay);border:1.5px dashed var(--clay);padding:2px 10px;border-radius:3px}
 
-/* ===== EDUCATION ===== */
-#education{background:var(--bg)}
-.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.edu-c{background:var(--bg2);border:1px solid var(--b1);border-radius:14px;padding:26px;
-  display:flex;gap:16px;align-items:flex-start;transition:border-color .25s,transform .2s}
-.edu-c:hover{border-color:var(--b2);transform:translateY(-3px)}
-.edu-ico{width:48px;height:48px;flex-shrink:0;background:rgba(var(--ac-rgb),.09);
-  border:1px solid rgba(var(--ac-rgb),.18);border-radius:11px;display:grid;place-items:center;font-size:21px}
-.edu-deg{font-family:var(--fh);font-size:15.5px;font-weight:700;color:var(--t1);margin-bottom:5px;letter-spacing:-.015em}
-.edu-sch{font-size:12.5px;color:var(--t2);margin-bottom:9px}
-.edu-yr{font-family:var(--fm);font-size:10px;color:var(--ac);background:rgba(var(--ac-rgb),.07);
-  border:1px solid rgba(var(--ac-rgb),.14);padding:2px 9px;border-radius:3px;display:inline-block}
+/* ================= CONTACT (ranger station) ================= */
+#contact{background:var(--paper);padding-bottom:120px}
+.co-inner{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:start}
+.co-h{font-family:var(--fd);font-weight:400;font-size:clamp(30px,3.8vw,46px);line-height:1.15;margin-bottom:20px;text-transform:uppercase}
+.co-sub{font-size:15.5px;color:var(--ink2);line-height:1.8;margin-bottom:30px;max-width:480px}
+.co-note{font-family:var(--ft);font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);margin-top:16px;display:flex;align-items:center;gap:8px}
+.co-note::before{content:'';width:8px;height:8px;border-radius:50%;background:var(--leaf);animation:blink 2s ease infinite}
+.co-links{display:flex;flex-direction:column;gap:14px}
+.co-link{display:flex;justify-content:space-between;align-items:center;gap:12px;background:var(--card);
+  border:2px solid var(--ink);border-radius:6px;padding:16px 20px;text-decoration:none;color:var(--ink);
+  box-shadow:var(--shadow);transition:transform .18s,box-shadow .18s}
+a.co-link:hover{transform:translate(-2px,-2px);box-shadow:6px 7px 0 rgba(43,36,21,.2)}
+body.night a.co-link:hover{box-shadow:6px 7px 0 rgba(0,0,0,.5)}
+.co-link-l{display:flex;align-items:center;gap:14px}
+.co-link-ico{width:40px;height:40px;border-radius:50%;background:var(--jungle);color:var(--jungle-fg);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;border:2px dashed color-mix(in srgb,var(--jungle-fg) 55%,transparent)}
+.co-link-lbl{font-family:var(--ft);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--ink3)}
+.co-link-val{font-size:14.5px;font-weight:600;word-break:break-all}
+.co-arr{font-size:18px;color:var(--amber)}
 
-/* ===== CONTACT ===== */
-#contact{background:var(--bg2)}
-.co-orb{width:600px;height:600px;background:rgba(var(--ac-rgb),.05);top:50%;left:50%;transform:translate(-50%,-50%)}
-.co-inner{position:relative;z-index:1;display:grid;grid-template-columns:1.15fr .85fr;gap:72px;align-items:start}
-.co-h{font-family:var(--fh);font-size:clamp(32px,4.5vw,56px);font-weight:800;letter-spacing:-.03em;line-height:1;margin-bottom:18px}
-.co-h em{font-style:normal;color:var(--ac2)}
-.co-sub{font-size:14.5px;color:var(--t2);font-weight:300;line-height:1.78;margin-bottom:28px}
-.co-note{font-family:var(--fm);font-size:10.5px;color:var(--t3);letter-spacing:.05em;margin-top:16px;
-  display:flex;align-items:center;gap:8px}
-.co-note::before{content:'';width:18px;height:1px;background:var(--b2)}
-.co-links{display:flex;flex-direction:column;gap:10px}
-.co-link{display:flex;align-items:center;justify-content:space-between;
-  background:var(--bg3);border:1px solid var(--b1);border-radius:11px;
-  padding:14px 18px;text-decoration:none;transition:border-color .25s,transform .15s,box-shadow .2s}
-.co-link:hover{border-color:var(--ac);transform:translateX(-4px);box-shadow:3px 0 20px rgba(var(--ac-rgb),.1)}
-.co-link-l{display:flex;align-items:center;gap:12px}
-.co-link-ico{width:36px;height:36px;border-radius:8px;background:rgba(var(--ac-rgb),.09);
-  border:1px solid rgba(var(--ac-rgb),.16);display:grid;place-items:center;color:var(--ac2);flex-shrink:0}
-.co-link-lbl{font-family:var(--fm);font-size:9.5px;letter-spacing:.1em;text-transform:uppercase;color:var(--t3);margin-bottom:2px}
-.co-link-val{font-size:13px;color:var(--t2)}
-.co-link:hover .co-link-val{color:var(--ac2)}
-.co-arr{color:var(--t3);transition:color .2s;font-size:16px}
-.co-link:hover .co-arr{color:var(--ac)}
-
-/* ===== FOOTER ===== */
-footer{background:var(--bg);border-top:1px solid var(--b1);padding:26px 56px;
-  display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px}
-.f-brand{font-family:var(--fh);font-size:14px;color:var(--t3)}.f-brand span{color:var(--ac)}
+/* ================= FOOTER (sunset parade) ================= */
+footer{background:var(--scene3);color:#EFE6C8;position:relative;padding:0 44px 34px;overflow:hidden;transition:background .5s}
+.f-scene{margin:0 -44px 30px;line-height:0}
+.f-scene svg{width:100%;height:auto;display:block}
+.f-scene .fs-sky{fill:var(--skyB)}
+.f-scene .fs-ground{fill:var(--scene3)}
+.f-scene .fs-an{fill:var(--scene3)}
+.f-in{max-width:1120px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+.f-brand{font-family:var(--fd);font-size:19px;letter-spacing:.02em}
+.f-brand span{color:var(--amber2)}
 .f-links{display:flex;gap:20px;flex-wrap:wrap}
-.f-links a{font-family:var(--fm);font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--t3);text-decoration:none;transition:color .2s}
-.f-links a:hover{color:var(--ac2)}
-.f-copy{font-family:var(--fm);font-size:9.5px;color:var(--t4);letter-spacing:.05em}
-
-/* ===== RESPONSIVE ===== */
-@media(max-width:960px){
-  nav{padding:14px 24px}.n-links{display:none}
-  section,#hero,#philosophy{padding:64px 24px}#expertise{padding:0}
-  .h-inner{grid-template-columns:1fr}.h-stats{flex-direction:row;flex-wrap:wrap}
-  .hst{flex:1;min-width:110px}.ab-grid{grid-template-columns:1fr;gap:36px}
-  .wid-grid{grid-template-columns:1fr}.exp-strip{flex-direction:column}
-  .exp-badge{border-right:none;border-bottom:1px solid var(--b1)}.exp-badge:last-child{border-bottom:none}
-  .skl-wrap{grid-template-columns:1fr}
-  .sk-nav{flex-direction:row;flex-wrap:wrap;border-right:none;border-bottom:1px solid var(--b1)}
-  .tl-row{grid-template-columns:30px 1fr;gap:0 16px}.tl::before{left:15px}
-  .proj-grid{grid-template-columns:1fr}.edu-grid{grid-template-columns:1fr}
-  .co-inner{grid-template-columns:1fr;gap:40px}footer{padding:20px 24px}
-}
+.f-links a{font-family:var(--ft);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;color:#C9BD98;text-decoration:none;transition:color .2s}
+.f-links a:hover{color:#fff}
+.f-copy{font-family:var(--ft);font-size:11px;letter-spacing:.1em;color:#8F855F;width:100%;text-align:center;margin-top:20px;padding-top:18px;border-top:1px dashed rgba(239,230,200,.2)}
 
 /* ============================================================
-   ===== 3D LAYER : tilt cards, depth hero, glare =============
+   ===== READABILITY / CRISPNESS PASS ==========================
+   Sharpens rendering and fixes what was working against legibility:
+   overly wide tracking on the typewriter face at small sizes, and
+   secondary ink colors that were a touch low-contrast. Only ever
+   increases size/contrast; never shrinks. Placed last so it wins
+   on source order — same pattern the original portfolio used.
    ============================================================ */
-/* perspective on the parents whose children tilt */
-.wid-grid,.proj-grid,.edu-grid,.co-links,.specs{perspective:1500px}
-.tl{perspective:1700px}
-
-/* tilt cards — inline transform set per-frame by JS overrides these */
-.tilt{transform-style:preserve-3d;will-change:transform;
-  transition:transform .5s cubic-bezier(.22,.61,.36,1),border-color .25s,box-shadow .3s}
-.tilt.tilting{transition:transform .09s linear,border-color .25s,box-shadow .3s}
-
-/* moving sheen that follows the cursor across a tilted card */
-.tilt-glare{position:absolute;inset:0;border-radius:inherit;pointer-events:none;z-index:3;
-  opacity:0;transition:opacity .3s;mix-blend-mode:overlay;
-  background:radial-gradient(220px circle at var(--gx,50%) var(--gy,50%),rgba(255,255,255,.22),transparent 60%)}
-.tilt.tilting .tilt-glare{opacity:1}
-body.light .tilt-glare{mix-blend-mode:multiply;
-  background:radial-gradient(220px circle at var(--gx,50%) var(--gy,50%),rgba(29,82,214,.1),transparent 60%)}
-
-/* ---- HERO : depth-layered 3D plane that rotates with the mouse ---- */
-#hero{perspective:1300px}
-.h-inner{transform-style:preserve-3d;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
-.h-inner.h-tilting{transition:transform .12s linear}
-.h-inner>div{transform-style:preserve-3d}
-/* each block lifted to a different depth so it parallaxes as the plane turns */
-.h-avail{transform:translateZ(34px)}
-.h-name{transform:translateZ(56px)}
-.h-desc{transform:translateZ(22px)}
-.h-btns{transform:translateZ(40px)}
-.h-tech{transform:translateZ(14px)}
-.h-stats{transform:translateZ(50px);transform-style:preserve-3d}
-
-/* respect reduced-motion: flatten everything */
-@media(prefers-reduced-motion:reduce){
-  .rv,.rv-l,.rv-r{transform:none!important}
-  .h-inner,.h-inner>div,.h-stats{transform:none!important}
-  .tilt{transform:none!important}.tilt-glare{display:none}
-}
-@media(max-width:960px){
-  .h-inner>div,.h-avail,.h-name,.h-desc,.h-btns,.h-tech,.h-stats{transform:none}
-}
-
-/* ============================================================
-   ===== AURORA SUBSTRATE : self-contained WebGL fog bg =======
-   ============================================================ */
-/* fixed full-viewport canvas BEHIND everything (body::before/after are z:0,
-   sections z:auto/1). Must be a direct child of body — created in JS. */
-#bgfx{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;display:block}
-
-/* Let the aurora bleed through the WHOLE page: sections become translucent over
-   the fog while their inner cards keep opaque backgrounds, so body text on cards
-   stays fully crisp. color-mix degrades gracefully — if unsupported, the original
-   opaque section bg simply stays (fog then shows in the hero only). */
-#about,#philosophy,#education,#expertise,footer{background-color:color-mix(in srgb,var(--bg) 91%,transparent)}
-#whatido,#skills,#projects,#contact{background-color:color-mix(in srgb,var(--bg2) 90%,transparent)}
-#experience{background-color:color-mix(in srgb,var(--bg3) 90%,transparent)}
-
-/* scroll-progress bar — a quiet "engineered" signal, also feeds the shader scroll */
-#sprog{position:fixed;top:0;left:0;height:2px;width:100%;transform:scaleX(0);transform-origin:0 50%;
-  z-index:300;background:linear-gradient(90deg,var(--ac),var(--ac2));pointer-events:none;
-  box-shadow:0 0 12px rgba(var(--ac-rgb),.6);transition:transform .08s linear}
-/* hero stat counters: tabular figures so the count-up never reflows the card */
-.hst-n{font-variant-numeric:tabular-nums;font-feature-settings:"tnum"}
-
-/* ---- LIGHT THEME ---- */
-body.light{
-  --bg:#f4f6fb;--bg2:#edf0f8;--bg3:#e4e9f5;--bg4:#dce3f0;
-  --b1:#c8d3e8;--b2:#b0bdd6;--b3:#8fa3c0;--b4:#6b85a8;
-  --ac:#1d52d6;--ac2:#1740b0;--ac3:rgba(29,82,214,0.12);--ac4:rgba(29,82,214,0.06);--ach:#1740b0;
-  --ac-rgb:29,82,214;--gr-rgb:5,150,105;--pu-rgb:124,58,237;--hc:#1d52d6;--hc-rgb:29,82,214;
-  --go:#b45309;--go2:rgba(180,83,9,0.08);--go3:rgba(180,83,9,0.22);
-  --gr:#059669;--gr2:rgba(5,150,105,0.08);--gr3:rgba(5,150,105,0.22);
-  --pu:#7c3aed;--re:#dc2626;
-  --t1:#0f172a;--t2:#3a485e;--t3:#566377;--t4:#5d6b82;
-}
-body.light::before{opacity:.15}
-body.light::after{background-image:linear-gradient(rgba(37,99,235,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.04) 1px,transparent 1px)}
-/* hide orbs in light — they look muddy */
-body.light .orb{opacity:.25}
-/* nav in light */
-body.light nav{background:rgba(244,246,251,.92);border-bottom:1px solid var(--b1)}
-body.light nav.scrolled{background:rgba(244,246,251,.98)}
-/* light theme card shadows */
-body.light .tl-c:hover{box-shadow:0 8px 32px rgba(15,23,42,.1)}
-body.light .wid-card:hover{box-shadow:0 16px 48px rgba(15,23,42,.12)}
-body.light .pj:hover{box-shadow:0 18px 48px rgba(15,23,42,.14)}
-/* light hero bg grid */
-body.light .h-bg{background-image:linear-gradient(rgba(37,99,235,.06) 1px,transparent 1px),linear-gradient(90deg,rgba(37,99,235,.06) 1px,transparent 1px)}
-
-/* ---- THEME TOGGLE BUTTON ---- */
-.theme-btn{
-  width:38px;height:22px;border-radius:11px;border:1.5px solid var(--b2);
-  background:var(--bg3);cursor:pointer;position:relative;
-  transition:background .35s,border-color .35s;flex-shrink:0;
-  display:flex;align-items:center;padding:2px 3px;
-}
-.theme-btn::after{
-  content:'';width:16px;height:16px;border-radius:50%;
-  background:var(--t3);position:absolute;left:2px;
-  transition:transform .35s cubic-bezier(.34,1.56,.64,1),background .35s;
-}
-body.light .theme-btn{background:var(--ac3);border-color:var(--ac)}
-body.light .theme-btn::after{transform:translateX(16px);background:var(--ac)}
-.theme-icon-d,.theme-icon-l{font-size:13px;line-height:1;transition:opacity .25s;position:absolute}
-.theme-icon-d{right:4px;opacity:1}
-.theme-icon-l{left:4px;opacity:0}
-body.light .theme-icon-d{opacity:0}
-body.light .theme-icon-l{opacity:1}
-
-/* ============================================================
-   ===== TYPOGRAPHY READABILITY PASS ==========================
-   Raises the sub-11px floor and unifies the scale so every label
-   is comfortably readable in both themes. Only ever increases
-   sizes; never shrinks. Placed last so it wins on source order.
-   ============================================================ */
+html{-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 :root{
-  --fs-micro:11px;    /* smallest mono meta labels (eyebrows, dates, counts) */
-  --fs-label:11.5px;  /* uppercase mono UI labels (nav, badges, filters)     */
-  --fs-tag:12px;      /* all skill / tech / project chips — unified          */
-  --fs-body-sm:14px;  /* secondary body copy (card descriptions, bullets)    */
-  --fs-body:15px;     /* primary body copy                                   */
+  --ink2:#4A4029;   /* was #5C5138 — darker for stronger contrast on paper */
+  --ink3:#6E624A;   /* was #8A7C5C */
 }
-/* base reading size up a notch */
-body{font-size:16px}
+body.night{
+  --ink2:#D6CAA1;   /* was #C4B78F — lighter for stronger contrast on dark canopy */
+  --ink3:#AB9C74;   /* was #8E8562 */
+}
+/* tame extreme tracking on Special Elite — wide letterspacing reads great as
+   a design accent but starts to fight legibility below ~14px */
+.h-kicker,.stamp .st-top,.route-t,.h-tech-label,.ct-camp,.pj-group-co,.h-avail,
+.ey-t,.n-links a{letter-spacing:.14em}
+.exp-name{letter-spacing:.06em}
+.co-link-lbl,.edu-yr,.h-loc,.co-note{letter-spacing:.08em}
+/* raise the smallest mono labels to a comfortable floor */
+.exp-sub,.ct-date,.co-link-lbl,.pj-num,.pj-group-period,.bd-date{font-size:12px}
+.abt,.sk-tag,.wid-tag,.chip{font-size:12.5px}
+.pj-tag{font-size:11.5px}
+/* body copy: a little larger and a little heavier for on-screen reading */
+.pj-desc,.tl-li,.spec-d,.edu-sch,.ct-role{font-size:14.5px;font-weight:400}
+.sk-d,.wid-d{font-size:15px}
+.ab-p,.co-sub{font-weight:400}
+body{font-weight:400}
 
-/* — smallest mono meta labels: lift the 9–10.5px floor to a readable 11px — */
-.ey-n,.ey-t,.h-tech-label,.hst-l,.scue,.career-tl-title,.ct-date,.ct-badge,
-.sk-exp,.bd-lead,.pj-group-name,.pjf-c,.pj-num,.pj-domain,.edu-yr,
-.co-link-lbl,.f-links a,.f-copy{font-size:var(--fs-micro)}
 
-/* — uppercase mono UI labels: 11.5px, consistent — */
-.n-links a,.n-resume,.n-hire,.h-avail,.h-at,.h-loc,.skn,.bd-date,.tl-stack,
-.phi-attr,.co-note,.exp-badge-sub,.pjf{font-size:var(--fs-label)}
-
-/* — every chip/tag the same size — */
-.h-chip,.abt,.wid-tag,.sk-tag,.pj-tag{font-size:var(--fs-tag)}
-
-/* — body copy: comfortable reading — */
-.spec-d,.ct-role,.edu-sch{font-size:13.5px}
-.sk-d,.wid-d,.pj-desc,.tl-li,.ab-p{font-size:var(--fs-body-sm)}
-.h-desc,.co-sub,.pj-intro,.co-link-val{font-size:var(--fs-body)}
-
+/* ================= RESPONSIVE ================= */
+@media (max-width:1024px){
+  .h-inner{grid-template-columns:1fr;gap:34px;padding-bottom:230px}
+  .h-stats{flex-direction:row;flex-wrap:wrap;justify-content:flex-start;gap:10px}
+  .h-stats::before{display:none}
+  .hst{margin:0;min-width:150px}
+  .hst::before{display:none}
+  .wid-grid,.proj-grid{grid-template-columns:repeat(2,1fr)}
+  .ab-grid,.co-inner{grid-template-columns:1fr;gap:44px}
+}
+@media (max-width:860px){
+  .n-links{display:none}
+  nav,nav.scrolled{padding:10px 20px}
+  section{padding:72px 20px}
+  #hero{padding:110px 20px 0}
+  .skl-wrap{grid-template-columns:1fr}
+  .sk-nav{position:static;flex-direction:row;flex-wrap:wrap}
+  .skn{border-radius:4px;padding:8px 14px 8px 28px}
+  .skn:hover,.skn.active{transform:none}
+  .tl{padding-left:36px}
+  .tl-tent{left:-36px;width:24px;height:21px}
+  .vines-r{display:none}
+  .vines-l{transform:scale(.7);transform-origin:top left}
+  .tl-c{padding:20px 18px}
+  .pj-group{flex-wrap:wrap;row-gap:4px}
+  .pj-group::after{min-width:40px}
+  footer{padding:0 20px 30px}
+  .f-scene{margin:0 -20px 26px}
+}
+@media (max-width:620px){
+  .wid-grid,.proj-grid,.edu-grid{grid-template-columns:1fr}
+  .n-resume{display:none}
+  .n-word{display:none}
+  .h-name{font-size:clamp(42px,12vw,60px)}
+  .h-inner{padding-bottom:150px}
+  .phi{padding:38px 26px}
+  .sunwrap{right:4%;top:9%}
+  .sun{width:84px;height:84px}
+  .sky-btn{width:50px;height:30px}
+  .sky-btn .orbball{width:22px;height:22px}
+  body.night .sky-btn .orbball{transform:translateX(20px)}
+  .stamp{padding:9px 14px 7px}
+  .co-link{padding:14px 16px}
+}
+@media (max-width:400px){
+  .h-inner{padding-bottom:110px}
+  section{padding:64px 16px}
+  #hero{padding:100px 16px 0}
+  .tl-c{padding:18px 14px}
+}
 </style>
 </head>
 <body>
 
 <nav id="nav">
-  <div class="n-logo">VM<span>.</span></div>
+  <a class="n-logo" href="#hero" aria-label="Back to top">
+    <span class="n-badge">VM</span>
+    <span class="n-word">Expedition Log<b>Vinaykumar Mishra</b></span>
+  </a>
   <div class="n-links">
-    <a href="#about">About</a>
-    <a href="#whatido">What I Do</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+    <a href="#about">Field Notes</a>
+    <a href="#whatido">Survival Skills</a>
+    <a href="#skills">The Kit</a>
+    <a href="#experience">Camp Logs</a>
+    <a href="#projects">Sightings</a>
+    <a href="#contact">Ranger Station</a>
   </div>
   <div class="n-right">
-    <button class="theme-btn" id="themeBtn" aria-label="Toggle theme">
-      <span class="theme-icon-l">&#9728;&#65039;</span>
-      <span class="theme-icon-d">&#9790;</span>
-    </button>
+    <button class="sky-btn" id="skyBtn" aria-label="Toggle day and night"><span class="orbball"></span></button>
     <a class="n-resume" href="https://vinayak71.github.io/">Resume</a>
     <a class="n-hire" href="mailto:vinaykumarmishra71@gmail.com">Hire Me &rarr;</a>
+    <button class="n-burger" id="burgerBtn" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
+<div class="mob-menu" id="mobileMenu">
+  <a href="#about">&#128205; Field Notes</a>
+  <a href="#whatido">&#129686; Survival Skills</a>
+  <a href="#skills">&#127890; The Kit</a>
+  <a href="#experience">&#9978; Camp Logs</a>
+  <a href="#projects">&#128301; Sightings</a>
+  <a href="#contact">&#128225; Ranger Station</a>
+  <a href="https://vinayak71.github.io/" class="mob-resume">Resume &rarr;</a>
+</div>
+
 <!-- ===== HERO ===== -->
 <section id="hero">
-  <div class="h-bg"></div>
-  <div class="orb orb-h1"></div><div class="orb orb-h2"></div><div class="orb orb-h3"></div>
+  <div class="stars" aria-hidden="true"></div>
+  <div class="sunwrap" aria-hidden="true"><div class="sun"></div></div>
+
+  <!-- hanging vines -->
+  <div class="vines vines-l" aria-hidden="true">
+    <svg width="150" height="230" viewBox="0 0 150 230" xmlns="http://www.w3.org/2000/svg">
+      <path class="v" d="M18 0c4 30-6 55 2 84 6 22-4 42 2 66 3 12-2 24 0 36l6 1c2-14-3-26 0-40 5-25-4-44 1-68 6-28-3-52 1-79z"/>
+      <path class="v" d="M52 0c-3 24 5 44-1 68-5 20 3 38-2 58-3 12 1 22-1 34l-6-1c-1-12 2-22 0-34-4-20 3-38-1-58-5-24 4-43 1-67z"/>
+      <path class="v" d="M90 0c3 18-4 34 1 52 4 15-3 28 1 44l-6 2c-3-16 3-30-1-45-5-18 2-35-1-53z"/>
+      <ellipse class="v" cx="21" cy="90" rx="14" ry="7" transform="rotate(-38 21 90)"/>
+      <ellipse class="v" cx="16" cy="150" rx="13" ry="6.4" transform="rotate(34 16 150)"/>
+      <ellipse class="v" cx="24" cy="196" rx="12" ry="6" transform="rotate(-30 24 196)"/>
+      <ellipse class="v" cx="50" cy="70" rx="13" ry="6.4" transform="rotate(30 50 70)"/>
+      <ellipse class="v" cx="44" cy="128" rx="12" ry="6" transform="rotate(-34 44 128)"/>
+      <ellipse class="v" cx="88" cy="55" rx="12" ry="6" transform="rotate(-30 88 55)"/>
+      <ellipse class="v" cx="86" cy="94" rx="11" ry="5.4" transform="rotate(28 86 94)"/>
+    </svg>
+  </div>
+  <div class="vines vines-r" aria-hidden="true">
+    <svg width="130" height="190" viewBox="0 0 130 190" xmlns="http://www.w3.org/2000/svg">
+      <path class="v" d="M92 0c-4 26 6 48-2 74-5 18 4 34-1 52-2 10 2 20 0 30l-6 0c-1-11 2-21 0-31-4-18 3-34-1-52-5-26 4-47 1-73z"/>
+      <path class="v" d="M46 0c3 20-4 38 1 58 4 16-3 30 1 48l-6 2c-3-18 3-33-1-49-5-20 2-39-1-59z"/>
+      <ellipse class="v" cx="90" cy="76" rx="13" ry="6.4" transform="rotate(34 90 76)"/>
+      <ellipse class="v" cx="84" cy="130" rx="12" ry="6" transform="rotate(-32 84 130)"/>
+      <ellipse class="v" cx="44" cy="60" rx="12" ry="6" transform="rotate(-30 44 60)"/>
+      <ellipse class="v" cx="42" cy="100" rx="11" ry="5.4" transform="rotate(30 42 100)"/>
+    </svg>
+  </div>
+
   <div class="h-inner">
     <div>
-      <div class="h-avail">Open to opportunities</div>
+      <div class="h-avail"><span class="cmp"></span>Open to new expeditions</div>
+      <p class="h-kicker">The Expedition Log of</p>
       <h1 class="h-name">
         <span class="l1">Vinaykumar</span>
         <span class="l2">Mishra</span>
       </h1>
-      <p class="h-role"><strong>Senior Software Engineer</strong> &nbsp;&middot;&nbsp; 8+ Years</p>
-      <div class="h-at">Currently at WebMD &mdash; Navi Mumbai</div>
-      <p class="h-loc">Mumbai, India &nbsp;&middot;&nbsp; Open to Remote</p>
-      <p class="h-desc">I design and ship scalable backend systems, lead engineering teams, and build products that hold up under real-world pressure &mdash; across Healthcare, FinTech, and multi-tenant SaaS.</p>
+      <p class="h-role"><strong>Senior Software Engineer</strong> &nbsp;&middot;&nbsp; 8+ years in the wild</p>
+      <div class="h-at">Currently tracking at WebMD &mdash; Navi Mumbai</div>
+      <span class="h-loc">&#9873; Base: Mumbai, India &nbsp;&middot;&nbsp; Open to Remote</span>
+      <p class="h-desc">I design and ship scalable backend systems, lead engineering teams, and build products that survive real-world pressure &mdash; trekking across the Healthcare grove, the FinTech river, and the multi-tenant SaaS canopy.</p>
       <div class="h-btns">
-        <a class="btn btn-fill" href="#projects"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 12h18M13 6l6 6-6 6"/></svg>View My Work</a>
-        <a class="btn btn-ghost" href="#contact"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>Get in Touch</a>
+        <a class="btn btn-fill" href="#projects">&#128301; View Field Sightings</a>
+        <a class="btn btn-ghost" href="#contact">&#128225; Radio the Ranger</a>
       </div>
       <div class="h-tech">
-        <span class="h-tech-label">Core</span>
-        <span class="h-chip">Laravel</span><span class="h-chip">Vue.js</span>
-        <span class="h-chip">PHP</span><span class="h-chip">MySQL</span>
-        <span class="h-chip">Docker</span><span class="h-chip">AWS</span>
-        <span class="h-chip">Microservices</span>
+        <span class="h-tech-label">Machete Belt</span>
+        <span class="chip">Laravel</span><span class="chip">Vue.js</span>
+        <span class="chip">PHP</span><span class="chip">MySQL</span>
+        <span class="chip">Docker</span><span class="chip">AWS</span>
+        <span class="chip">Microservices</span>
       </div>
     </div>
-    <div class="h-stats">
-      <div class="hst"><div class="hst-n">8<sup>+</sup></div><div class="hst-l">Years Exp</div></div>
-      <div class="hst"><div class="hst-n">4</div><div class="hst-l">Companies</div></div>
-      <div class="hst"><div class="hst-n">6</div><div class="hst-l">Engineers Led</div></div>
-      <div class="hst"><div class="hst-n">10<sup>+</sup></div><div class="hst-l">Integrations</div></div>
+    <div class="h-stats" aria-label="Career statistics">
+      <div class="hst"><div class="hst-n">8<sup>+</sup></div><div class="hst-l">Years in the Wild</div></div>
+      <div class="hst"><div class="hst-n">4</div><div class="hst-l">Base Camps &middot; Companies</div></div>
+      <div class="hst"><div class="hst-n">6</div><div class="hst-l">Rangers &middot; Engineers Led</div></div>
+      <div class="hst"><div class="hst-n">10<sup>+</sup></div><div class="hst-l">Trails &middot; Integrations</div></div>
     </div>
   </div>
-  <div class="scue">Scroll<svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M12 5v14M5 13l7 7 7-7"/></svg></div>
+
+  <!-- savanna horizon scene -->
+  <div class="scene" aria-hidden="true">
+    <svg viewBox="0 0 1440 300" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <!-- far hills -->
+      <path class="s1" d="M0 208 Q180 168 380 196 T760 190 T1130 198 T1440 186 V300 H0 Z"/>
+      <!-- birds -->
+      <path class="birds" d="M330 84 q8 -9 16 0 q8 -9 16 0 M420 62 q7 -8 14 0 q7 -8 14 0 M520 96 q6 -7 12 0 q6 -7 12 0"/>
+      <!-- mid bush band -->
+      <path class="s2" d="M0 238 q60 -26 120 -8 q50 -22 104 -4 q46 -24 100 -6 q60 -22 118 -2 q52 -22 108 -6 q56 -20 112 -2 q54 -22 110 -6 q58 -20 116 -4 q52 -20 108 -4 q60 -18 120 0 q54 -18 104 0 q60 -16 120 4 V300 H0 Z"/>
+      <!-- acacia tree left -->
+      <g class="s3">
+        <path d="M118 266 l10 -58 -26 -34 6 -4 24 30 4 -44 -30 -32 6 -5 26 27 3 -30 8 0 3 31 27 -28 6 5 -31 33 4 43 25 -31 6 4 -27 35 11 58 Z"/>
+        <path d="M28 190 q40 -34 104 -34 q66 0 108 32 q10 8 4 14 q-52 -22 -112 -22 q-62 0 -100 24 q-8 -6 -4 -14 Z"/>
+      </g>
+      <!-- elephant silhouette -->
+      <g class="s3">
+        <path d="M600 300 v-52 q0 -30 26 -44 q20 -11 48 -11 q30 0 48 13 q9 6 13 15 q4 -8 12 -12 q10 -5 20 -3 q12 3 16 14 q3 9 -1 24 q-3 12 -12 18 l-5 -7 q8 -6 10 -15 q3 -11 0 -17 q-3 -7 -10 -8 q-8 -1 -13 4 q-6 6 -6 16 l0 65 h-14 v-34 q-10 6 -24 8 v26 h-14 v-25 q-8 -1 -16 -4 v29 h-14 v-36 q-14 -8 -18 -22 q-4 12 -4 26 v32 Z"/>
+        <path d="M652 208 q-4 -12 4 -18 q6 -4 12 -1 l-3 7 q-4 -2 -6 1 q-3 3 0 9 Z"/>
+      </g>
+      <!-- giraffe silhouette -->
+      <g class="s3">
+        <path d="M962 300 v-58 q0 -14 8 -22 l-6 -66 q-1 -12 6 -16 l4 -30 q1 -6 6 -6 q5 0 6 5 l2 10 q6 -3 10 2 q4 -5 10 -2 l2 -10 q1 -5 6 -5 q5 0 6 6 l4 30 q7 4 6 16 l-6 66 q8 8 8 22 v58 h-11 v-52 q0 -10 -6 -15 l-4 67 h-10 l-3 -60 q-2 0 -4 0 l-3 60 h-10 l-4 -67 q-6 5 -6 15 v52 Z"/>
+      </g>
+      <!-- grass tufts foreground -->
+      <path class="s3" d="M0 300 v-18 q10 4 14 -10 q6 12 12 2 q4 14 12 6 q6 10 12 0 q6 12 14 4 v16 Z M240 300 v-16 q8 6 12 -8 q6 12 12 2 q6 12 12 4 q6 8 12 -2 v20 Z M480 300 v-14 q8 4 12 -8 q6 10 10 2 q6 10 12 2 q4 8 10 0 v18 Z M840 300 v-16 q8 6 12 -8 q6 12 12 2 q6 12 12 4 v18 Z M1120 300 v-14 q8 4 12 -8 q6 10 10 2 q6 10 12 2 v18 Z M1330 300 v-18 q10 4 14 -10 q6 12 12 2 q4 14 12 6 q6 10 12 0 v20 Z"/>
+    </svg>
+  </div>
+  <div class="scue">Follow the trail &#9660;</div>
 </section>
 
-<!-- ===== IMPACT STRIP ===== -->
-<!-- ===== EXPERTISE BADGES ===== -->
-<div id="expertise">
-  <div class="exp-strip rv">
-    <div class="exp-badge"><div class="exp-badge-icon">&#127973;</div><div class="exp-badge-name">Healthcare / EMR</div><div class="exp-badge-sub">HL7 &middot; FHIR &middot; ICD-10 &middot; HIPAA</div></div>
-    <div class="exp-badge"><div class="exp-badge-icon">&#127968;</div><div class="exp-badge-name">Loan Origination</div><div class="exp-badge-sub">LOS/LMS &middot; NBFC &middot; HFC &middot; LAP</div></div>
-    <div class="exp-badge"><div class="exp-badge-icon">&#128176;</div><div class="exp-badge-name">FinTech &amp; Payments</div><div class="exp-badge-sub">Razorpay &middot; BBPS &middot; CIBIL &middot; KYC</div></div>
-    <div class="exp-badge"><div class="exp-badge-icon">&#9729;&#65039;</div><div class="exp-badge-name">Multi-Tenant SaaS</div><div class="exp-badge-sub">Isolated DBs &middot; Tenant Isolation</div></div>
-    <div class="exp-badge"><div class="exp-badge-icon">&#128272;</div><div class="exp-badge-name">Security &amp; Compliance</div><div class="exp-badge-sub">VAPT &middot; JWT/OAuth &middot; RBAC</div></div>
-    <div class="exp-badge"><div class="exp-badge-icon">&#128736;&#65039;</div><div class="exp-badge-name">System Architecture</div><div class="exp-badge-sub">Microservices &middot; DDD &middot; Event-Driven</div></div>
+<!-- ===== TRAIL MARKER STRIP ===== -->
+<div id="expertise" aria-label="Domain expertise">
+  <div class="exp-track" id="expTrack">
+    <div class="exp-badge"><span class="exp-ico">&#127973;</span><div><div class="exp-name">Healthcare / EMR</div><div class="exp-sub">HL7 &middot; FHIR &middot; ICD-10 &middot; HIPAA</div></div></div>
+    <div class="exp-badge"><span class="exp-ico">&#127968;</span><div><div class="exp-name">Loan Origination</div><div class="exp-sub">LOS/LMS &middot; NBFC &middot; HFC &middot; LAP</div></div></div>
+    <div class="exp-badge"><span class="exp-ico">&#128176;</span><div><div class="exp-name">FinTech &amp; Payments</div><div class="exp-sub">Razorpay &middot; BBPS &middot; CIBIL &middot; KYC</div></div></div>
+    <div class="exp-badge"><span class="exp-ico">&#9729;&#65039;</span><div><div class="exp-name">Multi-Tenant SaaS</div><div class="exp-sub">Isolated DBs &middot; Tenant Isolation</div></div></div>
+    <div class="exp-badge"><span class="exp-ico">&#128272;</span><div><div class="exp-name">Security &amp; Compliance</div><div class="exp-sub">VAPT &middot; JWT/OAuth &middot; RBAC</div></div></div>
+    <div class="exp-badge"><span class="exp-ico">&#128736;&#65039;</span><div><div class="exp-name">System Architecture</div><div class="exp-sub">Microservices &middot; DDD &middot; Event-Driven</div></div></div>
   </div>
 </div>
 
-<!-- ===== ABOUT ===== -->
+<!-- ===== ABOUT / FIELD NOTES ===== -->
 <section id="about">
   <div class="si">
-    <div class="ey"><span class="ey-n">01</span><div class="ey-l"></div><span class="ey-t">About Me</span></div>
+    <div class="stamp rv"><span class="st-top">Camp 01 &middot; Expedition File</span><span class="st-main">&#9873; Field Notes &mdash; The Explorer</span></div>
     <div class="ab-grid">
       <div class="rv-l">
-        <h2 class="ab-h">Engineering that <em>scales</em> &mdash;<br>and teams that <em>grow</em></h2>
+        <h2 class="ab-h">Engineering that <em>scales</em> &mdash; and teams that <em>grow</em></h2>
         <p class="ab-p">Senior Software Engineer with 8+ years designing, developing, and optimizing scalable, high-performance systems across Healthcare, FinTech, and multi-tenant SaaS. Deep expertise in Laravel, Vue.js, and API-driven microservice architectures &mdash; with hands-on experience in caching strategies, database optimization, Docker, and cloud deployments on AWS.</p>
-        <p class="ab-p">I&rsquo;ve built HIPAA-compliant platforms, architected loan origination systems processing &#8377;100 Cr+ monthly, led teams of 6 engineers, and driven engineering modernization from monolithic to microservices. I care about the long game: maintainable code, strong team culture, and systems that don&rsquo;t fall apart at 2am.</p>
-        <p class="ab-p">Based in Mumbai. Currently Senior Software Engineer at WebMD. Open to senior engineering and leadership roles.</p>
+        <p class="ab-p">I&rsquo;ve built HIPAA-compliant platforms, architected loan origination systems processing &#8377;100 Cr+ monthly, led teams of 6 engineers, and driven engineering modernization from monolithic to microservices. I care about the long game: maintainable code, strong team culture, and systems that don&rsquo;t fall apart at 2am &mdash; even when the jungle gets loud.</p>
+        <p class="ab-p">Base camp: Mumbai. Currently Senior Software Engineer at WebMD. Open to senior engineering and leadership roles.</p>
         <div class="ab-tags">
           <span class="abt">Healthcare / EMR</span><span class="abt">FinTech</span>
           <span class="abt">Loan Origination</span><span class="abt">Multi-Tenant SaaS</span>
@@ -636,101 +749,105 @@ body{font-size:16px}
         </div>
       </div>
       <div class="rv-r">
-        <!-- Career journey -->
-        <div class="career-tl-title">Career Journey</div>
-        <div class="career-tl">
+        <div class="route">
+          <div class="route-t">The Expedition Route</div>
           <div class="ct-item">
-            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-dotcol"><span class="ct-flag"></span><span class="ct-line"></span></div>
             <div class="ct-body">
-              <div class="ct-co">WebMD <span class="ct-badge">Current</span></div>
+              <div class="ct-camp">Camp IV &middot; Summit</div>
+              <div class="ct-co">WebMD <span class="ct-badge">You are here</span></div>
               <div class="ct-role">Senior Software Engineer</div>
               <div class="ct-date">Apr 2023 &mdash; Present &nbsp;&middot;&nbsp; Navi Mumbai</div>
             </div>
           </div>
           <div class="ct-item">
-            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-dotcol"><span class="ct-flag"></span><span class="ct-line"></span></div>
             <div class="ct-body">
+              <div class="ct-camp">Camp III</div>
               <div class="ct-co">Vastu Housing Finance</div>
               <div class="ct-role">Senior PHP Developer &middot; Led team of 6</div>
               <div class="ct-date">Oct 2019 &mdash; Mar 2023 &nbsp;&middot;&nbsp; Mumbai</div>
             </div>
           </div>
           <div class="ct-item">
-            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-dotcol"><span class="ct-flag"></span><span class="ct-line"></span></div>
             <div class="ct-body">
+              <div class="ct-camp">Camp II</div>
               <div class="ct-co">Softlabs Groups</div>
               <div class="ct-role">Laravel Developer</div>
               <div class="ct-date">Mar 2019 &mdash; Sep 2019 &nbsp;&middot;&nbsp; Mumbai</div>
             </div>
           </div>
           <div class="ct-item">
-            <div class="ct-dot-col"><div class="ct-dot"></div><div class="ct-line"></div></div>
+            <div class="ct-dotcol"><span class="ct-flag"></span><span class="ct-line"></span></div>
             <div class="ct-body">
+              <div class="ct-camp">Base Camp</div>
               <div class="ct-co">Neural IT</div>
               <div class="ct-role">Software Engineer</div>
               <div class="ct-date">Nov 2017 &mdash; Mar 2019 &nbsp;&middot;&nbsp; Mumbai</div>
             </div>
           </div>
         </div>
-
-        <!-- Specialties -->
-        <div class="specs" style="margin-top:24px">
-          <div class="spec"><div class="spec-bar"></div><div class="spec-body"><div class="spec-icon">&#127959;&#65039;</div><div class="spec-t">System Architecture</div><div class="spec-d">Microservices, multi-tenant SaaS, event-driven systems, API gateways, high availability, and fault tolerance.</div></div></div>
-          <div class="spec"><div class="spec-bar"></div><div class="spec-body"><div class="spec-icon">&#128101;</div><div class="spec-t">Technical Leadership</div><div class="spec-d">Team lead for 6 engineers. Code reviews, sprint planning, 1-on-1 mentoring, internal tech talks, and hiring.</div></div></div>
-          <div class="spec"><div class="spec-bar"></div><div class="spec-body"><div class="spec-icon">&#128274;</div><div class="spec-t">Security &amp; Compliance</div><div class="spec-d">HIPAA-compliant systems, VAPT, JWT/OAuth 2.0, data encryption at rest &amp; in transit, RBAC.</div></div></div>
+        <div class="specs">
+          <div class="spec"><span class="spec-ico">&#127959;&#65039;</span><div><div class="spec-t">System Architecture</div><div class="spec-d">Microservices, multi-tenant SaaS, event-driven systems, API gateways, high availability, and fault tolerance.</div></div></div>
+          <div class="spec"><span class="spec-ico">&#128101;</span><div><div class="spec-t">Technical Leadership</div><div class="spec-d">Team lead for 6 engineers. Code reviews, sprint planning, 1-on-1 mentoring, internal tech talks, and hiring.</div></div></div>
+          <div class="spec"><span class="spec-ico">&#128274;</span><div><div class="spec-t">Security &amp; Compliance</div><div class="spec-d">HIPAA-compliant systems, VAPT, JWT/OAuth 2.0, data encryption at rest &amp; in transit, RBAC.</div></div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== WHAT I DO ===== -->
+<div class="trail" aria-hidden="true"></div>
+
+<!-- ===== SURVIVAL SKILLS ===== -->
 <section id="whatido">
   <div class="si">
-    <div class="ey"><span class="ey-n">02</span><div class="ey-l"></div><span class="ey-t">What I Do</span></div>
+    <div class="stamp rv"><span class="st-top">Camp 02 &middot; Expedition File</span><span class="st-main">&#129686; Survival Skills</span></div>
     <div class="wid-grid rv">
       <div class="wid-card">
-        <div class="wid-icon">&#9881;&#65039;</div>
+        <div class="wid-ico">&#9881;&#65039;</div>
         <div class="wid-t">Backend Engineering</div>
-        <div class="wid-d">I build the systems underneath &mdash; scalable APIs, microservice architectures, queue-based async processing, and data pipelines. I&rsquo;ve built LOS platforms processing &#8377;100 Cr+ monthly, SaaS products, and healthcare data systems from scratch. I own architecture decisions end-to-end.</div>
+        <div class="wid-d">I build the systems underneath the canopy &mdash; scalable APIs, microservice architectures, queue-based async processing, and data pipelines. I&rsquo;ve built LOS platforms processing &#8377;100 Cr+ monthly, SaaS products, and healthcare data systems from scratch. I own architecture decisions end-to-end.</div>
         <div class="wid-tags"><span class="wid-tag">Laravel</span><span class="wid-tag">PHP</span><span class="wid-tag">Python</span><span class="wid-tag">FastAPI</span><span class="wid-tag">Microservices</span><span class="wid-tag">REST &amp; SOAP</span><span class="wid-tag">Queue Systems</span><span class="wid-tag">Background Workers</span></div>
       </div>
       <div class="wid-card">
-        <div class="wid-icon">&#127912;</div>
+        <div class="wid-ico">&#127912;</div>
         <div class="wid-t">Frontend Engineering</div>
         <div class="wid-d">I build reactive, component-driven UIs that connect cleanly to backend systems. Reporting dashboards with real-time filtering, multi-tenant portals, custom ACL systems, and reusable component libraries &mdash; Vue.js as my primary tool across Inertia.js and Nuxt.js.</div>
         <div class="wid-tags"><span class="wid-tag">Vue.js</span><span class="wid-tag">Nuxt.js</span><span class="wid-tag">Inertia.js</span><span class="wid-tag">Vuex / Pinia</span><span class="wid-tag">JavaScript ES6+</span><span class="wid-tag">Axios</span><span class="wid-tag">Code Splitting</span></div>
       </div>
       <div class="wid-card">
-        <div class="wid-icon">&#128081;</div>
+        <div class="wid-ico">&#129517;</div>
         <div class="wid-t">Team &amp; Delivery</div>
-        <div class="wid-d">I&rsquo;ve led teams of 6, owned end-to-end delivery across cross-functional teams, established PR review processes that cut rework cycles, conducted internal tech talks, and mentored engineers from onboarding to independently owning feature modules.</div>
+        <div class="wid-d">Every expedition needs a guide. I&rsquo;ve led teams of 6, owned end-to-end delivery across cross-functional teams, established PR review processes that cut rework cycles, conducted internal tech talks, and mentored engineers from onboarding to independently owning feature modules.</div>
         <div class="wid-tags"><span class="wid-tag">Team Lead</span><span class="wid-tag">Agile / Scrum</span><span class="wid-tag">Code Reviews</span><span class="wid-tag">Sprint Planning</span><span class="wid-tag">Mentoring</span><span class="wid-tag">Hiring</span><span class="wid-tag">RCA &amp; Incidents</span></div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===== SKILLS ===== -->
+<div class="trail" aria-hidden="true"></div>
+<!-- ===== THE EXPEDITION KIT (skills) ===== -->
 <section id="skills">
   <div class="si">
-    <div class="ey"><span class="ey-n">03</span><div class="ey-l"></div><span class="ey-t">Skills &amp; Technologies</span></div>
+    <div class="stamp rv"><span class="st-top">Camp 03 &middot; Expedition File</span><span class="st-main">&#127890; The Expedition Kit</span></div>
     <div class="skl-wrap rv">
-      <div class="sk-nav" id="sk-nav">
-        <div class="skn active" data-tab="backend"><span class="skn-dot"></span>Backend</div>
-        <div class="skn" data-tab="frontend"><span class="skn-dot"></span>Frontend</div>
-        <div class="skn" data-tab="database"><span class="skn-dot"></span>Database</div>
-        <div class="skn" data-tab="cloud"><span class="skn-dot"></span>Cloud &amp; DevOps</div>
-        <div class="skn" data-tab="security"><span class="skn-dot"></span>Security</div>
-        <div class="skn" data-tab="arch"><span class="skn-dot"></span>Architecture</div>
-        <div class="skn" data-tab="api"><span class="skn-dot"></span>API &amp; Integrations</div>
-        <div class="skn" data-tab="lead"><span class="skn-dot"></span>Leadership</div>
-        <div class="skn" data-tab="domain"><span class="skn-dot"></span>Domain</div>
+      <div class="sk-nav" id="sk-nav" role="tablist" aria-label="Skill categories">
+        <button class="skn active" data-tab="backend">Backend</button>
+        <button class="skn" data-tab="frontend">Frontend</button>
+        <button class="skn" data-tab="database">Database</button>
+        <button class="skn" data-tab="cloud">Cloud &amp; DevOps</button>
+        <button class="skn" data-tab="security">Security</button>
+        <button class="skn" data-tab="arch">Architecture</button>
+        <button class="skn" data-tab="api">API &amp; Integrations</button>
+        <button class="skn" data-tab="lead">Leadership</button>
+        <button class="skn" data-tab="domain">Domain</button>
       </div>
       <div class="sk-panel">
         <div class="skt active" id="tab-backend">
           <div class="sk-h">Backend Engineering</div>
-          <div class="sk-exp">6+ years production &middot; Primary stack</div>
+          <div class="sk-exp">6+ years production &middot; Primary machete</div>
           <div class="sk-d">My core stack for 6+ years. I&rsquo;ve built production Laravel applications from lean SaaS products to enterprise-grade LOS platforms processing &#8377;100 Cr+ monthly. I understand Laravel deeply &mdash; service layers, job queues, event broadcasting, and the patterns that make large codebases maintainable. Python/FastAPI for services where performance matters.</div>
           <div class="sk-tags"><span class="sk-tag">Laravel</span><span class="sk-tag">PHP</span><span class="sk-tag">Python</span><span class="sk-tag">FastAPI</span><span class="sk-tag">Core PHP</span><span class="sk-tag">Microservices</span><span class="sk-tag">Event-Driven Architecture</span><span class="sk-tag">Background Workers</span><span class="sk-tag">Queue Systems</span><span class="sk-tag">Service-Oriented Architecture</span></div>
         </div>
@@ -787,28 +904,26 @@ body{font-size:16px}
   </div>
 </section>
 
-<!-- ===== EXPERIENCE ===== -->
+<div class="trail" aria-hidden="true"></div>
+
+<!-- ===== CAMP LOGS (experience) ===== -->
 <section id="experience">
   <div class="si">
-    <div class="ey"><span class="ey-n">04</span><div class="ey-l"></div><span class="ey-t">Experience</span></div>
+    <div class="stamp rv"><span class="st-top">Camp 04 &middot; Expedition File</span><span class="st-main">&#9978; Camp Logs</span></div>
     <div class="tl">
 
       <div class="tl-row rv">
-        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-tent" aria-hidden="true"><svg viewBox="0 0 30 26"><path class="tt" d="M15 2 L28 24 H2 Z"/><path class="td" d="M15 10 L21 24 H9 Z"/></svg></div>
         <div class="tl-c cur-job">
-          <div class="tl-c-top-bar"></div>
           <div class="tl-head">
             <div>
+              <div class="tl-camp">Camp IV &middot; Current Position</div>
               <div class="tl-co">WebMD</div>
-              <div class="tl-meta">
-                <span class="tl-role">Senior Software Engineer</span>
-                <span class="tl-sep">&middot;</span>
-                <span class="tl-loc">Airoli, Navi Mumbai</span>
-              </div>
+              <div class="tl-meta">Senior Software Engineer &nbsp;&middot;&nbsp; Airoli, Navi Mumbai</div>
             </div>
             <span class="bd-date bd-cur">Apr 2023 &mdash; Present</span>
           </div>
-          <div class="tl-stack"><b>Stack</b>Laravel &middot; Vue.js &middot; Inertia.js &middot; PHP &middot; MySQL &middot; Docker &middot; JWT &middot; Vuex/Pinia &middot; Microservices</div>
+          <div class="tl-stack"><b>Gear</b>Laravel &middot; Vue.js &middot; Inertia.js &middot; PHP &middot; MySQL &middot; Docker &middot; JWT &middot; Vuex/Pinia &middot; Microservices</div>
           <ul class="tl-bullets">
             <li class="tl-li key">Owned end-to-end delivery of multiple reporting portal projects &mdash; coordinated timelines, defined scope with product stakeholders, managed sprint planning, and ensured on-time delivery across cross-functional teams.</li>
             <li class="tl-li key">Drove technical design discussions and architectural decisions on data flow and API contracts &mdash; collaborated with product and QA to define requirements, acceptance criteria, and integration contracts adopted team-wide.</li>
@@ -827,21 +942,17 @@ body{font-size:16px}
       </div>
 
       <div class="tl-row rv">
-        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-tent" aria-hidden="true"><svg viewBox="0 0 30 26"><path class="tt" d="M15 2 L28 24 H2 Z"/><path class="td" d="M15 10 L21 24 H9 Z"/></svg></div>
         <div class="tl-c">
-          <div class="tl-c-top-bar"></div>
           <div class="tl-head">
             <div>
+              <div class="tl-camp">Camp III</div>
               <div class="tl-co">Vastu Housing Finance Corporation Pvt. Ltd.</div>
-              <div class="tl-meta">
-                <span class="tl-role">Senior PHP Developer</span>
-                <span class="tl-sep">&middot;</span>
-                <span class="tl-loc">Sewri, Mumbai</span>
-              </div>
+              <div class="tl-meta">Senior PHP Developer &nbsp;&middot;&nbsp; Sewri, Mumbai</div>
             </div>
-            <span class="bd-date bd-past">Oct 2019 &mdash; Mar 2023</span>
+            <span class="bd-date">Oct 2019 &mdash; Mar 2023</span>
           </div>
-          <div class="tl-stack"><b>Stack</b>Laravel &middot; PHP &middot; MySQL &middot; jQuery &middot; JWT &middot; MPDF &middot; AJAX DataTables &middot; BBPS &middot; CIBIL &middot; Razorpay</div>
+          <div class="tl-stack"><b>Gear</b>Laravel &middot; PHP &middot; MySQL &middot; jQuery &middot; JWT &middot; MPDF &middot; AJAX DataTables &middot; BBPS &middot; CIBIL &middot; Razorpay</div>
           <ul class="tl-bullets">
             <li class="tl-li key">Led and mentored a team of 6 developers &mdash; introduced Agile/Scrum, microservices architecture, DRY coding principles, and API security standards; improved delivery efficiency, code quality, and team productivity across all projects.</li>
             <li class="tl-li key">Architected and built Pulse &mdash; an in-house LOS for Home Loans &amp; LAP &mdash; supporting 500+ pan-India users and processing &#8377;100 Cr+ in loans per month via BBPS; managed the full lead-to-approval lifecycle from Android app to backend.</li>
@@ -857,21 +968,17 @@ body{font-size:16px}
       </div>
 
       <div class="tl-row rv">
-        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-tent" aria-hidden="true"><svg viewBox="0 0 30 26"><path class="tt" d="M15 2 L28 24 H2 Z"/><path class="td" d="M15 10 L21 24 H9 Z"/></svg></div>
         <div class="tl-c">
-          <div class="tl-c-top-bar"></div>
           <div class="tl-head">
             <div>
+              <div class="tl-camp">Camp II</div>
               <div class="tl-co">Softlabs Groups</div>
-              <div class="tl-meta">
-                <span class="tl-role">Laravel Developer</span>
-                <span class="tl-sep">&middot;</span>
-                <span class="tl-loc">Lower Parel, Mumbai</span>
-              </div>
+              <div class="tl-meta">Laravel Developer &nbsp;&middot;&nbsp; Lower Parel, Mumbai</div>
             </div>
-            <span class="bd-date bd-past">Mar 2019 &mdash; Sep 2019</span>
+            <span class="bd-date">Mar 2019 &mdash; Sep 2019</span>
           </div>
-          <div class="tl-stack"><b>Stack</b>Laravel &middot; PHP &middot; MySQL &middot; Multi-tenancy &middot; jQuery &middot; JavaScript &middot; SaaS</div>
+          <div class="tl-stack"><b>Gear</b>Laravel &middot; PHP &middot; MySQL &middot; Multi-tenancy &middot; jQuery &middot; JavaScript &middot; SaaS</div>
           <ul class="tl-bullets">
             <li class="tl-li">Built a Stock Management SaaS with Laravel multi-tenancy &mdash; dynamically switched isolated databases per client, supporting fully independent multi-tenant environments.</li>
             <li class="tl-li">Developed TravelX, a travel booking platform for flights, cars, and hotels within a single unified tour workflow.</li>
@@ -881,21 +988,17 @@ body{font-size:16px}
       </div>
 
       <div class="tl-row rv">
-        <div class="tl-dw"><div class="tl-d"></div></div>
+        <div class="tl-tent" aria-hidden="true"><svg viewBox="0 0 30 26"><path class="tt" d="M15 2 L28 24 H2 Z"/><path class="td" d="M15 10 L21 24 H9 Z"/></svg></div>
         <div class="tl-c">
-          <div class="tl-c-top-bar"></div>
           <div class="tl-head">
             <div>
+              <div class="tl-camp">Base Camp &middot; Where the trek began</div>
               <div class="tl-co">Neural IT</div>
-              <div class="tl-meta">
-                <span class="tl-role">Software Engineer</span>
-                <span class="tl-sep">&middot;</span>
-                <span class="tl-loc">Airoli, Mumbai</span>
-              </div>
+              <div class="tl-meta">Software Engineer &nbsp;&middot;&nbsp; Airoli, Mumbai</div>
             </div>
-            <span class="bd-date bd-past">Nov 2017 &mdash; Mar 2019</span>
+            <span class="bd-date">Nov 2017 &mdash; Mar 2019</span>
           </div>
-          <div class="tl-stack"><b>Stack</b>Core PHP &middot; Drupal &middot; MySQL &middot; jQuery &middot; JavaScript &middot; REST APIs</div>
+          <div class="tl-stack"><b>Gear</b>Core PHP &middot; Drupal &middot; MySQL &middot; jQuery &middot; JavaScript &middot; REST APIs</div>
           <ul class="tl-bullets">
             <li class="tl-li">Built a fully functional EHRMS mobile app (Core PHP, Android WebView) and an EHRMS control panel for multi-org cloning across healthcare organizations.</li>
             <li class="tl-li">Worked on 3 USA-based Accidental Claim Management projects integrating claim workflows, reporting, and insurance processing pipelines.</li>
@@ -909,273 +1012,197 @@ body{font-size:16px}
   </div>
 </section>
 
-<!-- ===== PHILOSOPHY ===== -->
+<!-- ===== PHILOSOPHY (carved plank) ===== -->
 <section id="philosophy">
   <div class="phi rv">
-    <div class="phi-deco">&ldquo;</div>
-    <p class="phi-q">Good engineering isn&rsquo;t just about writing <em>clean code</em> &mdash; it&rsquo;s about building systems your team can own, debug at 2am, and hand off without fear.</p>
-    <p class="phi-attr">&mdash; Vinaykumar Mishra &nbsp;&middot;&nbsp; Senior Software Engineer &nbsp;&middot;&nbsp; Mumbai</p>
+    <span class="phi-rope-l" aria-hidden="true"></span><span class="phi-rope-r" aria-hidden="true"></span>
+    <p class="phi-q">&ldquo;Good engineering isn&rsquo;t just about writing <em>clean code</em> &mdash; it&rsquo;s about building systems your team can own, debug at 2am, and hand off without fear.&rdquo;</p>
+    <p class="phi-attr">&mdash; Carved at base camp &middot; Vinaykumar Mishra &middot; Mumbai</p>
   </div>
 </section>
 
-<!-- ===== PROJECTS ===== -->
+<div class="trail" aria-hidden="true"></div>
+<!-- ===== FIELD SIGHTINGS (projects) ===== -->
 <section id="projects">
   <div class="si">
-    <div class="ey"><span class="ey-n">05</span><div class="ey-l"></div><span class="ey-t">Selected Work</span></div>
-    <p class="pj-intro rv">A selection of <strong style="color:var(--t1);font-weight:500">23 production systems</strong> I&rsquo;ve designed and built end-to-end across four companies &mdash; spanning healthcare, FinTech, loan origination, and multi-tenant SaaS. Filter by domain below.</p>
+    <div class="stamp rv"><span class="st-top">Camp 05 &middot; Expedition File</span><span class="st-main">&#128301; Field Sightings</span></div>
+    <p class="pj-intro rv"><strong>23 species documented</strong> &mdash; production systems designed and built end-to-end across four territories, spanning healthcare, FinTech, loan origination, and multi-tenant SaaS. Point your binoculars at a habitat below.</p>
     <div class="pj-filter rv" id="pjFilter">
-      <button class="pjf active" data-cat="all">All <span class="pjf-c">23</span></button>
-      <button class="pjf" data-cat="hc">Healthcare <span class="pjf-c">10</span></button>
-      <button class="pjf" data-cat="ft">FinTech &amp; Trading <span class="pjf-c">4</span></button>
-      <button class="pjf" data-cat="web">Web &amp; SaaS <span class="pjf-c">9</span></button>
+      <button class="pjf active" data-cat="all">All Habitats <span class="pjf-c">23</span></button>
+      <button class="pjf" data-cat="hc">Healthcare Grove <span class="pjf-c">10</span></button>
+      <button class="pjf" data-cat="ft">FinTech River <span class="pjf-c">4</span></button>
+      <button class="pjf" data-cat="web">SaaS Canopy <span class="pjf-c">9</span></button>
     </div>
     <div class="proj-grid rv">
 
       <!-- ── Neural IT ── -->
-      <div class="pj-group">
-        <div class="pj-group-name"><span class="pj-group-co">Neural IT</span><span class="pj-group-period">Nov 2017 – Mar 2019</span></div>
-      </div>
+      <div class="pj-group"><span class="pj-group-co">Territory: Neural IT</span><span class="pj-group-period">Nov 2017 – Mar 2019</span></div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">01 / 23</span><span class="pj-domain web">Web / CMS</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 01/23</span><span class="pj-domain web">Web / CMS</span></div>
         <div class="pj-name">Neural IT Website</div>
         <div class="pj-tags"><span class="pj-tag">Drupal CMS</span><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span><span class="pj-tag">Custom Modules</span></div>
         <div class="pj-desc">Corporate website for Neural IT built on Drupal CMS. Architected custom content types, Drupal modules, and theming layers to deliver a fully manageable, SEO-optimised corporate presence — enabling non-technical staff to control all content without developer intervention.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">02 / 23</span><span class="pj-domain hc">Healthcare / HRMS</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 02/23</span><span class="pj-domain hc">Healthcare / HRMS</span></div>
         <div class="pj-name">EHRMS Mobile Application</div>
         <div class="pj-tags"><span class="pj-tag">Drupal</span><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Android WebView</span></div>
         <div class="pj-desc">Electronic Human Resource Management System delivered as a mobile-first web application wrapped in Android WebView. Built multi-organisation support with isolated data environments, RBAC across departments, and custom Drupal modules handling attendance, leave, and payroll workflows for healthcare organisations.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">03 / 23</span><span class="pj-domain hc">Healthcare / Admin</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 03/23</span><span class="pj-domain hc">Healthcare / Admin</span></div>
         <div class="pj-name">EHRMS Master Control Panel</div>
         <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Multi-org</span></div>
         <div class="pj-desc">Centralised provisioning and configuration panel for the entire EHRMS ecosystem. Enabled one-click deployment of new client environments with isolated databases — organisations could be onboarded, module-configured, and launched without any developer intervention, dramatically reducing setup time per client.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">04 / 23</span><span class="pj-domain web">Survey / Field</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 04/23</span><span class="pj-domain web">Survey / Field</span></div>
         <div class="pj-name">RSB Surveyor Mobile App</div>
         <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Dynamic Forms</span></div>
         <div class="pj-desc">Field survey application for product-based data collection designed for on-the-ground agents. Supported category-driven question flows with dynamic branching logic, input validation, and real-time submission to the central control panel — built to handle inconsistent connectivity in field conditions.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">05 / 23</span><span class="pj-domain web">Admin Panel</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 05/23</span><span class="pj-domain web">Admin Panel</span></div>
         <div class="pj-name">RSB Master Control Panel</div>
         <div class="pj-tags"><span class="pj-tag">PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Reporting</span></div>
         <div class="pj-desc">Web-based admin console for configuring the RSB Surveyor ecosystem. Managed survey categories, question banks, product configurations, and agent assignments from a single interface. Built dynamic form builders and analytical dashboards to monitor survey completion rates and responses across regions.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">06 / 23</span><span class="pj-domain hc">Healthcare / Insurance</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
-        <div class="pj-name">Accidental Case Management (×3)</div>
+        <div class="pj-top"><span class="pj-num">Specimen 06/23</span><span class="pj-domain hc">Healthcare / Insurance</span></div>
+        <div class="pj-name">Accidental Case Management (&times;3)</div>
         <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">USA Clients</span></div>
         <div class="pj-desc">Three USA-based accidental case management platforms handling end-to-end insurance claim workflows for US clients. Built claim intake, adjuster assignment, multi-party document management, status tracking, and insurance processing pipelines — each tailored to distinct client workflows and compliance requirements.</div>
       </div>
 
       <!-- ── Softlabs Groups ── -->
-      <div class="pj-group">
-        <div class="pj-group-name"><span class="pj-group-co">Softlabs Groups</span><span class="pj-group-period">Mar 2019 – Sep 2019</span></div>
-      </div>
+      <div class="pj-group"><span class="pj-group-co">Territory: Softlabs Groups</span><span class="pj-group-period">Mar 2019 – Sep 2019</span></div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">07 / 23</span><span class="pj-domain web">Travel / Booking</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 07/23</span><span class="pj-domain web">Travel / Booking</span></div>
         <div class="pj-name">TravelX</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Booking Engine</span></div>
         <div class="pj-desc">End-to-end holiday package booking platform unifying flight tickets, hotel reservations, and car bookings into a single seamless tour workflow. Designed the package builder engine, multi-step booking confirmation flow, payment integration, and an operator-facing admin module for managing inventory and customer bookings.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">08 / 23</span><span class="pj-domain web">SaaS / Multi-tenant</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 08/23</span><span class="pj-domain web">SaaS / Multi-tenant</span></div>
         <div class="pj-name">Hasibusasa</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Multi-tenancy</span><span class="pj-tag">MySQL</span><span class="pj-tag">SaaS</span></div>
         <div class="pj-desc">Multi-tenant SaaS platform built with Laravel featuring full database isolation per client — each tenant operates on a dedicated MySQL database. Architected the dynamic database switching layer, tenant provisioning system, and a shared-core module structure enabling independent per-client customisation without codebase fragmentation.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">09 / 23</span><span class="pj-domain web">Booking / Wellness</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 09/23</span><span class="pj-domain web">Booking / Wellness</span></div>
         <div class="pj-name">Center Management System</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">RBAC</span></div>
         <div class="pj-desc">Comprehensive package booking system for Vipassana Pagoda covering meditation courses, room reservations, and full stay accommodation management. Built dynamic availability calendars, package configuration engine, guest lifecycle management, and automated booking confirmation workflows with multi-location support.</div>
       </div>
 
       <!-- ── Vastu Housing Finance ── -->
-      <div class="pj-group">
-        <div class="pj-group-name"><span class="pj-group-co">Vastu Housing Finance Corporation</span><span class="pj-group-period">Oct 2019 – Mar 2023</span></div>
-      </div>
+      <div class="pj-group"><span class="pj-group-co">Territory: Vastu Housing Finance</span><span class="pj-group-period">Oct 2019 – Mar 2023</span></div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">10 / 23</span><span class="pj-domain ft">FinTech / LOS</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 10/23</span><span class="pj-domain ft">FinTech / LOS</span></div>
         <div class="pj-name">NBFC Loan Origination System</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Microservices</span><span class="pj-tag">FinTech APIs</span><span class="pj-tag">MySQL</span></div>
         <div class="pj-desc">Full-lifecycle LOS for Vehicle Loans and Loan Against Property (LAP) built from scratch for an NBFC. Designed multi-step loan workflows from lead capture to disbursement, integrated 10+ FinTech APIs (KYC, CIBIL, fraud checks, Razorpay), and built microservice-based processing pipelines — solely responsible for architecture, delivery, and ongoing operations.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">11 / 23</span><span class="pj-domain ft">FinTech / HFC</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 11/23</span><span class="pj-domain ft">FinTech / HFC</span></div>
         <div class="pj-name">Pulse — HFC Home Loan LOS</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">BBPS</span><span class="pj-tag">CIBIL</span><span class="pj-tag">Digio e-sign</span><span class="pj-tag">MySQL</span></div>
         <div class="pj-desc">Enterprise-grade Loan Origination System for Home Loans and LAP, serving 500+ pan-India users and processing &#8377;100 Cr+ monthly via BBPS. Architected the full lead-to-approval lifecycle, multi-step KYC, Aadhaar masking, CIBIL/Highmark bureau integration, Digio e-sign for remote paperless signing, and automated MIS reporting to Branch Managers.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">12 / 23</span><span class="pj-domain web">Corporate / Web</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 12/23</span><span class="pj-domain web">Corporate / Web</span></div>
         <div class="pj-name">Vastu Housing Finance Website</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">MySQL</span><span class="pj-tag">jQuery</span><span class="pj-tag">SEO</span></div>
         <div class="pj-desc">Corporate website for Vastu Housing Finance built on a Laravel backend with a clean, SEO-optimised frontend. Implemented a CMS-backed content management system for branch locators, product pages, and EMI calculators — enabling the marketing team to independently manage all customer-facing content.</div>
       </div>
 
       <!-- ── WebMD ── -->
-      <div class="pj-group">
-        <div class="pj-group-name"><span class="pj-group-co">WebMD</span><span class="pj-group-period">Apr 2023 – Present</span></div>
-      </div>
+      <div class="pj-group"><span class="pj-group-co">Territory: WebMD</span><span class="pj-group-period">Apr 2023 – Present</span></div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">13 / 23</span><span class="pj-domain hc">Pharma / Reporting</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 13/23</span><span class="pj-domain hc">Pharma / Reporting</span></div>
         <div class="pj-name">Pharma Reports System</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">DataTables</span></div>
         <div class="pj-desc">Internal report generation platform enabling pharma clients to query, filter, and view prescription and campaign performance data. Built dynamic report builders with parameterised queries, scheduled report delivery to stakeholders, and optimised background workers to handle large dataset generation without blocking the main application.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">14 / 23</span><span class="pj-domain hc">Pharma / Fulfillment</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 14/23</span><span class="pj-domain hc">Pharma / Fulfillment</span></div>
         <div class="pj-name">PTR System</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Vue.js</span><span class="pj-tag">MySQL</span><span class="pj-tag">JWT &amp; Sanctum</span></div>
         <div class="pj-desc">Medicine order and refill processing system connecting pharmacy workflows to backend fulfillment pipelines. Built end-to-end as sole technical owner — from database schema to Vue.js frontend — secured with JWT and Laravel Sanctum. Handled order intake, multi-state processing workflows, and real-time pharmacy-side confirmation tracking.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">15 / 23</span><span class="pj-domain hc">Pharma / Survey</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 15/23</span><span class="pj-domain hc">Pharma / Survey</span></div>
         <div class="pj-name">RxSurveyor</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">MySQL</span><span class="pj-tag">jQuery</span><span class="pj-tag">Analytics</span></div>
         <div class="pj-desc">Survey creation and distribution platform for pharma companies to collect drug usage feedback and HCP insights. Designed dynamic question builders, audience targeting, campaign-based survey scheduling, and real-time response analytics dashboards — enabling pharma brands to run structured research programmes at scale across their customer base.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">16 / 23</span><span class="pj-domain hc">Pharma / Wallet</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 16/23</span><span class="pj-domain hc">Pharma / Wallet</span></div>
         <div class="pj-name">RxProximity</div>
         <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">Apple Wallet</span><span class="pj-tag">Google Pay</span><span class="pj-tag">Modular Architecture</span></div>
         <div class="pj-desc">Proximity-based drug discount coupon platform generating standards-compliant digital wallet passes for both Apple Wallet (iOS) and Google Pay (Android). Built on modular Core PHP — integrated with pharmacy redemption APIs and brand campaign management, enabling pharma brands to issue and track drug discount coupons redeemable directly at the pharmacy counter.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">17 / 23</span><span class="pj-domain hc">Pharma / Portal</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 17/23</span><span class="pj-domain hc">Pharma / Portal</span></div>
         <div class="pj-name">Client-Facing Report Portal</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Vue.js</span><span class="pj-tag">Inertia.js</span><span class="pj-tag">MySQL</span></div>
         <div class="pj-desc">Multi-tenant reporting portal giving pharma clients direct access to their campaign and prescription analytics. Built with Laravel, Vue.js, and Inertia.js — features dynamic campaign-based report generation, interactive charts, data validation, audit trails, secure file downloads, and strict multi-tenant data segregation with custom RBAC per client organisation.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">18 / 23</span><span class="pj-domain web">Developer Tools</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 18/23</span><span class="pj-domain web">Developer Tools</span></div>
         <div class="pj-name">API Documentation Portal</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">MySQL</span><span class="pj-tag">jQuery</span></div>
         <div class="pj-desc">Internal developer-facing API documentation site serving as the single source of truth for all platform integrations. Structured endpoint references, request/response schemas, authentication guides, and versioned changelogs — enabling frontend and third-party integration teams to develop against stable, well-documented contracts without constant back-and-forth.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">19 / 23</span><span class="pj-domain hc">Pharma / Compliance</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 19/23</span><span class="pj-domain hc">Pharma / Compliance</span></div>
         <div class="pj-name">Engaged RX</div>
         <div class="pj-tags"><span class="pj-tag">Core PHP</span><span class="pj-tag">jQuery</span><span class="pj-tag">MySQL</span><span class="pj-tag">Versioning</span></div>
         <div class="pj-desc">Web application for managing terms, disclaimers, and brand pages for pharma brands. Provided brand managers a structured CMS to maintain compliance-driven content across drug campaigns — with content versioning, structured approval workflows, and per-brand configuration ensuring each pharma client's legal and regulatory copy remained accurate and audit-ready.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">20 / 23</span><span class="pj-domain tr">Trading / Finance</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 20/23</span><span class="pj-domain tr">Trading / Finance</span></div>
         <div class="pj-name">TradeX</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Razorpay</span><span class="pj-tag">MySQL</span><span class="pj-tag">RBAC</span></div>
         <div class="pj-desc">Trading platform for managing trader accounts, subscription tiers, and fund request workflows. Designed configurable approval modules with role-based access control, real-time fund status tracking, and automated approval/rejection notifications — giving admins full visibility and control over trader activity and capital allocation.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">21 / 23</span><span class="pj-domain hc">Healthcare / IoT</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 21/23</span><span class="pj-domain hc">Healthcare / IoT</span></div>
         <div class="pj-name">medDose</div>
         <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">SaaS</span><span class="pj-tag">IoT</span><span class="pj-tag">Multi-tenancy</span></div>
         <div class="pj-desc">Multi-tenant SaaS medicine dose reminder platform with IoT smart pillbox integration. Built full tenant isolation in Laravel — syncs pill counts from IoT devices in real time, triggers configurable dose reminders, and fires caregiver alerts when thresholds are crossed. Designed the patient-device pairing system, alert scheduling engine, and per-tenant notification configuration.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">22 / 23</span><span class="pj-domain ft">FinTech / P2P</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 22/23</span><span class="pj-domain ft">FinTech / P2P</span></div>
         <div class="pj-name">Bill Financing System</div>
         <div class="pj-tags"><span class="pj-tag">CodeIgniter</span><span class="pj-tag">PHP</span><span class="pj-tag">FinTech APIs</span><span class="pj-tag">MySQL</span></div>
         <div class="pj-desc">Peer-to-peer bill financing platform enabling users to fund another user's bill and earn interest on it. Built on PHP CodeIgniter with FinTech API integrations for KYC, identity verification, and payment processing — designed dynamic lender-borrower matching workflows, automated interest calculation engine, and a compliance-driven audit trail for every transaction.</div>
       </div>
 
       <div class="pj">
-        <div class="pj-top">
-          <div style="display:flex;align-items:center;gap:8px"><span class="pj-num">23 / 23</span><span class="pj-domain web">Web / SEO</span></div>
-          <div class="pj-arr"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg></div>
-        </div>
+        <div class="pj-top"><span class="pj-num">Specimen 23/23</span><span class="pj-domain web">Web / SEO</span></div>
         <div class="pj-name">ARKROOT</div>
         <div class="pj-tags"><span class="pj-tag">Nuxt.js</span><span class="pj-tag">Vue.js</span><span class="pj-tag">PHP</span><span class="pj-tag">SEO</span></div>
         <div class="pj-desc">Corporate website for ARK Root — a boutique CA, finance, and legal compliance advisory firm for startups. Built as a performance-first Nuxt.js SPA with a PHP backend, structured service pages, and client inquiry workflows. SEO-optimised from the ground up to drive organic search visibility for a firm whose growth depends entirely on credibility and discoverability.</div>
@@ -1185,10 +1212,12 @@ body{font-size:16px}
   </div>
 </section>
 
-<!-- ===== EDUCATION ===== -->
+<div class="trail" aria-hidden="true"></div>
+
+<!-- ===== TRAINING GROUNDS ===== -->
 <section id="education">
   <div class="si">
-    <div class="ey"><span class="ey-n">06</span><div class="ey-l"></div><span class="ey-t">Education</span></div>
+    <div class="stamp rv"><span class="st-top">Camp 06 &middot; Expedition File</span><span class="st-main">&#127891; Training Grounds</span></div>
     <div class="edu-grid rv">
       <div class="edu-c">
         <div class="edu-ico">&#127891;</div>
@@ -1210,80 +1239,101 @@ body{font-size:16px}
   </div>
 </section>
 
-<!-- ===== CONTACT ===== -->
+<div class="trail" aria-hidden="true"></div>
+
+<!-- ===== RANGER STATION (contact) ===== -->
 <section id="contact">
-  <div class="orb co-orb"></div>
   <div class="si">
-    <div class="ey"><span class="ey-n">07</span><div class="ey-l"></div><span class="ey-t">Get In Touch</span></div>
+    <div class="stamp rv"><span class="st-top">Camp 07 &middot; Expedition File</span><span class="st-main">&#128225; The Ranger Station</span></div>
     <div class="co-inner rv">
       <div>
-        <h2 class="co-h">Let&rsquo;s build something <em>great</em> together</h2>
-        <p class="co-sub">Open to senior engineering roles, team lead positions, and interesting backend/fullstack challenges in Healthcare, FinTech, or SaaS. Based in Mumbai &mdash; open to remote.</p>
-        <a class="btn btn-fill" href="mailto:vinaykumarmishra71@gmail.com">
-          <svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          Send a Message
-        </a>
-        <p class="co-note">Usually responds within 24 hours</p>
+        <h2 class="co-h">Let&rsquo;s chart the <em>next expedition</em> together</h2>
+        <p class="co-sub">Open to senior engineering roles, team lead positions, and interesting backend/fullstack challenges in Healthcare, FinTech, or SaaS. Base camp in Mumbai &mdash; open to remote treks anywhere.</p>
+        <a class="btn btn-fill" href="mailto:vinaykumarmishra71@gmail.com">&#9993;&#65039; Send a Message</a>
+        <p class="co-note">Ranger on duty &middot; usually responds within 24 hours</p>
       </div>
       <div class="co-links">
         <a class="co-link" href="mailto:vinaykumarmishra71@gmail.com">
-          <div class="co-link-l">
-            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></div>
-            <div><div class="co-link-lbl">Email</div><div class="co-link-val">vinaykumarmishra71@gmail.com</div></div>
-          </div>
+          <span class="co-link-l">
+            <span class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></span>
+            <span><span class="co-link-lbl">Carrier Pigeon &middot; Email</span><br><span class="co-link-val">vinaykumarmishra71@gmail.com</span></span>
+          </span>
           <span class="co-arr">&rarr;</span>
         </a>
         <a class="co-link" href="tel:9172270728">
-          <div class="co-link-l">
-            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
-            <div><div class="co-link-lbl">Phone</div><div class="co-link-val">9172270728</div></div>
-          </div>
+          <span class="co-link-l">
+            <span class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            <span><span class="co-link-lbl">Radio Frequency &middot; Phone</span><br><span class="co-link-val">9172270728</span></span>
+          </span>
           <span class="co-arr">&rarr;</span>
         </a>
         <a class="co-link" href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">
-          <div class="co-link-l">
-            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div>
-            <div><div class="co-link-lbl">LinkedIn</div><div class="co-link-val">linkedin.com/in/vinaykumar-mishra</div></div>
-          </div>
+          <span class="co-link-l">
+            <span class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+            <span><span class="co-link-lbl">Watering Hole &middot; LinkedIn</span><br><span class="co-link-val">linkedin.com/in/vinaykumar-mishra</span></span>
+          </span>
           <span class="co-arr">&rarr;</span>
         </a>
         <div class="co-link" style="cursor:default">
-          <div class="co-link-l">
-            <div class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
-            <div><div class="co-link-lbl">Location</div><div class="co-link-val">Mumbai, India &middot; Open to Remote</div></div>
-          </div>
+          <span class="co-link-l">
+            <span class="co-link-ico"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+            <span><span class="co-link-lbl">Base Camp &middot; Location</span><br><span class="co-link-val">Mumbai, India &middot; Open to Remote</span></span>
+          </span>
         </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ===== FOOTER SUNSET PARADE ===== -->
 <footer>
-  <div class="f-brand">Vinaykumar <span>Mishra</span></div>
-  <div class="f-links">
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#experience">Experience</a>
-    <a href="#projects">Projects</a>
-    <a href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank">LinkedIn</a>
-    <a href="mailto:vinaykumarmishra71@gmail.com">Email</a>
+  <div class="f-scene" aria-hidden="true">
+    <svg viewBox="0 0 1440 130" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <rect class="fs-sky" width="1440" height="130"/>
+      <path class="fs-ground" d="M0 108 Q240 96 480 104 T960 102 T1440 106 V130 H0 Z"/>
+      <!-- elephant family walking -->
+      <g class="fs-an">
+        <path d="M560 108 v-24 q0 -14 12 -20 q9 -5 22 -5 q14 0 22 6 q4 3 6 7 q2 -4 6 -6 q5 -2 9 -1 q6 1 7 7 q1 4 -1 11 q-1 6 -5 9 l-3 -3 q4 -3 5 -8 q1 -5 0 -8 q-1 -3 -4 -3 q-4 0 -6 2 q-3 3 -3 8 l0 28 h-6 v-15 q-5 3 -11 4 v11 h-6 v-11 q-4 0 -7 -1 v12 h-6 v-16 q-6 -4 -8 -10 q-2 6 -2 12 v14 Z"/>
+        <path d="M660 108 v-15 q0 -9 8 -13 q6 -3 14 -3 q9 0 14 4 q3 2 4 4 q1 -2 4 -3 q3 -2 6 -1 q4 1 4 5 q1 3 -1 7 q-1 4 -3 5 l-2 -2 q2 -2 3 -5 q1 -3 0 -5 q-1 -2 -3 -2 q-2 0 -4 2 q-2 2 -2 5 l0 17 h-4 v-9 q-3 2 -7 2 v7 h-4 v-7 q-3 0 -5 -1 v8 h-4 v-10 q-4 -3 -5 -6 q-1 4 -1 7 v9 Z"/>
+      </g>
+      <!-- giraffe pair -->
+      <g class="fs-an">
+        <path d="M880 108 v-30 q0 -7 4 -11 l-3 -34 q-1 -6 3 -8 l2 -15 q1 -3 3 -3 q3 0 3 3 l1 5 q3 -2 5 1 q2 -3 5 -1 l1 -5 q0 -3 3 -3 q2 0 3 3 l2 15 q4 2 3 8 l-3 34 q4 4 4 11 v30 h-6 v-27 q0 -5 -3 -7 l-2 34 h-5 l-2 -30 h-2 l-2 30 h-5 l-2 -34 q-3 2 -3 7 v27 Z"/>
+      </g>
+      <!-- acacia -->
+      <g class="fs-an">
+        <path d="M1150 108 l5 -29 -13 -17 3 -2 12 15 2 -22 -15 -16 3 -3 13 14 2 -15 4 0 1 16 14 -14 3 3 -16 16 2 21 13 -15 3 2 -14 18 6 28 Z"/>
+        <path d="M1105 70 q20 -17 52 -17 q33 0 54 16 q5 4 2 7 q-26 -11 -56 -11 q-31 0 -50 12 q-4 -3 -2 -7 Z"/>
+      </g>
+      <!-- birds -->
+      <path d="M240 40 q5 -6 10 0 q5 -6 10 0 M310 28 q4 -5 9 0 q4 -5 9 0" stroke="#3a3325" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".5"/>
+    </svg>
   </div>
-  <div class="f-copy">&copy; 2025 Vinaykumar Mishra &middot; Mumbai, India</div>
+  <div class="f-in">
+    <div class="f-brand">Vinaykumar <span>Mishra</span></div>
+    <div class="f-links">
+      <a href="#about">Field Notes</a>
+      <a href="#skills">The Kit</a>
+      <a href="#experience">Camp Logs</a>
+      <a href="#projects">Sightings</a>
+      <a href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:vinaykumarmishra71@gmail.com">Email</a>
+    </div>
+    <div class="f-copy">&copy; 2025 Vinaykumar Mishra &middot; Mumbai, India &middot; End of the trail — for now.</div>
+  </div>
 </footer>
-
 <script>
-// ── Scroll reveal (3 directions) ─────────────────────────────
+// ── Scroll reveal ─────────────────────────────────────────────
 const ro = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); }
   });
-}, { threshold: 0, rootMargin: '0px 0px -10% 0px' });
+}, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
 document.querySelectorAll('.rv,.rv-l,.rv-r').forEach((el, i) => {
-  el.style.transitionDelay = (i % 5) * 0.07 + 's';
+  el.style.transitionDelay = (i % 4) * 0.07 + 's';
   ro.observe(el);
 });
-// Safety net: any reveal element that is already on/above the fold (or that the
-// observer somehow misses — large 3D-transformed containers can) gets revealed.
+// safety net: reveal anything already on/above the fold
 const revealVisible = () => {
   document.querySelectorAll('.rv:not(.in),.rv-l:not(.in),.rv-r:not(.in)').forEach(el => {
     if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('in');
@@ -1292,25 +1342,41 @@ const revealVisible = () => {
 window.addEventListener('load', revealVisible);
 window.addEventListener('scroll', revealVisible, { passive: true });
 
-// ── Nav: active section highlighting + shrink ──────────────
-const nav = document.getElementById('nav');
-const sections = document.querySelectorAll('section[id]');
-const navLinks = document.querySelectorAll('.n-links a');
+// ── Mobile hamburger menu ──────────────────────────────────────
+(() => {
+  const burger = document.getElementById('burgerBtn');
+  const menu = document.getElementById('mobileMenu');
+  if (!burger || !menu) return;
+  const close = () => { menu.classList.remove('open'); burger.setAttribute('aria-expanded', 'false'); };
+  const open = () => { menu.classList.add('open'); burger.setAttribute('aria-expanded', 'true'); };
+  burger.addEventListener('click', () => {
+    menu.classList.contains('open') ? close() : open();
+  });
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', close));
+  window.addEventListener('scroll', close, { passive: true });
+  window.addEventListener('resize', () => { if (window.innerWidth > 860) close(); });
+})();
 
+// ── Nav: active section + shrink ──────────────────────────────
+const nav = document.getElementById('nav');
+const navLinks = document.querySelectorAll('.n-links a');
 const secObs = new IntersectionObserver(es => {
   es.forEach(e => {
     if (e.isIntersecting) {
-      navLinks.forEach(a => {
-        a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
-      });
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id));
     }
   });
 }, { rootMargin: '-40% 0px -55% 0px' });
-sections.forEach(s => secObs.observe(s));
+document.querySelectorAll('section[id]').forEach(s => secObs.observe(s));
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50), { passive: true });
 
-window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+// ── Marquee: duplicate track for seamless loop ────────────────
+(() => {
+  const track = document.getElementById('expTrack');
+  if (track) track.innerHTML += track.innerHTML;
+})();
 
-// ── Skills tab panel ──────────────────────────────────────────
+// ── Skills gear tabs ──────────────────────────────────────────
 document.querySelectorAll('.skn').forEach(btn => {
   btn.addEventListener('click', () => {
     document.querySelectorAll('.skn').forEach(b => b.classList.remove('active'));
@@ -1320,24 +1386,21 @@ document.querySelectorAll('.skn').forEach(btn => {
   });
 });
 
-
-// ── Projects: domain filter ───────────────────────────────────
+// ── Sightings: habitat filter ─────────────────────────────────
 (() => {
   const grid = document.querySelector('.proj-grid');
   if (!grid) return;
   const cards = [...grid.querySelectorAll('.pj')];
-  // derive each card's category from its .pj-domain class (tr folds into ft)
   cards.forEach(c => {
     const d = c.querySelector('.pj-domain');
     let cat = 'web';
-    if (d) { if (d.classList.contains('hc')) cat='hc'; else if (d.classList.contains('ft')||d.classList.contains('tr')) cat='ft'; else if (d.classList.contains('web')) cat='web'; }
+    if (d) { if (d.classList.contains('hc')) cat = 'hc'; else if (d.classList.contains('ft') || d.classList.contains('tr')) cat = 'ft'; }
     c.dataset.cat = cat;
   });
   const groups = [...grid.querySelectorAll('.pj-group')];
   const apply = cat => {
     cards.forEach(c => c.classList.toggle('hide', cat !== 'all' && c.dataset.cat !== cat));
-    // hide a group header if every card until the next group is hidden
-    groups.forEach((g, i) => {
+    groups.forEach(g => {
       let el = g.nextElementSibling, anyVisible = false;
       while (el && !el.classList.contains('pj-group')) {
         if (el.classList.contains('pj') && !el.classList.contains('hide')) { anyVisible = true; break; }
@@ -1355,304 +1418,47 @@ document.querySelectorAll('.skn').forEach(btn => {
   });
 })();
 
-// ── Theme toggle ──────────────────────────────────────────────
-const themeBtn = document.getElementById('themeBtn');
-const body = document.body;
-// DARK is the default: the page always opens dark. The toggle still works for
-// the session (and persists the key for live cross-tab sync) but never forces
-// light on load.
-themeBtn.addEventListener('click', () => {
-  body.classList.toggle('light');
-  localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
+// ── Day / Night jungle toggle ─────────────────────────────────
+const skyBtn = document.getElementById('skyBtn');
+skyBtn.addEventListener('click', () => {
+  document.body.classList.toggle('night');
+  try { localStorage.setItem('safari-sky', document.body.classList.contains('night') ? 'night' : 'day'); } catch (e) {}
 });
+try { if (localStorage.getItem('safari-sky') === 'night') document.body.classList.add('night'); } catch (e) {}
 
-// ── 3D layer (tilt cards + depth-parallax hero) ───────────────
+// ── Fireflies (only glow at night, via CSS) ───────────────────
 (() => {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  const noHover = window.matchMedia('(hover: none), (max-width: 960px)').matches;
-  if (reduce || noHover) return;
-
-  // 3D tilt on every card-like element
-  const MAX = 8; // max tilt in degrees
-  document.querySelectorAll('.pj, .wid-card, .hst, .edu-c, .tl-c, .co-link, .spec').forEach(card => {
-    card.classList.add('tilt');
-    const glare = document.createElement('span');
-    glare.className = 'tilt-glare';
-    card.appendChild(glare);
-    let raf = null, rect = null;
-    const onMove = e => {
-      if (!rect) rect = card.getBoundingClientRect();
-      const px = (e.clientX - rect.left) / rect.width;
-      const py = (e.clientY - rect.top) / rect.height;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        const rx = (0.5 - py) * MAX * 2;
-        const ry = (px - 0.5) * MAX * 2;
-        card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateZ(14px)`;
-        glare.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
-        glare.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
-        raf = null;
-      });
-    };
-    card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); card.classList.add('tilting'); });
-    card.addEventListener('mousemove', onMove);
-    card.addEventListener('mouseleave', () => {
-      if (raf) { cancelAnimationFrame(raf); raf = null; }
-      rect = null;
-      card.classList.remove('tilting');
-      card.style.transform = '';
-    });
-  });
-
-  // Hero: rotate the whole depth-layered plane toward the cursor
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
   const hero = document.getElementById('hero');
-  const inner = hero && hero.querySelector('.h-inner');
-  if (inner) {
-    let raf = null;
-    hero.addEventListener('mousemove', e => {
-      const x = e.clientX / window.innerWidth - 0.5;
-      const y = e.clientY / window.innerHeight - 0.5;
-      if (raf) return;
-      raf = requestAnimationFrame(() => {
-        inner.classList.add('h-tilting');
-        inner.style.transform = `rotateX(${(-y * 6).toFixed(2)}deg) rotateY(${(x * 9).toFixed(2)}deg)`;
-        raf = null;
-      });
+  for (let i = 0; i < 14; i++) {
+    const f = document.createElement('span');
+    f.className = 'firefly';
+    f.style.left = (5 + Math.random() * 90) + '%';
+    f.style.top = (30 + Math.random() * 60) + '%';
+    f.style.animationDelay = (Math.random() * 8) + 's';
+    f.style.animationDuration = (6 + Math.random() * 6) + 's';
+    hero.appendChild(f);
+  }
+})();
+
+// ── Gentle parallax on hero scene & vines ─────────────────────
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const scene = document.querySelector('.scene');
+  const sun = document.querySelector('.sunwrap');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        if (scene) scene.style.transform = 'translateY(' + (y * 0.12) + 'px)';
+        if (sun) sun.style.transform = 'translateY(' + (y * 0.3) + 'px)';
+      }
+      ticking = false;
     });
-    hero.addEventListener('mouseleave', () => {
-      inner.classList.remove('h-tilting');
-      inner.style.transform = '';
-    });
-  }
-})();
-
-// ── Scroll-progress bar ───────────────────────────────────────
-(() => {
-  const bar = document.createElement('div');
-  bar.id = 'sprog';
-  document.body.appendChild(bar);
-  const upd = () => {
-    const h = document.documentElement.scrollHeight - window.innerHeight;
-    const p = h > 0 ? window.scrollY / h : 0;
-    bar.style.transform = 'scaleX(' + Math.max(0, Math.min(p, 1)).toFixed(4) + ')';
-  };
-  window.addEventListener('scroll', upd, { passive: true });
-  window.addEventListener('resize', upd);
-  upd();
-})();
-
-// ── Animated hero stat counters (powers-on moment) ────────────
-(() => {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  if (reduce) return; // leave the final numbers in place, no motion
-  const ease = t => 1 - Math.pow(2, -10 * t);
-  document.querySelectorAll('.hst-n').forEach(el => {
-    const tn = [...el.childNodes].find(n => n.nodeType === 3 && n.textContent.trim() !== '');
-    if (!tn) return;
-    const target = parseInt(tn.textContent, 10);
-    if (isNaN(target)) return;
-    let started = false;
-    const io = new IntersectionObserver(es => {
-      es.forEach(e => {
-        if (e.isIntersecting && !started) {
-          started = true; io.disconnect();
-          const dur = 1400; let s0 = 0;
-          const step = ts => {
-            if (!s0) s0 = ts;
-            const p = Math.min((ts - s0) / dur, 1);
-            tn.textContent = Math.round(ease(p) * target);
-            if (p < 1) requestAnimationFrame(step); else tn.textContent = target;
-          };
-          requestAnimationFrame(step);
-        }
-      });
-    }, { threshold: 0.4 });
-    io.observe(el);
-  });
-})();
-
-// ── Aurora Substrate: self-contained WebGL1 fog background ────
-// Domain-warped fBm fog shaded into aurora curtains, themed live from the
-// page's CSS tokens. Strictly additive: any failure removes the canvas and the
-// existing CSS scene/orbs/grid remain a complete fallback.
-(() => {
-  const reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
-  const touchMQ = window.matchMedia('(hover: none), (max-width: 960px)');
-  if (touchMQ.matches) return; // mobile/touch: CSS fallback carries the hero
-
-  const VERT = 'attribute vec2 aPos;void main(){gl_Position=vec4(aPos,0.0,1.0);}';
-  const FRAG = [
-    '#ifdef GL_FRAGMENT_PRECISION_HIGH',
-    'precision highp float;',
-    '#else',
-    'precision mediump float;',
-    '#endif',
-    'uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform float uScroll;',
-    'uniform vec3 uColA;uniform vec3 uColB;uniform vec3 uColC;uniform vec3 uBg;',
-    'uniform float uDark;uniform float uIntensity;',
-    'float hash(vec2 p){p=fract(p*vec2(123.34,345.45));p+=dot(p,p+34.345);return fract(p.x*p.y);}',
-    'float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);',
-    'float a=hash(i),b=hash(i+vec2(1.0,0.0)),c=hash(i+vec2(0.0,1.0)),d=hash(i+vec2(1.0,1.0));',
-    'return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
-    'float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.0+vec2(11.3,7.1);a*=0.5;}return v;}',
-    'void main(){',
-    ' vec2 uv=gl_FragCoord.xy/uRes;float aspect=uRes.x/uRes.y;',
-    ' vec2 p=uv-0.5;p.x*=aspect;',
-    ' float t=uTime*0.06;vec2 mo=uMouse;mo.x*=aspect;',
-    ' vec2 q=p;q.y+=uScroll*0.30;q+=mo*0.10;',
-    ' vec2 warp=vec2(fbm(q*1.4+vec2(0.0,t)),fbm(q*1.4+vec2(5.2,3.3-t*0.8)));',
-    ' vec2 sp=q*1.25+0.85*warp;',
-    ' float acc=0.0;',
-    ' for(int i=0;i<5;i++){float fi=float(i);',
-    '   vec2 o=sp+vec2(fi*0.10,-fi*0.07)+warp*(fi*0.06);',
-    '   float d=fbm(o*(1.0+fi*0.12)+t*0.6);',
-    '   d=smoothstep(0.44,0.86,d);',
-    '   acc+=d*(1.0-acc)*(0.6-fi*0.07);}',
-    ' acc=pow(clamp(acc,0.0,1.0),1.45);',
-    ' float md=length(p-mo*0.5);acc+=exp(-md*md*3.6)*0.14;',
-    ' vec3 col=mix(uColA,uColB,smoothstep(0.0,0.6,acc));',
-    ' col=mix(col,uColC,smoothstep(0.45,1.0,acc)*clamp(uScroll*1.4,0.0,1.0));',
-    ' float vig=1.0-dot(p,p)*0.42;',
-    ' float prot=smoothstep(0.0,0.62,length((uv-0.5)*vec2(aspect*0.7,1.15)));',
-    ' float intensity=acc*uIntensity*max(vig,0.0)*mix(0.38,1.0,prot);',
-    ' vec3 darkC=uBg+col*intensity*0.8;',
-    ' vec3 tint=mix(col,vec3(1.0),0.35);',
-    ' vec3 lightC=mix(uBg,mix(uBg,tint,0.42),clamp(intensity*0.85,0.0,1.0));',
-    ' vec3 outc=mix(lightC,darkC,clamp(uDark,0.0,1.0));',
-    ' gl_FragColor=vec4(clamp(outc,0.0,1.0),1.0);',
-    '}'
-  ].join('\n');
-
-  let canvas = null, gl = null, prog = null, buf = null, raf = 0;
-  let running = false, dead = false;
-  const U = {};
-  const mouse = [0, 0], mouseT = [0, 0];
-  let scroll = 0, scrollT = 0, clock = 0, last = 0;
-  // EMA frame-time perf guard
-  let ema = 0.016, slowFrames = 0;
-  let renderScale = Math.min(window.devicePixelRatio || 1, 1.5);
-  renderScale *= ((window.innerWidth * window.innerHeight) > 1600000 || (window.devicePixelRatio || 1) > 2) ? 0.6 : 0.75;
-
-  const fallbackColors = { A: [.31, .56, .97], B: [.65, .55, .98], C: [.20, .83, .60], bg: [.027, .035, .059], dark: 1 };
-  let col = clone(fallbackColors), colT = clone(fallbackColors);
-  function clone(c) { return { A: c.A.slice(), B: c.B.slice(), C: c.C.slice(), bg: c.bg.slice(), dark: c.dark }; }
-  function parseRGB(s) { const m = (s || '').trim().split(',').map(parseFloat); return (m.length >= 3 && m.every(x => !isNaN(x))) ? [m[0] / 255, m[1] / 255, m[2] / 255] : null; }
-  function parseHex(h) { const m = /#?([0-9a-f]{6})/i.exec((h || '').trim()); if (!m) return null; const n = parseInt(m[1], 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
-  function readColors() {
-    const cs = getComputedStyle(document.body);
-    return {
-      A: parseRGB(cs.getPropertyValue('--ac-rgb')) || fallbackColors.A,
-      B: parseRGB(cs.getPropertyValue('--pu-rgb')) || fallbackColors.B,
-      C: parseRGB(cs.getPropertyValue('--gr-rgb')) || fallbackColors.C,
-      bg: parseHex(cs.getPropertyValue('--bg')) || fallbackColors.bg,
-      dark: document.body.classList.contains('light') ? 0 : 1
-    };
-  }
-
-  function compile(type, src) {
-    const sh = gl.createShader(type);
-    gl.shaderSource(sh, src); gl.compileShader(sh);
-    if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) { gl.deleteShader(sh); return null; }
-    return sh;
-  }
-  function size() {
-    if (!canvas) return;
-    const w = Math.max(1, Math.floor(window.innerWidth * renderScale));
-    const h = Math.max(1, Math.floor(window.innerHeight * renderScale));
-    if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-    gl.viewport(0, 0, w, h);
-    if (U.uRes) gl.uniform2f(U.uRes, w, h);
-  }
-  function destroy() {
-    dead = true; running = false;
-    if (raf) cancelAnimationFrame(raf), raf = 0;
-    if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas);
-    canvas = gl = prog = null;
-  }
-
-  function init() {
-    try {
-      canvas = document.getElementById('bgfx');
-      if (!canvas) { canvas = document.createElement('canvas'); canvas.id = 'bgfx'; canvas.setAttribute('aria-hidden', 'true'); canvas.setAttribute('role', 'presentation'); document.body.prepend(canvas); }
-      const opts = { antialias: false, alpha: false, depth: false, stencil: false, powerPreference: 'low-power', failIfMajorPerformanceCaveat: false };
-      gl = canvas.getContext('webgl', opts) || canvas.getContext('experimental-webgl', opts);
-      if (!gl) { destroy(); return false; }
-      const vs = compile(gl.VERTEX_SHADER, VERT), fs = compile(gl.FRAGMENT_SHADER, FRAG);
-      if (!vs || !fs) { destroy(); return false; }
-      prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-      if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { destroy(); return false; }
-      gl.useProgram(prog);
-      buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-      const loc = gl.getAttribLocation(prog, 'aPos');
-      gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-      ['uRes', 'uTime', 'uMouse', 'uScroll', 'uColA', 'uColB', 'uColC', 'uBg', 'uDark', 'uIntensity'].forEach(n => U[n] = gl.getUniformLocation(prog, n));
-      col = readColors(); colT = clone(col);
-      size();
-      canvas.addEventListener('webglcontextlost', e => { e.preventDefault(); running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }, false);
-      canvas.addEventListener('webglcontextrestored', () => { if (!dead) { init(); } }, false);
-      return true;
-    } catch (err) { destroy(); return false; }
-  }
-
-  function drawOnce() {
-    gl.uniform1f(U.uTime, clock); gl.uniform2f(U.uMouse, mouse[0], mouse[1]); gl.uniform1f(U.uScroll, scroll);
-    gl.uniform3fv(U.uColA, col.A); gl.uniform3fv(U.uColB, col.B); gl.uniform3fv(U.uColC, col.C);
-    gl.uniform3fv(U.uBg, col.bg); gl.uniform1f(U.uDark, col.dark); gl.uniform1f(U.uIntensity, 1.0);
-    gl.drawArrays(gl.TRIANGLES, 0, 3);
-  }
-
-  function frame(ts) {
-    if (!running || dead) return;
-    if (!last) last = ts;
-    let dt = (ts - last) / 1000; last = ts; if (dt > 0.05) dt = 0.05;
-    clock += dt;
-    // perf guard: if sustained slow, drop render resolution
-    ema = ema * 0.9 + dt * 0.1;
-    if (ema > 0.024) { if (++slowFrames > 30 && renderScale > 0.42) { renderScale *= 0.82; slowFrames = 0; size(); } } else slowFrames = 0;
-    // ease state + theme tween
-    mouse[0] += (mouseT[0] - mouse[0]) * 0.045; mouse[1] += (mouseT[1] - mouse[1]) * 0.045;
-    scroll += (scrollT - scroll) * 0.06;
-    const k = 0.10;
-    ['A', 'B', 'C', 'bg'].forEach(key => { for (let i = 0; i < 3; i++) col[key][i] += (colT[key][i] - col[key][i]) * k; });
-    col.dark += (colT.dark - col.dark) * k;
-    drawOnce();
-    raf = requestAnimationFrame(frame);
-  }
-  function start() { if (!running && !dead && gl) { running = true; last = 0; raf = requestAnimationFrame(frame); } }
-  function stop() { running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }
-
-  // ---- boot ----
-  const reduced = reduceMQ.matches;
-  if (!init()) return; // fell back to CSS scene
-
-  // scroll target (cached scalar; no layout reads in the loop)
-  const onScroll = () => { const h = document.documentElement.scrollHeight - window.innerHeight; scrollT = h > 0 ? Math.min(window.scrollY / h, 1) : 0; };
-  // resize (debounced)
-  let rt = 0; const onResize = () => { clearTimeout(rt); rt = setTimeout(() => { if (!dead && gl) size(); }, 120); };
-
-  if (reduced) {
-    // one static, pleasant frame — no loop, no pointer/scroll motion
-    clock = 7.0; drawOnce();
-    new MutationObserver(() => { col = readColors(); colT = clone(col); drawOnce(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    window.addEventListener('resize', () => { if (!dead && gl) { size(); drawOnce(); } });
-  } else {
-    window.addEventListener('mousemove', e => {
-      mouseT[0] = (e.clientX / window.innerWidth) * 2 - 1;
-      mouseT[1] = (1 - e.clientY / window.innerHeight) * 2 - 1;
-    }, { passive: true });
-    window.addEventListener('scroll', onScroll, { passive: true });
-    window.addEventListener('resize', onResize);
-    onScroll();
-    // theme toggle → retarget colors (tween happens in the loop)
-    new MutationObserver(() => { colT = readColors(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-    document.addEventListener('visibilitychange', () => { if (document.hidden) stop(); else start(); });
-    // live re-evaluate if the user flips OS reduced-motion / switches to touch
-    const reEval = () => { if (touchMQ.matches || reduceMQ.matches) { destroy(); } };
-    (reduceMQ.addEventListener ? reduceMQ.addEventListener('change', reEval) : reduceMQ.addListener && reduceMQ.addListener(reEval));
-    (touchMQ.addEventListener ? touchMQ.addEventListener('change', reEval) : touchMQ.addListener && touchMQ.addListener(reEval));
-    start();
-  }
+  }, { passive: true });
 })();
 </script>
 </body>
