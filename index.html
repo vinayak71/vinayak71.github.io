@@ -3,1125 +3,712 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Vinaykumar Mishra — Senior Software Engineer</title>
+<title>Vinaykumar Mishra — Senior Software Engineer · Summit Log</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Mono:wght@300;400;500&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,300&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Archivo:ital,wght@0,400;0,500;0,600;0,700;1,400&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg:          #080b12;
-    --surface:     #0e1119;
-    --surface2:    #141824;
-    --surface3:    #1a2030;
-    --border:      #1c2235;
-    --border2:     #232d42;
-    --border3:     #2d3a55;
-    --accent:      #4f8ef7;
-    --accent2:     #7eb8ff;
-    --accent3:     #c6dcff;
-    /* RGB triplets — redefined per theme so every tint adapts */
-    --accent-rgb:  79,142,247;
-    --gold-rgb:    232,201,122;
-    --green-rgb:   74,222,128;
-    --shadow:      var(--shadow);
-    --accent-dim:  rgba(var(--accent-rgb),0.10);
-    --accent-glow: rgba(var(--accent-rgb),0.05);
-    --text:        #e8edf5;
-    --text2:       #8e9ab2;
-    --text3:       #4f5c75;
-    --gold:        #e8c97a;
-    --gold-dim:    rgba(var(--gold-rgb),0.08);
-    --green:       #4ade80;
-    --green-dim:   rgba(var(--green-rgb),0.08);
-    --radius:      8px;
-    --radius-lg:   14px;
-    --radius-xl:   20px;
-  }
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;text-rendering:optimizeLegibility}
 
-  /* ── LIGHT THEME (matched to portfolio palette) ── */
-  body.light {
-    --bg:          #f4f6fb;
-    --surface:     #ffffff;
-    --surface2:    #edf0f8;
-    --surface3:    #e4e9f5;
-    --border:      #d3dcec;
-    --border2:     #c0cce0;
-    --border3:     #a3b3cf;
-    --accent:      #1d52d6;
-    --accent2:     #1740b0;
-    --accent3:     #1740b0;
-    --accent-rgb:  29,82,214;
-    --gold-rgb:    180,83,9;
-    --green-rgb:   5,150,105;
-    --shadow:      rgba(15,23,42,0.12);
-    --text:        #0f172a;
-    --text2:       #3a485e;
-    --text3:       #5d6b82;
-    --gold:        #b45309;
-    --green:       #059669;
-  }
-  body.light::before { opacity: 0.16; }
-  body.light .orb { opacity: 0.5; }
+/* ================= ALPINE TOKENS ================= */
+:root{
+  /* daylight in the high country */
+  --snow:#F2F5F1;        /* snowfield paper            */
+  --snow2:#E7EDE7;       /* shaded snow                */
+  --card:#FBFCFA;        /* trip-report card           */
+  --ink:#1F2C36;         /* slate ink                  */
+  --ink2:#3C4E5D;        /* secondary — high contrast  */
+  --ink3:#5F7284;        /* tertiary meta              */
+  --pine:#2C5A4A;        /* pine forest                */
+  --pine2:#3E7A62;
+  --glacier:#3F7797;     /* glacier lake blue          */
+  --sunrise:#C5651F;     /* alpenglow orange           */
+  --sunrise2:#E08A3C;
+  --rock:#6E5C45;        /* trail-sign timber          */
+  --rope:#8A6A3B;
+  --skyA:#C9DEE9;        /* hero sky top               */
+  --skyB:#EDF2EC;        /* hero sky bottom            */
+  --sunmoon:#F4B54A;
+  --ridge1:#AEC6D0;      /* far ridge                  */
+  --ridge2:#7C9DAE;      /* mid ridge                  */
+  --ridge3:#476579;      /* near ridge                 */
+  --ridge4:#22423A;      /* foreground pines           */
+  --cap:#FFFFFF;         /* snow caps                  */
+  --line:rgba(31,44,54,.24);
+  --pine-fg:#F2F5F1;     /* text on top of pine bg — flips at night */
+  --fd:'Oswald',sans-serif;
+  --fm:'IBM Plex Mono',monospace;
+  --fb:'Archivo',sans-serif;
+  --shadow:0 3px 0 rgba(31,44,54,.14),0 10px 24px rgba(31,44,54,.08);
+}
+body.night{
+  /* moonlit alpine night */
+  --snow:#0C1722;
+  --snow2:#091220;
+  --card:#13212F;
+  --ink:#EAF0F5;
+  --ink2:#C6D3DE;
+  --ink3:#93A6B6;
+  --pine:#8CC3A6;
+  --pine2:#6FAE8E;
+  --glacier:#84B9DA;
+  --sunrise:#E29B52;
+  --sunrise2:#EFB477;
+  --rock:#3B5B6B;
+  --rope:#B08A50;
+  --skyA:#050D1A;
+  --skyB:#0C1B27;
+  --sunmoon:#EDE6C6;
+  --ridge1:#1D3345;
+  --ridge2:#152838;
+  --ridge3:#0E1E2B;
+  --ridge4:#060F17;
+  --cap:#B9CBDB;
+  --line:rgba(234,240,245,.22);
+  --pine-fg:#0C1722;
+  --shadow:0 3px 0 rgba(0,0,0,.45),0 10px 24px rgba(0,0,0,.35);
+}
+::selection{background:var(--sunrise);color:#fff}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--snow2)}
+::-webkit-scrollbar-thumb{background:var(--glacier);border-radius:3px}
+a:focus-visible,button:focus-visible{outline:3px solid var(--sunrise);outline-offset:2px}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
+body{background:var(--snow);color:var(--ink);font-family:var(--fb);font-size:15.5px;line-height:1.7;
+  overflow-x:hidden;transition:background .5s,color .5s}
+/* topographic contour texture */
+body::before{content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.35;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='260' height='260' viewBox='0 0 260 260'%3E%3Cg fill='none' stroke='%235F7284' stroke-width='1' opacity='0.10'%3E%3Cpath d='M20 130 q40 -60 90 -40 q60 24 96 -12 q20 -20 44 -14'/%3E%3Cpath d='M10 170 q50 -70 108 -46 q66 26 104 -16'/%3E%3Cpath d='M0 210 q60 -80 126 -52 q70 28 120 -20'/%3E%3Cpath d='M40 90 q36 -44 78 -30 q52 18 84 -12'/%3E%3C/g%3E%3C/svg%3E")}
+em{font-style:normal;color:var(--sunrise)}
+strong{color:var(--ink);font-weight:600}
 
-  body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: 'DM Sans', sans-serif;
-    font-size: 14.5px;
-    line-height: 1.65;
-    min-height: 100vh;
-    overflow-x: hidden;
-  }
+/* ================= REVEAL ================= */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s cubic-bezier(.22,.61,.36,1)}
+.rv.in{opacity:1;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){
+  .rv{opacity:1!important;transform:none!important;transition:none!important}
+  *{animation-duration:.001s!important;animation-iteration-count:1!important}
+}
 
-  /* ── NOISE TEXTURE ── */
-  body::before {
-    content: '';
-    position: fixed; inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
-    pointer-events: none; z-index: 0; opacity: 0.35;
-  }
+/* ================= TOP BAR ================= */
+nav{position:fixed;top:0;left:0;right:0;z-index:300;display:flex;justify-content:space-between;align-items:center;gap:12px;
+  padding:12px 40px;background:color-mix(in srgb,var(--snow) 90%,transparent);backdrop-filter:blur(14px);
+  border-bottom:3px solid var(--pine);transition:background .4s}
+.n-logo{display:flex;align-items:center;gap:11px;text-decoration:none;color:var(--ink);min-width:0}
+.n-peak{width:40px;height:40px;flex-shrink:0;border-radius:50%;background:var(--pine);border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center}
+.n-peak svg{display:block}
+.n-word{font-family:var(--fm);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink3);line-height:1.35;white-space:nowrap}
+.n-word b{display:block;font-family:var(--fd);font-size:15px;font-weight:600;letter-spacing:.06em;color:var(--ink)}
+.n-right{display:flex;align-items:center;gap:12px;flex-shrink:0}
+.n-portfolio{display:inline-flex;align-items:center;gap:8px;font-family:var(--fm);font-size:12px;font-weight:500;
+  letter-spacing:.06em;text-transform:uppercase;color:var(--snow);background:var(--glacier);
+  padding:9px 16px;border-radius:4px;border:2px solid var(--ink);text-decoration:none;
+  box-shadow:3px 3px 0 var(--ink);transition:transform .15s,box-shadow .15s;white-space:nowrap}
+body.night .n-portfolio{color:#0C1722}
+.n-portfolio:hover{transform:translate(-1px,-1px);box-shadow:4px 4px 0 var(--ink)}
+.n-portfolio:active{transform:translate(2px,2px);box-shadow:1px 1px 0 var(--ink)}
+/* day/night toggle */
+.sky-btn{position:relative;width:58px;height:30px;border-radius:20px;cursor:pointer;flex-shrink:0;
+  border:2px solid var(--ink);background:linear-gradient(90deg,#C9DEE9,#F4B54A);overflow:hidden;transition:background .4s}
+body.night .sky-btn{background:linear-gradient(90deg,#050D1A,#0C1B27)}
+.sky-btn .orbball{position:absolute;top:2px;left:3px;width:22px;height:22px;border-radius:50%;background:#F4B54A;
+  box-shadow:0 0 9px rgba(244,181,74,.9),inset -2px -2px 0 rgba(0,0,0,.14);
+  transition:transform .4s cubic-bezier(.34,1.56,.64,1),background .4s,box-shadow .4s}
+body.night .sky-btn .orbball{transform:translateX(26px);background:#EDE6C6;
+  box-shadow:0 0 10px rgba(237,230,198,.8),inset -5px 2px 0 rgba(12,27,39,.55)}
 
-  /* ── BG GRID ── */
-  body::after {
-    content: '';
-    position: fixed; inset: 0;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 52px 52px;
-    opacity: 0.25;
-    pointer-events: none; z-index: 0;
-  }
+/* ================= SECTION CHROME ================= */
+section{padding:84px 40px;position:relative}
+.si{max-width:1040px;margin:0 auto;position:relative;z-index:2}
+/* trail-sign section header */
+.sign{display:inline-flex;align-items:center;gap:0;margin-bottom:42px;filter:drop-shadow(3px 4px 0 rgba(31,44,54,.14))}
+body.night .sign{filter:drop-shadow(3px 4px 0 rgba(0,0,0,.4))}
+.sign-post{width:12px;align-self:stretch;background:var(--rock);border:2px solid var(--ink);border-radius:3px;margin-right:-2px}
+.sign-board{background:var(--card);border:2px solid var(--ink);padding:10px 22px 10px 18px;
+  clip-path:polygon(0 0,calc(100% - 16px) 0,100% 50%,calc(100% - 16px) 100%,0 100%)}
+.sign-km{font-family:var(--fm);font-size:11.5px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--sunrise);display:block}
+.sign-name{font-family:var(--fd);font-size:22px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);line-height:1.2;padding-right:14px}
 
-  /* ── GLOW ORBS ── */
-  .orb {
-    position: fixed; border-radius: 50%;
-    filter: blur(130px);
-    pointer-events: none; z-index: 0;
-    animation: drift 22s ease-in-out infinite alternate;
-  }
-  .orb-1 { width: 600px; height: 600px; background: rgba(var(--accent-rgb),0.06); top: -200px; right: -150px; }
-  .orb-2 { width: 450px; height: 450px; background: rgba(var(--gold-rgb),0.035); bottom: 50px; left: -180px; animation-delay: -11s; }
-  .orb-3 { width: 300px; height: 300px; background: rgba(var(--green-rgb),0.03); top: 50%; left: 50%; animation-delay: -6s; }
+/* footprints divider */
+.trail{height:30px;margin:0 auto;max-width:680px;opacity:.5;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='104' height='30' viewBox='0 0 104 30'%3E%3Cg fill='%236E5C45'%3E%3Cg transform='translate(14,17) rotate(80)'%3E%3Cellipse cx='0' cy='0' rx='3.4' ry='5'/%3E%3Cellipse cx='0' cy='8' rx='2.6' ry='2.4'/%3E%3C/g%3E%3Cg transform='translate(62,11) rotate(100)'%3E%3Cellipse cx='0' cy='0' rx='3.4' ry='5'/%3E%3Cellipse cx='0' cy='8' rx='2.6' ry='2.4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  background-repeat:repeat-x;background-position:center}
+body.night .trail{filter:invert(.8);opacity:.3}
 
-  @keyframes drift {
-    0%   { transform: translate(0,0) scale(1); }
-    100% { transform: translate(50px,35px) scale(1.08); }
-  }
+/* ================= HERO ================= */
+#hero{min-height:92vh;display:flex;align-items:center;padding:130px 40px 0;overflow:hidden;
+  background:linear-gradient(180deg,var(--skyA) 0%,var(--skyB) 66%,var(--snow) 100%);transition:background .6s}
+.sunwrap{position:absolute;top:12%;right:14%;z-index:0;pointer-events:none}
+.sun{width:110px;height:110px;border-radius:50%;background:var(--sunmoon);position:relative;
+  box-shadow:0 0 64px 22px color-mix(in srgb,var(--sunmoon) 42%,transparent);
+  animation:drift 10s ease-in-out infinite alternate;transition:background .5s}
+.sun::after{content:'';position:absolute;inset:0;border-radius:50%;background:var(--skyA);
+  transform:translate(34px,-15px) scale(0);transition:transform .55s cubic-bezier(.34,1.2,.64,1)}
+body.night .sun::after{transform:translate(28px,-13px) scale(.92)}
+@keyframes drift{from{transform:translateY(0)}to{transform:translateY(12px)}}
+.stars{position:absolute;inset:0;z-index:0;pointer-events:none;opacity:0;transition:opacity .8s;
+  background-image:radial-gradient(1.4px 1.4px at 10% 16%,#fff 60%,transparent),radial-gradient(1.2px 1.2px at 30% 9%,#fff 60%,transparent),
+  radial-gradient(1.6px 1.6px at 52% 20%,#fff 60%,transparent),radial-gradient(1.1px 1.1px at 70% 11%,#fff 60%,transparent),
+  radial-gradient(1.3px 1.3px at 86% 24%,#fff 60%,transparent),radial-gradient(1.2px 1.2px at 42% 32%,#fff 60%,transparent),
+  radial-gradient(1.5px 1.5px at 7% 38%,#fff 60%,transparent),radial-gradient(1.1px 1.1px at 62% 40%,#fff 60%,transparent),
+  radial-gradient(1.2px 1.2px at 92% 44%,#fff 60%,transparent)}
+body.night .stars{opacity:.85}
 
-  /* ── LAYOUT ── */
-  .container {
-    position: relative; z-index: 1;
-    max-width: 920px;
-    margin: 0 auto;
-    padding: 52px 28px 96px;
-  }
+/* mountain range at hero base */
+.range{position:absolute;left:0;right:0;bottom:-4px;z-index:1;pointer-events:none;line-height:0}
+.range svg{width:100%;height:auto;display:block}
+.r1{fill:var(--ridge1)}.r2{fill:var(--ridge2)}.r3{fill:var(--ridge3)}.r4{fill:var(--ridge4)}.rc{fill:var(--cap)}
+.range .birds{stroke:var(--ridge3);stroke-width:2.2;fill:none;stroke-linecap:round}
+.range .flagpole{stroke:var(--ink);stroke-width:2.5}
+.range .flag{fill:var(--sunrise)}
 
-  /* ── HEADER ── */
-  header {
-    padding-bottom: 44px;
-    border-bottom: 1px solid var(--border2);
-    margin-bottom: 44px;
-    animation: fadeUp 0.7s ease both;
-  }
+.h-inner{position:relative;z-index:4;max-width:1040px;margin:0 auto;width:100%;padding-bottom:210px}
+.h-avail{display:inline-flex;align-items:center;gap:10px;font-family:var(--fm);font-size:12px;font-weight:500;
+  letter-spacing:.1em;text-transform:uppercase;color:var(--pine);border:2px dashed var(--pine);
+  padding:7px 16px;border-radius:4px;margin-bottom:22px;background:color-mix(in srgb,var(--pine) 8%,transparent)}
+body.night .h-avail{color:var(--pine)}
+.h-avail::before{content:'';width:8px;height:8px;flex-shrink:0;border-radius:50%;background:var(--pine2);animation:blink 2s ease infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.h-kicker{font-family:var(--fm);font-size:12.5px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--ink3);margin-bottom:8px}
+.h-name{font-family:var(--fd);font-weight:700;font-size:clamp(48px,8vw,96px);line-height:1.02;
+  letter-spacing:.03em;text-transform:uppercase;margin-bottom:16px}
+.h-name .l2{color:var(--pine);text-shadow:4px 4px 0 color-mix(in srgb,var(--sunrise) 45%,transparent)}
+.h-sub{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:16.5px;color:var(--ink2);margin-bottom:24px}
+.h-sub strong{font-family:var(--fd);font-weight:600;font-size:19px;letter-spacing:.04em;text-transform:uppercase}
+.h-sub .dot{width:5px;height:5px;border-radius:50%;background:var(--sunrise);flex-shrink:0}
+/* contact chips — icon has a fixed slot, never overlaps text */
+.h-contacts{display:flex;flex-wrap:wrap;gap:10px}
+.hc{display:inline-flex;align-items:center;gap:10px;background:var(--card);border:2px solid var(--ink);
+  border-radius:4px;padding:9px 15px;text-decoration:none;color:var(--ink);box-shadow:var(--shadow);
+  transition:transform .15s;max-width:100%}
+a.hc:hover{transform:translateY(-2px)}
+.hc-ico{width:26px;height:26px;flex-shrink:0;border-radius:50%;background:var(--pine);color:var(--pine-fg);
+  display:flex;align-items:center;justify-content:center}
+.hc-ico svg{display:block}
+.hc-val{font-family:var(--fm);font-size:12.5px;font-weight:500;letter-spacing:.02em;line-height:1.4;
+  overflow-wrap:anywhere;min-width:0}
+.scue{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);z-index:5;font-family:var(--fm);
+  font-size:11px;font-weight:500;letter-spacing:.24em;text-transform:uppercase;color:var(--cap);
+  animation:bob 2.2s ease-in-out infinite;opacity:.95;text-align:center}
+body.night .scue{color:var(--ink2)}
+@keyframes bob{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,7px)}}
 
-  .header-inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 40px;
-    flex-wrap: wrap;
-  }
+/* ================= GEAR (core skills) ================= */
+#skills{background:var(--snow)}
+.sk-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.skc{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:20px 20px 18px;
+  box-shadow:var(--shadow);position:relative;transition:transform .2s}
+.skc:hover{transform:translateY(-4px)}
+.skc-head{display:flex;align-items:center;gap:11px;margin-bottom:10px}
+.skc-ico{width:34px;height:34px;flex-shrink:0;border-radius:6px;background:color-mix(in srgb,var(--glacier) 16%,transparent);
+  border:1.5px solid var(--glacier);display:flex;align-items:center;justify-content:center;font-size:16px}
+.skc-t{font-family:var(--fd);font-weight:600;font-size:16.5px;letter-spacing:.05em;text-transform:uppercase;line-height:1.25;min-width:0}
+.skc-d{font-size:13.5px;color:var(--ink2);line-height:1.75}
 
-  .header-left { flex: 1; min-width: 280px; }
+/* ================= TRIP REPORT (profile) ================= */
+#profile{background:var(--snow2)}
+.prof{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:34px 38px;box-shadow:var(--shadow);position:relative}
+.prof::before{content:'STAMPED AT BASECAMP';position:absolute;top:14px;right:16px;font-family:var(--fm);
+  font-size:10.5px;font-weight:500;letter-spacing:.16em;color:var(--sunrise);border:1.5px dashed var(--sunrise);
+  padding:4px 10px;border-radius:3px;transform:rotate(2.5deg);opacity:.85}
+.prof p{font-size:15.5px;color:var(--ink2);line-height:1.9}
+.prof p + p{margin-top:14px}
 
-  .availability {
-    display: inline-flex; align-items: center; gap: 7px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--green);
-    letter-spacing: 0.1em; text-transform: uppercase;
-    margin-bottom: 20px;
-    background: var(--green-dim);
-    padding: 5px 13px; border-radius: 20px;
-    border: 1px solid rgba(var(--green-rgb),0.18);
-  }
-  .availability::before {
-    content: ''; width: 6px; height: 6px;
-    background: var(--green); border-radius: 50%;
-    animation: pulse 2s ease infinite;
-  }
-  @keyframes pulse {
-    0%,100% { opacity:1; transform:scale(1); }
-    50%      { opacity:0.4; transform:scale(0.75); }
-  }
+/* ================= THE ASCENT (experience) ================= */
+#experience{background:var(--snow)}
+.asc{position:relative;padding-left:52px}
+/* climbing rope */
+.asc::before{content:'';position:absolute;left:16px;top:6px;bottom:6px;width:0;
+  border-left:3px dashed var(--rope)}
+.camp{position:relative;margin-bottom:34px}
+/* altitude marker — fixed slot left of the card, never over text */
+.camp-mark{position:absolute;left:-52px;top:0;width:36px;display:flex;flex-direction:column;align-items:center;gap:4px}
+.camp-flag{width:30px;height:30px;border-radius:50%;background:var(--card);border:2px solid var(--ink);
+  display:flex;align-items:center;justify-content:center;font-size:14px;box-shadow:0 2px 0 rgba(31,44,54,.2)}
+.camp-alt{font-family:var(--fm);font-size:10px;font-weight:600;letter-spacing:.08em;color:var(--ink3);
+  writing-mode:vertical-rl;text-orientation:mixed}
+.camp-c{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:26px 28px;box-shadow:var(--shadow);position:relative}
+.camp-c.summit{border-color:var(--pine)}
+.camp-c.summit::before{content:'⛰ SUMMIT · CURRENT POSITION';position:absolute;top:-13px;left:20px;
+  font-family:var(--fm);font-size:11px;font-weight:600;letter-spacing:.12em;background:var(--pine);
+  color:var(--pine-fg);padding:4px 12px;border-radius:3px;border:2px solid var(--ink)}
+.camp-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+.camp-lbl{font-family:var(--fm);font-size:11px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--ink3);margin-bottom:3px}
+.camp-co{font-family:var(--fd);font-weight:600;font-size:22px;letter-spacing:.04em;line-height:1.25}
+.camp-meta{font-size:14px;color:var(--ink2);margin-top:3px}
+.camp-date{font-family:var(--fm);font-size:12px;font-weight:500;letter-spacing:.04em;padding:6px 13px;
+  border-radius:4px;border:2px solid var(--line);color:var(--ink2);white-space:nowrap}
+.camp-date.cur{background:var(--pine);color:var(--pine-fg);border-color:var(--ink)}
+.camp-stack{font-family:var(--fm);font-size:12px;color:var(--ink3);margin:0 0 16px;
+  padding:9px 13px;background:var(--snow2);border-left:3px solid var(--glacier);border-radius:0 4px 4px 0;line-height:1.7}
+.camp-stack b{color:var(--glacier);margin-right:8px;letter-spacing:.14em;text-transform:uppercase;font-weight:600}
+.camp-bullets{list-style:none}
+.camp-li{font-size:14.5px;color:var(--ink2);line-height:1.78;padding:5px 0 5px 26px;position:relative}
+/* mountain-tick bullet — fixed 16px slot */
+.camp-li::before{content:'';position:absolute;left:2px;top:14px;width:14px;height:9px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 14 9'%3E%3Cpath d='M0 9 L4.5 2 L7 5 L9.5 0 L14 9 Z' fill='%233F7797'/%3E%3C/svg%3E") no-repeat center/contain}
+.camp-li.key{color:var(--ink)}
 
-  h1 {
-    font-family: 'DM Serif Display', serif;
-    font-size: clamp(38px, 5.5vw, 60px);
-    font-weight: 400;
-    color: var(--text);
-    line-height: 1.03;
-    letter-spacing: -0.025em;
-    margin-bottom: 12px;
-  }
-  h1 em { font-style: italic; color: var(--accent2); }
+/* ================= SIDE TREKS (projects) ================= */
+#projects{background:var(--snow2)}
+.pj-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.pj{background:var(--card);border:2px solid var(--ink);border-radius:6px;padding:24px 24px 22px;
+  box-shadow:var(--shadow);transition:transform .2s;display:flex;flex-direction:column}
+.pj:hover{transform:translateY(-4px)}
+.pj-top{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-bottom:8px}
+.pj-name{font-family:var(--fd);font-weight:600;font-size:19px;letter-spacing:.04em;line-height:1.25;min-width:0}
+.pj-peak{flex-shrink:0;margin-top:2px}
+.pj-tags{display:flex;flex-wrap:wrap;gap:7px;margin-bottom:12px}
+.pj-tag{font-family:var(--fm);font-size:11.5px;font-weight:500;padding:3px 10px;background:var(--snow2);
+  border:1.5px solid var(--line);border-radius:3px;color:var(--ink2)}
+.pj-desc{font-size:14px;color:var(--ink2);line-height:1.78}
 
-  .tagline {
-    font-size: 14.5px; color: var(--text2);
-    font-weight: 300; letter-spacing: 0.01em;
-    margin-bottom: 6px;
-  }
+/* ================= BASECAMP TRAINING (education) ================= */
+#education{background:var(--snow)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:880px}
+.edu-c{display:flex;gap:16px;background:var(--card);border:2px solid var(--ink);border-radius:6px;
+  padding:22px 24px;box-shadow:var(--shadow);align-items:flex-start}
+.edu-ico{width:42px;height:42px;flex-shrink:0;border-radius:50%;background:color-mix(in srgb,var(--sunrise) 14%,transparent);
+  border:2px solid var(--sunrise);display:flex;align-items:center;justify-content:center;font-size:19px}
+.edu-body{min-width:0}
+.edu-deg{font-family:var(--fd);font-weight:600;font-size:16.5px;letter-spacing:.03em;margin-bottom:3px;line-height:1.3}
+.edu-sch{font-size:13.5px;color:var(--ink2);margin-bottom:9px;line-height:1.6}
+.edu-yr{display:inline-block;font-family:var(--fm);font-size:11.5px;font-weight:500;letter-spacing:.08em;
+  color:var(--sunrise);border:1.5px dashed var(--sunrise);padding:3px 11px;border-radius:3px}
 
-  .meta-row {
-    display: flex; align-items: center;
-    gap: 7px; margin-top: 6px; flex-wrap: wrap;
-  }
-  .meta-tag {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--text3);
-    letter-spacing: 0.05em;
-  }
-  .meta-sep { color: var(--border3); }
+/* ================= FOOTER ================= */
+footer{background:var(--ridge4);color:#E7EDE7;position:relative;padding:0 40px 30px;overflow:hidden;transition:background .5s}
+.f-range{margin:0 -40px 26px;line-height:0}
+.f-range svg{width:100%;height:auto;display:block}
+.f-range .fr-sky{fill:var(--skyB)}
+.f-range .fr-m{fill:var(--ridge4)}
+.f-range .fr-cap{fill:var(--cap)}
+.f-in{max-width:1040px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.f-brand{font-family:var(--fd);font-weight:600;font-size:18px;letter-spacing:.06em;text-transform:uppercase}
+.f-brand span{color:var(--sunrise2)}
+.f-links{display:flex;gap:8px 22px;flex-wrap:wrap}
+.f-links a{font-family:var(--fm);font-size:12px;font-weight:500;letter-spacing:.08em;text-transform:uppercase;
+  color:#B8C7BC;text-decoration:none;transition:color .2s;padding:4px 0}
+.f-links a:hover{color:#fff}
+.f-copy{font-family:var(--fm);font-size:11.5px;letter-spacing:.06em;color:#7E9285;width:100%;text-align:center;
+  margin-top:18px;padding-top:16px;border-top:1px dashed rgba(231,237,231,.22)}
 
-  .header-right {
-    display: flex; flex-direction: column;
-    gap: 11px; align-items: flex-end;
-    padding-top: 6px;
-  }
+/* ================= PRINT ================= */
+@media print{
+  nav,.sky-btn,.scue,.trail,.stars,.sunwrap{display:none!important}
+  body{background:#fff;color:#111}
+  #hero{min-height:auto;padding:30px 0 0;background:#fff}
+  .h-inner{padding-bottom:20px}
+  section{padding:24px 0;page-break-inside:avoid}
+  .camp-c,.pj,.skc,.edu-c,.prof{box-shadow:none;border-color:#333}
+}
 
-  .contact-item {
-    display: flex; align-items: center; gap: 9px;
-    text-decoration: none; color: var(--text2);
-    font-size: 12.5px; font-weight: 400;
-    transition: color 0.2s;
-  }
-  .contact-item:hover { color: var(--accent2); }
-  .contact-item svg { flex-shrink: 0; opacity: 0.55; transition: opacity 0.2s; }
-  .contact-item:hover svg { opacity: 1; }
-
-  /* ── SKILLS GRID ── */
-  .skills-section {
-    margin-bottom: 48px;
-    animation: fadeUp 0.7s 0.08s ease both;
-  }
-
-  .skills-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 2px;
-    background: var(--border);
-    border-radius: var(--radius-lg);
-    overflow: hidden;
-    border: 1px solid var(--border);
-  }
-
-  .skill-row {
-    display: flex;
-    align-items: baseline;
-    gap: 10px;
-    padding: 11px 16px;
-    background: var(--surface);
-    transition: background 0.2s;
-  }
-  .skill-row:hover { background: var(--surface2); }
-  .skill-row.full-width {
-    grid-column: 1 / -1;
-    border-top: 1px solid var(--border);
-  }
-
-  .skill-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; font-weight: 500;
-    color: var(--accent); letter-spacing: 0.06em;
-    text-transform: uppercase; white-space: nowrap;
-    min-width: 110px; flex-shrink: 0;
-  }
-
-  .skill-value {
-    font-size: 12.5px; color: var(--text2);
-    line-height: 1.5; font-weight: 300;
-  }
-
-  /* ── SECTION ── */
-  section {
-    margin-bottom: 52px;
-    animation: fadeUp 0.7s ease both;
-  }
-  section:nth-child(2) { animation-delay: 0.12s; }
-  section:nth-child(3) { animation-delay: 0.18s; }
-  section:nth-child(4) { animation-delay: 0.24s; }
-  section:nth-child(5) { animation-delay: 0.30s; }
-
-  .sec-header {
-    display: flex; align-items: center;
-    gap: 14px; margin-bottom: 24px;
-  }
-  .sec-label {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; letter-spacing: 0.18em;
-    text-transform: uppercase; color: var(--accent);
-    white-space: nowrap;
-  }
-  .sec-line {
-    flex: 1; height: 1px;
-    background: linear-gradient(90deg, var(--border2) 0%, transparent 100%);
-  }
-
-  /* ── SUMMARY ── */
-  .summary-text {
-    font-size: 14.5px; color: var(--text2);
-    line-height: 1.8; font-weight: 300;
-    max-width: 740px;
-    border-left: 2px solid var(--accent);
-    padding-left: 20px;
-  }
-
-  /* ── JOB CARDS ── */
-  .job {
-    position: relative;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    margin-bottom: 14px;
-    overflow: hidden;
-    transition: border-color 0.25s, box-shadow 0.25s;
-  }
-  .job:hover {
-    border-color: var(--border3);
-    box-shadow: 0 8px 48px var(--shadow), 0 0 0 1px rgba(var(--accent-rgb),0.05);
-  }
-
-  /* top accent stripe */
-  .job::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent) 0%, transparent 60%);
-    opacity: 0;
-    transition: opacity 0.3s;
-  }
-  .job:hover::before { opacity: 1; }
-
-  /* left timeline dot */
-  .job::after {
-    content: '';
-    position: absolute; top: 28px; left: -5px;
-    width: 9px; height: 9px;
-    background: var(--surface3);
-    border: 2px solid var(--border3);
-    border-radius: 50%;
-    transition: border-color 0.25s, background 0.25s;
-  }
-  .job:hover::after {
-    background: var(--accent);
-    border-color: var(--accent2);
-    box-shadow: 0 0 10px rgba(var(--accent-rgb),0.5);
-  }
-
-  .job-header {
-    padding: 20px 24px 0;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-
-  .job-header-left { flex: 1; }
-
-  .company {
-    font-size: 16px; font-weight: 600;
-    color: var(--text); letter-spacing: -0.01em;
-    margin-bottom: 5px;
-  }
-
-  .job-sub {
-    display: flex; align-items: center;
-    gap: 10px; flex-wrap: wrap;
-  }
-  .title {
-    font-size: 12.5px; font-style: italic;
-    color: var(--text2); font-weight: 300;
-  }
-  .location {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--text3);
-  }
-  .job-sub-sep { color: var(--border3); font-size: 10px; }
-
-  .tl-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 9.5px; letter-spacing: 0.1em;
-    text-transform: uppercase; color: var(--gold);
-    background: var(--gold-dim);
-    border: 1px solid rgba(var(--gold-rgb),0.22);
-    padding: 2px 9px; border-radius: 4px;
-  }
-
-  .date-badge {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--accent);
-    background: var(--accent-dim);
-    border: 1px solid rgba(var(--accent-rgb),0.18);
-    padding: 4px 11px; border-radius: 5px;
-    white-space: nowrap; letter-spacing: 0.03em;
-    flex-shrink: 0; align-self: flex-start;
-    margin-top: 2px;
-  }
-  .date-badge.current {
-    color: var(--green);
-    background: var(--green-dim);
-    border-color: rgba(var(--green-rgb),0.18);
-  }
-
-  .stack-bar {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--text3);
-    background: var(--surface2);
-    border-top: 1px solid var(--border);
-    padding: 8px 24px;
-    letter-spacing: 0.02em;
-    margin-top: 14px;
-  }
-  .stack-bar span {
-    color: var(--text3);
-    margin-right: 2px;
-    font-size: 10px;
-    opacity: 0.6;
-  }
-
-  .job-body { padding: 16px 24px 20px; }
-
-  .bullets { list-style: none; }
-
-  .bul {
-    display: flex; gap: 11px;
-    margin-bottom: 7px;
-    font-size: 13px; color: var(--text2);
-    line-height: 1.65;
-  }
-  .bul::before {
-    content: '';
-    width: 4px; height: 4px;
-    background: var(--border3);
-    border-radius: 1px;
-    margin-top: 8px; flex-shrink: 0;
-    transition: background 0.2s;
-  }
-  .job:hover .bul::before { background: rgba(var(--accent-rgb),0.5); }
-
-  .bul.highlight {
-    color: var(--text);
-    font-size: 13px;
-    background: var(--surface2);
-    border-radius: 6px;
-    padding: 7px 12px;
-    margin-left: -12px;
-    border-left: 2px solid rgba(var(--gold-rgb),0.4);
-    margin-bottom: 8px;
-  }
-  .bul.highlight::before {
-    background: var(--gold);
-    margin-top: 8px;
-  }
-
-  /* ── PROJECTS ── */
-  .proj-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(290px,1fr));
-    gap: 12px;
-  }
-
-  .proj-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 20px 22px;
-    transition: border-color 0.25s, transform 0.2s, box-shadow 0.25s;
-    position: relative; overflow: hidden;
-  }
-  .proj-card::before {
-    content: '';
-    position: absolute; top: 0; left: 0; right: 0;
-    height: 2px;
-    background: linear-gradient(90deg, var(--accent), transparent);
-    opacity: 0; transition: opacity 0.25s;
-  }
-  .proj-card:hover {
-    border-color: var(--border3);
-    transform: translateY(-3px);
-    box-shadow: 0 12px 44px var(--shadow);
-  }
-  .proj-card:hover::before { opacity: 1; }
-
-  .proj-name {
-    font-size: 13.5px; font-weight: 600;
-    color: var(--text); margin-bottom: 6px;
-    letter-spacing: -0.01em;
-  }
-  .proj-stack {
-    font-family: 'DM Mono', monospace;
-    font-size: 10px; color: var(--accent);
-    letter-spacing: 0.04em; margin-bottom: 9px;
-    opacity: 0.85;
-  }
-  .proj-desc {
-    font-size: 12.5px; color: var(--text2);
-    line-height: 1.65; font-weight: 300;
-  }
-
-  /* ── EDUCATION ── */
-  .edu-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px,1fr));
-    gap: 12px;
-  }
-
-  .edu-card {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: var(--radius-lg);
-    padding: 20px 22px;
-    display: flex; gap: 16px;
-    align-items: flex-start;
-    transition: border-color 0.25s;
-  }
-  .edu-card:hover { border-color: var(--border3); }
-
-  .edu-icon {
-    width: 38px; height: 38px;
-    background: var(--accent-dim);
-    border: 1px solid rgba(var(--accent-rgb),0.18);
-    border-radius: 10px;
-    display: grid; place-items: center;
-    flex-shrink: 0; font-size: 17px;
-  }
-  .edu-deg {
-    font-size: 13.5px; font-weight: 600;
-    color: var(--text); margin-bottom: 4px;
-    letter-spacing: -0.01em;
-  }
-  .edu-school {
-    font-size: 12px; color: var(--text2); margin-bottom: 4px;
-  }
-  .edu-year {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--text3);
-  }
-
-  /* ── FOOTER ── */
-  footer {
-    border-top: 1px solid var(--border);
-    padding-top: 28px; margin-top: 12px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap; gap: 14px;
-    animation: fadeUp 0.7s 0.38s ease both;
-  }
-  .footer-name {
-    font-family: 'DM Serif Display', serif;
-    font-size: 14px; color: var(--text3);
-  }
-  .footer-links {
-    display: flex; gap: 20px; flex-wrap: wrap;
-  }
-  .footer-links a {
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; color: var(--text3);
-    text-decoration: none; letter-spacing: 0.05em;
-    transition: color 0.2s;
-  }
-  .footer-links a:hover { color: var(--accent2); }
-
-  /* ── PORTFOLIO BUTTON ── */
-  .portfolio-btn {
-    position: fixed; top: 19px; right: 76px; z-index: 50;
-    display: inline-flex; align-items: center; gap: 8px;
-    font-family: 'DM Mono', monospace;
-    font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase;
-    color: var(--accent2); text-decoration: none;
-    background: var(--accent-dim);
-    border: 1px solid rgba(var(--accent-rgb),0.3);
-    padding: 8px 15px; border-radius: 8px;
-    transition: background 0.2s, border-color 0.2s, color 0.2s, transform 0.15s;
-  }
-  .portfolio-btn:hover {
-    background: rgba(var(--accent-rgb),0.18);
-    border-color: var(--accent); color: var(--accent2);
-    transform: translateY(-1px);
-  }
-  .portfolio-btn svg { transition: transform 0.2s; }
-  .portfolio-btn:hover svg { transform: translate(2px,-2px); }
-
-  /* ── THEME TOGGLE ── */
-  .theme-btn {
-    position: fixed; top: 22px; right: 22px; z-index: 50;
-    width: 42px; height: 24px; border-radius: 13px;
-    border: 1.5px solid var(--border3); background: var(--surface2);
-    cursor: pointer; display: flex; align-items: center; padding: 2px 3px;
-    transition: background 0.35s, border-color 0.35s;
-  }
-  .theme-btn::after {
-    content: ''; width: 17px; height: 17px; border-radius: 50%;
-    background: var(--text3); position: absolute; left: 3px;
-    transition: transform 0.35s cubic-bezier(.34,1.56,.64,1), background 0.35s;
-  }
-  body.light .theme-btn { background: var(--accent-dim); border-color: var(--accent); }
-  body.light .theme-btn::after { transform: translateX(17px); background: var(--accent); }
-  .theme-btn .ti { font-size: 12px; line-height: 1; position: absolute; transition: opacity 0.25s; pointer-events: none; }
-  .theme-btn .ti-l { left: 5px; opacity: 0; }
-  .theme-btn .ti-d { right: 5px; opacity: 1; }
-  body.light .theme-btn .ti-l { opacity: 1; }
-  body.light .theme-btn .ti-d { opacity: 0; }
-
-  /* ── ANIMATIONS ── */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
-  /* ── SCROLLBAR ── */
-  ::-webkit-scrollbar { width: 5px; }
-  ::-webkit-scrollbar-track { background: var(--bg); }
-  ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
-  ::-webkit-scrollbar-thumb:hover { background: var(--text3); }
-
-  /* ── RESPONSIVE ── */
-  @media (max-width: 680px) {
-    .container { padding: 28px 16px 64px; }
-    .skills-grid { grid-template-columns: 1fr; }
-    .skill-row.full-width { grid-column: 1; }
-    .header-right { align-items: flex-start; }
-    .job-header { padding: 18px 18px 0; }
-    .job-body { padding: 14px 18px 18px; }
-    .stack-bar { padding: 8px 18px; }
-    .bul.highlight { margin-left: 0; }
-  }
-
-  /* ── PRINT ── */
-  @media print {
-    body { background: #fff; color: #111; }
-    body::before, body::after, .orb, .theme-btn, .portfolio-btn, #bgfx, #sprog { display: none; }
-    :root {
-      --bg:#fff; --surface:#f9f9f9; --surface2:#f2f2f2; --surface3:#eee;
-      --border:#e0e0e0; --border2:#ccc; --border3:#bbb;
-      --text:#111; --text2:#444; --text3:#888;
-      --accent:#1a5fc8; --accent2:#1a5fc8; --accent-dim:rgba(26,95,200,0.06);
-      --gold:#b8860b; --gold-dim:rgba(184,134,11,0.06);
-      --green:#16a34a; --green-dim:rgba(22,163,74,0.06);
-    }
-    .container { padding: 0; max-width: 100%; }
-    .job { break-inside: avoid; }
-  }
-
-  /* ============================================================
-     ===== AURORA SUBSTRATE + TYPOGRAPHY (ported from portfolio) =
-     ============================================================ */
-  /* fixed full-viewport WebGL fog canvas behind everything (created in JS) */
-  #bgfx { position: fixed; inset: 0; width: 100%; height: 100%; z-index: -1; pointer-events: none; display: block; }
-
-  /* scroll-progress bar */
-  #sprog {
-    position: fixed; top: 0; left: 0; height: 2px; width: 100%;
-    transform: scaleX(0); transform-origin: 0 50%; z-index: 60;
-    background: linear-gradient(90deg, var(--accent), var(--accent2));
-    pointer-events: none; box-shadow: 0 0 12px rgba(var(--accent-rgb),0.6);
-    transition: transform 0.08s linear;
-  }
-
-  /* — TYPOGRAPHY READABILITY PASS: lift the sub-11px floor and unify the scale.
-       Only ever increases sizes; placed last so it wins on source order. — */
-  body { font-size: 15.5px; }
-  /* smallest mono meta labels → 11px */
-  .location, .job-sub-sep, .tl-badge, .stack-bar span, .edu-year { font-size: 11px; }
-  /* uppercase mono UI labels → 11.5px, consistent */
-  .availability, .meta-tag, .skill-label, .sec-label, .date-badge,
-  .stack-bar, .proj-stack, .footer-links a, .portfolio-btn { font-size: 11.5px; }
-  /* secondary body copy → comfortable reading */
-  .contact-item, .skill-value, .title, .proj-desc, .edu-school { font-size: 13.5px; }
-  .bul, .bul.highlight { font-size: 14px; }
-  /* card titles + primary copy */
-  .proj-name, .edu-deg { font-size: 14.5px; }
-  .tagline, .summary-text { font-size: 15px; }
+/* ================= RESPONSIVE ================= */
+@media (max-width:900px){
+  .sk-grid{grid-template-columns:repeat(2,1fr)}
+  nav{padding:10px 20px}
+  section{padding:66px 20px}
+  #hero{padding:112px 20px 0}
+  .h-inner{padding-bottom:170px}
+  footer{padding:0 20px 26px}
+  .f-range{margin:0 -20px 22px}
+}
+@media (max-width:660px){
+  .sk-grid,.pj-grid,.edu-grid{grid-template-columns:1fr}
+  .n-word{display:none}
+  .h-inner{padding-bottom:130px}
+  .h-contacts{flex-direction:column;align-items:stretch}
+  .hc{width:100%}
+  .prof{padding:26px 22px}
+  .prof::before{position:static;display:inline-block;margin-bottom:14px;transform:rotate(-1.5deg)}
+  .asc{padding-left:44px}
+  .camp-mark{left:-44px;width:32px}
+  .camp-flag{width:27px;height:27px;font-size:12px}
+  .camp-c{padding:20px 16px}
+  .camp-c.summit::before{font-size:10px;letter-spacing:.08em;left:12px}
+  .camp-head{flex-direction:column;gap:8px}
+  .sign-name{font-size:18px}
+  .sunwrap{right:5%;top:10%}
+  .sun{width:80px;height:80px}
+  .sky-btn{width:52px;height:28px}
+  .sky-btn .orbball{width:20px;height:20px}
+  body.night .sky-btn .orbball{transform:translateX(22px)}
+}
+@media (max-width:400px){
+  section{padding:58px 14px}
+  #hero{padding:104px 14px 0}
+  .h-inner{padding-bottom:105px}
+  .asc{padding-left:38px}
+  .camp-mark{left:-38px;width:28px}
+  .camp-alt{display:none}
+  .camp-c{padding:18px 13px}
+  .n-portfolio{padding:8px 11px;font-size:11px}
+}
 </style>
 </head>
 <body>
 
-<a class="portfolio-btn" href="https://vinayak71.github.io/portfolio.html" target="_blank" rel="noopener" title="View full portfolio">
-  Portfolio
-  <svg width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M7 17L17 7M7 7h10v10"/></svg>
-</a>
+<nav id="nav">
+  <a class="n-logo" href="#hero" aria-label="Back to top">
+    <span class="n-peak">
+      <svg width="22" height="16" viewBox="0 0 22 16" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M0 16 L7 4 L10.5 9 L14 1 L22 16 Z" fill="#F2F5F1"/>
+        <path d="M14 1 L16.4 5.6 L15 6.6 L13.4 5.2 L12.2 6 Z" fill="#F4B54A"/>
+      </svg>
+    </span>
+    <span class="n-word">Summit Log<b>Vinaykumar Mishra</b></span>
+  </a>
+  <div class="n-right">
+    <button class="sky-btn" id="skyBtn" aria-label="Toggle day and night"><span class="orbball"></span></button>
+    <a class="n-portfolio" href="https://vinayak71.github.io/" >
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M3 12h18M13 6l6 6-6 6"/></svg>
+      Portfolio
+    </a>
+  </div>
+</nav>
 
-<button class="theme-btn" id="themeBtn" aria-label="Toggle light / dark theme" title="Toggle theme">
-  <span class="ti ti-l">&#9728;&#65039;</span>
-  <span class="ti ti-d">&#9790;</span>
-</button>
+<!-- ===== HERO ===== -->
+<section id="hero">
+  <div class="stars" aria-hidden="true"></div>
+  <div class="sunwrap" aria-hidden="true"><div class="sun"></div></div>
 
-<div class="orb orb-1"></div>
-<div class="orb orb-2"></div>
-<div class="orb orb-3"></div>
-
-<div class="container">
-
-  <!-- ── HEADER ── -->
-  <header>
-    <div class="header-inner">
-      <div class="header-left">
-        <div class="availability">Open to opportunities</div>
-        <h1>Vinaykumar<br><em>Mishra</em></h1>
-        <p class="tagline">Senior Software Engineer</p>
-        <div class="meta-row">
-          <span class="meta-tag">8+ Years</span>
-          <span class="meta-sep">·</span>
-          <span class="meta-tag">Laravel · Vue.js · Microservices</span>
-          <span class="meta-sep">·</span>
-          <span class="meta-tag">Mumbai, India</span>
-        </div>
-      </div>
-      <div class="header-right">
-        <a class="contact-item" href="mailto:vinaykumarmishra71@gmail.com">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
-          vinaykumarmishra71@gmail.com
-        </a>
-        <a class="contact-item" href="tel:9172270728">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
-          9172270728
-        </a>
-        <a class="contact-item" href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          linkedin.com/in/vinaykumar-mishra
-        </a>
-        <span class="contact-item" style="cursor:default">
-          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Mumbai, India
-        </span>
-      </div>
+  <div class="h-inner">
+    <div class="h-avail">Open to opportunities</div>
+    <p class="h-kicker">Trail Résumé · The Summit Log of</p>
+    <h1 class="h-name"><span class="l1">Vinaykumar</span><br><span class="l2">Mishra</span></h1>
+    <div class="h-sub">
+      <strong>Senior Software Engineer</strong>
+      <span class="dot" aria-hidden="true"></span><span>8+ Years on the trail</span>
+      <span class="dot" aria-hidden="true"></span><span>Laravel · Vue.js · Microservices</span>
+      <span class="dot" aria-hidden="true"></span><span>Mumbai, India</span>
     </div>
-  </header>
-
-  <!-- ── CORE SKILLS ── -->
-  <div class="skills-section">
-    <div class="sec-header" style="margin-bottom:16px">
-      <span class="sec-label">Core Skills</span>
-      <div class="sec-line"></div>
-    </div>
-    <div class="skills-grid">
-      <div class="skill-row">
-        <span class="skill-label">Backend</span>
-        <span class="skill-value">Laravel · PHP · Python · FastAPI · Microservices · Event-Driven Architecture · Background Workers · Queue Systems</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Frontend</span>
-        <span class="skill-value">Vue.js · Nuxt.js · Inertia.js · JavaScript ES6+ · Vuex · Pinia · Axios · HTML5 · CSS3 · Component-Driven UI</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Database</span>
-        <span class="skill-value">MySQL · PostgreSQL · SQLite · Redis · Memcached · Query Optimization · DB Sharding · Distributed Caching · Schema Design</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Cloud & DevOps</span>
-        <span class="skill-value">Docker · AWS (S3, RDS) · CI/CD Pipelines · GitLab · Bitbucket · Git Flow · Logging & Monitoring · Deployment Automation</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Security</span>
-        <span class="skill-value">JWT · OAuth 2.0 · RBAC · HIPAA Compliance · VAPT · Data Encryption (At Rest & In Transit) · Threat Modeling</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Architecture</span>
-        <span class="skill-value">Multi-Tenant SaaS · Domain-Driven Design · API Gateway Patterns · High Availability · Fault Tolerance · Load Balancing · Rate Limiting</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">API Design</span>
-        <span class="skill-value">Contract-First Design · API Versioning · RESTful & SOAP · Webhooks · Postman · Secure API Design</span>
-      </div>
-      <div class="skill-row">
-        <span class="skill-label">Leadership</span>
-        <span class="skill-value">Team Lead (6 Engineers) · Mentor · Agile/Scrum · Code Reviews · Sprint Planning · Technical Mentoring · Hiring</span>
-      </div>
-      <div class="skill-row full-width">
-        <span class="skill-label">Domain</span>
-        <span class="skill-value">Healthcare · FinTech · Loan Origination &amp; Management (LOS/LMS) · NBFC/HFC · KYC &amp; Compliance · Payment Gateways</span>
-      </div>
+    <div class="h-contacts">
+      <a class="hc" href="mailto:vinaykumarmishra71@gmail.com">
+        <span class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg></span>
+        <span class="hc-val">vinaykumarmishra71@gmail.com</span>
+      </a>
+      <a class="hc" href="tel:9172270728">
+        <span class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.86 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.77 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+        <span class="hc-val">9172270728</span>
+      </a>
+      <a class="hc" href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">
+        <span class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></span>
+        <span class="hc-val">linkedin.com/in/vinaykumar-mishra</span>
+      </a>
+      <span class="hc">
+        <span class="hc-ico"><svg width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/></svg></span>
+        <span class="hc-val">Mumbai, India</span>
+      </span>
     </div>
   </div>
 
-  <!-- ── PROFILE ── -->
-  <section>
-    <div class="sec-header">
-      <span class="sec-label">Profile</span>
-      <div class="sec-line"></div>
-    </div>
-    <p class="summary-text">
-      Senior Software Engineer with 8+ years designing, developing, and optimizing scalable, high-performance systems across Healthcare, FinTech, and multi-tenant SaaS. Deep expertise in Laravel, Vue.js, and API-driven microservice architectures — with hands-on experience in caching strategies, database optimization, Docker, and cloud deployments on AWS. Proven ability to build secure, HIPAA-compliant systems using JWT/OAuth, integrate complex third-party services, and perform deep system analysis to improve reliability and performance. A collaborative technical leader recognized for delivering robust platforms leveraging HL7/FHIR standards — owning end-to-end delivery, leading code reviews, mentoring junior engineers, driving hiring, sprint planning, and incident resolution while championing engineering standards and team growth.
-    </p>
-  </section>
+  <!-- mountain range -->
+  <div class="range" aria-hidden="true">
+    <svg viewBox="0 0 1440 320" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <!-- far ridge with snow caps -->
+      <path class="r1" d="M0 210 L150 120 L260 190 L400 90 L540 200 L690 110 L830 205 L980 100 L1130 195 L1280 125 L1440 200 V320 H0 Z"/>
+      <path class="rc" d="M400 90 L438 118 L424 114 L412 124 L400 112 L388 122 L376 112 Z"/>
+      <path class="rc" d="M980 100 L1016 126 L1002 122 L992 132 L980 120 L968 130 L956 120 Z"/>
+      <path class="rc" d="M150 120 L180 142 L168 138 L158 147 L150 138 L140 145 L132 138 Z"/>
+      <path class="rc" d="M1280 125 L1308 146 L1297 142 L1288 150 L1280 142 L1270 149 L1263 142 Z"/>
+      <!-- birds -->
+      <path class="birds" d="M560 70 q7 -8 14 0 q7 -8 14 0 M660 52 q6 -7 12 0 q6 -7 12 0 M760 82 q5 -6 10 0 q5 -6 10 0"/>
+      <!-- mid ridge -->
+      <path class="r2" d="M0 252 L120 180 L230 240 L360 160 L500 246 L640 172 L790 250 L930 168 L1070 244 L1210 182 L1330 240 L1440 196 V320 H0 Z"/>
+      <path class="rc" d="M360 160 L390 182 L378 178 L369 186 L360 178 L351 185 L343 178 Z" opacity=".85"/>
+      <path class="rc" d="M930 168 L958 189 L947 185 L938 193 L930 185 L921 192 L914 185 Z" opacity=".85"/>
+      <!-- summit flag on the tallest mid peak -->
+      <g>
+        <line class="flagpole" x1="640" y1="172" x2="640" y2="146"/>
+        <path class="flag" d="M640 146 L662 152 L640 158 Z"/>
+      </g>
+      <!-- near ridge -->
+      <path class="r3" d="M0 288 L160 226 L300 278 L460 218 L620 282 L780 226 L950 284 L1110 224 L1270 278 L1440 238 V320 H0 Z"/>
+      <!-- foreground pine line -->
+      <path class="r4" d="M0 320 v-20 l10 4 -2 -10 8 3 -3 -11 9 5 v29 Z M60 320 v-26 l11 5 -3 -11 9 4 -3 -12 10 5 v35 Z M130 320 v-18 l9 4 -2 -9 8 3 -3 -10 8 4 v26 Z M230 320 v-24 l10 5 -3 -10 9 4 -3 -11 9 5 v31 Z M330 320 v-17 l9 4 -2 -9 7 3 -2 -10 8 4 v25 Z M470 320 v-22 l10 4 -2 -10 8 4 -3 -11 9 5 v30 Z M600 320 v-16 l8 3 -2 -8 7 3 -2 -9 8 4 v23 Z M740 320 v-25 l10 5 -3 -10 9 4 -3 -12 10 5 v33 Z M880 320 v-18 l9 4 -2 -9 8 3 -3 -10 8 4 v26 Z M1010 320 v-23 l10 5 -3 -10 9 4 -3 -11 9 5 v30 Z M1150 320 v-16 l8 3 -2 -8 7 3 -2 -9 8 4 v23 Z M1280 320 v-24 l10 5 -3 -10 9 4 -3 -11 9 5 v31 Z M1400 320 v-19 l9 4 -2 -9 8 3 -3 -10 8 4 v27 Z"/>
+    </svg>
+  </div>
+  <div class="scue">Begin the ascent &#9660;</div>
+</section>
 
-  <!-- ── EXPERIENCE ── -->
-  <section>
-    <div class="sec-header">
-      <span class="sec-label">Experience</span>
-      <div class="sec-line"></div>
+<!-- ===== GEAR CHECK (core skills) ===== -->
+<section id="skills">
+  <div class="si">
+    <div class="sign rv"><span class="sign-post"></span><span class="sign-board"><span class="sign-km">KM 01 · Trailhead</span><span class="sign-name">&#127890; Gear Check — Core Skills</span></span></div>
+    <div class="sk-grid rv">
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#9881;&#65039;</span><span class="skc-t">Backend</span></div><div class="skc-d">Laravel &middot; PHP &middot; Python &middot; FastAPI &middot; Microservices &middot; Event-Driven Architecture &middot; Background Workers &middot; Queue Systems</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#127912;</span><span class="skc-t">Frontend</span></div><div class="skc-d">Vue.js &middot; Nuxt.js &middot; Inertia.js &middot; JavaScript ES6+ &middot; Vuex &middot; Pinia &middot; Axios &middot; HTML5 &middot; CSS3 &middot; Component-Driven UI</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#128451;&#65039;</span><span class="skc-t">Database</span></div><div class="skc-d">MySQL &middot; PostgreSQL &middot; SQLite &middot; Redis &middot; Memcached &middot; Query Optimization &middot; DB Sharding &middot; Distributed Caching &middot; Schema Design</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#9729;&#65039;</span><span class="skc-t">Cloud &amp; DevOps</span></div><div class="skc-d">Docker &middot; AWS (S3, RDS) &middot; CI/CD Pipelines &middot; GitLab &middot; Bitbucket &middot; Git Flow &middot; Logging &amp; Monitoring &middot; Deployment Automation</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#128272;</span><span class="skc-t">Security</span></div><div class="skc-d">JWT &middot; OAuth 2.0 &middot; RBAC &middot; HIPAA Compliance &middot; VAPT &middot; Data Encryption (At Rest &amp; In Transit) &middot; Threat Modeling</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#127959;&#65039;</span><span class="skc-t">Architecture</span></div><div class="skc-d">Multi-Tenant SaaS &middot; Domain-Driven Design &middot; API Gateway Patterns &middot; High Availability &middot; Fault Tolerance &middot; Load Balancing &middot; Rate Limiting</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#128268;</span><span class="skc-t">API Design</span></div><div class="skc-d">Contract-First Design &middot; API Versioning &middot; RESTful &amp; SOAP &middot; Webhooks &middot; Postman &middot; Secure API Design</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#129517;</span><span class="skc-t">Leadership</span></div><div class="skc-d">Team Lead (6 Engineers) &middot; Mentor &middot; Agile/Scrum &middot; Code Reviews &middot; Sprint Planning &middot; Technical Mentoring &middot; Hiring</div></div>
+      <div class="skc"><div class="skc-head"><span class="skc-ico">&#127957;&#65039;</span><span class="skc-t">Domain</span></div><div class="skc-d">Healthcare &middot; FinTech &middot; Loan Origination &amp; Management (LOS/LMS) &middot; NBFC/HFC &middot; KYC &amp; Compliance &middot; Payment Gateways</div></div>
     </div>
+  </div>
+</section>
 
-    <!-- WebMD -->
-    <div class="job">
-      <div class="job-header">
-        <div class="job-header-left">
-          <div class="company">WebMD</div>
-          <div class="job-sub">
-            <span class="title">Senior Software Engineer</span>
-            <span class="job-sub-sep">·</span>
-            <span class="location">Airoli, Navi Mumbai</span>
+<div class="trail" aria-hidden="true"></div>
+
+<!-- ===== TRIP REPORT (profile) ===== -->
+<section id="profile">
+  <div class="si">
+    <div class="sign rv"><span class="sign-post"></span><span class="sign-board"><span class="sign-km">KM 02 · Viewpoint</span><span class="sign-name">&#128220; Trip Report — Profile</span></span></div>
+    <div class="prof rv">
+      <p>Senior Software Engineer with 8+ years designing, developing, and optimizing scalable, high-performance systems across Healthcare, FinTech, and multi-tenant SaaS. Deep expertise in Laravel, Vue.js, and API-driven microservice architectures &mdash; with hands-on experience in caching strategies, database optimization, Docker, and cloud deployments on AWS.</p>
+      <p>Proven ability to build secure, HIPAA-compliant systems using JWT/OAuth, integrate complex third-party services, and perform deep system analysis to improve reliability and performance. A collaborative technical leader recognized for delivering robust platforms leveraging HL7/FHIR standards &mdash; owning end-to-end delivery, leading code reviews, mentoring junior engineers, driving hiring, sprint planning, and incident resolution while championing engineering standards and team growth.</p>
+    </div>
+  </div>
+</section>
+
+<div class="trail" aria-hidden="true"></div>
+<!-- ===== THE ASCENT (experience) ===== -->
+<section id="experience">
+  <div class="si">
+    <div class="sign rv"><span class="sign-post"></span><span class="sign-board"><span class="sign-km">KM 03 · The Climb</span><span class="sign-name">&#9968;&#65039; The Ascent — Experience</span></span></div>
+    <div class="asc">
+
+      <div class="camp rv">
+        <div class="camp-mark" aria-hidden="true"><span class="camp-flag">&#128681;</span><span class="camp-alt">CAMP IV</span></div>
+        <div class="camp-c summit">
+          <div class="camp-head">
+            <div>
+              <div class="camp-lbl">Camp IV &middot; Highest point so far</div>
+              <div class="camp-co">WebMD</div>
+              <div class="camp-meta">Senior Software Engineer &nbsp;&middot;&nbsp; Airoli, Navi Mumbai</div>
+            </div>
+            <span class="camp-date cur">Apr 2023 &mdash; Present</span>
           </div>
+          <div class="camp-stack"><b>Pack</b>Laravel &middot; Vue.js &middot; Inertia.js &middot; PHP &middot; MySQL &middot; Docker &middot; JWT &middot; Vuex/Pinia &middot; Microservices</div>
+          <ul class="camp-bullets">
+            <li class="camp-li key">Owned end-to-end delivery of multiple reporting portal projects &mdash; coordinated timelines, defined scope with product stakeholders, managed sprint planning, and ensured on-time delivery across cross-functional teams.</li>
+            <li class="camp-li key">Drove technical design discussions and proposed architectural decisions on data flow and API contracts &mdash; collaborated with product and QA teams to define requirements, acceptance criteria, and integration contracts adopted team-wide.</li>
+            <li class="camp-li key">Led structured code reviews across the team &mdash; established PR guidelines, enforced coding standards, and introduced review checklists that significantly cut rework cycles and improved merge quality.</li>
+            <li class="camp-li key">Mentored junior engineers through 1-on-1 sessions and pair programming on Laravel and Vue.js patterns; guided them from onboarding to independently owning feature modules.</li>
+            <li class="camp-li key">Conducted regular coding sessions and internal tech talks covering Vue.js reactivity, Laravel service patterns, API design, Redis caching, and queue optimization &mdash; building sustained team capability.</li>
+            <li class="camp-li key">Participated in technical interviews for engineering candidates &mdash; evaluated Laravel, Vue.js, and system design proficiency, helping shape team hiring decisions.</li>
+            <li class="camp-li">Triaged and resolved production incidents &mdash; led RCA investigations on critical failures, introduced centralized logging and automated alerts across microservices to reduce future incident response time.</li>
+            <li class="camp-li">Designed and delivered 2 client-facing reporting portals with dynamic campaign-based report generation, data validation, audit trails, and multi-tenant data segregation.</li>
+            <li class="camp-li">Built the PTR System end-to-end as sole technical owner &mdash; from schema design to Vue.js frontend &mdash; secured via JWT and Sanctum, delivered on schedule.</li>
+            <li class="camp-li">Built reusable Vue.js component library; optimized Laravel job queues and background workers, significantly reducing report generation time.</li>
+            <li class="camp-li">Dockerized local dev environment, standardizing setup across the team and eliminating environment inconsistency issues.</li>
+            <li class="camp-li">Built custom ACL with field-level security, RBAC, Axios route interceptors, and centralized logging across microservices.</li>
+          </ul>
         </div>
-        <span class="date-badge current">Apr 2023 — Present</span>
       </div>
-      <div class="stack-bar"><span>Stack</span> Laravel · Vue.js · Inertia.js · PHP · MySQL · Docker · JWT · Vuex/Pinia · Microservices</div>
-      <div class="job-body">
-        <ul class="bullets">
-          <li class="bul highlight">Owned end-to-end delivery of multiple reporting portal projects — coordinated timelines, defined scope with product stakeholders, managed sprint planning, and ensured on-time delivery across cross-functional teams.</li>
-          <li class="bul highlight">Drove technical design discussions and proposed architectural decisions on data flow and API contracts — collaborated with product and QA teams to define requirements, acceptance criteria, and integration contracts adopted team-wide.</li>
-          <li class="bul highlight">Led structured code reviews across the team — established PR guidelines, enforced coding standards, and introduced review checklists that significantly cut rework cycles and improved merge quality.</li>
-          <li class="bul highlight">Mentored junior engineers through 1-on-1 sessions and pair programming on Laravel and Vue.js patterns; guided them from onboarding to independently owning feature modules.</li>
-          <li class="bul highlight">Conducted regular coding sessions and internal tech talks covering Vue.js reactivity, Laravel service patterns, API design, Redis caching, and queue optimization — building sustained team capability.</li>
-          <li class="bul highlight">Participated in technical interviews for engineering candidates — evaluated Laravel, Vue.js, and system design proficiency, helping shape team hiring decisions.</li>
-          <li class="bul">Triaged and resolved production incidents — led RCA investigations on critical failures, introduced centralized logging and automated alerts across microservices to reduce future incident response time.</li>
-          <li class="bul">Designed and delivered 2 client-facing reporting portals with dynamic campaign-based report generation, data validation, audit trails, and multi-tenant data segregation.</li>
-          <li class="bul">Built the PTR System end-to-end as sole technical owner — from schema design to Vue.js frontend — secured via JWT and Sanctum, delivered on schedule.</li>
-          <li class="bul">Built reusable Vue.js component library; optimized Laravel job queues and background workers, significantly reducing report generation time.</li>
-          <li class="bul">Dockerized local dev environment, standardizing setup across the team and eliminating environment inconsistency issues.</li>
-          <li class="bul">Built custom ACL with field-level security, RBAC, Axios route interceptors, and centralized logging across microservices.</li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Vastu -->
-    <div class="job">
-      <div class="job-header">
-        <div class="job-header-left">
-          <div class="company">Vastu Housing Finance Corporation Pvt. Ltd.</div>
-          <div class="job-sub">
-            <span class="title">Senior PHP Developer</span>
-            <span class="job-sub-sep">·</span>
-            <span class="location">Sewri, Mumbai</span>
+      <div class="camp rv">
+        <div class="camp-mark" aria-hidden="true"><span class="camp-flag">&#9968;&#65039;</span><span class="camp-alt">CAMP III</span></div>
+        <div class="camp-c">
+          <div class="camp-head">
+            <div>
+              <div class="camp-lbl">Camp III</div>
+              <div class="camp-co">Vastu Housing Finance Corporation Pvt. Ltd.</div>
+              <div class="camp-meta">Senior PHP Developer &nbsp;&middot;&nbsp; Sewri, Mumbai</div>
+            </div>
+            <span class="camp-date">Oct 2019 &mdash; Mar 2023</span>
           </div>
+          <div class="camp-stack"><b>Pack</b>Laravel &middot; PHP &middot; MySQL &middot; jQuery &middot; JWT &middot; MPDF &middot; AJAX DataTables &middot; BBPS &middot; CIBIL &middot; Razorpay</div>
+          <ul class="camp-bullets">
+            <li class="camp-li key">Led and mentored a team of 6 developers &mdash; introduced Agile/Scrum, microservices architecture, DRY coding principles, and API security standards; improved delivery efficiency, code quality, and team productivity across all projects.</li>
+            <li class="camp-li">Collaborated directly with business, operations, and compliance teams to gather requirements and translate them into technical specs &mdash; ensuring systems met regulatory and operational needs from day one.</li>
+            <li class="camp-li key">Drove engineering modernization &mdash; migrated from monolithic to microservices, enforced API security best practices, and introduced deep Laravel service-layer patterns and DRY architecture that became team-wide standards.</li>
+            <li class="camp-li key">Architected and built Pulse &mdash; an in-house LOS for Home Loans &amp; LAP &mdash; supporting 500+ pan-India users and processing &#8377;100 Cr+ in loans per month via BBPS; managed the full lead-to-approval lifecycle from Android app to backend.</li>
+            <li class="camp-li">Digitized paper-based PD (Personal Discussion) processes by building TelePD and Video PD workflows with Digio e-sign integration &mdash; enabling remote loan assessments and paperless document signing across branches, significantly reducing turnaround time.</li>
+            <li class="camp-li">Developed a complete NBFC LOS for Vehicle Loans &amp; LAP from scratch &mdash; multi-step workflows, dynamic ACL, automation, and full API system.</li>
+            <li class="camp-li">Created Pulse&rarr;MIFIN data transfer APIs; dynamically generated loan PDFs via MPDF; used AJAX DataTables for efficient loan application display.</li>
+            <li class="camp-li">Automated MIS loan reports to Branch Managers via cron jobs; developed salesperson commission calculation APIs.</li>
+            <li class="camp-li">Conducted VAPT; implemented JWT auth; built custom error-handling and logging with automated email alerts for critical failures.</li>
+            <li class="camp-li">Integrated 10+ third-party services: Razorpay, Paytm, BBPS, KARZA, Aadhaar Masking, CIBIL &amp; Highmark, Digio e-sign, Vehicle Valuation, Fraud Check APIs, and Webhooks.</li>
+          </ul>
         </div>
-        <span class="date-badge">Oct 2019 — Mar 2023</span>
       </div>
-      <div class="stack-bar"><span>Stack</span> Laravel · PHP · MySQL · jQuery · JWT · MPDF · AJAX DataTables · BBPS · CIBIL · Razorpay</div>
-      <div class="job-body">
-        <ul class="bullets">
-          <li class="bul highlight">Led and mentored a team of 6 developers — introduced Agile/Scrum, microservices architecture, DRY coding principles, and API security standards; improved delivery efficiency, code quality, and team productivity across all projects.</li>
-          <li class="bul highlight">Collaborated directly with business, operations, and compliance teams to gather requirements and translate them into technical specs — ensuring systems met regulatory and operational needs from day one.</li>
-          <li class="bul highlight">Drove engineering modernization — migrated from monolithic to microservices, enforced API security best practices, and introduced deep Laravel service-layer patterns and DRY architecture that became team-wide standards.</li>
-          <li class="bul">Architected and built Pulse — an in-house LOS for Home Loans &amp; LAP — supporting 500+ pan-India users and processing ₹100 Cr+ in loans per month via BBPS; managed the full lead-to-approval lifecycle from Android app to backend.</li>
-          <li class="bul">Digitized paper-based PD (Personal Discussion) processes by building TelePD and Video PD workflows with Digio e-sign integration — enabling remote loan assessments and paperless document signing across branches, significantly reducing turnaround time.</li>
-          <li class="bul">Developed a complete NBFC LOS for Vehicle Loans &amp; LAP from scratch — multi-step workflows, dynamic ACL, automation, and full API system.</li>
-          <li class="bul">Created Pulse→MIFIN data transfer APIs; dynamically generated loan PDFs via MPDF; used AJAX DataTables for efficient loan application display.</li>
-          <li class="bul">Automated MIS loan reports to Branch Managers via cron jobs; developed salesperson commission calculation APIs.</li>
-          <li class="bul">Conducted VAPT; implemented JWT auth; built custom error-handling and logging with automated email alerts for critical failures.</li>
-          <li class="bul">Integrated 10+ third-party services: Razorpay, Paytm, BBPS, KARZA, Aadhaar Masking, CIBIL &amp; Highmark, Digio e-sign, Vehicle Valuation, Fraud Check APIs, and Webhooks.</li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Softlabs -->
-    <div class="job">
-      <div class="job-header">
-        <div class="job-header-left">
-          <div class="company">Softlabs Groups</div>
-          <div class="job-sub">
-            <span class="title">Laravel Developer</span>
-            <span class="job-sub-sep">·</span>
-            <span class="location">Lower Parel, Mumbai</span>
+      <div class="camp rv">
+        <div class="camp-mark" aria-hidden="true"><span class="camp-flag">&#9968;&#65039;</span><span class="camp-alt">CAMP II</span></div>
+        <div class="camp-c">
+          <div class="camp-head">
+            <div>
+              <div class="camp-lbl">Camp II</div>
+              <div class="camp-co">Softlabs Groups</div>
+              <div class="camp-meta">Laravel Developer &nbsp;&middot;&nbsp; Lower Parel, Mumbai</div>
+            </div>
+            <span class="camp-date">Mar 2019 &mdash; Sep 2019</span>
           </div>
+          <div class="camp-stack"><b>Pack</b>Laravel &middot; PHP &middot; MySQL &middot; Multi-tenancy &middot; jQuery &middot; JavaScript &middot; SaaS</div>
+          <ul class="camp-bullets">
+            <li class="camp-li">Built a Stock Management SaaS with Laravel multi-tenancy &mdash; dynamically switched isolated databases per client, supporting fully independent multi-tenant environments.</li>
+            <li class="camp-li">Developed TravelX, a travel booking platform for flights, cars, and hotels within a single unified tour workflow.</li>
+            <li class="camp-li">Built a Center Management System for multi-location yoga room bookings; implemented dynamic DB connections, modular architecture, and RBAC.</li>
+          </ul>
         </div>
-        <span class="date-badge">Mar 2019 — Sep 2019</span>
       </div>
-      <div class="stack-bar"><span>Stack</span> Laravel · PHP · MySQL · Multi-tenancy · jQuery · JavaScript · SaaS</div>
-      <div class="job-body">
-        <ul class="bullets">
-          <li class="bul">Built a Stock Management SaaS with Laravel multi-tenancy — dynamically switched isolated databases per client, supporting fully independent multi-tenant environments.</li>
-          <li class="bul">Developed TravelX, a travel booking platform for flights, cars, and hotels within a single unified tour workflow.</li>
-          <li class="bul">Built a Center Management System for multi-location yoga room bookings; implemented dynamic DB connections, modular architecture, and RBAC.</li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- Neural IT -->
-    <div class="job">
-      <div class="job-header">
-        <div class="job-header-left">
-          <div class="company">Neural IT</div>
-          <div class="job-sub">
-            <span class="title">Software Engineer</span>
-            <span class="job-sub-sep">·</span>
-            <span class="location">Airoli, Mumbai</span>
+      <div class="camp rv">
+        <div class="camp-mark" aria-hidden="true"><span class="camp-flag">&#127957;&#65039;</span><span class="camp-alt">BASE</span></div>
+        <div class="camp-c">
+          <div class="camp-head">
+            <div>
+              <div class="camp-lbl">Base Camp &middot; Where the climb began</div>
+              <div class="camp-co">Neural IT</div>
+              <div class="camp-meta">Software Engineer &nbsp;&middot;&nbsp; Airoli, Mumbai</div>
+            </div>
+            <span class="camp-date">Nov 2017 &mdash; Mar 2019</span>
           </div>
+          <div class="camp-stack"><b>Pack</b>Core PHP &middot; Drupal &middot; MySQL &middot; jQuery &middot; JavaScript &middot; REST APIs</div>
+          <ul class="camp-bullets">
+            <li class="camp-li">Built a fully functional EHRMS mobile app (Core PHP, Android WebView) and an EHRMS control panel for multi-org cloning across healthcare organizations.</li>
+            <li class="camp-li">Worked on 3 USA-based Accidental Claim Management projects integrating claim workflows, reporting, and insurance processing pipelines.</li>
+            <li class="camp-li">Designed APIs and microservices for EHRMS; integrated data visualization for patient metrics; leveraged Drupal for LMS integration.</li>
+            <li class="camp-li">Optimized complex MySQL data models; implemented RBAC and ACLs across multiple healthcare organizations.</li>
+          </ul>
         </div>
-        <span class="date-badge">Nov 2017 — Mar 2019</span>
       </div>
-      <div class="stack-bar"><span>Stack</span> Core PHP · Drupal · MySQL · jQuery · JavaScript · REST APIs</div>
-      <div class="job-body">
-        <ul class="bullets">
-          <li class="bul">Built a fully functional EHRMS mobile app (Core PHP, Android WebView) and an EHRMS control panel for multi-org cloning across healthcare organizations.</li>
-          <li class="bul">Worked on 3 USA-based Accidental Claim Management projects integrating claim workflows, reporting, and insurance processing pipelines.</li>
-          <li class="bul">Designed APIs and microservices for EHRMS; integrated data visualization for patient metrics; leveraged Drupal for LMS integration.</li>
-          <li class="bul">Optimized complex MySQL data models; implemented RBAC and ACLs across multiple healthcare organizations.</li>
-        </ul>
-      </div>
-    </div>
 
-  </section>
+    </div>
+  </div>
+</section>
 
-  <!-- ── INDEPENDENT PROJECTS ── -->
-  <section>
-    <div class="sec-header">
-      <span class="sec-label">Independent Projects</span>
-      <div class="sec-line"></div>
-    </div>
-    <div class="proj-grid">
-      <div class="proj-card">
-        <div class="proj-name">medDose</div>
-        <div class="proj-stack">Laravel · SaaS · REST APIs · IoT</div>
-        <div class="proj-desc">SaaS Medicine Dose Reminder with IoT smart pillbox integration — delivers real-time consumption alerts to mobile and web. Built multi-tenant architecture with patient-device pairing, alert scheduling engine, and caregiver notification system.</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-name">Bill Financing System</div>
-        <div class="proj-stack">Laravel · Digio APIs · Payment APIs · MySQL</div>
-        <div class="proj-desc">Multi-step KYC and identity verification platform enabling compliant lender-financed bill processing. Integrated Digio e-sign and face-match APIs, built dynamic workflow engine for lender approval routing and audit trail generation.</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-name">TradeX</div>
-        <div class="proj-stack">Laravel · Razorpay · MySQL</div>
-        <div class="proj-desc">Trading platform with subscription tier management, fund request workflows, and configurable admin approval modules. Designed role-based access control and real-time fund status tracking with automated approval/rejection notifications.</div>
-      </div>
-      <div class="proj-card">
-        <div class="proj-name">ARKROOT</div>
-        <div class="proj-stack">Nuxt.js · PHP · MySQL</div>
-        <div class="proj-desc">Modern website for ARK Root — a boutique advisory firm offering finance, legal, and compliance solutions for startups and growing businesses. Built a fast, SEO-optimised Nuxt.js frontend with a PHP backend.</div>
-      </div>
-    </div>
-  </section>
+<div class="trail" aria-hidden="true"></div>
 
-  <!-- ── EDUCATION ── -->
-  <section>
-    <div class="sec-header">
-      <span class="sec-label">Education</span>
-      <div class="sec-line"></div>
+<!-- ===== SIDE TREKS (independent projects) ===== -->
+<section id="projects">
+  <div class="si">
+    <div class="sign rv"><span class="sign-post"></span><span class="sign-board"><span class="sign-km">KM 04 · Off the Main Route</span><span class="sign-name">&#129406; Side Treks — Independent Projects</span></span></div>
+    <div class="pj-grid rv">
+      <div class="pj">
+        <div class="pj-top">
+          <div class="pj-name">medDose</div>
+          <svg class="pj-peak" width="24" height="15" viewBox="0 0 24 15" aria-hidden="true"><path d="M0 15 L8 3 L12 9 L16 1 L24 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--glacier)"/></svg>
+        </div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">SaaS</span><span class="pj-tag">REST APIs</span><span class="pj-tag">IoT</span></div>
+        <div class="pj-desc">SaaS Medicine Dose Reminder with IoT smart pillbox integration &mdash; delivers real-time consumption alerts to mobile and web. Built multi-tenant architecture with patient-device pairing, alert scheduling engine, and caregiver notification system.</div>
+      </div>
+      <div class="pj">
+        <div class="pj-top">
+          <div class="pj-name">Bill Financing System</div>
+          <svg class="pj-peak" width="24" height="15" viewBox="0 0 24 15" aria-hidden="true"><path d="M0 15 L8 3 L12 9 L16 1 L24 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--glacier)"/></svg>
+        </div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Digio APIs</span><span class="pj-tag">Payment APIs</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Multi-step KYC and identity verification platform enabling compliant lender-financed bill processing. Integrated Digio e-sign and face-match APIs, built dynamic workflow engine for lender approval routing and audit trail generation.</div>
+      </div>
+      <div class="pj">
+        <div class="pj-top">
+          <div class="pj-name">TradeX</div>
+          <svg class="pj-peak" width="24" height="15" viewBox="0 0 24 15" aria-hidden="true"><path d="M0 15 L8 3 L12 9 L16 1 L24 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--glacier)"/></svg>
+        </div>
+        <div class="pj-tags"><span class="pj-tag">Laravel</span><span class="pj-tag">Razorpay</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Trading platform with subscription tier management, fund request workflows, and configurable admin approval modules. Designed role-based access control and real-time fund status tracking with automated approval/rejection notifications.</div>
+      </div>
+      <div class="pj">
+        <div class="pj-top">
+          <div class="pj-name">ARKROOT</div>
+          <svg class="pj-peak" width="24" height="15" viewBox="0 0 24 15" aria-hidden="true"><path d="M0 15 L8 3 L12 9 L16 1 L24 15 Z" fill="none" stroke="currentColor" stroke-width="1.8" style="color:var(--glacier)"/></svg>
+        </div>
+        <div class="pj-tags"><span class="pj-tag">Nuxt.js</span><span class="pj-tag">PHP</span><span class="pj-tag">MySQL</span></div>
+        <div class="pj-desc">Modern website for ARK Root &mdash; a boutique advisory firm offering finance, legal, and compliance solutions for startups and growing businesses. Built a fast, SEO-optimised Nuxt.js frontend with a PHP backend.</div>
+      </div>
     </div>
-    <div class="edu-grid">
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div>
+  </div>
+</section>
+
+<div class="trail" aria-hidden="true"></div>
+
+<!-- ===== BASECAMP TRAINING (education) ===== -->
+<section id="education">
+  <div class="si">
+    <div class="sign rv"><span class="sign-post"></span><span class="sign-board"><span class="sign-km">KM 05 · Preparation</span><span class="sign-name">&#127891; Basecamp Training — Education</span></span></div>
+    <div class="edu-grid rv">
+      <div class="edu-c">
+        <span class="edu-ico">&#127891;</span>
+        <div class="edu-body">
           <div class="edu-deg">M.Sc. Information Technology</div>
-          <div class="edu-school">Vidyalankar School of Information Technology, Mumbai</div>
-          <div class="edu-year">2016 – 2018</div>
+          <div class="edu-sch">Vidyalankar School of Information Technology, Mumbai</div>
+          <span class="edu-yr">2016 &ndash; 2018</span>
         </div>
       </div>
-      <div class="edu-card">
-        <div class="edu-icon">🎓</div>
-        <div>
+      <div class="edu-c">
+        <span class="edu-ico">&#127891;</span>
+        <div class="edu-body">
           <div class="edu-deg">B.Sc. Information Technology</div>
-          <div class="edu-school">Guru Nanak Khalsa College, Mumbai</div>
-          <div class="edu-year">2013 – 2016</div>
+          <div class="edu-sch">Guru Nanak Khalsa College, Mumbai</div>
+          <span class="edu-yr">2013 &ndash; 2016</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ── FOOTER ── -->
-  <footer>
-    <span class="footer-name">Vinaykumar Mishra</span>
-    <div class="footer-links">
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="f-range" aria-hidden="true">
+    <svg viewBox="0 0 1440 120" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMax slice">
+      <rect class="fr-sky" width="1440" height="120"/>
+      <path class="fr-m" d="M0 120 L140 44 L250 96 L400 30 L540 100 L690 40 L830 98 L980 34 L1130 96 L1280 52 L1440 92 V120 H0 Z"/>
+      <path class="fr-cap" d="M400 30 L432 54 L420 50 L410 59 L400 48 L390 57 L379 50 Z" opacity=".9"/>
+      <path class="fr-cap" d="M980 34 L1010 57 L999 53 L990 61 L980 51 L971 59 L961 53 Z" opacity=".9"/>
+      <path d="M300 26 q6 -7 12 0 q6 -7 12 0 M370 14 q5 -6 10 0 q5 -6 10 0" stroke="#5F7284" stroke-width="1.6" fill="none" stroke-linecap="round" opacity=".55"/>
+    </svg>
+  </div>
+  <div class="f-in">
+    <div class="f-brand">Vinaykumar <span>Mishra</span></div>
+    <div class="f-links">
       <a href="mailto:vinaykumarmishra71@gmail.com">vinaykumarmishra71@gmail.com</a>
       <a href="tel:9172270728">9172270728</a>
-      <a href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank">LinkedIn</a>
-      <span style="color:var(--text3);font-family:'DM Mono',monospace;font-size:10.5px">Mumbai, India</span>
+      <a href="https://linkedin.com/in/vinaykumar-mishra-325b66139" target="_blank" rel="noopener">LinkedIn</a>
+      <span style="font-family:var(--fm);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:#B8C7BC;padding:4px 0">Mumbai, India</span>
     </div>
-  </footer>
-
-</div>
+    <div class="f-copy">&copy; 2025 Vinaykumar Mishra &middot; Mumbai, India &middot; The summit is just the halfway point.</div>
+  </div>
+</footer>
 
 <script>
-  // ── Theme toggle — DARK is the default: the page always opens dark. The
-  //    toggle still works (and broadcasts live to an open portfolio tab); it
-  //    just no longer forces light on load. ──
-  (function () {
-    var body = document.body;
-    var btn = document.getElementById('themeBtn');
-    btn.addEventListener('click', function () {
-      body.classList.toggle('light');
-      localStorage.setItem('theme', body.classList.contains('light') ? 'light' : 'dark');
+// ── Scroll reveal ─────────────────────────────────────────────
+const ro = new IntersectionObserver(es => {
+  es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); ro.unobserve(e.target); } });
+}, { threshold: 0, rootMargin: '0px 0px -8% 0px' });
+document.querySelectorAll('.rv').forEach((el, i) => {
+  el.style.transitionDelay = (i % 4) * 0.06 + 's';
+  ro.observe(el);
+});
+const revealVisible = () => {
+  document.querySelectorAll('.rv:not(.in)').forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight * 0.92) el.classList.add('in');
+  });
+};
+window.addEventListener('load', revealVisible);
+window.addEventListener('scroll', revealVisible, { passive: true });
+
+// ── Day / Night toggle (shared key with the portfolio) ────────
+const skyBtn = document.getElementById('skyBtn');
+skyBtn.addEventListener('click', () => {
+  document.body.classList.toggle('night');
+  try { localStorage.setItem('safari-sky', document.body.classList.contains('night') ? 'night' : 'day'); } catch (e) {}
+});
+try { if (localStorage.getItem('safari-sky') === 'night') document.body.classList.add('night'); } catch (e) {}
+
+// ── Gentle parallax on the range & sun ────────────────────────
+(() => {
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  const range = document.querySelector('.range');
+  const sun = document.querySelector('.sunwrap');
+  let ticking = false;
+  window.addEventListener('scroll', () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => {
+      const y = window.scrollY;
+      if (y < window.innerHeight * 1.2) {
+        if (range) range.style.transform = 'translateY(' + (y * 0.1) + 'px)';
+        if (sun) sun.style.transform = 'translateY(' + (y * 0.28) + 'px)';
+      }
+      ticking = false;
     });
-    window.addEventListener('storage', function (e) {
-      if (e.key === 'theme') body.classList.toggle('light', e.newValue === 'light');
-    });
-  })();
-
-  // ── Scroll-progress bar ──
-  (function () {
-    var bar = document.createElement('div'); bar.id = 'sprog';
-    document.body.appendChild(bar);
-    function upd() {
-      var h = document.documentElement.scrollHeight - window.innerHeight;
-      bar.style.transform = 'scaleX(' + Math.max(0, Math.min(h > 0 ? window.scrollY / h : 0, 1)).toFixed(4) + ')';
-    }
-    window.addEventListener('scroll', upd, { passive: true });
-    window.addEventListener('resize', upd); upd();
-  })();
-
-  // ── Aurora Substrate: self-contained WebGL1 fog background ──
-  // Same engine as the portfolio, themed live from this file's --accent-rgb /
-  // --green-rgb / --gold-rgb / --bg tokens. Strictly additive: any failure
-  // removes the canvas and the existing orbs/noise remain a complete fallback.
-  (function () {
-    var reduceMQ = window.matchMedia('(prefers-reduced-motion: reduce)');
-    var touchMQ = window.matchMedia('(hover: none), (max-width: 680px)');
-    if (touchMQ.matches) return;
-
-    var VERT = 'attribute vec2 aPos;void main(){gl_Position=vec4(aPos,0.0,1.0);}';
-    var FRAG = [
-      '#ifdef GL_FRAGMENT_PRECISION_HIGH',
-      'precision highp float;',
-      '#else',
-      'precision mediump float;',
-      '#endif',
-      'uniform vec2 uRes;uniform float uTime;uniform vec2 uMouse;uniform float uScroll;',
-      'uniform vec3 uColA;uniform vec3 uColB;uniform vec3 uColC;uniform vec3 uBg;',
-      'uniform float uDark;uniform float uIntensity;',
-      'float hash(vec2 p){p=fract(p*vec2(123.34,345.45));p+=dot(p,p+34.345);return fract(p.x*p.y);}',
-      'float noise(vec2 p){vec2 i=floor(p),f=fract(p);vec2 u=f*f*(3.0-2.0*f);',
-      'float a=hash(i),b=hash(i+vec2(1.0,0.0)),c=hash(i+vec2(0.0,1.0)),d=hash(i+vec2(1.0,1.0));',
-      'return mix(mix(a,b,u.x),mix(c,d,u.x),u.y);}',
-      'float fbm(vec2 p){float v=0.0,a=0.5;for(int i=0;i<5;i++){v+=a*noise(p);p=p*2.0+vec2(11.3,7.1);a*=0.5;}return v;}',
-      'void main(){',
-      ' vec2 uv=gl_FragCoord.xy/uRes;float aspect=uRes.x/uRes.y;',
-      ' vec2 p=uv-0.5;p.x*=aspect;',
-      ' float t=uTime*0.06;vec2 mo=uMouse;mo.x*=aspect;',
-      ' vec2 q=p;q.y+=uScroll*0.30;q+=mo*0.10;',
-      ' vec2 warp=vec2(fbm(q*1.4+vec2(0.0,t)),fbm(q*1.4+vec2(5.2,3.3-t*0.8)));',
-      ' vec2 sp=q*1.25+0.85*warp;',
-      ' float acc=0.0;',
-      ' for(int i=0;i<5;i++){float fi=float(i);',
-      '   vec2 o=sp+vec2(fi*0.10,-fi*0.07)+warp*(fi*0.06);',
-      '   float d=fbm(o*(1.0+fi*0.12)+t*0.6);',
-      '   d=smoothstep(0.44,0.86,d);',
-      '   acc+=d*(1.0-acc)*(0.6-fi*0.07);}',
-      ' acc=pow(clamp(acc,0.0,1.0),1.45);',
-      ' float md=length(p-mo*0.5);acc+=exp(-md*md*3.6)*0.14;',
-      ' vec3 col=mix(uColA,uColB,smoothstep(0.0,0.6,acc));',
-      ' col=mix(col,uColC,smoothstep(0.45,1.0,acc)*clamp(uScroll*1.4,0.0,1.0));',
-      ' float vig=1.0-dot(p,p)*0.42;',
-      ' float prot=smoothstep(0.0,0.62,length((uv-0.5)*vec2(aspect*0.7,1.15)));',
-      ' float intensity=acc*uIntensity*max(vig,0.0)*mix(0.38,1.0,prot);',
-      ' vec3 darkC=uBg+col*intensity*0.72;',
-      ' vec3 tint=mix(col,vec3(1.0),0.35);',
-      ' vec3 lightC=mix(uBg,mix(uBg,tint,0.42),clamp(intensity*0.85,0.0,1.0));',
-      ' vec3 outc=mix(lightC,darkC,clamp(uDark,0.0,1.0));',
-      ' gl_FragColor=vec4(clamp(outc,0.0,1.0),1.0);',
-      '}'
-    ].join('\n');
-
-    var canvas = null, gl = null, prog = null, raf = 0, running = false, dead = false;
-    var U = {};
-    var mouse = [0, 0], mouseT = [0, 0];
-    var scroll = 0, scrollT = 0, clock = 0, last = 0, ema = 0.016, slowFrames = 0;
-    var renderScale = Math.min(window.devicePixelRatio || 1, 1.5);
-    renderScale *= ((window.innerWidth * window.innerHeight) > 1600000 || (window.devicePixelRatio || 1) > 2) ? 0.6 : 0.75;
-
-    // Match the portfolio's indigo→violet→teal identity. Accent + teal are read
-    // live from this file's tokens; violet is theme-branched (no --pu token here).
-    var fb = { A: [.31, .56, .97], B: [.65, .55, .98], C: [.29, .87, .50], bg: [.031, .043, .071], dark: 1 };
-    function clone(c) { return { A: c.A.slice(), B: c.B.slice(), C: c.C.slice(), bg: c.bg.slice(), dark: c.dark }; }
-    var col = clone(fb), colT = clone(fb);
-    function parseRGB(s) { var m = (s || '').trim().split(',').map(parseFloat); return (m.length >= 3 && m.every(function (x) { return !isNaN(x); })) ? [m[0] / 255, m[1] / 255, m[2] / 255] : null; }
-    function parseHex(h) { var m = /#?([0-9a-f]{6})/i.exec((h || '').trim()); if (!m) return null; var n = parseInt(m[1], 16); return [(n >> 16 & 255) / 255, (n >> 8 & 255) / 255, (n & 255) / 255]; }
-    function readColors() {
-      var cs = getComputedStyle(document.body);
-      var dark = !document.body.classList.contains('light');
-      return {
-        A: parseRGB(cs.getPropertyValue('--accent-rgb')) || fb.A,
-        B: dark ? [0.65, 0.55, 0.98] : [0.49, 0.23, 0.93],
-        C: parseRGB(cs.getPropertyValue('--green-rgb')) || fb.C,
-        bg: parseHex(cs.getPropertyValue('--bg')) || fb.bg,
-        dark: dark ? 1 : 0
-      };
-    }
-    function compile(type, src) { var sh = gl.createShader(type); gl.shaderSource(sh, src); gl.compileShader(sh); if (!gl.getShaderParameter(sh, gl.COMPILE_STATUS)) { gl.deleteShader(sh); return null; } return sh; }
-    function size() {
-      if (!canvas) return;
-      var w = Math.max(1, Math.floor(window.innerWidth * renderScale)), h = Math.max(1, Math.floor(window.innerHeight * renderScale));
-      if (canvas.width !== w || canvas.height !== h) { canvas.width = w; canvas.height = h; }
-      gl.viewport(0, 0, w, h); if (U.uRes) gl.uniform2f(U.uRes, w, h);
-    }
-    function destroy() { dead = true; running = false; if (raf) cancelAnimationFrame(raf), raf = 0; if (canvas && canvas.parentNode) canvas.parentNode.removeChild(canvas); canvas = gl = prog = null; }
-    function init() {
-      try {
-        canvas = document.getElementById('bgfx');
-        if (!canvas) { canvas = document.createElement('canvas'); canvas.id = 'bgfx'; canvas.setAttribute('aria-hidden', 'true'); canvas.setAttribute('role', 'presentation'); document.body.insertBefore(canvas, document.body.firstChild); }
-        var opts = { antialias: false, alpha: false, depth: false, stencil: false, powerPreference: 'low-power' };
-        gl = canvas.getContext('webgl', opts) || canvas.getContext('experimental-webgl', opts);
-        if (!gl) { destroy(); return false; }
-        var vs = compile(gl.VERTEX_SHADER, VERT), fs = compile(gl.FRAGMENT_SHADER, FRAG);
-        if (!vs || !fs) { destroy(); return false; }
-        prog = gl.createProgram(); gl.attachShader(prog, vs); gl.attachShader(prog, fs); gl.linkProgram(prog);
-        if (!gl.getProgramParameter(prog, gl.LINK_STATUS)) { destroy(); return false; }
-        gl.useProgram(prog);
-        var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER, buf);
-        gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 3, -1, -1, 3]), gl.STATIC_DRAW);
-        var loc = gl.getAttribLocation(prog, 'aPos'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc, 2, gl.FLOAT, false, 0, 0);
-        ['uRes', 'uTime', 'uMouse', 'uScroll', 'uColA', 'uColB', 'uColC', 'uBg', 'uDark', 'uIntensity'].forEach(function (n) { U[n] = gl.getUniformLocation(prog, n); });
-        col = readColors(); colT = clone(col); size();
-        canvas.addEventListener('webglcontextlost', function (e) { e.preventDefault(); running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }, false);
-        canvas.addEventListener('webglcontextrestored', function () { if (!dead) init(); }, false);
-        return true;
-      } catch (err) { destroy(); return false; }
-    }
-    function drawOnce() {
-      gl.uniform1f(U.uTime, clock); gl.uniform2f(U.uMouse, mouse[0], mouse[1]); gl.uniform1f(U.uScroll, scroll);
-      gl.uniform3fv(U.uColA, col.A); gl.uniform3fv(U.uColB, col.B); gl.uniform3fv(U.uColC, col.C);
-      gl.uniform3fv(U.uBg, col.bg); gl.uniform1f(U.uDark, col.dark); gl.uniform1f(U.uIntensity, 1.0);
-      gl.drawArrays(gl.TRIANGLES, 0, 3);
-    }
-    function frame(ts) {
-      if (!running || dead) return;
-      if (!last) last = ts;
-      var dt = (ts - last) / 1000; last = ts; if (dt > 0.05) dt = 0.05; clock += dt;
-      ema = ema * 0.9 + dt * 0.1;
-      if (ema > 0.024) { if (++slowFrames > 30 && renderScale > 0.42) { renderScale *= 0.82; slowFrames = 0; size(); } } else slowFrames = 0;
-      mouse[0] += (mouseT[0] - mouse[0]) * 0.045; mouse[1] += (mouseT[1] - mouse[1]) * 0.045;
-      scroll += (scrollT - scroll) * 0.06;
-      var k = 0.10;
-      ['A', 'B', 'C', 'bg'].forEach(function (key) { for (var i = 0; i < 3; i++) col[key][i] += (colT[key][i] - col[key][i]) * k; });
-      col.dark += (colT.dark - col.dark) * k;
-      drawOnce(); raf = requestAnimationFrame(frame);
-    }
-    function startLoop() { if (!running && !dead && gl) { running = true; last = 0; raf = requestAnimationFrame(frame); } }
-    function stopLoop() { running = false; if (raf) cancelAnimationFrame(raf), raf = 0; }
-
-    if (!init()) return;
-    var reduced = reduceMQ.matches;
-    if (reduced) {
-      clock = 7.0; drawOnce();
-      new MutationObserver(function () { col = readColors(); colT = clone(col); drawOnce(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-      window.addEventListener('resize', function () { if (!dead && gl) { size(); drawOnce(); } });
-    } else {
-      window.addEventListener('mousemove', function (e) { mouseT[0] = (e.clientX / window.innerWidth) * 2 - 1; mouseT[1] = (1 - e.clientY / window.innerHeight) * 2 - 1; }, { passive: true });
-      window.addEventListener('scroll', function () { var h = document.documentElement.scrollHeight - window.innerHeight; scrollT = h > 0 ? Math.min(window.scrollY / h, 1) : 0; }, { passive: true });
-      var rt = 0; window.addEventListener('resize', function () { clearTimeout(rt); rt = setTimeout(function () { if (!dead && gl) size(); }, 120); });
-      new MutationObserver(function () { colT = readColors(); }).observe(document.body, { attributes: true, attributeFilter: ['class'] });
-      document.addEventListener('visibilitychange', function () { if (document.hidden) stopLoop(); else startLoop(); });
-      var reEval = function () { if (touchMQ.matches || reduceMQ.matches) destroy(); };
-      (reduceMQ.addEventListener ? reduceMQ.addEventListener('change', reEval) : reduceMQ.addListener && reduceMQ.addListener(reEval));
-      (touchMQ.addEventListener ? touchMQ.addEventListener('change', reEval) : touchMQ.addListener && touchMQ.addListener(reEval));
-      startLoop();
-    }
-  })();
+  }, { passive: true });
+})();
 </script>
 </body>
 </html>
